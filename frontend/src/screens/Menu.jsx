@@ -23,7 +23,8 @@ function Menu() {
 const styles = StyleSheet.create({
   homeContainer: {
     flex: 1,
-    justifyContent: 'space-between'
+    justifyContent: 'space-between',
+    marginTop: 30,
   },
   background: {
     position: 'absolute',
@@ -31,12 +32,6 @@ const styles = StyleSheet.create({
     width,
     opacity: 0.08,
     zIndex: -1,
-  },
-  textLinks: {
-    marginTop: 20,
-    marginBottom: 10,
-    flexGrow: 1,
-    justifyContent: 'space-around'
   },
 })
 
