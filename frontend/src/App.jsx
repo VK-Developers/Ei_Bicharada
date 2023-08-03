@@ -1,12 +1,12 @@
 import React from 'react';
-import { Text, View, } from 'react-native';
-
+import Provider from './context/Provider'
+import Routes from './Routes'
 
 function App() {
   return (
-    <View>
-      <Text>APP</Text>
-    </View>
+    <Provider>
+      <Routes />
+    </Provider>
   );
 }
 
