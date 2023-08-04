@@ -5,6 +5,15 @@ import { StatusBar } from 'react-native';
 // Stack Components
 import MenuScreen from './screens/Menu';
 import ResgateScreen from './screens/stack/Resgate';
+import DenunciasScreen from './screens/stack/Denuncias';
+import AnimaisPerdidosScreen from './screens/stack/AnimaisPerdidos';
+import AdocaoScreen from './screens/stack/Adocao';
+import DoacaoScreen from './screens/stack/Doacao';
+import EventosScreen from './screens/stack/Eventos';
+import DivulgacaoScreen from './screens/stack/Divulgacao';
+import NossosProdutosScreen from './screens/stack/NossosProdutos';
+import PrestacaoDeContasScreen from './screens/stack/PrestacaoDeContas';
+
 const Stack = createStackNavigator();
 
 const theme = {
@@ -27,6 +36,14 @@ export default function App() {
       <Stack.Navigator screenOptions={options} initialRouteName='Menu'>
         <Stack.Screen name="Menu" component={MenuScreen} />
         <Stack.Screen name="Resgate" component={ResgateScreen} />
+        <Stack.Screen name="Denuncias" component={DenunciasScreen} />
+        <Stack.Screen name="AnimaisPerdidos" component={AnimaisPerdidosScreen} />
+        <Stack.Screen name="Adoção" component={AdocaoScreen} />
+        <Stack.Screen name="Doação" component={DoacaoScreen} />
+        <Stack.Screen name="Eventos" component={EventosScreen} />
+        <Stack.Screen name="Divulgação" component={DivulgacaoScreen} />
+        <Stack.Screen name="NossosProdutos" component={NossosProdutosScreen} />
+        <Stack.Screen name="PrestaçãodeContas" component={PrestacaoDeContasScreen} />
       </Stack.Navigator>
     </NavigationContainer>
   );

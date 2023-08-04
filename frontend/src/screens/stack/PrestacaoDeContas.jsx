@@ -8,7 +8,7 @@ import Return from '../../component/return';
 
 const {height, width} = Dimensions.get('window')
 
-function Resgate({navigation, route: { params }}) {
+function PrestacaoDeContas({navigation, route: { params }}) {
   return (
     <>
       <ImageBackground source={images.backgrounds.tree} resizeMode="cover" style={styles.background} />
@@ -34,4 +34,4 @@ const styles = StyleSheet.create({
   },
 })
 
-export default Resgate;
+export default PrestacaoDeContas;
