@@ -4,7 +4,7 @@ import { NavigationContainer, DefaultTheme} from '@react-navigation/native';
 import { StatusBar } from 'react-native';
 // Stack Components
 import MenuScreen from './screens/Menu';
-
+import ResgateScreen from './screens/stack/Resgate';
 const Stack = createStackNavigator();
 
 const theme = {
@@ -26,6 +26,7 @@ export default function App() {
       <StatusBar barStyle="light-content" backgroundColor="black" />
       <Stack.Navigator screenOptions={options} initialRouteName='Menu'>
         <Stack.Screen name="Menu" component={MenuScreen} />
+        <Stack.Screen name="Resgate" component={ResgateScreen} />
       </Stack.Navigator>
     </NavigationContainer>
   );
