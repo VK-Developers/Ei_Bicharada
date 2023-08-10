@@ -35,7 +35,6 @@ module.exports = async (req, res, _next) => {
       const newUser = { name, age, email, password }
 
       const test = updateFile(newUser)
-      // Error [ERR_HTTP_HEADERS_SENT]: Cannot set headers after they are sent to the client
 
       return res.status(OK).json(test)
 };

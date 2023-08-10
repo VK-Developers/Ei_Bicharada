@@ -12,7 +12,7 @@ module.exports = async (req, res, _next) => {
       const checkEmail = emailExists(email);
       const checkPassword = passwordExists(password);
 
-      if (!checkEmail || !checkPassword) res.status(BAD).json({msg: 'Email/Senha Invalido'})
+      if (!checkEmail || !checkPassword) return res.status(BAD).json({msg: 'Email/Senha Invalido'})
 
       return res.status(OK).json({msg: "OK"})
 };
