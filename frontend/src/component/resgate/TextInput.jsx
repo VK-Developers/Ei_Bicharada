@@ -5,10 +5,14 @@ const { width } = Dimensions.get('window');
 
 function InputText({info}) {
   const [text, setText] = useState('');
-  const {title, max, type} = info;
+  const {title, maxLength, type} = info;
 
-  // const handleChanges 
-  // formatar para hh:mm
+  // Esta colando no formato mas caso eu queria apagar os : nao consigo
+  const hourFormat = (i) => {
+    const textToAdd = i.length !== 2 ? i : i + ':'
+
+    setText(textToAdd)
+  }
 
   return (
     <View style={styles.container}>
@@ -18,8 +22,8 @@ function InputText({info}) {
           returnKeyType="done"
           editable
           numberOfLines={1}
-          maxLength={max}
-          onChangeText={setText}
+          maxLength={maxLength}
+          onChangeText={type !== 'default' ? hourFormat : setText }
           value={text}
           style={styles.input}
         />

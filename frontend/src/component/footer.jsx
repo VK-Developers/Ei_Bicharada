@@ -20,6 +20,11 @@ const styles = StyleSheet.create({
     justifyContent: 'space-around',
     alignItems: 'center',
     height: height * 0.14,
+
+    position: 'relative',
+    bottom: 0,
+    left: 0,
+    right: 0,
   },
   logo: {
     width: 110,
