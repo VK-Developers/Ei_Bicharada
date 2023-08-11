@@ -13,7 +13,7 @@ function Header({name}) {
 
 const styles = StyleSheet.create({
   title: {
-    height: height * 0.12,
+    height: height * 0.10,
     alignItems: 'center',
     justifyContent: 'center',
     text: {

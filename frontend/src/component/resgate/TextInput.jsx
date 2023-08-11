@@ -1,38 +1,51 @@
-import React from 'react';
+import React, {useState} from 'react';
 import { StyleSheet, View, Text, Dimensions, TextInput } from 'react-native';
-import { useNavigation } from '@react-navigation/native';
 
 const { width } = Dimensions.get('window');
 
-function TextInput({title}) {
-  const { navigate } = useNavigation();
+function InputText({info}) {
+  const [text, setText] = useState('');
+  const {title, max, type} = info;
 
+  // const handleChanges 
+  // formatar para hh:mm
 
   return (
-    <View>
+    <View style={styles.container}>
         <Text style={styles.text}>{title}:</Text>
-
+        <TextInput
+          keyboardType={type}
+          returnKeyType="done"
+          editable
+          numberOfLines={1}
+          maxLength={max}
+          onChangeText={setText}
+          value={text}
+          style={styles.input}
+        />
     </View>
   );
 }
 
 const styles = StyleSheet.create({
-  link: {
+  container: {
+    width,
+    padding: 10,
     flexDirection: 'row',
-    alignItems: 'center',
-    height: width * 0.12,
+    alignItems: 'center'
   },
   text: {
-    color: 'black',
     fontSize: 24,
-    fontWeight: '600'
+    color: 'black',
+    fontWeight: '600',
+    marginRight: 10,
   },
-  logo: {
-    width: 35,
-    height: 35,
-    marginLeft: width * 0.1,
-    marginRight: 15
+  input: {
+    fontSize: 22,
+    color: 'black',
+    fontWeight: '600',
+    flexGrow: 1
   }
 })
 
-export default TextInput;
+export default InputText;

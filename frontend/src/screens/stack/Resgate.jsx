@@ -1,23 +1,32 @@
 import React from 'react';
-import {  StyleSheet, SafeAreaView, Dimensions, ImageBackground, View } from 'react-native';
-import images from '../../localized/images'
+import {  StyleSheet, SafeAreaView, Dimensions, View } from 'react-native';
 //Components
 import Footer from '../../component/footer';
 import Header from '../../component/header';
 import Return from '../../component/return';
 import TextInput from '../../component/resgate/TextInput';
+import Background from '../../component/background';
+import { Resgate as arrayText } from '../../localized/structures';
 
-const {height, width} = Dimensions.get('window')
+const {height} = Dimensions.get('window')
 
 function Resgate({navigation, route: { params }}) {
+ 
   return (
     <>
-      <ImageBackground source={images.backgrounds.tree} resizeMode="cover" style={styles.background} />
+      <Background img={'tree'} />
       <SafeAreaView style={styles.container}>
         <Return nav={navigation} />
         <Header name={params.name} />
         <View style={styles.content}>
-          <TextInput title={'Animal'} />
+          {
+            arrayText.map((elem) => 
+              <TextInput 
+                key={elem.title} 
+                info={elem}
+              />
+            )
+          }
         </View>
         <Footer />
       </SafeAreaView>
@@ -30,15 +39,8 @@ const styles = StyleSheet.create({
     marginTop: 25,
   },
   content: {
-    backgroundColor: 'red',
-    height: height - (height * 0.14) - 150,
-  },
-  background: {
-    position: 'absolute',
-    height,
-    width,
-    opacity: 0.08,
-    zIndex: -1,
+    // backgroundColor: 'green',
+    height: height - (height * 0.14) - 160,
   },
 })
 
