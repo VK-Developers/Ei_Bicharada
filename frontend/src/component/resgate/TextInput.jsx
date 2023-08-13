@@ -7,11 +7,17 @@ function InputText({info}) {
   const [text, setText] = useState('');
   const {title, maxLength, type} = info;
 
-  // Esta colando no formato mas caso eu queria apagar os : nao consigo
   const hourFormat = (i) => {
-    const textToAdd = i.length !== 2 ? i : i + ':'
+    const didDelete = text.length > i.length;
 
-    setText(textToAdd)
+    if (!!didDelete) {
+      setText('');
+      return
+    } 
+
+    const textToAdd = i.length !== 2 ? i : i + ':'
+    setText(textToAdd);
+    return
   }
 
   return (
