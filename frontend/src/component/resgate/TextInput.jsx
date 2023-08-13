@@ -10,10 +10,20 @@ function InputText({info}) {
   const hourFormat = (i) => {
     const didDelete = text.length > i.length;
 
-    if (!!didDelete) {
-      setText('');
-      return
-    } 
+    if (!!didDelete) return setText('')
+    
+    if (i.length === 2) {
+      const checkLiminit = Number(i) > 24
+      const formatTo24hr = Number(i) === 24
+      if (checkLiminit) return setText('')
+      if (formatTo24hr) return setText('00:')
+    }
+
+    if (i.length === 5) {
+      const houAndMin = i.split(':')
+      const checkLiminit = Number(houAndMin[1]) > 59
+      if (checkLiminit) return setText(`${houAndMin[0]}:`)
+    }
 
     const textToAdd = i.length !== 2 ? i : i + ':'
     setText(textToAdd);
