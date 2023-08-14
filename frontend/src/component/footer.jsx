@@ -3,9 +3,9 @@ import { StyleSheet, View, Image, Dimensions } from 'react-native';
 
 import images from '../localized/images';
 
-const {width, height} = Dimensions.get('window');
+const {height} = Dimensions.get('window');
 
-function Footer({name}) {
+function Footer() {
   return (
     <View style={styles.container}>
       <View style={{ height: '100%', width: 200}} />
@@ -27,7 +27,7 @@ const styles = StyleSheet.create({
     right: 0,
   },
   logo: {
-    width: 110,
+    width: 100,
     height: '100%',
   }
 })

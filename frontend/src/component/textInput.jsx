@@ -8,6 +8,8 @@ function InputText({info, baseRef}) {
   const {title, maxLength, type} = info;
   const inputRef = useRef();
 
+  const occurrence = title === 'Ocorrido';
+
   const hourFormat = (i) => {
     const didDelete = text.length > i.length;
 
@@ -32,7 +34,7 @@ function InputText({info, baseRef}) {
   }
 
   return (
-    <View style={styles.container}>
+    <View style={occurrence ? styles.occurrence : styles.container}>
         <Text style={styles.text}>{title}:</Text>
         <TextInput
           ref={inputRef}
@@ -40,11 +42,12 @@ function InputText({info, baseRef}) {
           keyboardType={type}
           returnKeyType="done"
           editable
-          numberOfLines={1}
+          numberOfLines={occurrence ? 2 : 1}
+          multiline={occurrence ? true : false}
           maxLength={maxLength}
           onChangeText={type !== 'default' ? hourFormat : setText }
           value={text}
-          style={styles.input}
+          style={occurrence ? styles.occurrence.input : styles.input}
         />
     </View>
   );
@@ -58,16 +61,28 @@ const styles = StyleSheet.create({
     alignItems: 'center'
   },
   text: {
-    fontSize: 26,
+    fontSize: 24,
     color: 'black',
     fontWeight: '600',
     marginRight: 10,
   },
   input: {
-    fontSize: 22,
+    fontSize: 20,
     color: 'black',
     fontWeight: '600',
     flexGrow: 1
+  },
+  occurrence: {
+    width,
+    padding: 10,
+    input: {
+      backgroundColor: 'rgba(64, 64, 64, 0.1)',
+      padding: 10,
+      borderRadius: 20,
+      fontSize: 17,
+      fontWeight: '500',
+      textAlign: 'justify',
+    }
   }
 })
 

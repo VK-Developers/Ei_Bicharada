@@ -12,7 +12,7 @@ export const menuTopics = [
 
 export const ResgateDenuncia = [
   {title: 'Animal', maxLength: 15, type: 'default'},
-  {title: 'Ocorrido', maxLength: 20, type: 'default'},
+  {title: 'Ocorrido', maxLength: 300, type: 'default'},
   {title: 'Horário', maxLength: 5, type: 'numeric'},
   {title: 'Endereço', maxLength: 25, type: 'default'},
   {title: 'Bairro', maxLength: 15, type: 'default'},

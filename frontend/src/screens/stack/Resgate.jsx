@@ -41,7 +41,7 @@ function Resgate({navigation, route: { params }}) {
 const styles = StyleSheet.create({
   container: {
     height: '96%',
-    marginTop: 25,
+    marginTop: 13,
     justifyContent: 'space-between'
   }
 })

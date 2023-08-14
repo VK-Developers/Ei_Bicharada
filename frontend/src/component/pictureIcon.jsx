@@ -17,8 +17,8 @@ const styles = StyleSheet.create({
     justifyContent: 'flex-end',
   },
   icon: {
-    width: 60,
-    height: 60,
+    width: 50,
+    height: 50,
     marginRight: 40
   }
 })
