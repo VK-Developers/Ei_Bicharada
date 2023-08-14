@@ -1,6 +1,6 @@
 import React, {useState, useRef} from 'react';
 import { StyleSheet, View, Text, Dimensions, TextInput } from 'react-native';
-import HandleScroll from '../../hooks/HandleScroll';
+import HandleScroll from '../hooks/HandleScroll';
 const { width } = Dimensions.get('window');
 
 function InputText({info, baseRef}) {

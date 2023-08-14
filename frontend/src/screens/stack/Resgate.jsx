@@ -1,13 +1,13 @@
 import React, {useRef} from 'react';
-import {  StyleSheet, View, Image, TouchableOpacity, ScrollView } from 'react-native';
+import { StyleSheet, View, ScrollView } from 'react-native';
 //Components
 import Footer from '../../component/footer';
 import Header from '../../component/header';
 import Return from '../../component/return';
-import TextInput from '../../component/resgate/TextInput';
+import TextInput from '../../component/textInput';
 import Background from '../../component/background';
-import { Resgate as arrayText } from '../../localized/structures';
-import images from '../../localized/images';
+import { ResgateDenuncia as arrayText } from '../../localized/structures';
+import PictureIcon from '../../component/pictureIcon';
 
 function Resgate({navigation, route: { params }}) {
   const scrollViewRef = useRef();
@@ -20,10 +20,7 @@ function Resgate({navigation, route: { params }}) {
           <View>
             <Return nav={navigation} />
             <Header name={params.name} />
-            <TouchableOpacity style={styles.media}>
-              <Image style={styles.icon} source={images.camera} />
-            </TouchableOpacity>
-            <View>
+            <PictureIcon />
               { 
                 arrayText.map((text) => (
                   <TextInput 
@@ -33,7 +30,6 @@ function Resgate({navigation, route: { params }}) {
                   />)
                 )
               }
-            </View>
           </View>
           <Footer />
         </View>
@@ -47,15 +43,6 @@ const styles = StyleSheet.create({
     height: '96%',
     marginTop: 25,
     justifyContent: 'space-between'
-  },
-  media: {
-    flexDirection: 'row',
-    justifyContent: 'flex-end',
-  },
-  icon: {
-    width: 60,
-    height: 60,
-    marginRight: 40
   }
 })
 

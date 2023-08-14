@@ -1,6 +1,6 @@
 export const menuTopics = [
   'Resgate',
-  'Denuncias',
+  'Denúncias',
   'Animais Perdidos',
   'Adoção',
   'Doação',
@@ -10,9 +10,9 @@ export const menuTopics = [
   'Prestação de Contas'
 ]
 
-export const Resgate = [
+export const ResgateDenuncia = [
   {title: 'Animal', maxLength: 15, type: 'default'},
-  {title: 'Ocorrido', maxLength: 15, type: 'default'},
+  {title: 'Ocorrido', maxLength: 20, type: 'default'},
   {title: 'Horário', maxLength: 5, type: 'numeric'},
   {title: 'Endereço', maxLength: 25, type: 'default'},
   {title: 'Bairro', maxLength: 15, type: 'default'},
