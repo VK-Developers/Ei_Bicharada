@@ -1,5 +1,5 @@
-import React from 'react';
-import {  StyleSheet, SafeAreaView, Dimensions, View, Image, TouchableOpacity } from 'react-native';
+import React, {useRef} from 'react';
+import {  StyleSheet, View, Image, TouchableOpacity, ScrollView } from 'react-native';
 //Components
 import Footer from '../../component/footer';
 import Header from '../../component/header';
@@ -9,47 +9,48 @@ import Background from '../../component/background';
 import { Resgate as arrayText } from '../../localized/structures';
 import images from '../../localized/images';
 
-const {height} = Dimensions.get('window')
-
 function Resgate({navigation, route: { params }}) {
- 
+  const scrollViewRef = useRef();
+
   return (
     <>
       <Background img={'tree'} />
-      <SafeAreaView style={styles.container}>
-        <Return nav={navigation} />
-        <Header name={params.name} />
-        <TouchableOpacity style={styles.media}>
-          <Image style={styles.icon} source={images.camera} />
-        </TouchableOpacity>
-        <View style={styles.content}>
-          {
-            arrayText.map((elem) => 
-              <TextInput 
-                key={elem.title} 
-                info={elem}
-              />
-            )
-          }
+      <ScrollView ref={scrollViewRef} extraScrollHeight={20} keyboardShouldPersistTaps="handled">
+        <View style={styles.container}>
+          <View>
+            <Return nav={navigation} />
+            <Header name={params.name} />
+            <TouchableOpacity style={styles.media}>
+              <Image style={styles.icon} source={images.camera} />
+            </TouchableOpacity>
+            <View>
+              { 
+                arrayText.map((text) => (
+                  <TextInput 
+                    key={text.title} 
+                    info={text} 
+                    baseRef={scrollViewRef}
+                  />)
+                )
+              }
+            </View>
+          </View>
+          <Footer />
         </View>
-        
-        <Footer />
-      </SafeAreaView>
+      </ScrollView>
     </>
   );
 }
 
 const styles = StyleSheet.create({
   container: {
+    height: '96%',
     marginTop: 25,
+    justifyContent: 'space-between'
   },
-  // content: {
-  //   // backgroundColor: 'green',
-  //   height: height - (height * 0.14) - 160,
-  // },
   media: {
     flexDirection: 'row',
-    justifyContent: 'flex-end'
+    justifyContent: 'flex-end',
   },
   icon: {
     width: 60,

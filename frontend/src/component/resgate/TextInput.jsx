@@ -1,11 +1,12 @@
-import React, {useState} from 'react';
+import React, {useState, useRef} from 'react';
 import { StyleSheet, View, Text, Dimensions, TextInput } from 'react-native';
-
+import HandleScroll from '../../hooks/HandleScroll';
 const { width } = Dimensions.get('window');
 
-function InputText({info}) {
+function InputText({info, baseRef}) {
   const [text, setText] = useState('');
   const {title, maxLength, type} = info;
+  const inputRef = useRef();
 
   const hourFormat = (i) => {
     const didDelete = text.length > i.length;
@@ -34,6 +35,8 @@ function InputText({info}) {
     <View style={styles.container}>
         <Text style={styles.text}>{title}:</Text>
         <TextInput
+          ref={inputRef}
+          onFocus={() => HandleScroll(inputRef, baseRef, 100)}
           keyboardType={type}
           returnKeyType="done"
           editable
@@ -55,7 +58,7 @@ const styles = StyleSheet.create({
     alignItems: 'center'
   },
   text: {
-    fontSize: 24,
+    fontSize: 26,
     color: 'black',
     fontWeight: '600',
     marginRight: 10,
