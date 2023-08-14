@@ -1,6 +1,5 @@
 import React, {useRef} from 'react';
-import { StyleSheet, View, ScrollView } from 'react-native';
-import images from '../../localized/images'
+import { StyleSheet, View, ScrollView, Dimensions} from 'react-native';
 // Components
 import Footer from '../../component/footer';
 import Header from '../../component/header';
@@ -9,6 +8,8 @@ import PictureIcon from '../../component/pictureIcon'
 import TextInput from '../../component/textInput'
 import Background from '../../component/background';
 import { ResgateDenuncia as arrayText } from '../../localized/structures';
+
+const { height } = Dimensions.get('screen')
 
 function Denuncias({navigation, route: { params }}) {
   const scrollViewRef = useRef();
@@ -41,8 +42,8 @@ function Denuncias({navigation, route: { params }}) {
 
 const styles = StyleSheet.create({
   container: {
-    height: '96%',
-    marginTop: 13,
+    height: height * 0.89,
+    marginTop: 25,
     justifyContent: 'space-between'
   }
 })

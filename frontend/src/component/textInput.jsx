@@ -77,6 +77,7 @@ const styles = StyleSheet.create({
     padding: 10,
     input: {
       backgroundColor: 'rgba(64, 64, 64, 0.1)',
+      color: 'black',
       padding: 10,
       borderRadius: 20,
       fontSize: 17,
