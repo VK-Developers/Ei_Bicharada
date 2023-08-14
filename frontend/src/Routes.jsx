@@ -36,7 +36,7 @@ export default function App() {
       <Stack.Navigator screenOptions={options} initialRouteName='Menu'>
         <Stack.Screen name="Menu" component={MenuScreen} />
         <Stack.Screen name="Resgate" component={ResgateScreen} />
-        <Stack.Screen name="Denuncias" component={DenunciasScreen} />
+        <Stack.Screen name="Denúncias" component={DenunciasScreen} />
         <Stack.Screen name="AnimaisPerdidos" component={AnimaisPerdidosScreen} />
         <Stack.Screen name="Adoção" component={AdocaoScreen} />
         <Stack.Screen name="Doação" component={DoacaoScreen} />

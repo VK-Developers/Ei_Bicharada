@@ -1,37 +1,50 @@
-import React from 'react';
-import {  StyleSheet, SafeAreaView, Dimensions, ImageBackground } from 'react-native';
+import React, {useRef} from 'react';
+import { StyleSheet, View, ScrollView } from 'react-native';
 import images from '../../localized/images'
-//Components
+// Components
 import Footer from '../../component/footer';
 import Header from '../../component/header';
 import Return from '../../component/return';
-
-const {height, width} = Dimensions.get('window')
+import PictureIcon from '../../component/pictureIcon'
+import TextInput from '../../component/textInput'
+import Background from '../../component/background';
+import { ResgateDenuncia as arrayText } from '../../localized/structures';
 
 function Denuncias({navigation, route: { params }}) {
+  const scrollViewRef = useRef();
+
   return (
     <>
-      <ImageBackground source={images.backgrounds.tree} resizeMode="cover" style={styles.background} />
-      <SafeAreaView style={styles.container}>
-        <Return nav={navigation} />
-        <Header name={params.name} />
-        {/* <Footer /> */}
-      </SafeAreaView>
+      <Background img={'tree'} />
+      <ScrollView ref={scrollViewRef} extraScrollHeight={20} keyboardShouldPersistTaps="handled">
+        <View style={styles.container}>
+          <View>
+            <Return nav={navigation} />
+            <Header name={params.name} />
+            <PictureIcon />
+              { 
+                arrayText.map((text) => (
+                  <TextInput 
+                    key={text.title} 
+                    info={text} 
+                    baseRef={scrollViewRef}
+                  />)
+                )
+              }
+          </View>
+          <Footer />
+        </View>
+      </ScrollView>
     </>
   );
 }
 
 const styles = StyleSheet.create({
   container: {
-    marginTop: 25,
-  },
-  background: {
-    position: 'absolute',
-    height,
-    width,
-    opacity: 0.08,
-    zIndex: -1,
-  },
+    height: '96%',
+    marginTop: 13,
+    justifyContent: 'space-between'
+  }
 })
 
 export default Denuncias;
