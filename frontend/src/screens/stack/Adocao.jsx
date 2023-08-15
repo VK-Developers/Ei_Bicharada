@@ -1,5 +1,5 @@
 import React from 'react';
-import {  StyleSheet, SafeAreaView, FlatList } from 'react-native';
+import { StyleSheet, SafeAreaView, FlatList } from 'react-native';
 //Components
 import Footer from '../../component/footer';
 import Header from '../../component/header';

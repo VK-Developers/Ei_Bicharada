@@ -1,21 +1,29 @@
 import React from 'react';
-import {  StyleSheet, SafeAreaView, Dimensions, ImageBackground } from 'react-native';
-import images from '../../localized/images'
+import { StyleSheet, SafeAreaView, View } from 'react-native';
 //Components
 import Footer from '../../component/footer';
 import Header from '../../component/header';
 import Return from '../../component/return';
-
-const {height, width} = Dimensions.get('window')
+import Background from '../../component/background'
 
 function Doacao({navigation, route: { params }}) {
   return (
     <>
-      <ImageBackground source={images.backgrounds.tree} resizeMode="cover" style={styles.background} />
+      <Background img={'tree'} />
       <SafeAreaView style={styles.container}>
-        <Return nav={navigation} />
-        <Header name={params.name} />
-        {/* <Footer /> */}
+        <View style={{flexGrow: 1}}>
+          <View>
+            <Return nav={navigation} />
+            <Header name={params.name} />
+          </View>
+          
+          <View style={{backgroundColor: 'green', flexGrow: 1}}>
+
+          </View>
+
+          
+        </View>
+        <Footer />
       </SafeAreaView>
     </>
   );
@@ -24,13 +32,8 @@ function Doacao({navigation, route: { params }}) {
 const styles = StyleSheet.create({
   container: {
     marginTop: 25,
-  },
-  background: {
-    position: 'absolute',
-    height,
-    width,
-    opacity: 0.08,
-    zIndex: -1,
+    height: '97%',
+    justifyContent: 'space-between'
   },
 })
 

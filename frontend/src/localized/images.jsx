@@ -10,4 +10,5 @@ export default {
   arrow: require('../assets/arrow.png'),
   camera: require('../assets/camera.png'),
   folder: require('../assets/folder.png'),
+  spLogo: require('../assets/brasao.png'),
 };
