@@ -24,5 +24,5 @@ export const events = [
   {title: 'Bairro', maxLength: 15, type: 'default'},
   {title: 'Cidade', maxLength: 8, type: 'default'},
   {title: 'Data', maxLength: 8, type: 'numeric'},
-  {title: 'Horário', maxLength: 8, type: 'numeric'},
+  {title: 'Horário', maxLength: 5, type: 'numeric'},
 ]
