@@ -1,6 +1,8 @@
 import React from 'react';
 import { StyleSheet, Image, View, Text, TouchableOpacity } from 'react-native';
 
+import str from '../../localized/strings'
+
 function Animal({info}) {
       const {foto, description, name} = info;
 
@@ -11,7 +13,7 @@ function Animal({info}) {
                   <Image style={styles.img} source={{uri: foto}} />
                   <View style={styles.info}>
                         <View style={[styles.desc, {marginBottom: 5}]}>
-                              <Text style={{color: 'black', fontWeight: '600', marginRight: 15}}>Nome:</Text>
+                              <Text style={{color: 'black', fontWeight: '600', marginRight: 15}}>{str.name + ':'}</Text>
                               <Text style={{color: 'black', fontWeight: '800', fontSize: 16}}>{name}</Text>
                         </View>
                         <View style={styles.desc}>
