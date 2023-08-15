@@ -1,6 +1,5 @@
 import React from 'react';
-import {  StyleSheet, SafeAreaView, Dimensions, ImageBackground, FlatList, View } from 'react-native';
-import images from '../../localized/images'
+import {  StyleSheet, SafeAreaView, FlatList } from 'react-native';
 //Components
 import Footer from '../../component/footer';
 import Header from '../../component/header';

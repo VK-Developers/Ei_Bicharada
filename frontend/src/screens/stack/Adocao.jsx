@@ -1,21 +1,35 @@
 import React from 'react';
-import {  StyleSheet, SafeAreaView, Dimensions, ImageBackground } from 'react-native';
-import images from '../../localized/images'
+import {  StyleSheet, SafeAreaView, FlatList } from 'react-native';
 //Components
 import Footer from '../../component/footer';
 import Header from '../../component/header';
 import Return from '../../component/return';
+import Background from '../../component/background'
+import Animal from '../../component/flatlist/animal';
 
-const {height, width} = Dimensions.get('window')
+// Most come from API
+import {animalsAdocao} from '../../mock'
+
 
 function Adocao({navigation, route: { params }}) {
+  const renderComponente = ({ item }) => <Animal info={item} /> 
+
   return (
     <>
-      <ImageBackground source={images.backgrounds.tree} resizeMode="cover" style={styles.background} />
+      <Background img={'tree'} />
       <SafeAreaView style={styles.container}>
-        <Return nav={navigation} />
-        <Header name={params.name} />
-        {/* <Footer /> */}
+        <FlatList 
+          data={animalsAdocao}
+          renderItem={renderComponente}
+          keyExtractor={({id}) => 'adopt-' + id}
+          ListHeaderComponent={() =>
+            <>
+              <Return nav={navigation} />
+              <Header name={params.name} />
+            </>
+          }
+          ListFooterComponent={() => <Footer />}
+        />
       </SafeAreaView>
     </>
   );
@@ -24,13 +38,6 @@ function Adocao({navigation, route: { params }}) {
 const styles = StyleSheet.create({
   container: {
     marginTop: 25,
-  },
-  background: {
-    position: 'absolute',
-    height,
-    width,
-    opacity: 0.08,
-    zIndex: -1,
   },
 })
 
