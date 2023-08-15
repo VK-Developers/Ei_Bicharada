@@ -9,7 +9,7 @@ import Background from '../../component/background';
 import { ResgateDenuncia as arrayText } from '../../localized/structures';
 import PictureIcon from '../../component/pictureIcon';
 
-const { height } = Dimensions.get('screen')
+const { height } = Dimensions.get('screen');
 
 function Resgate({navigation, route: { params }}) {
   const scrollViewRef = useRef();

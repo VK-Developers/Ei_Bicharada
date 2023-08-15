@@ -8,7 +8,7 @@ function InputText({info, baseRef}) {
   const {title, maxLength, type} = info;
   const inputRef = useRef();
 
-  const occurrence = title === 'Ocorrido';
+  const occurrence = (title === 'Ocorrido' || title === 'Descrição');
 
   const hourFormat = (i) => {
     const didDelete = text.length > i.length;
@@ -33,6 +33,29 @@ function InputText({info, baseRef}) {
     return
   }
 
+  const dateFormat = (i) => {
+    const didDelete = text.length > i.length;
+
+    if (!!didDelete) return setText('')
+    
+    if (i.length === 2) {
+      const checkLiminit = Number(i) > 31
+      if (checkLiminit) return setText('')
+      return setText(`${i}/`)
+    }
+
+    if (i.length === 5) {
+      const dateSplit = i.split('/');
+      const checkLiminit = Number(dateSplit[1]) > 12;
+      if (checkLiminit) return setText(`${dateSplit[0]}/`);
+      return setText(`${dateSplit[0]}/${dateSplit[1]}/`);
+    }
+
+    const textToAdd = i.length !== 2 ? i : i + ':'
+    setText(textToAdd);
+    return
+  }
+
   return (
     <View style={occurrence ? styles.occurrence : styles.container}>
         <Text style={styles.text}>{title}:</Text>
@@ -42,10 +65,10 @@ function InputText({info, baseRef}) {
           keyboardType={type}
           returnKeyType="done"
           editable
-          numberOfLines={occurrence ? 2 : 1}
+          numberOfLines={occurrence ? 3 : 1}
           multiline={occurrence ? true : false}
           maxLength={maxLength}
-          onChangeText={type !== 'default' ? hourFormat : setText }
+          onChangeText={type !== 'default' ? (title === 'Data' ? dateFormat : hourFormat) : setText }
           value={text}
           style={occurrence ? styles.occurrence.input : styles.input}
         />
