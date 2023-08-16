@@ -1,0 +1,22 @@
+version: '3'
+
+services:
+  backend:
+    container_name: backend
+    build: ./backend
+    ports:
+      - 3001:3001
+    environment:
+      - API_PORT=3001
+    healthcheck:
+      test: [ "CMD", "curl", "http://localhost:3001" ]
+      timeout: 10s
+      retries: 10
+    
+  # frontend:
+  #   container_name: frontend
+  #   build: ./frontend
+  #   depends_on:
+  #     - backend
+  #   ports:
+  #     - 3000:80
