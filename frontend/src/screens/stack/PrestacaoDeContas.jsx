@@ -1,22 +1,37 @@
 import React from 'react';
-import {  StyleSheet, SafeAreaView, Dimensions, ImageBackground } from 'react-native';
+import { StyleSheet, View, Text, Image, TouchableOpacity } from 'react-native';
 import images from '../../localized/images'
 //Components
 import Footer from '../../component/footer';
 import Header from '../../component/header';
 import Return from '../../component/return';
+import Background from '../../component/background';
 
-const {height, width} = Dimensions.get('window')
+import str from '../../localized/strings'
 
 function PrestacaoDeContas({navigation, route: { params }}) {
   return (
     <>
-      <ImageBackground source={images.backgrounds.tree} resizeMode="cover" style={styles.background} />
-      <SafeAreaView style={styles.container}>
-        <Return nav={navigation} />
-        <Header name={params.name} />
-        {/* <Footer /> */}
-      </SafeAreaView>
+    <Background img={'tree'} />
+      <View style={styles.container}>
+        <View>
+          <Return nav={navigation} />
+          <Header name={params.name} />
+          <View style={{flexGrow: 1}}>
+            <View style={styles.infoContainer}>
+              <Text style={styles.text}>Acompanhe e Saiba</Text>
+              <Text style={styles.text}>Quanto Custa</Text>
+            </View>
+            <TouchableOpacity style={styles.iconContainer}>
+              <Image source={images.donate} style={styles.iconContainer.icon} />
+            </TouchableOpacity>
+            <View style={styles.infoContainer}>
+              <Text style={styles.text}>Cada Doação</Text>
+            </View>
+          </View>
+        </View>
+        <Footer />
+      </View>
     </>
   );
 }
@@ -24,14 +39,29 @@ function PrestacaoDeContas({navigation, route: { params }}) {
 const styles = StyleSheet.create({
   container: {
     marginTop: 25,
+    height: '97%',
+    justifyContent: 'space-between'
   },
-  background: {
-    position: 'absolute',
-    height,
-    width,
-    opacity: 0.08,
-    zIndex: -1,
+  infoContainer: {
+    marginTop: 70,
+    marginBottom: 40
   },
+  text: {
+    color: 'black',
+    fontWeight: '800',
+    fontSize: 26,
+    textAlign: 'center',
+  },
+  iconContainer: {
+
+    alignSelf: 'center',
+    backgroundColor: 'rgba(0, 0, 0, 0.1)',
+    borderRadius: 20,
+    icon: {
+      width: 160,
+      height: 150,
+    }
+  }
 })
 
 export default PrestacaoDeContas;

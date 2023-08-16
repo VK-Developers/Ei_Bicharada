@@ -1,5 +1,5 @@
 import React, {useRef} from 'react';
-import {  StyleSheet, ScrollView, Dimensions, View } from 'react-native';
+import { StyleSheet, ScrollView, Dimensions, View } from 'react-native';
 //Components
 import Footer from '../../component/footer';
 import Header from '../../component/header';
@@ -22,7 +22,7 @@ function Eventos({navigation, route: { params }}) {
             <Return nav={navigation} />
             <Header name={params.name} />
               { 
-                events.map((text) => (
+                arrayText.map((text) => (
                   <TextInput 
                     key={text.title} 
                     info={text} 

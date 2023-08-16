@@ -24,7 +24,7 @@ function NossosProdutos({navigation, route: { params }}) {
           {
             products.map(({id, name, img}) => (
               <TouchableOpacity style={styles.product} key={'product-' + id} onPress={() => console.log(name)}>
-                <Image source={images.backgrounds.one} style={styles.product.img}/>
+                <Image source={images.backgrounds.one} style={styles.product.img} />
               </TouchableOpacity>
             ))
           }
