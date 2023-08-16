@@ -22,7 +22,7 @@ function Eventos({navigation, route: { params }}) {
             <Return nav={navigation} />
             <Header name={params.name} />
               { 
-                arrayText.map((text) => (
+                events.map((text) => (
                   <TextInput 
                     key={text.title} 
                     info={text} 
