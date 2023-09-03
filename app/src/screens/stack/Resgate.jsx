@@ -1,18 +1,21 @@
-import React, {useRef} from 'react';
+import React, {useRef, useState, useEffect} from 'react';
 import { StyleSheet, View, ScrollView, Dimensions } from 'react-native';
-// Components
+//Components
 import Footer from '../../component/footer';
 import Header from '../../component/header';
 import Return from '../../component/return';
-import PictureIcon from '../../component/pictureIcon'
-import TextInput from '../../component/textInput'
+import TextInput from '../../component/textInput';
 import Background from '../../component/background';
 import { ResgateDenuncia as arrayText } from '../../localized/structures';
+import PictureIcon from '../../component/pictureIcon';
 
-const { height } = Dimensions.get('screen')
+const { height } = Dimensions.get('screen');
 
-function Denuncias({navigation, route: { params }}) {
+function Resgate({navigation, route: { params }}) {
+  const [listiner, setLister] = useState({})
   const scrollViewRef = useRef();
+
+  useEffect(() => console.log(listiner), [listiner])
 
   return (
     <>
@@ -22,7 +25,7 @@ function Denuncias({navigation, route: { params }}) {
           <View>
             <Return nav={navigation} />
             <Header name={params.name} />
-            <PictureIcon />
+            <PictureIcon action={setLister} state={listiner} />
               { 
                 arrayText.map((text) => (
                   <TextInput 
@@ -48,4 +51,4 @@ const styles = StyleSheet.create({
   }
 })
 
-export default Denuncias;
+export default Resgate;

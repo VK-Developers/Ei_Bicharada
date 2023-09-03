@@ -11,4 +11,5 @@ export default {
   arrow: require('../assets/arrow.png'),
   camera: require('../assets/camera.png'),
   spLogo: require('../assets/brasao.png'),
+  checked: require('../assets/checked.png'),
 };
