@@ -1,25 +1,36 @@
 import React from 'react';
-import { StyleSheet, View, Image, Dimensions, Text } from 'react-native';
+import { StyleSheet, View, Image, Dimensions, Text, TouchableOpacity } from 'react-native';
 
 import images from '../localized/images';
 
 const {height} = Dimensions.get('window');
 
-function Footer() {
+function Footer({sendIt, obj}) {
+
+  const handleSubmit = () => {
+    console.log(obj)
+  };
+
   return (
     <View style={styles.container}>
       <View style={styles.spLogo}>
         <Image source={images.spLogo} style={styles.logo.sp}/>
-
         <View style={styles.spText}>
           <Text style={styles.title}>ATESP</Text>
           <Text style={styles.spanText}>Associação dos Técnicos em</Text>
           <Text style={styles.spanText}>Edificações Auxiliares e Afins</Text>
           <Text style={styles.spanText}>do Estado de São Paulo </Text>
         </View>
-        
       </View>
-      <Image source={images.logo} style={styles.logo.app}/>
+      {
+        !sendIt ? (
+          <Image source={images.logo} style={styles.logo.app}/>
+        ) : (
+          <TouchableOpacity onPress={handleSubmit}>
+            <Image source={images.enviar} style={styles.logo.app}/>
+          </TouchableOpacity>
+        )
+      }
     </View>
   );
 }

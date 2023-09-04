@@ -1,12 +1,22 @@
-import React, {useState, useRef} from 'react';
+import React, {useState, useRef, useEffect} from 'react';
 import { StyleSheet, View, Text, Dimensions, TextInput } from 'react-native';
 import HandleScroll from '../hooks/HandleScroll';
+import formatKey from '../hooks/formatKey';
+
 const { width } = Dimensions.get('window');
 
-function InputText({info, baseRef}) {
+function InputText({info, baseRef, action}) {
   const [text, setText] = useState('');
   const {title, maxLength, type} = info;
   const inputRef = useRef();
+
+  useEffect(() => {
+    const key = formatKey(info.title)
+    action(prev => ({
+      ...prev,
+      [key]: text,
+    }))
+  }, [text])
 
   const occurrence = (title === 'Ocorrido' || title === 'Descrição');
 

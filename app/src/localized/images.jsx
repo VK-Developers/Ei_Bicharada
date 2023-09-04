@@ -12,4 +12,5 @@ export default {
   camera: require('../assets/camera.png'),
   spLogo: require('../assets/brasao.png'),
   checked: require('../assets/checked.png'),
+  enviar: require('../assets/enviar.png'),
 };

@@ -31,7 +31,6 @@ const styles = StyleSheet.create({
     marginRight: 60
   },
   checked: {
-
     width: 40,
     height: 25,
     position: 'absolute',
