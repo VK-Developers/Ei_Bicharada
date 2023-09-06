@@ -6,6 +6,7 @@ export const menuTopics = [
   'Doação',
   'Eventos',
   'Divulgação',
+  'Noticias',
   'Nossos Produtos',
   'Prestação de Contas'
 ]

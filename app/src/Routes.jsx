@@ -11,6 +11,7 @@ import AdocaoScreen from './screens/stack/Adocao';
 import DoacaoScreen from './screens/stack/Doacao';
 import EventosScreen from './screens/stack/Eventos';
 import DivulgacaoScreen from './screens/stack/Divulgacao';
+import NoticiasScreen from './screens/stack/Noticias';
 import NossosProdutosScreen from './screens/stack/NossosProdutos';
 import PrestacaoDeContasScreen from './screens/stack/PrestacaoDeContas';
 
@@ -42,6 +43,7 @@ export default function App() {
         <Stack.Screen name="Doação" component={DoacaoScreen} />
         <Stack.Screen name="Eventos" component={EventosScreen} />
         <Stack.Screen name="Divulgação" component={DivulgacaoScreen} />
+        <Stack.Screen name="Noticias" component={NoticiasScreen} />
         <Stack.Screen name="NossosProdutos" component={NossosProdutosScreen} />
         <Stack.Screen name="PrestaçãodeContas" component={PrestacaoDeContasScreen} />
       </Stack.Navigator>
