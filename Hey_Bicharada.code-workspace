@@ -1,0 +1,16 @@
+{
+	"folders": [
+		{
+			"name": "Hey_Bicharada",
+			"path": "."
+		},
+		{
+			"name": "backend",
+			"path": "backend"
+		},
+		{
+			"name": "src",
+			"path": "app/src"
+		}
+	]
+}
