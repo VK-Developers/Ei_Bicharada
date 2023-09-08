@@ -13,6 +13,7 @@ export const menuTopics = [
 
 export const ResgateDenuncia = [
   {title: 'Animal', maxLength: 15, type: 'default'},
+  
   {title: 'Esta andando', options: ['sim', 'não']},
   {title: 'Ocorrido', maxLength: 50, type: 'default'},
   {title: 'Horário', maxLength: 5, type: 'numeric'},
@@ -27,6 +28,7 @@ export const events = [
   {title: 'Cidade', maxLength: 8, type: 'default'},
   {title: 'Data', maxLength: 8, type: 'numeric'},
   {title: 'Horário', maxLength: 5, type: 'numeric'},
+  
 ]
 
 // {"bairro": "Gggggggggg", "cidade": "Gggggggg", "data": "22/08/23", 

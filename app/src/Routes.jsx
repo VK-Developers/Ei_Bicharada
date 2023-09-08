@@ -14,6 +14,8 @@ import DivulgacaoScreen from './screens/stack/Divulgacao';
 import NoticiasScreen from './screens/stack/Noticias';
 import NossosProdutosScreen from './screens/stack/NossosProdutos';
 import PrestacaoDeContasScreen from './screens/stack/PrestacaoDeContas';
+// Sub Stacks
+import ProductScreen from './screens/subScreens/Product';
 
 const Stack = createStackNavigator();
 
@@ -46,6 +48,8 @@ export default function App() {
         <Stack.Screen name="Noticias" component={NoticiasScreen} />
         <Stack.Screen name="NossosProdutos" component={NossosProdutosScreen} />
         <Stack.Screen name="PrestaçãodeContas" component={PrestacaoDeContasScreen} />
+
+        <Stack.Screen name="Product" component={ProductScreen} />
       </Stack.Navigator>
     </NavigationContainer>
   );

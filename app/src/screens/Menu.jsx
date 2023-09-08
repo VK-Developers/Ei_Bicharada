@@ -1,5 +1,5 @@
 import React from 'react';
-import {  StyleSheet, SafeAreaView, View, Dimensions, ImageBackground } from 'react-native';
+import {  StyleSheet, SafeAreaView, Dimensions, ImageBackground } from 'react-native';
 import images from '../localized/images'
 import { menuTopics as topics } from '../localized/structures';
 //Components

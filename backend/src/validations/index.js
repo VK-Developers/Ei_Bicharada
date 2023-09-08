@@ -1,0 +1,1 @@
+module.exports.rescue = require('./rescue.validation');

@@ -1,11 +1,12 @@
 {
   "name": "app_olha_aqui_bicharada",
   "version": "1.0.0",
-  "description": "",
+  "description": "Hey Bicharada App",
   "main": ".eslintrc.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "start:backend": "cd backend && npm run dev",
+    "compose": "docker-compose down && docker-compose up -d"
   },
-  "author": "",
+  "author": "Vincenzo F. Di Giacomo",
   "license": "ISC"
 }

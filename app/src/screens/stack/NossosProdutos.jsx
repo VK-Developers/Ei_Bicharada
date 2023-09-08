@@ -13,6 +13,10 @@ import {products} from '../../mock'
 const { width } = Dimensions.get('screen');
 
 function NossosProdutos({navigation, route: { params }}) {
+  const handlePress = (load) => {
+    navigation.navigate('Product', { ...load })
+  }
+
   return (
     <>
     <Background img={'tree'} />
@@ -22,8 +26,8 @@ function NossosProdutos({navigation, route: { params }}) {
         <Header name={params.name} />
         <View style={styles.products}>
           {
-            products.map(({id, name, img}) => (
-              <TouchableOpacity style={styles.product} key={'product-' + id} onPress={() => console.log(name)}>
+            products.map((product, i) => (
+              <TouchableOpacity style={styles.product} key={'product-' + i} onPress={() => handlePress(product)}>
                 <Image source={images.backgrounds.one} style={styles.product.img} />
               </TouchableOpacity>
             ))
