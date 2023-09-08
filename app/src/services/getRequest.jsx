@@ -10,3 +10,13 @@ export const getRescuedAnimals = async () => {
     console.error(...errorResponse);
   }
 };
+
+export const getProducts = async () => {
+  try {
+    const { data } = await api.get('/products');
+    return data
+  } catch (error) {
+    const errorResponse = handleRequestError(error)
+    console.error(...errorResponse);
+  }
+};

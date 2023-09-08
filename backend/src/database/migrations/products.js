@@ -11,25 +11,23 @@ const attributes = {
     allowNull: false,
     type: Sequelize.STRING
   },
-  walking: {
+  price: {
     allowNull: false,
-    type: Sequelize.BOOLEAN
+    type: Sequelize.FLOAT
   },
   description: {
     allowNull: false,
     type: Sequelize.STRING
   },
-  hour: {
+  inStock: {
     allowNull: false,
-    type: Sequelize.STRING
+    type: Sequelize.BOOLEAN,
+    field: 'in_stock'
   },
-  adress: {
+  qrCode: {
     allowNull: false,
-    type: Sequelize.STRING
-  },
-  neighborhood: {
-    allowNull: false,
-    type: Sequelize.STRING
+    type: Sequelize.STRING,
+    field: 'qr_code'
   },
   picture: {
     allowNull: false,
@@ -53,9 +51,9 @@ module.exports = {
    * @param {import('sequelize').Sequelize} Sequelize 
    */
   up: async (queryInterface, _Sequelize) => {
-    await queryInterface.createTable('rescue', attributes);
+    await queryInterface.createTable('products', attributes);
   },
   down: async (queryInterface, _Sequelize) => {
-    await queryInterface.dropTable('rescue');
+    await queryInterface.dropTable('products');
   }
 };

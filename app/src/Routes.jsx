@@ -16,6 +16,7 @@ import NossosProdutosScreen from './screens/stack/NossosProdutos';
 import PrestacaoDeContasScreen from './screens/stack/PrestacaoDeContas';
 // Sub Stacks
 import ProductScreen from './screens/subScreens/Product';
+import PaymentScreen from './screens/subScreens/Payment';
 
 const Stack = createStackNavigator();
 
@@ -50,6 +51,7 @@ export default function App() {
         <Stack.Screen name="PrestaçãodeContas" component={PrestacaoDeContasScreen} />
 
         <Stack.Screen name="Product" component={ProductScreen} />
+        <Stack.Screen name="Payment" component={PaymentScreen} />
       </Stack.Navigator>
     </NavigationContainer>
   );

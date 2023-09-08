@@ -11,25 +11,23 @@ const attributes = {
     allowNull: false,
     type: DataTypes.STRING
   },
-  walking: {
+  price: {
     allowNull: false,
-    type: DataTypes.BOOLEAN
+    type: DataTypes.FLOAT
   },
   description: {
     allowNull: false,
     type: DataTypes.STRING
   },
-  hour: {
+  inStock: {
     allowNull: false,
-    type: DataTypes.STRING
+    type: DataTypes.BOOLEAN,
+    field: 'in_stock'
   },
-  adress: {
+  qrCode: {
     allowNull: false,
-    type: DataTypes.STRING
-  },
-  city: {
-    allowNull: false,
-    type: DataTypes.STRING
+    type: DataTypes.STRING,
+    field: 'qr_code'
   },
   picture: {
     allowNull: false,
@@ -53,10 +51,10 @@ const attributes = {
  */
 module.exports = (sequelize, _DataTypes) => {
   return sequelize.define(
-    'rescue',
+    'products',
     attributes,
     {
-      tableName: 'rescue',
+      tableName: 'products',
     }
   );
 };

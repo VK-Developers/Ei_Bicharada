@@ -1,4 +1,4 @@
-import React from 'react';
+import React, {useState, useEffect} from 'react';
 import { StyleSheet, ScrollView, Image, TouchableOpacity, View, Dimensions } from 'react-native';
 //Components
 import Footer from '../../component/footer';
@@ -7,15 +7,22 @@ import Return from '../../component/return';
 import Background from '../../component/background'
 import images from '../../localized/images';
 
-// Most come from API
-import {products} from '../../mock'
+import { getProducts } from '../../services/getRequest';
 
 const { width } = Dimensions.get('screen');
 
 function NossosProdutos({navigation, route: { params }}) {
-  const handlePress = (load) => {
-    navigation.navigate('Product', { ...load })
-  }
+  const [products, setProducts] = useState([]);
+
+  useEffect(() => {
+    async function requestFunction() {
+      const allProducts = await getProducts();
+      setProducts(allProducts)
+    }
+    requestFunction()
+  }, [])
+
+  const handlePress = (load) => navigation.navigate('Product', { ...load });
 
   return (
     <>

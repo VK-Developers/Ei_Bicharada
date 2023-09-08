@@ -1,47 +1,50 @@
-import React, { useEffect } from 'react';
+import React from 'react';
 import { StyleSheet, ScrollView, Image, TouchableOpacity, View, Text, Dimensions } from 'react-native';
 //Components
 import Background from '../../component/background';
 import Return from '../../component/return';
-import Footer from '../../component/footer';
 
 import images from '../../localized/images';
-
-import {getRescuedAnimals} from "../../services/getRequest";
 
 const { width, height } = Dimensions.get('screen');
 
 function Product({navigation, route: { params }}) {
-    const { img, name } = params;
+    const { description, inStock, name, picture, price, qrCode } = params;
 
-    useEffect(() => {
-        async function asyncFunc() {
-            const getAll = await getRescuedAnimals()
-            console.log(getAll)
-        }
+    const btn = () => {
+        const background = { backgroundColor: inStock ? 'green' : 'red' };
+        const text = inStock ? 'Comprar' : 'Indisponivel';
 
-        asyncFunc();
-    }, [])
- 
-  return (
-    <>
-        <Background img={'tree'} />
-        <ScrollView style={styles.container}>
-            <View>
-                <Return nav={navigation} />
-                <Image source={img || images.backgrounds.one} style={styles.preview}/>
-                <Text style={styles.price}>R$ 10,00</Text>
+        const handlePress = () => navigation.navigate('Payment', { qrCode })
 
-                <View style={styles.content}>
-                    <Text style={styles.title}>{name}</Text>
-                    <Text style={styles.text}>Lorem Lorem Lorem Lorem Lorem Lorem Lorem Lorem Lorem Lorem Lorem Lorem Lorem Lorem Lorem Lorem Lorem Lorem Lorem Lorem Lorem Lorem</Text>
+        return (
+            <TouchableOpacity 
+                disabled={!inStock} 
+                style={[styles.buy, background]}
+                onPress={handlePress}
+            >
+                <Text style={styles.buy.text}>{text}</Text>
+            </TouchableOpacity>
+        )
+    }
 
+    return (
+        <>
+            <Background img={'tree'} />
+            <ScrollView style={styles.container}>
+                <View>
+                    <Return nav={navigation} />
+                    <Image source={images.backgrounds.one} style={styles.preview}/>
+                    <Text style={styles.price}>R$ {price}</Text>
 
+                    <View style={styles.content}>
+                        <Text style={styles.title}>{name}</Text>
+                        <Text style={styles.text}>{description}</Text>
+                    </View>
                 </View>
-            </View>
-            {/* <Footer /> */}
-        </ScrollView>
-  </>
+                { btn() }
+            </ScrollView>
+        </>
   );
 }
 
@@ -50,7 +53,6 @@ const styles = StyleSheet.create({
         marginTop: 25,
     },
     preview: {
-        backgroundColor: 'green',
         marginTop: 20,
         width,
         height: height * 0.3,
@@ -76,6 +78,21 @@ const styles = StyleSheet.create({
         color: 'black',
         fontSize: 18,
         fontWeight: '500',
+    },
+    buy: {
+        width,
+        height: height * 0.07,
+        borderRadius: 10,
+        justifyContent: 'center',
+        alignItems: 'center',
+
+        position: 'relative',
+        bottom: 0,
+        text: {
+            color: 'black',
+            fontSize: 26,
+            fontWeight: '800',
+        }
     }
 })
 
