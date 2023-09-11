@@ -8,7 +8,7 @@
 /** @type {import('sequelize-cli').Migration} */
 module.exports = {
   async up (queryInterface, Sequelize) {
-    await queryInterface.bulkInsert('rescue', [
+    await queryInterface.bulkInsert('rescues', [
       {
         name: 'Shasha',
         walking: false,
@@ -17,8 +17,7 @@ module.exports = {
         adress: 'Rua Anton Ribom 4, apt 66',
         city: 'Santos',
         picture: 'loren loren',
-        created_at: new Date(),
-        updated_at: new Date(),
+        created: new Date(),
       },
       {
         name: 'Alistar',
@@ -28,8 +27,7 @@ module.exports = {
         adress: 'Rua Anton Ribom 4, apt 66',
         city: 'Sao Vicente',
         picture: 'loren loren',
-        created_at: new Date(),
-        updated_at: new Date(),
+        created: new Date(),
       },
       {
         name: 'Nina',
@@ -39,8 +37,7 @@ module.exports = {
         adress: 'Rua Anton Ribom 4, apt 66',
         city: 'Sao Vicente',
         picture: 'loren loren',
-        created_at: new Date(),
-        updated_at: new Date(),
+        created: new Date(),
       },
       {
         name: 'Blair',
@@ -50,8 +47,7 @@ module.exports = {
         adress: 'Rua Anton Ribom 4, apt 66',
         city: 'Santos',
         picture: 'loren loren',
-        created_at: new Date(),
-        updated_at: new Date(),
+        created: new Date(),
       },
       {
         name: 'Alfredo',
@@ -61,8 +57,7 @@ module.exports = {
         adress: 'Rua Anton Ribom 4, apt 66',
         city: 'San Maran',
         picture: 'loren loren',
-        created_at: new Date(),
-        updated_at: new Date(),
+        created: new Date(),
       },
       {
         name: 'Banguela',
@@ -72,8 +67,7 @@ module.exports = {
         adress: 'Rua Anton Ribom 4, apt 66',
         city: 'Santos',
         picture: 'loren loren',
-        created_at: new Date(),
-        updated_at: new Date(),
+        created: new Date(),
       },
     ], {});
   },

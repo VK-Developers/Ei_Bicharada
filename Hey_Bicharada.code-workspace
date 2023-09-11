@@ -5,12 +5,12 @@
 			"path": "."
 		},
 		{
-			"name": "backend",
-			"path": "backend"
-		},
-		{
 			"name": "src",
 			"path": "app/src"
+		},
+		{
+			"name": "backend",
+			"path": "backend"
 		}
 	]
 }
