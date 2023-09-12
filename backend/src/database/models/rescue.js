@@ -5,7 +5,7 @@ const {
 module.exports = (sequelize, DataTypes) => {
   class rescues extends Model {
     static associate(models) {
-      // define association here
+      this.belongsTo(models.user, {foreignKey: 'userId', as: 'user'})
     }
   }
   rescues.init({
@@ -23,5 +23,5 @@ module.exports = (sequelize, DataTypes) => {
     updatedAt: false,
     createdAt: 'created'
   });
-  return users;
+  return rescues;
 };
