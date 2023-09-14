@@ -10,7 +10,7 @@
     "drop": "npx sequelize-cli db:drop"
   },
   "keywords": [],
-  "author": "",
+  "author": "Vincenzo F. Di Giacomo",
   "license": "ISC",
   "dependencies": {
     "express": "^4.18.2",
