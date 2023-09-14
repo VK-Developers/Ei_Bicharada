@@ -1,5 +1,5 @@
 const { rescue: service } = require('../services');
-const { rescue: validation } = require('../validations')
+// const { rescue: validation } = require('../validations')
 
 module.exports = {
     getAll: async (_req, res, _next) => {

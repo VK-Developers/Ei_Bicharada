@@ -1,5 +1,5 @@
-const { products: service } = require('../services');
-const { products: validation } = require('../validations')
+const { product: service } = require('../services');
+// const { products: validation } = require('../validations')
 
 module.exports = {
     getAll: async (_req, res, _next) => {

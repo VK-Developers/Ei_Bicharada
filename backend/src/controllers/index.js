@@ -1,4 +1,3 @@
-module.exports.users = require('./users.controller');
-
+module.exports.user = require('./user.controller');
 module.exports.rescue = require('./rescue.controller');
-module.exports.products = require('./products.controller');
+module.exports.product = require('./product.controller');
