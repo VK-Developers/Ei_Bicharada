@@ -11,7 +11,7 @@ api.use(cors);
 
 api.use('/users', users);
 api.use('/rescue', rescue);
-// api.use('/products', products);
+api.use('/products', products);
 
 api.use(errorHandler)
 

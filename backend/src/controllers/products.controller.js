@@ -1,4 +1,4 @@
-const { rescue: service } = require('../services');
+const { products: service } = require('../services');
 const { products: validation } = require('../validations')
 
 module.exports = {
