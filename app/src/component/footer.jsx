@@ -5,14 +5,14 @@ import images from '../localized/images';
 
 const {height} = Dimensions.get('window');
 
-function Footer({sendIt, obj}) {
+function Footer({sendIt, obj, exeption}) {
 
   const handleSubmit = () => {
     console.log(obj)
   };
 
   return (
-    <View style={styles.container}>
+    <View style={[styles.container, !!exeption && { alignSelf: 'center' }]}>
       <View style={styles.spLogo}>
         <Image source={images.spLogo} style={styles.logo.sp}/>
         <View style={styles.spText}>
@@ -23,12 +23,14 @@ function Footer({sendIt, obj}) {
         </View>
       </View>
       {
-        !sendIt ? (
-          <Image source={images.logo} style={styles.logo.app}/>
-        ) : (
-          <TouchableOpacity onPress={handleSubmit}>
-            <Image source={images.enviar} style={styles.logo.app}/>
-          </TouchableOpacity>
+        !exeption && (
+          !sendIt ? (
+            <Image source={images.logo} style={styles.logo.app}/>
+          ) : (
+            <TouchableOpacity onPress={handleSubmit}>
+              <Image source={images.enviar} style={styles.logo.app}/>
+            </TouchableOpacity>
+          )
         )
       }
     </View>

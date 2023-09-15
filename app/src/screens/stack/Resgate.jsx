@@ -20,7 +20,6 @@ function Resgate({navigation, route: { params }}) {
 
   useEffect(() => {
     const canSendIt = validateForms(listiner, 1);
-    console.log(listiner)
     setSendForms(canSendIt)
   }, [listiner]);
 

@@ -5,16 +5,16 @@
 			"path": "."
 		},
 		{
-			"name": "Mobile",
-			"path": "app/src"
-		},
-		{
 			"name": "DataBase",
 			"path": "backend/src/database"
 		},
 		{
 			"name": "Backend",
 			"path": "backend"
+		},
+		{
+			"name": "Mobile",
+			"path": "app/src"
 		}
 	]
 }

@@ -20,3 +20,13 @@ export const getProducts = async () => {
     console.error(...errorResponse);
   }
 };
+
+export const getUsers = async () => {
+  try {
+    const { data } = await api.get('/user');
+    return data
+  } catch (error) {
+    const errorResponse = handleRequestError(error)
+    console.error(...errorResponse);
+  }
+};

@@ -1,10 +1,14 @@
-import React, {useEffect} from 'react';
+import React, {useEffect, useState} from 'react';
 import Context from './Context';
 
 function MyProvider({children}) {
-  const obj = {};
+  const [login, setLogin] = useState({email: '', password: '', status: true});
 
-  useEffect(() => console.log('App - Olha Aqui Bicharada'))
+  const obj = {
+    login, setLogin
+  };
+
+  useEffect(() => console.log('App - Olha Aqui Bicharada'), [])
 
   return <Context.Provider value={obj}>{children}</Context.Provider>;
 }
