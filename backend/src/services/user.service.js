@@ -8,7 +8,12 @@ module.exports = {
         return users;
     },
     getById: async (id) => {
-        const user = await models.user.findByPk(id); // 59 min
+        const user = await models.user.findByPk(id);
+
+        // console.log('aqui')
+        // const test = await models.user.getRescues()
+        // console.log(test)
+
         return user;
     },
     update: async(obj, id) => {
