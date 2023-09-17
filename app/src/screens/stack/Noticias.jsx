@@ -1,21 +1,19 @@
 import React from 'react';
 import { StyleSheet, SafeAreaView, Dimensions, ImageBackground } from 'react-native';
-import images from '../../localized/images'
 //Components
-import Footer from '../../component/footer';
 import Header from '../../component/header';
 import Return from '../../component/return';
+import Background from '../../component/background';
 
 const {height, width} = Dimensions.get('window')
 
 function Noticias({navigation, route: { params }}) {
   return (
     <>
-      <ImageBackground source={images.backgrounds.tree} resizeMode="cover" style={styles.background} />
+      <Background img={'four'} />
       <SafeAreaView style={styles.container}>
         <Return nav={navigation} />
         <Header name={params.name} />
-        {/* <Footer /> */}
       </SafeAreaView>
     </>
   );

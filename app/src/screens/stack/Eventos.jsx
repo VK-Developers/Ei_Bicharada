@@ -6,13 +6,17 @@ import Header from '../../component/header';
 import Return from '../../component/return';
 import Background from '../../component/background';
 import { events } from '../../localized/structures';
+import str from '../../localized/strings';
 import TextInput from '../../component/textInput';
 import validateForms from '../../hooks/validateForms';
+
+import Sent from '../../component/modals/Sent';
 
 const { height } = Dimensions.get('screen');
 
 function Eventos({navigation, route: { params }}) {
   const [listiner, setLister] = useState({});
+  const [modal, setModal] = useState(false);
   const [sendForms, setSendForms] = useState(false);
   const scrollViewRef = useRef();
 
@@ -24,6 +28,12 @@ function Eventos({navigation, route: { params }}) {
   return (
     <>
       <Background img={'tree'} />
+      <Sent 
+        show={modal}
+        action={setModal}
+        nav={navigation}
+        text={str.modal.evento}
+      />
       <ScrollView ref={scrollViewRef} extraScrollHeight={20} keyboardShouldPersistTaps="handled">
         <View style={styles.container}>
           <View>
@@ -40,7 +50,11 @@ function Eventos({navigation, route: { params }}) {
                 )
               }
           </View>
-          <Footer sendIt={sendForms} obj={listiner} />
+          <Footer 
+            sendIt={sendForms} 
+            obj={listiner} 
+            modal={setModal}
+          />
         </View>
       </ScrollView>
     </>

@@ -7,8 +7,6 @@ import Header from '../../component/header';
 import Return from '../../component/return';
 import Background from '../../component/background';
 
-import str from '../../localized/strings'
-
 function PrestacaoDeContas({navigation, route: { params }}) {
   return (
     <>

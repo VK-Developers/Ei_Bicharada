@@ -5,22 +5,23 @@ import Footer from '../../component/footer';
 import Header from '../../component/header';
 import Return from '../../component/return';
 import Background from '../../component/background'
-import images from '../../localized/images';
 
 import { getProducts } from '../../services/getRequest';
+
+import { products } from '../../mock';
 
 const { width } = Dimensions.get('screen');
 
 function NossosProdutos({navigation, route: { params }}) {
-  const [products, setProducts] = useState([]);
+  // const [products, setProducts] = useState([]);
 
-  useEffect(() => {
-    async function requestFunction() {
-      const allProducts = await getProducts();
-      setProducts(allProducts)
-    }
-    requestFunction()
-  }, [])
+  // useEffect(() => {
+  //   async function requestFunction() {
+  //     const allProducts = await getProducts();
+  //     setProducts(allProducts)
+  //   }
+  //   requestFunction()
+  // }, [])
 
   const handlePress = (load) => navigation.navigate('Product', { ...load });
 
@@ -35,7 +36,7 @@ function NossosProdutos({navigation, route: { params }}) {
           {
             products.map((product, i) => (
               <TouchableOpacity style={styles.product} key={'product-' + i} onPress={() => handlePress(product)}>
-                <Image source={images.backgrounds.one} style={styles.product.img} />
+                <Image source={product.picture} style={styles.product.img} />
               </TouchableOpacity>
             ))
           }
@@ -57,15 +58,15 @@ const styles = StyleSheet.create({
     justifyContent: 'space-around'
   },
   product: {
-    backgroundColor: 'gray',
+    backgroundColor: 'white',
     marginBottom: 10,
     borderRadius: 10,
     img: {
       width: width / 3.3,
-      height: 120
+      height: 120,
+      objectFit: 'contain'
     }
   }
-  
 })
 
 export default NossosProdutos;

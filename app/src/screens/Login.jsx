@@ -7,12 +7,12 @@ import Buttom from '../component/login/Buttom';
 import strings from '../localized/strings';
 import Footer from '../component/footer';
 
-const {height, width} = Dimensions.get('window')
+const { height, width } = Dimensions.get('window')
 
 function Login() {
   return (
     <>
-      <ImageBackground source={images.backgrounds.tree} resizeMode="cover" style={styles.background} />
+      <ImageBackground source={images.backgrounds.five} resizeMode="cover" style={styles.background} />
       <KeyboardAvoidingView style={styles.page}>
         <ScrollView keyboardShouldPersistTaps="always">
           <View>

@@ -4,7 +4,8 @@
   "description": "Hey Bicharada App",
   "main": ".eslintrc.js",
   "scripts": {
-    "start": "concurrently \"cd backend && npm start\" \"cd frontend && npm start\"",
+    "start": "concurrently \"cd backend && npm start\" \"cd app && npm start\"",
+    "start:app": "cd app && npm start",
     "dev": "concurrently \"cd backend && npm run prestart && npm run dev\" \"cd frontend && npm start\"",
     "dev:backend": "cd backend && npm run prestart && npm run dev",
     "compose": "docker-compose down && docker-compose up -d"

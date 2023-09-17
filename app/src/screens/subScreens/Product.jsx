@@ -34,11 +34,17 @@ function Product({navigation, route: { params }}) {
             <ScrollView style={styles.container}>
                 <View>
                     <Return nav={navigation} />
-                    <Image source={images.backgrounds.one} style={styles.preview}/>
-                    <Text style={styles.price}>R$ {price}</Text>
+                    <Image source={picture} style={styles.preview}/>
+                    <Text style={styles.price}>R$ {price.toFixed(2)}</Text>
 
                     <View style={styles.content}>
                         <Text style={styles.title}>{name}</Text>
+                        <Text style={styles.text}>{description}</Text>
+                        <Text style={styles.text}>{description}</Text>
+                        <Text style={styles.text}>{description}</Text>
+                        <Text style={styles.text}>{description}</Text>
+                        <Text style={styles.text}>{description}</Text>
+                        <Text style={styles.text}>{description}</Text>
                         <Text style={styles.text}>{description}</Text>
                     </View>
                 </View>
@@ -54,6 +60,7 @@ const styles = StyleSheet.create({
     },
     preview: {
         marginTop: 20,
+        backgroundColor: 'white',
         width,
         height: height * 0.3,
         objectFit: 'contain'
@@ -62,6 +69,7 @@ const styles = StyleSheet.create({
         color: 'black',
         alignSelf: 'flex-end',
         marginRight: 20,
+        marginTop: 15,
         fontSize: 22,
         fontWeight: '600',
     },
@@ -72,7 +80,8 @@ const styles = StyleSheet.create({
         color: 'black',
         fontSize: 24,
         fontWeight: '700',
-        marginBottom: 20
+        marginBottom: 20,
+        textAlign: 'center'
     },
     text: {
         color: 'black',
@@ -80,11 +89,13 @@ const styles = StyleSheet.create({
         fontWeight: '500',
     },
     buy: {
-        width,
+        width: width - 30,
+        alignSelf: 'center',
         height: height * 0.07,
         borderRadius: 10,
         justifyContent: 'center',
         alignItems: 'center',
+        marginBottom: 20,
 
         position: 'relative',
         bottom: 0,

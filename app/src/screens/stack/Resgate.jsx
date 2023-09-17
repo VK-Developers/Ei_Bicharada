@@ -8,13 +8,17 @@ import TextInput from '../../component/textInput';
 import CheckboxInput from '../../component/checkboxInput';
 import Background from '../../component/background';
 import { ResgateDenuncia as arrayText } from '../../localized/structures';
+import str from '../../localized/strings';
 import PictureIcon from '../../component/pictureIcon';
 import validateForms from '../../hooks/validateForms';
+
+import Sent from '../../component/modals/Sent';
 
 const { height } = Dimensions.get('screen');
 
 function Resgate({navigation, route: { params }}) {
   const [listiner, setLister] = useState({});
+  const [modal, setModal] = useState(false);
   const [sendForms, setSendForms] = useState(false);
   const scrollViewRef = useRef();
 
@@ -26,6 +30,12 @@ function Resgate({navigation, route: { params }}) {
   return (
     <>
       <Background img={'tree'} />
+      <Sent 
+        show={modal}
+        action={setModal}
+        nav={navigation}
+        text={str.modal.resgate}
+      />
       <ScrollView ref={scrollViewRef} extraScrollHeight={20} keyboardShouldPersistTaps="handled">
         <View style={styles.container}>
           <View>
@@ -46,7 +56,11 @@ function Resgate({navigation, route: { params }}) {
                 })
               }
           </View>
-          <Footer sendIt={sendForms} obj={listiner} />
+          <Footer 
+            sendIt={sendForms} 
+            obj={listiner} 
+            modal={setModal}
+          />
         </View>
       </ScrollView>
     </>

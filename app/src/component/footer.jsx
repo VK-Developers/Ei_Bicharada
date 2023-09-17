@@ -1,15 +1,12 @@
 import React from 'react';
 import { StyleSheet, View, Image, Dimensions, Text, TouchableOpacity } from 'react-native';
-
 import images from '../localized/images';
 
 const {height} = Dimensions.get('window');
 
-function Footer({sendIt, obj, exeption}) {
+function Footer({sendIt, exeption, obj, modal}) {
 
-  const handleSubmit = () => {
-    console.log(obj)
-  };
+  const handleSubmit = () => modal(true);
 
   return (
     <View style={[styles.container, !!exeption && { alignSelf: 'center' }]}>
@@ -60,7 +57,7 @@ const styles = StyleSheet.create({
   logo: {
     app: {
       width: 110,
-      height: '100%',
+      height: 95,
     },
     sp: {
       width: 65,

@@ -1,5 +1,5 @@
 import React, {useRef, useState, useEffect} from 'react';
-import { StyleSheet, View, ScrollView, Dimensions } from 'react-native';
+import { StyleSheet, View, ScrollView, Dimensions, Modal } from 'react-native';
 // Components
 import Footer from '../../component/footer';
 import Header from '../../component/header';
@@ -9,12 +9,16 @@ import CheckboxInput from '../../component/checkboxInput';
 import TextInput from '../../component/textInput'
 import Background from '../../component/background';
 import { ResgateDenuncia as arrayText } from '../../localized/structures';
+import str from '../../localized/strings';
 import validateForms from '../../hooks/validateForms';
+
+import Sent from '../../component/modals/Sent';
 
 const { height } = Dimensions.get('screen')
 
 function Denuncias({navigation, route: { params }}) {
   const [listiner, setLister] = useState({});
+  const [modal, setModal] = useState(false);
   const [sendForms, setSendForms] = useState(false);
   const scrollViewRef = useRef();
 
@@ -26,6 +30,12 @@ function Denuncias({navigation, route: { params }}) {
   return (
     <>
       <Background img={'tree'} />
+      <Sent 
+        show={modal}
+        action={setModal}
+        nav={navigation}
+        text={str.modal.denuncia}
+      />
       <ScrollView ref={scrollViewRef} extraScrollHeight={20} keyboardShouldPersistTaps="handled">
         <View style={styles.container}>
           <View>
@@ -46,7 +56,11 @@ function Denuncias({navigation, route: { params }}) {
                 })
               }
           </View>
-          <Footer sendIt={sendForms} obj={listiner} />
+          <Footer 
+            sendIt={sendForms} 
+            obj={listiner} 
+            modal={setModal}
+          />
         </View>
       </ScrollView>
     </>

@@ -3,14 +3,15 @@
      <item android:drawable="@color/primary" />
      <item 
           android:drawable="@mipmap/splash_01"
-          android:height="400dp"
-          android:width="350dp"
+          android:height="450dp"
+          android:width="360dp"
           android:gravity="center"
      />
      <item 
           android:drawable="@mipmap/splash_02"
-          android:height="130dp"
+          android:height="110dp"
           android:width="250dp"
-          android:gravity="top|center"
+          android:gravity="bottom|center"
+          android:bottom="70dp"
      />
 </layer-list>

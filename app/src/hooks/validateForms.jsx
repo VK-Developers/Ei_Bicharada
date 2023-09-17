@@ -8,6 +8,7 @@ const validateForms = (obj, i) => {
     const ocorrido = !!obj.ocorrido && obj.ocorrido.length >= 8;
     const descricao = !!obj.descricao && obj.descricao.length >= 8;
     const cidade = !!obj.cidade && obj.cidade.length >= 4;
+    const bairro = !!obj.bairro && obj.bairro.length >= 4
 
     const validation = {
         1: andando && horario && picture && animal && cidade && endereco && ocorrido,
