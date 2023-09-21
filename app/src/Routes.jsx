@@ -10,11 +10,12 @@ import DenunciasScreen from './screens/stack/Denuncias';
 import AnimaisPerdidosScreen from './screens/stack/AnimaisPerdidos';
 import AdocaoScreen from './screens/stack/Adocao';
 import DoacaoScreen from './screens/stack/Doacao';
-import EventosScreen from './screens/stack/Eventos';
-import DivulgacaoScreen from './screens/stack/Divulgacao';
-import NoticiasScreen from './screens/stack/Noticias';
+import LarTemporarioScreen from './screens/stack/LarTemporario';
+// import DivulgacaoScreen from './screens/stack/Divulgacao';
+import NoticiasEventosScreenScreen from './screens/stack/NoticiasEventos';
 import NossosProdutosScreen from './screens/stack/NossosProdutos';
 import PrestacaoDeContasScreen from './screens/stack/PrestacaoDeContas';
+import ApoiadoresScreen from './screens/stack/Apoiadores';
 // Sub Stacks
 import ProductScreen from './screens/subScreens/Product';
 import PaymentScreen from './screens/subScreens/Payment';
@@ -40,21 +41,23 @@ export default function App() {
       <StatusBar barStyle="light-content" backgroundColor="black" />
       <Stack.Navigator screenOptions={options} initialRouteName='Login'>
         <Stack.Screen name="Login" component={LoginScreen} />
-
         <Stack.Screen name="Menu" component={MenuScreen} />
-        <Stack.Screen name="Resgate" component={ResgateScreen} />
-        <Stack.Screen name="Denúncias" component={DenunciasScreen} />
+        {/* Menu */}
+        <Stack.Screen name="Adocao" component={AdocaoScreen} />
+        <Stack.Screen name="Doacao" component={DoacaoScreen} />
         <Stack.Screen name="AnimaisPerdidos" component={AnimaisPerdidosScreen} />
-        <Stack.Screen name="Adoção" component={AdocaoScreen} />
-        <Stack.Screen name="Doação" component={DoacaoScreen} />
-        <Stack.Screen name="Eventos" component={EventosScreen} />
-        <Stack.Screen name="Divulgação" component={DivulgacaoScreen} />
-        <Stack.Screen name="Noticias" component={NoticiasScreen} />
+        <Stack.Screen name="Resgate" component={ResgateScreen} />
+        <Stack.Screen name="Denuncias" component={DenunciasScreen} />
+        <Stack.Screen name="LarTemporario" component={LarTemporarioScreen} />
         <Stack.Screen name="NossosProdutos" component={NossosProdutosScreen} />
-        <Stack.Screen name="PrestaçãodeContas" component={PrestacaoDeContasScreen} />
-
+        <Stack.Screen name="NoticiasEventos" component={NoticiasEventosScreenScreen} />
+        <Stack.Screen name="PrestacaodeContas" component={PrestacaoDeContasScreen} />
+        <Stack.Screen name="Apoiadores" component={ApoiadoresScreen} />
+        {/* Sub Screens */}
         <Stack.Screen name="Product" component={ProductScreen} />
         <Stack.Screen name="Payment" component={PaymentScreen} />
+
+        {/* <Stack.Screen name="Divulgação" component={DivulgacaoScreen} /> */}
       </Stack.Navigator>
     </NavigationContainer>
   );

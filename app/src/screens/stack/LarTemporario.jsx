@@ -14,7 +14,7 @@ import Sent from '../../component/modals/Sent';
 
 const { height } = Dimensions.get('screen');
 
-function Eventos({navigation, route: { params }}) {
+function LarTemporario({navigation, route: { params }}) {
   const [listiner, setLister] = useState({});
   const [modal, setModal] = useState(false);
   const [sendForms, setSendForms] = useState(false);
@@ -39,7 +39,7 @@ function Eventos({navigation, route: { params }}) {
           <View>
             <Return nav={navigation} />
             <Header name={params.name} />
-              { 
+              {/* { 
                 events.map((text) => (
                   <TextInput 
                     key={text.title} 
@@ -48,13 +48,13 @@ function Eventos({navigation, route: { params }}) {
                     baseRef={scrollViewRef}
                   />)
                 )
-              }
+              } */}
           </View>
-          <Footer 
+          {/* <Footer 
             sendIt={sendForms} 
             obj={listiner} 
             modal={setModal}
-          />
+          /> */}
         </View>
       </ScrollView>
     </>
@@ -69,4 +69,4 @@ const styles = StyleSheet.create({
   }
 })
 
-export default Eventos;
+export default LarTemporario;

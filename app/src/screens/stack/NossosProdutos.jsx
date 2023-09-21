@@ -6,7 +6,7 @@ import Header from '../../component/header';
 import Return from '../../component/return';
 import Background from '../../component/background'
 
-import { getProducts } from '../../services/getRequest';
+// import { getProducts } from '../../services/getRequest';
 
 import { products } from '../../mock';
 

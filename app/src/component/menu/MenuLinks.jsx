@@ -1,6 +1,8 @@
 import React from 'react';
 import { StyleSheet, TouchableOpacity, Text, Image, Dimensions } from 'react-native';
 import { useNavigation } from '@react-navigation/native';
+import format from '../../hooks/formatRouteName';
+
 
 import images from '../../localized/images';
 
@@ -10,7 +12,7 @@ function MenuLinks({name}) {
   const { navigate } = useNavigation();
 
   const handlePress = () => {
-    const linkName = name.replace(/\s/g, '');
+    const linkName = format(name);
     navigate(linkName, { name })
   }
 

@@ -1,5 +1,5 @@
 import React from 'react';
-import {  StyleSheet, SafeAreaView, Dimensions, ImageBackground } from 'react-native';
+import {  StyleSheet, SafeAreaView, Dimensions, View, ImageBackground } from 'react-native';
 import images from '../localized/images'
 import { menuTopics as topics } from '../localized/structures';
 //Components
@@ -12,8 +12,12 @@ function Menu() {
   return (
     <>
       <ImageBackground source={images.backgrounds.two} resizeMode="cover" style={styles.background} />
-      <SafeAreaView style={styles.homeContainer}>
-        { topics.map(topic => <MenuLinks key={topic + '-menu'} name={topic} />) }
+      <SafeAreaView style={styles.container}>
+          <View style={styles.containerTopics}>
+            { 
+              topics.map(topic => <MenuLinks key={topic + '-menu'} name={topic} />)
+            }
+          </View>
           <Footer />
       </SafeAreaView>
     </>
@@ -21,10 +25,14 @@ function Menu() {
 }
 
 const styles = StyleSheet.create({
-  homeContainer: {
+  container: {
     flex: 1,
     justifyContent: 'space-between',
-    marginTop: 30,
+    // marginTop: 10,
+  },
+  containerTopics: {
+    flexGrow: 1,
+    justifyContent: 'space-evenly'
   },
   background: {
     position: 'absolute',

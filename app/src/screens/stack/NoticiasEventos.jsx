@@ -7,7 +7,7 @@ import Background from '../../component/background';
 
 const {height, width} = Dimensions.get('window')
 
-function Noticias({navigation, route: { params }}) {
+function NoticiasEventos({navigation, route: { params }}) {
   return (
     <>
       <Background img={'four'} />
@@ -32,4 +32,4 @@ const styles = StyleSheet.create({
   },
 })
 
-export default Noticias;
+export default NoticiasEventos;

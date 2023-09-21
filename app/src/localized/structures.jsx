@@ -1,15 +1,29 @@
+// export const menuTopics = [
+//   'Resgate',
+//   'Denúncias',
+//   'Animais Perdidos',
+//   'Adoção',
+//   'Doação',
+//   'Lar Temporario',
+//   'Divulgação',
+//   'Noticias | Eventos',
+//   'Nossos Produtos',
+//   'Prestação de Contas'
+// ]
+
 export const menuTopics = [
-  'Resgate',
-  'Denúncias',
-  'Animais Perdidos',
   'Adoção',
   'Doação',
-  'Eventos',
-  'Divulgação',
-  'Noticias',
+  'Animais Perdidos',
+  'Resgate',
+  'Denúncias',
+  'Lar Temporário',
   'Nossos Produtos',
-  'Prestação de Contas'
+  'Noticias | Eventos',
+  'Prestação de Contas',
+  'Apoiadores',
 ]
+
 
 export const ResgateDenuncia = [
   {title: 'Animal', maxLength: 15, type: 'default'},
@@ -27,8 +41,4 @@ export const events = [
   {title: 'Cidade', maxLength: 8, type: 'default'},
   {title: 'Data', maxLength: 8, type: 'numeric'},
   {title: 'Horário', maxLength: 5, type: 'numeric'},
-  
 ]
-
-// {"bairro": "Gggggggggg", "cidade": "Gggggggg", "data": "22/08/23", 
-// "descricao": "Gggggggggggy", "endereco": "Hhhhhggggg", "horario": "22:22"}
