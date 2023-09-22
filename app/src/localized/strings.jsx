@@ -15,5 +15,7 @@ export default {
     resgate: ['Resgate registrado/adicionado \ncom sucesso', 'fechar'],
     denuncia: ['Denúncia registrada com \nsucesso', 'continuar'],
     evento: ['Solicitação de evento enviada \ncom sucesso', 'confirmar'],
+
+    adocao: ['lorem lorem lorem lorem lorem lorem \nlorem lorem lorem', 'lorem lorem'],
   }
 };

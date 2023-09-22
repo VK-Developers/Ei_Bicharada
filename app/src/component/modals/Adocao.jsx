@@ -1,25 +1,25 @@
 import React from 'react';
 import {Modal, StyleSheet, Text, Pressable, View} from 'react-native';
+import str from '../../localized/strings'
 
-const Sent = ({ show, action, nav, text }) => {
-    const handlePress = () => {
-        action(!show);
-        nav.navigate('Menu')
-    }
+const Adocao = ({visible, action}) => {
+    const handlePress = () => action(!visible);
+
     return (
         <Modal
             animationType="fade"
             transparent={true}
-            visible={show}
+            
+            visible={!visible}
         >
             <View style={styles.container}>
                 <View style={styles.content}>
-                    <Text style={styles.text}>{text[0]}</Text>
+                    <Text style={styles.text}>{str.modal.adocao[0]}</Text>
                     <Pressable
                         style={styles.button}
                         onPress={handlePress}
                     >
-                        <Text style={styles.btnText}>{text[1]}</Text>
+                        <Text style={styles.btnText}>{str.modal.adocao[1]}</Text>
                     </Pressable>
                 </View>
             </View>
@@ -71,4 +71,4 @@ const styles = StyleSheet.create({
     },
 });
 
-export default Sent;
+export default Adocao;

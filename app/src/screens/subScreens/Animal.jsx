@@ -4,6 +4,8 @@ import { StyleSheet, ScrollView, Image, TouchableOpacity, View, Text, Dimensions
 import Background from '../../component/background';
 import Return from '../../component/return';
 
+import images from '../../localized/images';
+
 const { width, height } = Dimensions.get('screen');
 
 function Product({navigation, route: { params }}) {
