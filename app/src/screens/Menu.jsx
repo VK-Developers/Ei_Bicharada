@@ -6,19 +6,22 @@ import { menuTopics as topics } from '../localized/structures';
 import MenuLinks from '../component/menu/MenuLinks';
 import Footer from '../component/footer';
 
+import ToggleMenu from '../component/ToggleMenu';
+
 const {height, width} = Dimensions.get('window')
 
 function Menu() {
   return (
     <>
       <ImageBackground source={images.backgrounds.two} resizeMode="cover" style={styles.background} />
+      <ToggleMenu />
       <SafeAreaView style={styles.container}>
-          <View style={styles.containerTopics}>
+          {/* <View style={styles.containerTopics}>
             { 
               topics.map(topic => <MenuLinks key={topic + '-menu'} name={topic} />)
             }
           </View>
-          <Footer />
+          <Footer /> */}
       </SafeAreaView>
     </>
   );
