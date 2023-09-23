@@ -1,8 +1,7 @@
 import React from 'react';
-import { StyleSheet, TouchableOpacity, Text, Image, Dimensions } from 'react-native';
+import { StyleSheet, TouchableOpacity, Text, Image, Dimensions, View } from 'react-native';
 import { useNavigation } from '@react-navigation/native';
 import format from '../../hooks/formatRouteName';
-
 
 import images from '../../localized/images';
 
@@ -17,18 +16,22 @@ function MenuLinks({name}) {
   }
 
   return (
-    <TouchableOpacity style={styles.link} onPress={handlePress}>
-      <Image source={images.backgrounds.one} style={styles.logo}/>
-      <Text style={styles.text}>{name}</Text>
-    </TouchableOpacity>
+    <View style={styles.container}>
+      <TouchableOpacity style={styles.link} onPress={handlePress}>
+        <Image source={images.backgrounds.one} style={styles.logo}/>
+        <Text  style={styles.text}>{name}</Text>
+      </TouchableOpacity>
+    </View>
   );
 }
 
 const styles = StyleSheet.create({
+  container: {
+    alignItems: 'flex-start',
+    height: width * 0.15,
+  },
   link: {
     flexDirection: 'row',
-    alignItems: 'center',
-    height: width * 0.12,
   },
   text: {
     color: 'red',
@@ -38,8 +41,8 @@ const styles = StyleSheet.create({
   logo: {
     width: 35,
     height: 35,
-    marginLeft: width * 0.1,
-    marginRight: 15
+    marginRight: 15,
+    marginLeft: 10
   }
 })
 

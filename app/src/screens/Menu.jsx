@@ -3,8 +3,8 @@ import {  StyleSheet, SafeAreaView, Dimensions, View, ImageBackground } from 're
 import images from '../localized/images'
 import { menuTopics as topics } from '../localized/structures';
 //Components
-import MenuLinks from '../component/menu/MenuLinks';
-import Footer from '../component/footer';
+// import MenuLinks from '../component/menu/MenuLinks';
+// import Footer from '../component/footer';
 
 import ToggleMenu from '../component/ToggleMenu';
 
@@ -16,12 +16,7 @@ function Menu() {
       <ImageBackground source={images.backgrounds.two} resizeMode="cover" style={styles.background} />
       <ToggleMenu />
       <SafeAreaView style={styles.container}>
-          {/* <View style={styles.containerTopics}>
-            { 
-              topics.map(topic => <MenuLinks key={topic + '-menu'} name={topic} />)
-            }
-          </View>
-          <Footer /> */}
+
       </SafeAreaView>
     </>
   );
@@ -31,7 +26,6 @@ const styles = StyleSheet.create({
   container: {
     flex: 1,
     justifyContent: 'space-between',
-    // marginTop: 10,
   },
   containerTopics: {
     flexGrow: 1,
