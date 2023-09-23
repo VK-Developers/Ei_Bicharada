@@ -3,7 +3,7 @@ import { StyleSheet, SafeAreaView, Dimensions, ImageBackground } from 'react-nat
 //Components
 // import Footer from '../../component/footer';
 import Header from '../../component/header';
-import Return from '../../component/return';
+import ToggleMenu from '../../component/ToggleMenu';
 import Background from '../../component/background';
 
 const {height, width} = Dimensions.get('window')
@@ -12,8 +12,8 @@ function Divulgacao({navigation, route: { params }}) {
   return (
     <>
       <Background img={'five'} />
+      <ToggleMenu />
       <SafeAreaView style={styles.container}>
-        <Return nav={navigation} />
         <Header name={params.name} />
         {/* <Footer /> */}
       </SafeAreaView>

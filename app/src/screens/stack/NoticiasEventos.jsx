@@ -2,18 +2,19 @@ import React from 'react';
 import { StyleSheet, SafeAreaView, Dimensions, ImageBackground } from 'react-native';
 //Components
 import Header from '../../component/header';
-import Return from '../../component/return';
+import ToggleMenu from '../../component/ToggleMenu';
 import Background from '../../component/background';
 
 const {height, width} = Dimensions.get('window')
 
 function NoticiasEventos({navigation, route: { params }}) {
+
   return (
     <>
       <Background img={'four'} />
+      <ToggleMenu />
       <SafeAreaView style={styles.container}>
-        <Return nav={navigation} />
-        <Header name={params.name} />
+        <Header name={!!params ? params.name : 'Noticias'}  />
       </SafeAreaView>
     </>
   );

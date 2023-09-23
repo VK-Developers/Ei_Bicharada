@@ -1,9 +1,10 @@
-import React, {useRef, useState, useEffect} from 'react';
+import React, {useRef, useState, useEffect, useContext} from 'react';
+import Context from '../../context/Context';
 import { StyleSheet, View, ScrollView, Dimensions, Modal } from 'react-native';
 // Components
 import Footer from '../../component/footer';
 import Header from '../../component/header';
-import Return from '../../component/return';
+import ToggleMenu from '../../component/ToggleMenu';
 import PictureIcon from '../../component/pictureIcon';
 import CheckboxInput from '../../component/checkboxInput';
 import TextInput from '../../component/textInput'
@@ -17,6 +18,7 @@ import Sent from '../../component/modals/Sent';
 const { height } = Dimensions.get('screen')
 
 function Denuncias({navigation, route: { params }}) {
+  const {menu} = useContext(Context);
   const [listiner, setLister] = useState({});
   const [modal, setModal] = useState(false);
   const [sendForms, setSendForms] = useState(false);
@@ -30,6 +32,7 @@ function Denuncias({navigation, route: { params }}) {
   return (
     <>
       <Background img={'tree'} />
+      <ToggleMenu />
       <Sent 
         show={modal}
         action={setModal}
@@ -37,9 +40,8 @@ function Denuncias({navigation, route: { params }}) {
         text={str.modal.denuncia}
       />
       <ScrollView ref={scrollViewRef} extraScrollHeight={20} keyboardShouldPersistTaps="handled">
-        <View style={styles.container}>
+        <View style={[styles.container, {opacity: menu ? 0.25 : 1}]}>
           <View>
-            <Return nav={navigation} />
             <Header name={params.name} />
             <PictureIcon action={setLister} state={listiner} />
             { 
@@ -47,6 +49,7 @@ function Denuncias({navigation, route: { params }}) {
                   if (i === 1) return <CheckboxInput key={text.title} info={text} action={setLister} />
                   return (
                     <TextInput 
+                      // menuOpen={menu}
                       key={text.title} 
                       info={text}
                       action={setLister}
@@ -71,7 +74,7 @@ const styles = StyleSheet.create({
   container: {
     height: height * 0.89,
     marginTop: 25,
-    justifyContent: 'space-between'
+    justifyContent: 'space-between',
   }
 })
 

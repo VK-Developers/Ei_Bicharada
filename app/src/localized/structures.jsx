@@ -21,7 +21,6 @@ export const menuTopics = [
   'Nossos Produtos',
   'Noticias | Eventos',
   'Prestação de Contas',
-  
   'Apoiadores',
 ]
 

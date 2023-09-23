@@ -1,4 +1,5 @@
-import React from 'react';
+import React, {useContext} from 'react';
+import Context from '../../context/Context';
 import { StyleSheet, TouchableOpacity, Text, Image, Dimensions, View } from 'react-native';
 import { useNavigation } from '@react-navigation/native';
 import format from '../../hooks/formatRouteName';
@@ -8,9 +9,11 @@ import images from '../../localized/images';
 const { width } = Dimensions.get('window');
 
 function MenuLinks({name}) {
+  const {setMenu} = useContext(Context);
   const { navigate } = useNavigation();
 
   const handlePress = () => {
+    setMenu(false)
     const linkName = format(name);
     navigate(linkName, { name })
   }

@@ -11,7 +11,7 @@ export default function Buttom({title, type}) {
   const {navigate} = useNavigation();
 
     const handlePress = async () => {
-      type === 'newUser' && navigate('Menu')
+      type === 'newUser' && navigate('NoticiasEventos')
 
       const emailRegex = /^[A-Za-z0-9._%+-]+@[A-Za-z0-9.-]+\.[A-Za-z]{2,}$/;
       const isEmailValid = emailRegex.test(login.email);
@@ -26,7 +26,7 @@ export default function Buttom({title, type}) {
       const foundedUser = users.find(({email}) => email === login.email);
 
       if (!!foundedUser) {
-        foundedUser.password === login.password && navigate('Menu')
+        foundedUser.password === login.password && navigate('NoticiasEventos')
       }
     }
 

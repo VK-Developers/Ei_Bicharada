@@ -3,7 +3,6 @@ import { StyleSheet, View, ScrollView, Dimensions } from 'react-native';
 //Components
 import Footer from '../../component/footer';
 import Header from '../../component/header';
-import Return from '../../component/return';
 import TextInput from '../../component/textInput';
 import CheckboxInput from '../../component/checkboxInput';
 import Background from '../../component/background';
@@ -13,6 +12,7 @@ import PictureIcon from '../../component/pictureIcon';
 import validateForms from '../../hooks/validateForms';
 
 import Sent from '../../component/modals/Sent';
+import ToggleMenu from '../../component/ToggleMenu';
 
 const { height } = Dimensions.get('screen');
 
@@ -30,6 +30,7 @@ function Resgate({navigation, route: { params }}) {
   return (
     <>
       <Background img={'tree'} />
+      <ToggleMenu />
       <Sent 
         show={modal}
         action={setModal}
@@ -39,7 +40,6 @@ function Resgate({navigation, route: { params }}) {
       <ScrollView ref={scrollViewRef} extraScrollHeight={20} keyboardShouldPersistTaps="handled">
         <View style={styles.container}>
           <View>
-            <Return nav={navigation} />
             <Header name={params.name} />
             <PictureIcon action={setLister} state={listiner} />
               { 

@@ -4,16 +4,16 @@ import images from '../../localized/images'
 //Components
 import Footer from '../../component/footer';
 import Header from '../../component/header';
-import Return from '../../component/return';
 import Background from '../../component/background';
+import ToggleMenu from '../../component/ToggleMenu';
 
 function PrestacaoDeContas({navigation, route: { params }}) {
   return (
     <>
     <Background img={'tree'} />
+    <ToggleMenu />
       <View style={styles.container}>
         <View>
-          <Return nav={navigation} />
           <Header name={params.name} />
           <View style={{flexGrow: 1}}>
             <View style={styles.infoContainer}>

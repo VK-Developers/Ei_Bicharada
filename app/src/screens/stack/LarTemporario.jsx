@@ -3,7 +3,7 @@ import { StyleSheet, ScrollView, Dimensions, View } from 'react-native';
 //Components
 import Footer from '../../component/footer';
 import Header from '../../component/header';
-import Return from '../../component/return';
+import ToggleMenu from '../../component/ToggleMenu';
 import Background from '../../component/background';
 import { events } from '../../localized/structures';
 import str from '../../localized/strings';
@@ -28,6 +28,7 @@ function LarTemporario({navigation, route: { params }}) {
   return (
     <>
       <Background img={'tree'} />
+      <ToggleMenu />
       <Sent 
         show={modal}
         action={setModal}
@@ -37,7 +38,6 @@ function LarTemporario({navigation, route: { params }}) {
       <ScrollView ref={scrollViewRef} extraScrollHeight={20} keyboardShouldPersistTaps="handled">
         <View style={styles.container}>
           <View>
-            <Return nav={navigation} />
             <Header name={params.name} />
               {/* { 
                 events.map((text) => (

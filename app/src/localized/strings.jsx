@@ -1,5 +1,5 @@
 export default {
-  appTitle: 'HEY BICHARADA!',
+  appTitle: 'Hey Pet!',
   login: ['Email', 'digite seu email'],
   password: ['Senha', 'digite sua senha'],
   signIn: 'Entrar',

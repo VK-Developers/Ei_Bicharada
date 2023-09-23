@@ -1,21 +1,25 @@
-import React from 'react';
+import React, {useState} from 'react';
 import { StyleSheet, SafeAreaView, View, Text } from 'react-native';
 //Components
 import Footer from '../../component/footer';
 import Header from '../../component/header';
-import Return from '../../component/return';
+import ToggleMenu from '../../component/ToggleMenu';
 import Background from '../../component/background'
+
+import ModalDocao from '../../component/modals/Docao';
 
 import str from '../../localized/strings'
 
 function Doacao({navigation, route: { params }}) {
+  const [closeModal, setCloseModal] = useState(false);
   return (
     <>
       <Background img={'tree'} />
-      <SafeAreaView style={styles.container}>
+      <ToggleMenu />
+      <ModalDocao visible={closeModal} action={setCloseModal} />
+      <SafeAreaView style={[styles.container, {opacity: !closeModal ? 0.5 : 1}]}>
         <View style={{flexGrow: 1}}>
           <View>
-            <Return nav={navigation} />
             <Header name={params.name} />
           </View>
           <View style={{flexGrow: 1}}>

@@ -3,7 +3,7 @@ import { StyleSheet, ScrollView, Image, TouchableOpacity, View, Dimensions } fro
 //Components
 import Footer from '../../component/footer';
 import Header from '../../component/header';
-import Return from '../../component/return';
+import ToggleMenu from '../../component/ToggleMenu';
 import Background from '../../component/background'
 
 // import { getProducts } from '../../services/getRequest';
@@ -13,6 +13,7 @@ import { products } from '../../mock';
 const { width } = Dimensions.get('screen');
 
 function NossosProdutos({navigation, route: { params }}) {
+  const [scrollY, setScrollY] = useState(0);
   // const [products, setProducts] = useState([]);
 
   // useEffect(() => {
@@ -28,9 +29,9 @@ function NossosProdutos({navigation, route: { params }}) {
   return (
     <>
     <Background img={'tree'} />
-    <ScrollView style={styles.container}>
+    {scrollY <= 25 && <ToggleMenu />}
+    <ScrollView onScroll={(event) => setScrollY(event.nativeEvent.contentOffset.y)} style={styles.container}>
       <View>
-        <Return nav={navigation} />
         <Header name={params.name} />
         <View style={styles.products}>
           {
