@@ -18,6 +18,7 @@ import Sent from '../../component/modals/Sent';
 const { height } = Dimensions.get('screen')
 
 function Denuncias({navigation, route: { params }}) {
+  const [scrollY, setScrollY] = useState(0);
   const {menu} = useContext(Context);
   const [listiner, setLister] = useState({});
   const [modal, setModal] = useState(false);
@@ -32,14 +33,14 @@ function Denuncias({navigation, route: { params }}) {
   return (
     <>
       <Background img={'tree'} />
-      <ToggleMenu />
+      {scrollY <= 25 && <ToggleMenu />}
       <Sent 
         show={modal}
         action={setModal}
         nav={navigation}
         text={str.modal.denuncia}
       />
-      <ScrollView ref={scrollViewRef} extraScrollHeight={20} keyboardShouldPersistTaps="handled">
+      <ScrollView onScroll={(event) => setScrollY(event.nativeEvent.contentOffset.y)} ref={scrollViewRef} extraScrollHeight={20} keyboardShouldPersistTaps="handled">
         <View style={[styles.container, {opacity: menu ? 0.25 : 1}]}>
           <View>
             <Header name={params.name} />
@@ -48,8 +49,7 @@ function Denuncias({navigation, route: { params }}) {
                 arrayText.map((text, i) => {
                   if (i === 1) return <CheckboxInput key={text.title} info={text} action={setLister} />
                   return (
-                    <TextInput 
-                      // menuOpen={menu}
+                    <TextInput
                       key={text.title} 
                       info={text}
                       action={setLister}

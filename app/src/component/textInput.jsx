@@ -5,7 +5,7 @@ import formatKey from '../hooks/formatKey';
 
 const { width } = Dimensions.get('window');
 
-function InputText({info, baseRef, action, menuOpen}) {
+function InputText({info, baseRef, action}) {
   const [text, setText] = useState('');
   const {title, maxLength, type} = info;
   const inputRef = useRef();

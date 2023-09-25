@@ -4,7 +4,7 @@ import {Modal, StyleSheet, Text, Pressable, View} from 'react-native';
 const Sent = ({ show, action, nav, text }) => {
     const handlePress = () => {
         action(!show);
-        nav.navigate('Menu')
+        nav.navigate('NoticiasEventos')
     }
     return (
         <Modal

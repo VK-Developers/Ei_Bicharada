@@ -8,9 +8,9 @@ const {height, width} = Dimensions.get('window')
 function Background({img}) {
       const { backgrounds } = images
       return (
-            <ImageBackground 
+            <ImageBackground
                   source={backgrounds[img]}
-                  resizeMode="cover" 
+                  resizeMode="cover"
                   style={styles.container}
             />
       );

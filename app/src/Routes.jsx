@@ -9,6 +9,7 @@ import DenunciasScreen from './screens/stack/Denuncias';
 import AnimaisPerdidosScreen from './screens/stack/AnimaisPerdidos';
 import AdocaoScreen from './screens/stack/Adocao';
 import DoacaoScreen from './screens/stack/Doacao';
+import ContribuicaoScreen from './screens/stack/Contribuicao';
 import LarTemporarioScreen from './screens/stack/LarTemporario';
 // import DivulgacaoScreen from './screens/stack/Divulgacao';
 import NoticiasEventosScreenScreen from './screens/stack/NoticiasEventos';
@@ -43,6 +44,7 @@ export default function App() {
         {/* Menu */}
         <Stack.Screen name="Adocao" component={AdocaoScreen} />
         <Stack.Screen name="Doacao" component={DoacaoScreen} />
+        <Stack.Screen name="Contribuicao" component={ContribuicaoScreen} />
         <Stack.Screen name="AnimaisPerdidos" component={AnimaisPerdidosScreen} />
         <Stack.Screen name="Resgate" component={ResgateScreen} />
         <Stack.Screen name="Denuncias" component={DenunciasScreen} />

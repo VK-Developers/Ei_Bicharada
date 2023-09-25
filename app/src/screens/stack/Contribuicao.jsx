@@ -8,7 +8,7 @@ import Background from '../../component/background'
 
 import str from '../../localized/strings'
 
-function Doacao({navigation, route: { params }}) {
+function Contribuicao({navigation, route: { params }}) {
   return (
     <>
       <Background img={'tree'} />
@@ -69,4 +69,4 @@ const styles = StyleSheet.create({
   }
 })
 
-export default Doacao;
+export default Contribuicao;

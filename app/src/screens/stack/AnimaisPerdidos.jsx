@@ -25,11 +25,7 @@ function AnimaisPerdidos({navigation, route: { params }}) {
           renderItem={renderComponente}
           keyExtractor={({id}) => 'lost-' + id}
           onScroll={(event) => setScrollY(event.nativeEvent.contentOffset.y)}
-          ListHeaderComponent={() =>
-            <>
-              <Header name={params.name} />
-            </>
-          }
+          ListHeaderComponent={() => <Header name={params.name} />}
           ListFooterComponent={() => <Footer />}
         />
       </SafeAreaView>

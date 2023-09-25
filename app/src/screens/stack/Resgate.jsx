@@ -17,6 +17,7 @@ import ToggleMenu from '../../component/ToggleMenu';
 const { height } = Dimensions.get('screen');
 
 function Resgate({navigation, route: { params }}) {
+  const [scrollY, setScrollY] = useState(0);
   const [listiner, setLister] = useState({});
   const [modal, setModal] = useState(false);
   const [sendForms, setSendForms] = useState(false);
@@ -30,14 +31,14 @@ function Resgate({navigation, route: { params }}) {
   return (
     <>
       <Background img={'tree'} />
-      <ToggleMenu />
+      {scrollY <= 25 && <ToggleMenu />}
       <Sent 
         show={modal}
         action={setModal}
         nav={navigation}
         text={str.modal.resgate}
       />
-      <ScrollView ref={scrollViewRef} extraScrollHeight={20} keyboardShouldPersistTaps="handled">
+      <ScrollView onScroll={(event) => setScrollY(event.nativeEvent.contentOffset.y)} ref={scrollViewRef} extraScrollHeight={20} keyboardShouldPersistTaps="handled">
         <View style={styles.container}>
           <View>
             <Header name={params.name} />

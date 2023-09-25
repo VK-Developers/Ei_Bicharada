@@ -26,12 +26,7 @@ function Adocao({navigation, route: { params }}) {
           renderItem={renderComponente}
           keyExtractor={({id}) => 'adopt-' + id}
           onScroll={(event) => setScrollY(event.nativeEvent.contentOffset.y)}
-          ListHeaderComponent={() =>
-            <>
-            
-              <Header name={params.name} />
-            </>
-          }
+          ListHeaderComponent={() => <Header name={params.name} />}
           ListFooterComponent={() => <Footer />}
         />
       </SafeAreaView>
