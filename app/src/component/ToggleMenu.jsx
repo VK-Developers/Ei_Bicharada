@@ -4,17 +4,15 @@ import { StyleSheet, TouchableOpacity, View, ScrollView, Dimensions } from 'reac
 
 import MenuLinks from './menu/MenuLinks';
 import { menuTopics as topics } from '../localized/structures';
-import BlurMe from '../hooks/blurMe';
 
 const {width, height} = Dimensions.get('screen')
 
-function ToggleMenu({first}) {
+function ToggleMenu({level, first}) {
   const {menu, setMenu} = useContext(Context);
 
   const handlePress = () => setMenu(!menu);
-
   return !menu ? (
-    <TouchableOpacity style={styles.containerClose} onPress={handlePress}>
+    <TouchableOpacity  style={[styles.containerClose, {display: level >= 25 ? 'none' : 'flex' }]} onPress={handlePress}>
       { [...Array.from({length: 3})].map((_b, i) => <View key={'bar' + i} style={styles.bar} /> )}
     </TouchableOpacity>
   ) : (

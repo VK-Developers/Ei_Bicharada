@@ -31,7 +31,7 @@ function Resgate({navigation, route: { params }}) {
   return (
     <>
       <Background img={'tree'} />
-      {scrollY <= 25 && <ToggleMenu />}
+      <ToggleMenu level={scrollY} />
       <Sent 
         show={modal}
         action={setModal}

@@ -29,7 +29,7 @@ function NossosProdutos({navigation, route: { params }}) {
   return (
     <>
     <Background img={'tree'} />
-    {scrollY <= 25 && <ToggleMenu />}
+    <ToggleMenu level={scrollY} />
     <ScrollView onScroll={(event) => setScrollY(event.nativeEvent.contentOffset.y)} style={styles.container}>
       <View>
         <Header name={params.name} />

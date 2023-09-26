@@ -50,7 +50,7 @@ export default function App() {
         <Stack.Screen name="Denuncias" component={DenunciasScreen} />
         <Stack.Screen name="LarTemporario" component={LarTemporarioScreen} />
         <Stack.Screen name="NossosProdutos" component={NossosProdutosScreen} />
-        <Stack.Screen name="NoticiasEventos" component={NoticiasEventosScreenScreen} />
+        <Stack.Screen name="Noticias&Eventos" component={NoticiasEventosScreenScreen} />
         <Stack.Screen name="PrestacaodeContas" component={PrestacaoDeContasScreen} />
         <Stack.Screen name="Apoiadores" component={ApoiadoresScreen} />
         {/* Sub Screens */}

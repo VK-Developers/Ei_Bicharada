@@ -8,7 +8,7 @@ import Background from '../../component/background'
 
 import str from '../../localized/strings'
 
-function Doacao({navigation, route: { params }}) {
+function Doacao({route: { params }}) {
   return (
     <>
       <Background img={'tree'} />

@@ -6,7 +6,7 @@ export const menuTopics = [
   'Denúncias',
   'Lar Temporário',
   'Nossos Produtos',
-  'Noticias | Eventos',
+  'Noticias & Eventos',
   'Prestação de Contas',
   'Contribuição',
   'Apoiadores',

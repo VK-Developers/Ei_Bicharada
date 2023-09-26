@@ -1,5 +1,5 @@
 import React from 'react';
-import { StyleSheet, View, Text, Image, TouchableOpacity } from 'react-native';
+import { StyleSheet, View } from 'react-native';
 import images from '../../localized/images'
 //Components
 import Footer from '../../component/footer';
@@ -15,20 +15,8 @@ function Apoiadores({navigation, route: { params }}) {
       <View style={styles.container}>
         <View>
           <Header name={params.name} />
-          {/* <View style={{flexGrow: 1}}>
-            <View style={styles.infoContainer}>
-              <Text style={styles.text}>Acompanhe e Saiba</Text>
-              <Text style={styles.text}>Quanto Custa</Text>
-            </View>
-            <TouchableOpacity style={styles.iconContainer}>
-              <Image source={images.donate} style={styles.iconContainer.icon} />
-            </TouchableOpacity>
-            <View style={styles.infoContainer}>
-              <Text style={styles.text}>Cada Doação</Text>
-            </View>
-          </View> */}
+
         </View>
-        {/* <Footer /> */}
       </View>
     </>
   );

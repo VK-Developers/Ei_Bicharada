@@ -1,4 +1,4 @@
-package com.app_olha_aqui_bicharada;
+package com.hey_pet;
 
 import com.facebook.react.ReactActivity;
 import com.facebook.react.ReactActivityDelegate;
@@ -13,7 +13,7 @@ public class MainActivity extends ReactActivity {
    */
   @Override
   protected String getMainComponentName() {
-    return "app_olha_aqui_bicharada";
+    return "hey_pet";
   }
 
   /**

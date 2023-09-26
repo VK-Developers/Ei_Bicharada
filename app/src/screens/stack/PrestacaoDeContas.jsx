@@ -7,7 +7,7 @@ import Header from '../../component/header';
 import Background from '../../component/background';
 import ToggleMenu from '../../component/ToggleMenu';
 
-function PrestacaoDeContas({navigation, route: { params }}) {
+function PrestacaoDeContas({route: { params }}) {
   return (
     <>
     <Background img={'tree'} />

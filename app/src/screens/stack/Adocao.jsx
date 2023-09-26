@@ -10,7 +10,7 @@ import ToggleMenu from '../../component/ToggleMenu';
 // Most come from API
 import {animalsAdocao} from '../../mock'
 
-function Adocao({navigation, route: { params }}) {
+function Adocao({route: { params }}) {
   const [scrollY, setScrollY] = useState(0);
   
   const renderComponente = ({ item }) => <Animal info={item} /> 
@@ -18,8 +18,7 @@ function Adocao({navigation, route: { params }}) {
   return (
     <>
       <Background img={'tree'} />
-      {scrollY <= 25 && <ToggleMenu />}
-      
+       <ToggleMenu level={scrollY} />
       <SafeAreaView style={styles.container}>
         <FlatList 
           data={animalsAdocao}

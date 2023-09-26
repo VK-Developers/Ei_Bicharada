@@ -33,8 +33,8 @@ function Denuncias({navigation, route: { params }}) {
   return (
     <>
       <Background img={'tree'} />
-      {scrollY <= 25 && <ToggleMenu />}
-      <Sent 
+       <ToggleMenu level={scrollY} />
+      <Sent
         show={modal}
         action={setModal}
         nav={navigation}

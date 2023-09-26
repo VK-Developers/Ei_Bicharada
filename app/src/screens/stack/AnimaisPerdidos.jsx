@@ -10,7 +10,7 @@ import Animal from '../../component/flatlist/animal';
 // Most come from API
 import {animalsPerdidos} from '../../mock'
 
-function AnimaisPerdidos({navigation, route: { params }}) {
+function AnimaisPerdidos({route: { params }}) {
   const [scrollY, setScrollY] = useState(0);
 
   const renderComponente = ({ item }) => <Animal info={item} /> 
@@ -18,7 +18,7 @@ function AnimaisPerdidos({navigation, route: { params }}) {
   return (
     <>
       <Background img={'tree'} />
-      {scrollY <= 25 && <ToggleMenu />}
+      <ToggleMenu level={scrollY}/>
       <SafeAreaView style={styles.container}>
         <FlatList 
           data={animalsPerdidos}

@@ -8,14 +8,13 @@ import Background from '../../component/background';
 
 const {height, width} = Dimensions.get('window')
 
-function Divulgacao({navigation, route: { params }}) {
+function Divulgacao({route: { params }}) {
   return (
     <>
       <Background img={'five'} />
       <ToggleMenu />
       <SafeAreaView style={styles.container}>
         <Header name={params.name} />
-        {/* <Footer /> */}
       </SafeAreaView>
     </>
   );

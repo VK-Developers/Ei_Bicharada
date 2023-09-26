@@ -1,4 +1,4 @@
-package com.app_olha_aqui_bicharada;
+package com.hey_pet;
 
 import android.app.Application;
 import com.facebook.react.PackageList;

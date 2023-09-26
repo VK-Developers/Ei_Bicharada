@@ -1,5 +1,4 @@
-import React, {useState, useContext, useEffect} from 'react';
-import Context from '../../context/Context';
+import React, {useState} from 'react';
 import { StyleSheet, SafeAreaView, Dimensions, View, FlatList } from 'react-native';
 //Components
 import Header from '../../component/header';
@@ -11,20 +10,15 @@ import { news } from '../../localized/structures';
 
 const {height, width} = Dimensions.get('window');
 
-function NoticiasEventos({navigation, route: { params }}) {
-  const {setMenu} = useContext(Context)
+function NoticiasEventos({route: { params }}) {
   const [scrollY, setScrollY] = useState(0);
-
-  useEffect(() => {
-    params.first && setMenu(true)
-  })
 
   const renderComponente = ({item}) => <New info={item} />
 
   return (
     <>
-      <Background img={'four'} />
-      {scrollY <= 25 && <ToggleMenu first={params.first} />}
+      {!params.first ? <Background img={'four'} /> : <View style={styles.backgroundSolid}/>}
+      <ToggleMenu level={scrollY} first={params.first} />
       <SafeAreaView style={styles.container}>
         {!params.first && (
           <View style={styles.news}>
@@ -34,12 +28,11 @@ function NoticiasEventos({navigation, route: { params }}) {
               keyExtractor={({id}) => 'lost-' + id}
               onScroll={(event) => setScrollY(event.nativeEvent.contentOffset.y)}
               ItemSeparatorComponent={ <View style={{height: 20}} /> }
-              ListHeaderComponent={() => <Header name={!!params.name ? params.name : 'NOTICIAS | EVENTOS'} /> }
+              ListHeaderComponent={() => <Header name={'NOTICIAS & EVENTOS'} /> }
               ListFooterComponent={() => <View style={{height: 20}} />}
             />
           </View>
         )}
-
       </SafeAreaView>
     </>
   );
@@ -62,6 +55,11 @@ const styles = StyleSheet.create({
     opacity: 0.08,
     zIndex: -1,
   },
+  backgroundSolid: {
+    height,
+    width,
+    backgroundColor: '#0047AB'
+  }
 })
 
 export default NoticiasEventos;

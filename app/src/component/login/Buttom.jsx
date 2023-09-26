@@ -11,7 +11,7 @@ export default function Buttom({title, type}) {
   const {navigate} = useNavigation();
 
     const handlePress = async () => {
-      type === 'newUser' && navigate('NoticiasEventos', {first: true})
+      type === 'newUser' && navigate('Noticias&Eventos', {first: true})
 
       const emailRegex = /^[A-Za-z0-9._%+-]+@[A-Za-z0-9.-]+\.[A-Za-z]{2,}$/;
       const isEmailValid = emailRegex.test(login.email);

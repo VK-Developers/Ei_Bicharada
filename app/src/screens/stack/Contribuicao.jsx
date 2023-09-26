@@ -8,7 +8,7 @@ import Background from '../../component/background'
 
 import str from '../../localized/strings'
 
-function Contribuicao({navigation, route: { params }}) {
+function Contribuicao({route: { params }}) {
   return (
     <>
       <Background img={'tree'} />
