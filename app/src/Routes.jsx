@@ -4,11 +4,11 @@ import { NavigationContainer, DefaultTheme} from '@react-navigation/native';
 import { StatusBar } from 'react-native';
 // Stack Components
 import LoginScreen from './screens/Login';
+import CoverScreen from './screens/stack/Cover';
 import ResgateScreen from './screens/stack/Resgate';
 import DenunciasScreen from './screens/stack/Denuncias';
 import AnimaisPerdidosScreen from './screens/stack/AnimaisPerdidos';
 import AdocaoScreen from './screens/stack/Adocao';
-import DoacaoScreen from './screens/stack/Doacao';
 import ContribuicaoScreen from './screens/stack/Contribuicao';
 import LarTemporarioScreen from './screens/stack/LarTemporario';
 // import DivulgacaoScreen from './screens/stack/Divulgacao';
@@ -42,8 +42,8 @@ export default function App() {
       <Stack.Navigator screenOptions={options} initialRouteName='Login'>
         <Stack.Screen name="Login" component={LoginScreen} />
         {/* Menu */}
+        <Stack.Screen name="Cover" component={CoverScreen} />
         <Stack.Screen name="Adocao" component={AdocaoScreen} />
-        <Stack.Screen name="Doacao" component={DoacaoScreen} />
         <Stack.Screen name="Contribuicao" component={ContribuicaoScreen} />
         <Stack.Screen name="AnimaisPerdidos" component={AnimaisPerdidosScreen} />
         <Stack.Screen name="Resgate" component={ResgateScreen} />

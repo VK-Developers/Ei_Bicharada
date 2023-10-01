@@ -44,7 +44,7 @@ const styles = StyleSheet.create({
     flex: 1,
   },
   titleContainer: {
-    marginTop: Platform.OS === 'ios'? 40 : 50,
+    marginTop: Platform.OS === 'ios'? 40 : width < 715 ? 15 : 30,
     marginBottom: Platform.OS === 'ios'? 30 : 40,
     flexDirection: 'row',
     alignItems: 'center',

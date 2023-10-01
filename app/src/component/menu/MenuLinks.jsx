@@ -31,7 +31,6 @@ function MenuLinks({name}) {
 const styles = StyleSheet.create({
   container: {
     alignItems: 'flex-start',
-    height: width * 0.15,
   },
   link: {
     flexDirection: 'row',

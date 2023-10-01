@@ -1,13 +1,13 @@
 import React, {useContext} from 'react';
 import Context from '../context/Context';
-import { StyleSheet, TouchableOpacity, View, ScrollView, Dimensions } from 'react-native';
+import { StyleSheet, TouchableOpacity, View, Dimensions } from 'react-native';
 
 import MenuLinks from './menu/MenuLinks';
 import { menuTopics as topics } from '../localized/structures';
 
-const {width, height} = Dimensions.get('screen')
+const {width, height} = Dimensions.get('screen');
 
-function ToggleMenu({level, first}) {
+function ToggleMenu({level}) {
   const {menu, setMenu} = useContext(Context);
 
   const handlePress = () => setMenu(!menu);
@@ -17,32 +17,56 @@ function ToggleMenu({level, first}) {
     </TouchableOpacity>
   ) : (
     <>
-      <View style={styles.mask}>
-        <View style={styles.background} />
-        {!first ? (
-          <TouchableOpacity style={styles.rest} onPress={handlePress} />
-        ) : (
-          <View style={styles.rest} />
-        )}
-      </View>
-      <View style={styles.containerOpen}>
-        {!first && (
-          <TouchableOpacity style={styles.close} onPress={handlePress}>
-            <View style={[styles.bar, styles.closeBar, { transform: [{ rotate: '45deg' }] }]} />
-            <View style={[styles.bar, styles.closeBar, { transform: [{ rotate: '-45deg' }] }]} />
-          </TouchableOpacity>
-        )}
-        <ScrollView style={styles.topics}>
-          { 
-            topics.map(topic => <MenuLinks key={topic + '-menu'} name={topic} />)
-          }
-        </ScrollView>
+      <TouchableOpacity style={styles.container} onPress={handlePress} />
+      <View style={styles.shape}/>
+      <View style={styles.content}>
+        <TouchableOpacity style={styles.close} onPress={handlePress}>
+          <View style={[styles.bar, styles.closeBar, { transform: [{ rotate: '45deg' }] }]} />
+          <View style={[styles.bar, styles.closeBar, { transform: [{ rotate: '-45deg' }] }]} />
+        </TouchableOpacity>
+        {
+          topics.map(topic => <MenuLinks key={topic + '-menu'} name={topic} />)
+        }
       </View>
     </>
+
   );
 }
 
 const styles = StyleSheet.create({
+  container: {
+    position: 'absolute',
+    zIndex: 1,
+    height,
+    width,
+  },
+  shape: {
+    backgroundColor: 'rgba(196,195,208, 1)',
+    position: 'absolute',
+    width: width * 0.8,
+    height,
+    borderBottomRightRadius: 1000,
+    zIndex: 2,
+  },
+  content: {
+    marginTop: 10,
+    height: height * 0.8,
+    width: width * 0.8,
+    justifyContent: 'space-around',
+    position: 'absolute',
+    top: 0,
+    zIndex: 3
+  },
+  close: {
+    position: 'absolute',
+    top: 15,
+    right: 20,
+    width: 45,
+    height: 35,
+    justifyContent: 'center',
+    alignItems: 'center',
+    zIndex: 4,
+  },
   containerClose: {
     position: 'absolute',
     top: 15,
@@ -58,46 +82,10 @@ const styles = StyleSheet.create({
     height: '20%',
     borderRadius: 15
   },
-  containerOpen: {
-    width: width * 0.85,
-    position: 'absolute',
-    top: 0,
-    zIndex: 11
-  },
-  close: {
-    position: 'absolute',
-    top: 15,
-    right: 20,
-    width: 45,
-    height: 35,
-
-    justifyContent: 'center',
-    alignItems: 'center',
-    zIndex: 10,
-  },
+ 
   closeBar: {
     position: 'absolute',
     width: '80%'
-  },
-  topics: {
-    marginTop: 40,
-  },
-  mask: {
-    flex: 1,
-    flexDirection: 'row',
-    position: 'absolute',
-    top: 0,
-    zIndex: 10,
-    width,
-    height: height * 0.95,
-  },
-  background: {
-    backgroundColor: 'rgba(196,195,208, 1)',
-    width: width * 0.85,
-    borderBottomRightRadius: 1000
-  },
-  rest: {
-    flexGrow: 1,
   }
 })
 

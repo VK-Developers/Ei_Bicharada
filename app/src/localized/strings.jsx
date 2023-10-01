@@ -7,15 +7,23 @@ export default {
   signUp: 'Criar Conta',
   return: 'Voltar',
   name: 'Nome',
-  retirada: ['Agendar Retirada', '(13) 9XXXX - XXXX'],
-  coleta: ['Ponto de Coleta', 'Rua: XXXXXXXXXX'],
-  doacao: ['Doação Financeira', 'Pix: XXXXXXXXXX'],
+
+  doacao: {
+    title: 'Doação',
+    retirada: ['Agendar Retirada', '(13) 9XXXX - XXXX'],
+    coleta: ['Ponto de Coleta', 'Rua: XXXXXXXXXX'],
+    doacao: ['Doação Financeira', 'Pix: XXXXXXXXXX'],
+  },
 
   modal: {
     resgate: ['Resgate registrado/adicionado \ncom sucesso', 'fechar'],
     denuncia: ['Denúncia registrada com \nsucesso', 'continuar'],
     evento: ['Solicitação de evento enviada \ncom sucesso', 'confirmar'],
 
-    adocao: ['lorem lorem lorem lorem lorem lorem \nlorem lorem lorem', 'lorem lorem'],
+    adocao: [
+      'lorem lorem lorem lorem lorem lorem lorem lorem loremlorem lorem lorem lorem lorem lorem lorem lorem lorem lorem lorem lorem lorem lorem lorem lorem lorem lorem',
+      'Adotar um pet',
+      'Realizar uma doação'
+    ],
   }
 };

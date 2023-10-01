@@ -1,6 +1,6 @@
 export const menuTopics = [
   'Adoção',
-  'Doação',
+  // 'Doação',
   'Animais Perdidos',
   'Resgate',
   'Denúncias',
