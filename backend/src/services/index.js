@@ -1,3 +1,4 @@
-module.exports.user = require('./user.service');
-module.exports.rescue = require('./rescue.service');
-module.exports.product = require('./product.service');
+module.exports.login = require("./login.service");
+module.exports.user = require("./user.service");
+module.exports.rescue = require("./rescue.service");
+module.exports.product = require("./product.service");
