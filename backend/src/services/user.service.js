@@ -1,4 +1,5 @@
 const models = require('../database/models');
+const { user: validation } = require('../validations')
 
 module.exports = {
     getAll: async () => {
@@ -20,9 +21,26 @@ module.exports = {
         const [updatedUser] = await models.user.update(obj, { where: { id } });
         return updatedUser;
     },
-    create: async(obj) => {
-        const newUser = await models.user.create(obj);
-        return newUser
+    create: async(data, password) => {
+        const validatedObj = await validation.newUser(data);
+        const doesUserExists = !!await models.user.findOne(
+            { 
+                where: { 
+                    email: validatedObj.email
+                }
+            }
+        );
+        
+        if (!doesUserExists) {
+            await models.user.create(validatedObj);
+            await models.login.create({
+                email: validatedObj.email,
+                password
+            })
+            return {status: 201, msg: 'usuario criado com sucesso'};
+        }
+        
+        return {status: 409, msg: 'usuario ja existe'};
     },
     destroy: async(id) => {
         const userDeleted = await models.user.destroy({ where: {id } });

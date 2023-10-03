@@ -17,9 +17,9 @@ module.exports = async (data) => {
       const userData = await models.user.findOne({ where: { email } });
       const token = createToken(userData);
       return { status: 400, token }
-    }
+    };
     return reject;
-  }
+  };
 
   return reject;
 };
