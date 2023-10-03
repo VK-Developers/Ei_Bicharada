@@ -4,9 +4,11 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "prestart": "npx sequelize-cli db:migrate",
+    "prestart": "npx sequelize-cli db:migrate && npx sequelize-cli db:seed:all",
     "start": "node src/server.js",
     "dev": "nodemon --watch src -r dotenv/config src/server.js",
+    "populate": "npx sequelize-cli db:migrate && npx sequelize-cli db:seed:all",
+    "clean": "npx sequelize-cli db:seed:undo:all && npx sequelize-cli db:migrate:undo:all",
     "drop": "npx sequelize-cli db:drop"
   },
   "keywords": [],

@@ -6,21 +6,21 @@ module.exports = {
     await queryInterface.bulkInsert('users', [
       {
         name: 'Vincenzo',
-        email: 'vincenzo@adm.com',
+        email: 'vincenzo@admin.com',
         phone: '+55 13 9999-9999',
         city: 'Santos',
         created: new Date(),
       },
       {
         name: 'Kaio',
-        email: 'kaio@adm.com',
+        email: 'kaio@admin.com',
         phone: '+55 13 9999-9999',
         city: 'Sao Vicente',
         created: new Date(),
       },
       {
         name: 'Marcelo',
-        email: 'marcelo@adm.com',
+        email: 'marcelo@admin.com',
         phone: '+55 13 9999-9999',
         city: 'Araras',
         created: new Date(),
