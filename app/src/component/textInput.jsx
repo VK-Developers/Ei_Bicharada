@@ -69,8 +69,6 @@ function InputText({info, baseRef, action}) {
   const phoneFormat = (i) => {
     const initial = i.length;
     const state = text.length;
-    console.log('i: ' + initial)
-    console.log('text: ' + state);
 
     if (state > initial && state > 3) {
       if (i.length === 6) return setText(`${i}`);
