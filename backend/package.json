@@ -1,7 +1,7 @@
 {
   "name": "backend",
   "version": "1.0.0",
-  "description": "",
+  "description": "Hey Pet API built with Express + Sequelize + MySQL",
   "main": "index.js",
   "scripts": {
     "prestart": "npx sequelize-cli db:migrate && npx sequelize-cli db:seed:all",
@@ -11,7 +11,7 @@
     "clean": "npx sequelize-cli db:seed:undo:all && npx sequelize-cli db:migrate:undo:all",
     "drop": "npx sequelize-cli db:drop"
   },
-  "keywords": [],
+  "keywords": ["nodejs", "express", "sequelize", "mysql", "javascript"],
   "author": "Vincenzo F. Di Giacomo",
   "license": "ISC",
   "dependencies": {

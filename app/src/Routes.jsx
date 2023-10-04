@@ -55,7 +55,7 @@ export default function App() {
         <Stack.Screen name="Apoiadores" component={ApoiadoresScreen} />
         {/* Sub Screens */}
         <Stack.Screen name="Product" component={ProductScreen} />
-        <Stack.Screen name="Payment" component={PaymentScreen} />
+        {/* <Stack.Screen name="Payment" component={PaymentScreen} /> */}
 
         {/* <Stack.Screen name="Divulgação" component={DivulgacaoScreen} /> */}
       </Stack.Navigator>

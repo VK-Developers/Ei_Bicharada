@@ -3,8 +3,7 @@ import Context from '../../context/Context';
 import { useNavigation } from '@react-navigation/native';
 import { Text, TouchableOpacity, StyleSheet } from 'react-native';
 
-// import {getUsers} from '../../services/getRequest';
-import { users } from '../../mock';
+import { postLogin } from '../../services/postRequest';
 
 export default function Buttom({title, type}) {
   const { login, setLogin } = useContext(Context);
@@ -12,22 +11,18 @@ export default function Buttom({title, type}) {
 
     const handlePress = async () => {
       type === 'newUser' && navigate('Cover')
+      const {status, ...inputValue} = login
 
-      const emailRegex = /^[A-Za-z0-9._%+-]+@[A-Za-z0-9.-]+\.[A-Za-z]{2,}$/;
-      const isEmailValid = emailRegex.test(login.email);
-      const isPasswordValid = login.password.length >= 8;
+      const logIn = await postLogin(inputValue)
 
-      if (!isEmailValid | !isPasswordValid) {
-        setLogin(prev => ({...prev, status: false}))
+      if (!!logIn.token) {
+        // colocar toke em cache
+        navigate('Cover')
         return
       };
 
-      // const users = await getUsers();
-      const foundedUser = users.find(({email}) => email === login.email);
-
-      if (!!foundedUser) {
-        foundedUser.password === login.password && navigate('NoticiasEventos')
-      }
+      setLogin(prev => ({...prev, status: false}))
+      return
     }
 
     return (
