@@ -6,8 +6,8 @@ import formatKey from '../hooks/formatKey';
 const { width } = Dimensions.get('window');
 
 function InputText({info, baseRef, action}) {
-  const [text, setText] = useState('');
   const {title, maxLength, type} = info;
+  const [text, setText] = useState(info.title === 'Telefone' ? '+55 ' : '');
   const inputRef = useRef();
 
   useEffect(() => {
@@ -66,6 +66,21 @@ function InputText({info, baseRef, action}) {
     return
   }
 
+  const phoneFormat = (i) => {
+    const initial = i.length;
+    const state = text.length;
+    console.log('i: ' + initial)
+    console.log('text: ' + state);
+
+    if (state > initial && state > 3) {
+      if (i.length === 6) return setText(`${i}`);
+      if (i.length === 12) return setText(`${i}`)
+    }
+    if (i.length === 6) return setText(`${i} `);
+    if (i.length === 12) return setText(`${i}-`)
+    initial > 3 && setText(i);
+  }
+
   return (
     <View style={occurrence ? styles.occurrence : styles.container}>
         <Text style={styles.text}>{title}:</Text>
@@ -78,7 +93,10 @@ function InputText({info, baseRef, action}) {
           numberOfLines={occurrence ? 3 : 1}
           multiline={occurrence ? true : false}
           maxLength={maxLength}
-          onChangeText={type !== 'default' ? (title === 'Data' ? dateFormat : hourFormat) : setText }
+          onChangeText={type !== 'default' ? 
+            (title === 'Data' ? dateFormat : (title === 'Telefone' ? phoneFormat : hourFormat )) 
+            : 
+            setText }
           value={text}
           style={occurrence ? styles.occurrence.input : styles.input}
         />

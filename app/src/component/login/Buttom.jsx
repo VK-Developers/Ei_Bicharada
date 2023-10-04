@@ -10,7 +10,7 @@ export default function Buttom({title, type}) {
   const {navigate} = useNavigation();
 
     const handlePress = async () => {
-      type === 'newUser' && navigate('Cover')
+      type === 'newUser' && navigate('NewUser')
       const {status, ...inputValue} = login
 
       const logIn = await postLogin(inputValue)
@@ -27,7 +27,7 @@ export default function Buttom({title, type}) {
 
     return (
         <TouchableOpacity onPress={handlePress} style={styles.buttom}>
-        <Text style={styles.title}>{title}</Text>
+          <Text style={styles.title}>{title}</Text>
         </TouchableOpacity>
     );
 }

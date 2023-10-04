@@ -4,6 +4,7 @@ import { NavigationContainer, DefaultTheme} from '@react-navigation/native';
 import { StatusBar } from 'react-native';
 // Stack Components
 import LoginScreen from './screens/Login';
+import NewUserScreen from './screens/stack/NewUser';
 import CoverScreen from './screens/stack/Cover';
 import ResgateScreen from './screens/stack/Resgate';
 import DenunciasScreen from './screens/stack/Denuncias';
@@ -41,6 +42,7 @@ export default function App() {
       <StatusBar barStyle="light-content" backgroundColor="black" />
       <Stack.Navigator screenOptions={options} initialRouteName='Login'>
         <Stack.Screen name="Login" component={LoginScreen} />
+        <Stack.Screen name="NewUser" component={NewUserScreen} />
         {/* Menu */}
         <Stack.Screen name="Cover" component={CoverScreen} />
         <Stack.Screen name="Adocao" component={AdocaoScreen} />
