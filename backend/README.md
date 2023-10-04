@@ -23,3 +23,5 @@ module.exports = {
 **Create Seed:** `npx sequelize-cli seed:generate --name add-user`
 
 **Populating DB:** `npx sequelize-cli db:seed:all`
+
+
