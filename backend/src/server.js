@@ -1,8 +1,11 @@
 require('dotenv').config();
-const api = require('./api');
+const functions = require("firebase-functions");
+const app = require('./api');
 
 const PORT = process.env.API_PORT;
 
-api.get('/', (_request, response) => response.send('Hey Bicharada API'));
+app.get('/', (_request, response) => response.send('Hey Pet! API'));
 
-api.listen(PORT, () => console.log("API running on " + PORT));
+app.listen(PORT, () => console.log("API running on " + PORT));
+
+exports.api = functions.https.onRequest(app);
