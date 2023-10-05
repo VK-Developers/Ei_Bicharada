@@ -1,26 +1,19 @@
-import React from "react";
 import Provider from "./context/provider";
 import { Routes, Route } from "react-router-dom";
 import "../src/index.css";
-import { pages } from "../src/Routes/Rotas";
+// Components
+import Login from "./pages/Login";
+import Home from "./pages/Home";
 
 const App = () => {
   return (
-    <div className="flex bg-[#f0f8ff]  min-h-[1000px] max-h-[100000000px]">
       <Provider>
         <Routes>
-          {pages.map((page, index) => {
-            return (
-              <Route
-                key={index + "-route"}
-                path={page.path}
-                element={<page.component />}
-              />
-            );
-          })}
+          <Route path={'/login'} element={<Login />} />
+          <Route  path={'/'} element={<Home />} />
+          {/* <Route path={'*'} element={<page.component/>} /> */}
         </Routes>
       </Provider>
-    </div>
   );
 };
 
