@@ -4,7 +4,7 @@ import setaIcon from "../assets/imgs/icons/seta.png";
 import logo from "../assets/imgs/backgrounds/01.png";
 import menuIcons from "../structure/images";
 
-const Navbar = ({action}) => {
+const Navbar = ({action, selected}) => {
   const [open, setOpen] = useState(true)
 
   return (
@@ -40,18 +40,15 @@ const Navbar = ({action}) => {
         <div className="pt-6">
           {links.map((link, i) => {
             const formatedName = link.replace(' ', '');
+            const isSelected = formatedName === selected 
 
-            const handleClick = () => {
-              setOpen(false)
-              action(formatedName)
-            }
+            const handleClick = () => action(formatedName);
 
             return (
               <div 
                 key={'link-' + i}
                 onClick={handleClick}
-                className="flex rounded-md p-2 cursor-pointer hover:bg-indigo-900 hover:font-semibold text-white text-lg items-center gap-3.5 mt-3.5"
-              >
+                className={`${isSelected && "bg-indigo-900" } flex rounded-md p-2 cursor-pointer hover:bg-indigo-900 hover:font-semibold text-white text-lg items-center gap-3.5 mt-3.5`} >
                 <img src={menuIcons[formatedName]} />
                 { !!open && <p>{link}</p> }
               </div>
