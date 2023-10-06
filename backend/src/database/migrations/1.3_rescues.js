@@ -8,9 +8,11 @@ module.exports = {
         allowNull: false,
         autoIncrement: true,
         primaryKey: true,
-        type: Sequelize.INTEGER
+        type: Sequelize.INTEGER,
+        onUpdate: 'CASCADE',
+        onDelete: 'CASCADE',
       },
-      name: {
+      animal: {
         allowNull: false,
         type: Sequelize.STRING
       },
@@ -38,6 +40,10 @@ module.exports = {
         allowNull: false,
         type: Sequelize.STRING
       },
+      status: {
+        allowNull: false,
+        type: Sequelize.TINYINT
+      },
       created: {
         allowNull: false,
         type: Sequelize.DATE,
@@ -46,6 +52,6 @@ module.exports = {
   },
 
   down: async (queryInterface, _Sequelize) => {
-    await queryInterface.dropTable('rescue');
+    await queryInterface.dropTable('rescues');
   }
 };

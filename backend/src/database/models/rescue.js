@@ -10,13 +10,14 @@ module.exports = (sequelize, DataTypes) => {
     }
   }
   rescues.init({
-    name: DataTypes.STRING,
+    animal: DataTypes.STRING,
     walking: DataTypes.BOOLEAN,
     description: DataTypes.STRING,
     hour: DataTypes.STRING,
     adress: DataTypes.STRING,
     city: DataTypes.STRING,
     picture: DataTypes.STRING,
+    status: DataTypes.TINYINT,
   }, {
     sequelize,
     modelName: 'rescue',
