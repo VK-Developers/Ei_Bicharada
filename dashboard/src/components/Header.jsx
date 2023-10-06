@@ -4,7 +4,7 @@ const Header = () => {
         <>
         <div className="flex relative shadow-sm shadow-black bg-[#7c97e7] w-full h-12">
         <div>
-            Lista
+            soon
         </div>
 
         </div>

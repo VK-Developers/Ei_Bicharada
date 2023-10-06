@@ -1,25 +1,28 @@
 const Resgate = () => {
   return (
     <>
-      <div className="h-">
-        <div>
-          <div className=" overflow-x-auto p-7">
-            <h2 className=" text-left font-bold text-4xl  ">
-              Formulário de Resgate
-            </h2>
-            <br />
-            <form action="">
-              <div className="space-x-6 space-y-3 gap-0 flex">
-                <input
-                  type="text"
-                  name="animal"
-                  id="animal"
-                  placeholder="Animal"
-                  className="w-6/12 rounded-md shadow-lg border-black border-[0.20px]"
-                />
-                <input type="date" name="" id="" className="space-y-3 rounded-md shadow-lg border-black border-[0.20px]" />
-                {/* <select
-                  className="w-3/12 rounded-md shadow-lg border-black border-[0.20px]"
+
+        <div className="bg-gray-700 flex-row h-10">
+        <input type="time" name="" id="" className="space-y-3 rounded-md shadow-lg border-black border-[0.20px]" />
+        <input type="time" name="" id="" className="space-y-3 rounded-md shadow-lg border-black border-[0.20px]" />
+        </div>
+        <div className="bg-orange-700 flex-row">
+
+        </div>
+        <div className="bg-gray-700 flex-row">
+
+        </div>
+
+    </>
+  );
+};
+
+export default Resgate;
+{
+  /* <select
+                <input type="time" name="" id="" className="space-y-3 rounded-md shadow-lg border-black border-[0.20px]" />
+                
+                className="w-3/12 rounded-md shadow-lg border-black border-[0.20px]"
                   id="cidades"
                   name="cidades"
                 >
@@ -31,14 +34,15 @@ const Resgate = () => {
                   <option value="itanhaem">Itanhaém</option>
                   <option value="mongagua">Mongaguá</option>
                   <option value="peruibe">Peruibe</option>
-                </select> */}
+                </select> 
+                <div className="space-x-6 flex-grow flex">
+                <input type="text" name="animal" id="animal" placeholder="Animal"
+                       className=" flex-col  rounded-md shadow-lg border-black border-[0.20px]"
+                />
+                <input type="date" name="animal" id="animal" placeholder="Animal"
+                       className=" flex-col w-80  rounded-md shadow-lg border-black border-[0.20px]"
+                />
               </div>
-            </form>
-          </div>
-        </div>
-      </div>
-    </>
-  );
-};
-
-export default Resgate;
+}
+*/
+}

@@ -1,4 +1,4 @@
-import { useState, useEffect } from 'react';
+import { useState} from 'react';
 import Navbar from '../components/Navbar';
 import Content from '../components/content'
 import Header from '../components/Header';
@@ -8,9 +8,9 @@ const Home = () => {
   return (
     <div className='flex bg-[#f0f8ff] ' >
       <Navbar action={setContent} selected={content} />
-      <div className='flex-col flex-grow'>
+      <div className='flex-col flex flex-grow'>
         <Header />
-        <div className=''>
+        <div className='bg-red-800 flex-grow'>
         { Content[content] }
       </div>
       </div>
