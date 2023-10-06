@@ -1,45 +1,28 @@
+const Eventos = () => {
 
-import Navbar from "../components/Navbar";
-
-const Resgate = () => {
   return (
-<>
-  <Navbar />
-      
+    <>
       <div className="flex-auto w-full">
       <div className=" absolute text-center mx-[20%] m-7 p-8 w-5/12 max-h-full rounded-md shadow-black shadow-2xl bg-indigo-200">
-          <h2 className=" font-bold text-4xl">Formulário de Resgate</h2>
+          <h2 className=" font-bold text-4xl">Eventos</h2>
           <br />
           <form className="font-semibold m-2" action="">
             <label className="text-2xl m-4" htmlFor="">
-              Animal{" "}
+              Titulo{" "}
             </label>
             <br />
             <input
-              className="w-6/12 rounded-md mt-2 h-8 border-black border-[0.20px]"
+              className="w-4/12 rounded-md mt-2 h-8 border-black border-[0.20px]"
               type="text"
-              name="animal"
+              name="title"
             />
             <br /> <br />
-            <label className="text-2xl" htmlFor="">
-              Esta se Movendo?
-            </label>
+            <label className='text-2xl' htmlFor="">Inserir Foto</label>
             <br />
-            <label className="text-xl" htmlFor="">
-              Sim{" "}
-            </label>
-            <input type="checkbox" name="trueMove" id="trueMove" />
-            <label className="text-xl pl-4" htmlFor="">
-              Não{" "}
-            </label>
-            <input type="checkbox" name="falseMove" id="falseMove" />
-            <br /> <br />
-            <label htmlFor="">Inserir Foto</label>
-            <br />
-            <input type="file" name="imagem" />
+            <input className='mt-2' type="file" name="imagem" />
             <br />
             <br />
-            <label htmlFor="">Ocorrido</label>
+            <label className='text-2xl' htmlFor="">Descrição</label>
             <br />
             <textarea
               className="rounded-md shadow-lg max-h-26 border-black border-[0.20px]"
@@ -48,16 +31,12 @@ const Resgate = () => {
               cols="30"
               rows="5"
             ></textarea>
-            <br /> 
+            <br /><br />
             <label className="text-2xl" htmlFor="">
-              Horário
+              Data
             </label>
             <br />
-            <input
-              className=" rounded-md shadow-lg mt-2 border-black border-[0.20px]"
-              type="time"
-              name="horario"
-            />
+              <input className="rounded-md shadow-lg mt-2 border-black border-[0.20px]" id="data" type="date" value='20/12/2023' /> 
             <br /> <br />
             <label className="text-2xl" htmlFor="">
               Endereço
@@ -100,8 +79,8 @@ const Resgate = () => {
           </form>
         </div>
       </div>
-</>
-  );
+    </>
+  )
 };
 
-export default Resgate;
+export default Eventos;

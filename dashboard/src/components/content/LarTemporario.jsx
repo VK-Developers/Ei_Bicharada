@@ -1,10 +1,7 @@
-import React from 'react';
-import Navbar from '../components/Navbar';
+const LarTemporario = () => {
 
-const TempHouse = () => {
   return (
     <>
-      <Navbar />
       <div className="flex-auto w-full">
       <div className=" absolute text-center mx-[23%] m-7 p-8 w-5/12 max-h-full rounded-md shadow-black shadow-2xl bg-indigo-200">
           <h2 className=" font-bold text-4xl">Lar Temporário</h2>
@@ -96,9 +93,8 @@ const TempHouse = () => {
           </form>
         </div>
       </div>
-    
     </>
   )
 };
 
-export default TempHouse;
+export default LarTemporario;

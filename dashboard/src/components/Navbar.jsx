@@ -1,17 +1,14 @@
 import { useState } from "react";
-import { pages } from "../Routes/Rotas";
+import { menu as links } from "../structure/structure";
 import setaIcon from "../assets/imgs/icons/seta.png";
 import logo from "../assets/imgs/backgrounds/01.png";
-import { useLocation } from "react-router-dom";
-import { users } from "../mock.js";
+import menuIcons from "../structure/images";
 
-const Navbar = () => {
-  const user = users[0];
-  const loginName = user ? user.name : "";
+const Navbar = ({action, selected}) => {
+  const [open, setOpen] = useState(true)
 
-  const [open, setOpen] = useState(true);
   return (
-    <div className=" flex shadow-lg shadow-black w-fit max-w-md min-h-[1000px] max-h-[100000000px]">
+    <div className=" flex z-10 shadow-lg h-screen shadow-black w-fit">
       <div
         className={` ${
           open ? "w-72" : "w-20 "
@@ -24,52 +21,41 @@ const Navbar = () => {
           onClick={() => setOpen(!open)}
         />
         <div className="flex gap-x-4 items-center">
-          <a
-            className={`w-[23%] cursor-pointer duration-500 ${
+          <div
+            className={`w-[23%] duration-500 ${
               open && "rotate-[360deg]"
             }`}
-            href="/"
           >
             <img src={logo} />
-          </a>
+          </div>
           {/*  */}
           <div className={` duration-200 ${!open && "scale-0"}`}>
             {" "}
             <p className="text-white">Bem-Vindo</p>
             <h1 className="text-white origin-left font-medium text-xl">
-              {loginName}
+              Usuario Nome
             </h1>
           </div>
         </div>
-        <ul className="pt-6">
-          {pages.map((page, index) =>
-            index === 0 || index === 1 ? null : (
-              <li key={index}>
-                <a
-                  href={page.path}
-                  className={`flex  rounded-md p-2 cursor-pointer hover:bg-indigo-900 hover:font-semibold text-white text-lg items-center gap-x-4 mt-9`}
-                >
-                  <img src={page.img} />
-                  <span
-                    className={`${!open && "hidden"} origin-left duration-200`}
-                  >
-                    {page.title}
-                  </span>
-                </a>
-              </li>
+        <div className="pt-6">
+          {links.map((link, i) => {
+            const formatedName = link.replace(' ', '');
+            const isSelected = formatedName === selected 
+
+            const handleClick = () => action(formatedName);
+
+            return (
+              <div 
+                key={'link-' + i}
+                onClick={handleClick}
+                className={`${isSelected && "bg-indigo-900" } flex rounded-md p-2 cursor-pointer hover:bg-indigo-900 hover:font-semibold text-white text-lg items-center gap-3.5 mt-3.5`} >
+                <img src={menuIcons[formatedName]} />
+                { !!open && <p>{link}</p> }
+              </div>
             )
-          )}
-        </ul>
-        <div className="-">
-          <a href="/Login">Sair </a>
-          <a href="/Settings"> Settings</a>
+            })}
         </div>
       </div>
-      {/* <div className="h-screen w-0 flex-1">
-        <h1 className="text-black text-4xl font-semibold">{pageTitle}</h1>
-        <br />
-        {/* <button><a href={subPath}>{subPage}</a></button> 
-      </div> */}
     </div>
   );
 };
