@@ -12,6 +12,13 @@ export const menuTopics = [
   'Apoiadores',
 ]
 
+export const NewUser = [
+  {title: 'Nome', maxLength: 15, type: 'default'},
+  {title: 'Email', maxLength: 35, type: 'default'},
+  {title: 'Telefone', maxLength: 17, type: 'numeric'},
+  {title: 'Cidade', maxLength: 15, type: 'default'},
+  {title: 'CEP', maxLength: 9, type: 'numeric'},
+]
 
 export const ResgateDenuncia = [
   {title: 'Animal', maxLength: 15, type: 'default'},
@@ -30,7 +37,6 @@ export const events = [
   {title: 'Data', maxLength: 8, type: 'numeric'},
   {title: 'Horário', maxLength: 5, type: 'numeric'},
 ]
-
 
 export const news = [
   {

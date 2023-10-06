@@ -1,17 +1,27 @@
 {
   "name": "backend",
   "version": "1.0.0",
-  "description": "",
-  "main": "index.js",
+  "description": "Hey Pet API built with Express + Sequelize + MySQL",
+  "main": "src/server.js",
   "scripts": {
     "prestart": "npx sequelize-cli db:migrate && npx sequelize-cli db:seed:all",
     "start": "node src/server.js",
     "dev": "nodemon --watch src -r dotenv/config src/server.js",
     "populate": "npx sequelize-cli db:migrate && npx sequelize-cli db:seed:all",
     "clean": "npx sequelize-cli db:seed:undo:all && npx sequelize-cli db:migrate:undo:all",
-    "drop": "npx sequelize-cli db:drop"
+    "drop": "npx sequelize-cli db:drop",
+    "deploy": "firebase deploy --only functions:api"
   },
-  "keywords": [],
+  "engines": {
+    "node": "18"
+  },
+  "keywords": [
+    "nodejs",
+    "express",
+    "sequelize",
+    "mysql",
+    "javascript"
+  ],
   "author": "Vincenzo F. Di Giacomo",
   "license": "ISC",
   "dependencies": {
