@@ -1,3 +1,4 @@
+
 1. Crie o arquivo '.sequelizerc'
 
 ```
