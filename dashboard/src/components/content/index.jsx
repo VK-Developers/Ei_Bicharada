@@ -3,6 +3,7 @@ import Resgate from './Resgate';
 import Eventos from './Eventos';
 import Noticias from './Noticias';
 import LarTemporario from './LarTemporario';
+import Adocao from './Adocao';
 
 export default {
     Denuncia: <Denuncia />,
@@ -10,4 +11,5 @@ export default {
     Eventos: <Eventos />,
     Noticias: <Noticias />,
     LarTemporario: <LarTemporario />,
+    Adocao: <Adocao />
 }

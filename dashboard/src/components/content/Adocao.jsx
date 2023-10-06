@@ -1,18 +1,15 @@
+import React from 'react';
 
-import Navbar from "../components/Navbar";
-
-const Denuncia = () => {
+const Adocao = () => {
   return (
-<>
-  <Navbar />
-      
-  <div className="flex-auto w-full">
-      <div className=" absolute text-center mx-[23%] m-7 p-8 w-5/12 max-h-full rounded-md shadow-black shadow-2xl bg-indigo-200">
-          <h2 className=" font-bold text-4xl">Formulário de Denuncia</h2>
+    <>
+      <div className="flex-auto w-full">
+      <div className=" absolute text-center mx-[20%] m-7 p-8 w-5/12 max-h-full rounded-md shadow-black shadow-2xl bg-indigo-200">
+          <h2 className=" font-bold text-4xl">Adoção</h2>
           <br />
           <form className="font-semibold m-2" action="">
             <label className="text-2xl m-4" htmlFor="">
-              Animal{" "}
+              Nome do Animal{" "}
             </label>
             <br />
             <input
@@ -21,25 +18,12 @@ const Denuncia = () => {
               name="animal"
             />
             <br /> <br />
-            <label className="text-2xl" htmlFor="">
-              Esta se Movendo?
-            </label>
+            <label className='text-2xl' htmlFor="">Inserir Foto</label>
             <br />
-            <label className="text-xl" htmlFor="">
-              Sim{" "}
-            </label>
-            <input type="checkbox" name="trueMove" id="trueMove" />
-            <label className="text-xl pl-4" htmlFor="">
-              Não{" "}
-            </label>
-            <input type="checkbox" name="falseMove" id="falseMove" />
-            <br /> <br />
-            <label htmlFor="">Inserir Foto</label>
-            <br />
-            <input type="file" name="imagem" />
+            <input className='mt-2' type="file" name="imagem" />
             <br />
             <br />
-            <label htmlFor="">Ocorrido</label>
+            <label className='text-2xl' htmlFor="">Descrição</label>
             <br />
             <textarea
               className="rounded-md shadow-lg max-h-26 border-black border-[0.20px]"
@@ -48,17 +32,7 @@ const Denuncia = () => {
               cols="30"
               rows="5"
             ></textarea>
-            <br /> 
-            <label className="text-2xl" htmlFor="">
-              Horário
-            </label>
-            <br />
-            <input
-              className=" rounded-md shadow-lg mt-2 border-black border-[0.20px]"
-              type="time"
-              name="horario"
-            />
-            <br /> <br />
+            <br /><br />
             <label className="text-2xl" htmlFor="">
               Endereço
             </label>
@@ -100,8 +74,9 @@ const Denuncia = () => {
           </form>
         </div>
       </div>
-</>
-  );
+    
+    </>
+  )
 };
 
-export default Denuncia;
+export default Adocao;
