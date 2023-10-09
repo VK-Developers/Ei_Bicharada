@@ -1,6 +1,6 @@
 const express = require("express");
 require("express-async-errors");
-const { user, rescue, product, login } = require("./routes");
+const { user, rescue, product, login, adoption } = require("./routes");
 
 const { cors } = require("./tools");
 const { errorHandler } = require("./middlewares");

@@ -14,33 +14,18 @@ module.exports = {
         allowNull: false,
         type: Sequelize.STRING
       },
-      price: {
-        allowNull: false,
-        type: Sequelize.FLOAT
-      },
       description: {
         allowNull: false,
         type: Sequelize.STRING
-      },
-      inStock: {
-        allowNull: false,
-        type: Sequelize.BOOLEAN,
-        field: 'in_stock'
       },
       picture: {
         allowNull: false,
         type: Sequelize.STRING
       },
-      createdAt: {
+      created: {
         allowNull: false,
         type: Sequelize.DATE,
-        field: 'created_at'
       },
-      updatedAt: {
-        allowNull: false,
-        type: Sequelize.DATE,
-        field: 'updated_at'
-      }
     });
   },
 
