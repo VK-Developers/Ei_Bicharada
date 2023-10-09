@@ -7,10 +7,9 @@
     "prestart": "npx sequelize-cli db:migrate && npx sequelize-cli db:seed:all",
     "start": "node src/server.js",
     "dev": "nodemon --watch src -r dotenv/config src/server.js",
-    "populate": "npx sequelize-cli db:migrate && npx sequelize-cli db:seed:all",
+    "populate": "npx sequelize-cli db:create && npx sequelize-cli db:migrate && npx sequelize-cli db:seed:all",
     "clean": "npx sequelize-cli db:seed:undo:all && npx sequelize-cli db:migrate:undo:all",
-    "drop": "npx sequelize-cli db:drop",
-    "deploy": "firebase deploy --only functions:api"
+    "drop": "npx sequelize-cli db:drop"
   },
   "engines": {
     "node": "18"

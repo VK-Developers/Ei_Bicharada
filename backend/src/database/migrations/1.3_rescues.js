@@ -38,9 +38,13 @@ module.exports = {
         allowNull: false,
         type: Sequelize.STRING
       },
-      status: {
+      accepted: {
         allowNull: false,
-        type: Sequelize.TINYINT
+        type: Sequelize.BOOLEAN
+      },
+      newRequest: {
+        allowNull: false,
+        type: Sequelize.BOOLEAN
       },
       created: {
         allowNull: false,

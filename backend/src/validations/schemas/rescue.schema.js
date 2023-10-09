@@ -9,6 +9,7 @@ module.exports = {
         adress: Joi.string().min(8).required(),
         city: Joi.string().min(4).required(),
         picture: Joi.string().required(),
-        status: Joi.number().valid(0, 1).required()
+        accepted: Joi.bool(),
+        newRequest: Joi.bool(),
     }),
 }

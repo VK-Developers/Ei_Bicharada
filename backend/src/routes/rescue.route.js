@@ -1,7 +1,7 @@
 const { Router } = require('express');
-const { rescue: constroller } = require('../controllers')
+const { rescue: controller } = require('../controllers')
 
-const { getAll, getById, update, create, destroy } = constroller;
+const { getAll, getById, update, create, destroy } = controller;
 
 const rescue = Router();
 

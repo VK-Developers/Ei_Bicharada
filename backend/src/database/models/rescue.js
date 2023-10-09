@@ -17,7 +17,8 @@ module.exports = (sequelize, DataTypes) => {
     adress: DataTypes.STRING,
     city: DataTypes.STRING,
     picture: DataTypes.STRING,
-    status: DataTypes.TINYINT,
+    accepted: DataTypes.BOOLEAN,
+    newRequest: DataTypes.BOOLEAN,
   }, {
     sequelize,
     modelName: 'rescue',

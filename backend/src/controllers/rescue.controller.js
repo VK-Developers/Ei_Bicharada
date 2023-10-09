@@ -2,7 +2,7 @@ const { rescue: service } = require('../services');
 
 module.exports = {
     getAll: async (_req, res, _next) => {
-        const {result, status} = await service.getAll();
+        const {status, result} = await service.getAll();
         return res.status(status).json(result);
     },
     getById: async (req, res, _next) => {

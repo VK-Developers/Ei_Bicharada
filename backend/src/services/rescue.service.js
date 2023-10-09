@@ -3,18 +3,18 @@ const { rescue: validation } = require('../validations')
 
 module.exports = {
     getAll: async () => {
-        const rescue = await models.rescue.findAll({
+        const result = await models.rescue.findAll({
             attributes: { exclude: ['userId'] }
         });
 
-        return {status: 200, result: rescue};
+        return {status: 200, result};
     },
     getById: async (id) => {
         const rescue = await models.rescue.findByPk(id, {
             include: {
                 model: models.user, 
                 as: 'user',
-                attributes: { exclude: ['id', 'created'] }
+                attributes: { exclude: ['id', 'accepted', 'created'] }
             },
             attributes: { 
                 exclude: ['userId']
@@ -35,7 +35,12 @@ module.exports = {
     },
     create: async(obj) => {
         const validatedObj = await validation.new(obj)
-        const newRescue = await models.rescue.create(validatedObj);
+
+        const newRescue = await models.rescue.create({
+            ...validatedObj,
+            accepted: false,
+            newRequest: true
+        });
         return {status: 201, result: newRescue};
     },
     destroy: async(id) => {
