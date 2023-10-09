@@ -15,10 +15,6 @@ module.exports = (sequelize, DataTypes) => {
       type: DataTypes.BOOLEAN,
       field: 'in_stock'
     },
-    qrCode: {
-      type: DataTypes.STRING,
-      field: 'qr_code'
-    },
     picture: DataTypes.STRING,
   }, {
     sequelize,

@@ -9,12 +9,16 @@ const api = express();
 api.use(express.json());
 api.use(cors);
 
-// Login Route
 api.use("/login", login);
-// Usage Routes
 api.use("/users", user);
+// api.use("/adoptions", adoption);
+// api.use("/lost-animals", lostAnimal);
 api.use("/rescues", rescue);
+// api.use("/complaints", complaint);
+// api.use("/home", home);
 api.use("/products", product);
+// api.use("/news-events", newEvent);
+// api.use("/sponsors", sponsors);
 
 api.use(errorHandler);
 
