@@ -1,18 +1,71 @@
 const Resgate = () => {
   return (
     <>
-
-        <div className="bg-gray-700 flex-row h-10">
-        <input type="time" name="" id="" className="space-y-3 rounded-md shadow-lg border-black border-[0.20px]" />
-        <input type="time" name="" id="" className="space-y-3 rounded-md shadow-lg border-black border-[0.20px]" />
+      <div className="flex-col flex">
+        <div className="bg-gray-700 space-x-2 h-10 ">
+        <input type="text" name="animal" id="animal" placeholder="Animal" 
+                className="w-4/12 space-y-3 rounded-md shadow-lg border-black border-[0.20px]"
+        />
+          <input type="time" name="horario" id="horario"
+                 className="space-y-3 rounded-md shadow-lg border-black border-[0.20px]"
+          />
+          <input
+            type="date" name="data" id="data"
+            className="space-y-3 rounded-md shadow-lg border-black border-[0.20px]"
+          />
         </div>
-        <div className="bg-orange-700 flex-row">
-
+        <div className="bg-gray-700 space-x-2 h-10 ">
+        <input type="text" name="animal" id="animal" placeholder="Animal" 
+                className="w-4/12 space-y-3 rounded-md shadow-lg border-black border-[0.20px]"
+        />
+          <input type="time" name="horario" id="horario"
+                 className="space-y-3 rounded-md shadow-lg border-black border-[0.20px]"
+          />
+          <input
+            type="date" name="data" id="data"
+            className="space-y-3 rounded-md shadow-lg border-black border-[0.20px]"
+          />
         </div>
-        <div className="bg-gray-700 flex-row">
-
+        <div className="bg-gray-700 space-x-2 h-10 ">
+        <input type="text" name="animal" id="animal" placeholder="Animal" 
+                className="w-4/12 space-y-3 rounded-md shadow-lg border-black border-[0.20px]"
+        />
+          <input type="time" name="horario" id="horario"
+                 className="space-y-3 rounded-md shadow-lg border-black border-[0.20px]"
+          />
+          <input
+            type="date" name="data" id="data"
+            className="space-y-3 rounded-md shadow-lg border-black border-[0.20px]"
+          />
         </div>
+        <div className="bg-gray-700 space-x-2 h-10 ">
+        <input type="text" name="animal" id="animal" placeholder="Animal" 
+                className="w-4/12 space-y-3 rounded-md shadow-lg border-black border-[0.20px]"
+        />
+          <input type="time" name="horario" id="horario"
+                 className="space-y-3 rounded-md shadow-lg border-black border-[0.20px]"
+          />
+          <input
+            type="date" name="data" id="data"
+            className="space-y-3 rounded-md shadow-lg border-black border-[0.20px]"
+          />
+        </div>
+        <div className="bg-gray-700 space-x-2 h-10 ">
+        <input type="text" name="animal" id="animal" placeholder="Animal" 
+                className="w-4/12 space-y-3 rounded-md shadow-lg border-black border-[0.20px]"
+        />
+          <input type="time" name="horario" id="horario"
+                 className="space-y-3 rounded-md shadow-lg border-black border-[0.20px]"
+          />
+          <input
+            type="date" name="data" id="data"
+            className="space-y-3 rounded-md shadow-lg border-black border-[0.20px]"
+          />
+        </div>
+      </div>
 
+      <div className="bg-orange-700 flex-row"></div>
+      <div className="bg-gray-700 flex-row"></div>
     </>
   );
 };
