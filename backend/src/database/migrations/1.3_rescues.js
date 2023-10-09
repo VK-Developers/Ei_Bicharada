@@ -8,9 +8,9 @@ module.exports = {
         allowNull: false,
         autoIncrement: true,
         primaryKey: true,
-        type: Sequelize.INTEGER
+        type: Sequelize.INTEGER,
       },
-      name: {
+      animal: {
         allowNull: false,
         type: Sequelize.STRING
       },
@@ -38,6 +38,14 @@ module.exports = {
         allowNull: false,
         type: Sequelize.STRING
       },
+      accepted: {
+        allowNull: false,
+        type: Sequelize.BOOLEAN
+      },
+      newRequest: {
+        allowNull: false,
+        type: Sequelize.BOOLEAN
+      },
       created: {
         allowNull: false,
         type: Sequelize.DATE,
@@ -46,6 +54,6 @@ module.exports = {
   },
 
   down: async (queryInterface, _Sequelize) => {
-    await queryInterface.dropTable('rescue');
+    await queryInterface.dropTable('rescues');
   }
 };

@@ -16,7 +16,7 @@ module.exports = async (data) => {
     if (founded.password === password) {
       const userData = await models.user.findOne({ where: { email } });
       const token = createToken(userData);
-      return { status: 400, token }
+      return { status: 200, token }
     };
     return reject;
   };

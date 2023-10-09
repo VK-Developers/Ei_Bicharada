@@ -1,7 +1,7 @@
 const { rescue: schema } = require('./schemas');
 
 module.exports = {
-    toAdd: async (content) => {
+    new: async (content) => {
         const result = await schema.create.validateAsync(content);
         return result;
     }

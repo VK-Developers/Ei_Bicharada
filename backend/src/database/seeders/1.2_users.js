@@ -10,6 +10,7 @@ module.exports = {
         phone: '+55 13 9999-9999',
         city: 'Santos',
         cep: '18274-635',
+        accepted: true,
         created: new Date(),
       },
       {
@@ -18,6 +19,7 @@ module.exports = {
         phone: '+55 13 9999-9999',
         city: 'Sao Vicente',
         cep: '13244-633',
+        accepted: true,
         created: new Date(),
       },
       {
@@ -26,6 +28,7 @@ module.exports = {
         phone: '+55 13 9999-9999',
         city: 'Araras',
         cep: '78374-730',
+        accepted: true,
         created: new Date(),
       }
     ], {});

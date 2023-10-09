@@ -27,11 +27,6 @@ module.exports = {
         type: Sequelize.BOOLEAN,
         field: 'in_stock'
       },
-      qrCode: {
-        allowNull: false,
-        type: Sequelize.STRING,
-        field: 'qr_code'
-      },
       picture: {
         allowNull: false,
         type: Sequelize.STRING
