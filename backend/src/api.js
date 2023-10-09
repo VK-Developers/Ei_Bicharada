@@ -11,7 +11,7 @@ api.use(cors);
 
 api.use("/login", login);
 api.use("/users", user);
-// api.use("/adoptions", adoption);
+api.use("/adoptions", adoption);
 // api.use("/lost-animals", lostAnimal);
 api.use("/rescues", rescue);
 // api.use("/complaints", complaint);
