@@ -10,7 +10,7 @@ const Home = () => {
       <Navbar action={setContent} selected={content} />
       <div className='flex-col flex flex-grow'>
         <Header />
-        <div className='bg-red-800 flex-grow'>
+        <div className='flex-grow'>
         { Content[content] }
       </div>
       </div>
