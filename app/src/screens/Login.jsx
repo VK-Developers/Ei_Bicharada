@@ -1,4 +1,4 @@
-import React, {useEffect} from 'react';
+import React, { useEffect } from 'react';
 import { StyleSheet, KeyboardAvoidingView, View, TouchableOpacity, Dimensions, ImageBackground, Image, Text, ScrollView } from 'react-native';
 import images from '../localized/images';
 import InputText from '../component/login/TextInput';
@@ -8,6 +8,8 @@ import strings from '../localized/strings';
 import Footer from '../component/footer';
 
 const { height, width } = Dimensions.get('window');
+
+import { getUsers } from '../services/getRequest';
 
 function Login() {
   return (

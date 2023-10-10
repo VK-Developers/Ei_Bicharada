@@ -6,7 +6,7 @@ import { Text, TouchableOpacity, StyleSheet } from 'react-native';
 import { postLogin } from '../../services/postRequest';
 
 export default function Buttom({title, type}) {
-  const { login, setLogin } = useContext(Context);
+  const { login, setLogin, setToken } = useContext(Context);
   const {navigate} = useNavigation();
 
     const handlePress = async () => {
@@ -14,9 +14,8 @@ export default function Buttom({title, type}) {
       const {status, ...inputValue} = login
 
       const logIn = await postLogin(inputValue)
-
       if (!!logIn.token) {
-        // colocar toke em cache
+        setToken(logIn.token)
         navigate('Cover')
         return
       };

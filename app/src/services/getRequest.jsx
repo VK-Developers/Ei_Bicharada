@@ -3,7 +3,7 @@ import handleRequestError from "../hooks/handleRequestError";
 
 export const getRescuedAnimals = async () => {
   try {
-    const { data } = await api.get('/rescue');
+    const { data } = await api.get('/rescues');
     return data
   } catch (error) {
     const errorResponse = handleRequestError(error)
@@ -23,7 +23,7 @@ export const getProducts = async () => {
 
 export const getUsers = async () => {
   try {
-    const { data } = await api.get('/user');
+    const { data } = await api.get('/users');
     return data
   } catch (error) {
     const errorResponse = handleRequestError(error)
