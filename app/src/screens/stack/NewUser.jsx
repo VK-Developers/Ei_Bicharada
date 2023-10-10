@@ -1,39 +1,38 @@
-import React, {useRef, useState, useEffect} from 'react';
-import { StyleSheet, View, ScrollView, Dimensions, TouchableOpacity, Text } from 'react-native';
+import React, {useRef, useState, useEffect, useContext} from 'react';
+import Context from '../../context/Context';
+import { StyleSheet, View, ScrollView, TouchableOpacity, Text } from 'react-native';
 //Components
 import TextInput from '../../component/textInput';
 // import CheckboxInput from '../../component/checkboxInput';
 import Background from '../../component/background';
 import { NewUser as arrayText } from '../../localized/structures';
-// import str from '../../localized/strings';
+import str from '../../localized/strings';
 import validateForms from '../../hooks/validateForms';
 
-function NewUser({navigation, route: { params }}) {
+import { postUser } from '../../services/postRequest';
+
+
+function NewUser({navigation}) {
+  const { setLogin } = useContext(Context)
   const [listiner, setLister] = useState({});
-  const [modal, setModal] = useState(false);
+  const [isButtonVisible, setIsButtonVisible] = useState(true);
   const [sendForms, setSendForms] = useState(false);
   const scrollViewRef = useRef();
 
   useEffect(() => {
     const canSendIt = validateForms(listiner, 3);
     setSendForms(canSendIt)
-
-    console.log(listiner)
   }, [listiner]);
 
-  const handlePress = () => {
-    navigation.navigate('Login')
+  const handlePress = async () => {
+    const addUser = await postUser(listiner);
+    setLogin(prev => ({...prev, email: listiner.email, status: true}))
+    navigation.navigate('Login');
   }
 
   return (
     <>
       <Background img={'tree'} />
-      {/* <Sent 
-        show={modal}
-        action={setModal}
-        nav={navigation}
-        text={str.modal.resgate}
-      /> */}
       <ScrollView ref={scrollViewRef} extraScrollHeight={20} keyboardShouldPersistTaps="handled">
         <View style={styles.container}>
               { 
@@ -44,15 +43,18 @@ function NewUser({navigation, route: { params }}) {
                       info={text}
                       action={setLister}
                       baseRef={scrollViewRef}
+                      btn={setIsButtonVisible}
                     />
                   )
                 })
               }
         </View>
       </ScrollView>
-      <TouchableOpacity style={styles.submitBtn} onPress={handlePress}>
-          <Text style={styles.submitBtn.text}>CRIAR CONTA</Text>
-      </TouchableOpacity>
+      {isButtonVisible && (
+        <TouchableOpacity disabled={!sendForms} style={[styles.submitBtn, !sendForms && { backgroundColor: 'gray' }]} onPress={handlePress}>
+            <Text style={styles.submitBtn.text}>{str.createAccount}</Text>
+        </TouchableOpacity>
+      )}
     </>
   );
 }

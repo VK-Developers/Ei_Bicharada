@@ -1,4 +1,4 @@
-import React, { useEffect } from 'react';
+import React from 'react';
 import { StyleSheet, KeyboardAvoidingView, View, TouchableOpacity, Dimensions, ImageBackground, Image, Text, ScrollView } from 'react-native';
 import images from '../localized/images';
 import InputText from '../component/login/TextInput';
@@ -8,8 +8,6 @@ import strings from '../localized/strings';
 import Footer from '../component/footer';
 
 const { height, width } = Dimensions.get('window');
-
-import { getUsers } from '../services/getRequest';
 
 function Login() {
   return (
@@ -23,8 +21,8 @@ function Login() {
               <Text style={styles.title}>{strings.appTitle}</Text>
             </View>
             <View style={styles.login}>
-              <InputText type={'email'} title={strings.login[0]} placeholder={strings.login[1]}/>
-              <InputText type={'password'} title={strings.password[0]} placeholder={strings.password[1]}/>
+              <InputText type={'email'} title={strings.login[0]} placeholder={strings.login[1]} />
+              <InputText type={'password'} title={strings.password[0]} placeholder={strings.password[1]} />
             </View>
             <View style={styles.submit}>
               <Buttom type={'login'} title={strings.signIn}/>

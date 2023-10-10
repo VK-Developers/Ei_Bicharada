@@ -15,11 +15,20 @@ export const postLogin = async (obj) => {
 };
 
 export const postUser = async (obj) => {
+  const format = {
+    name: obj.nome,
+    email: obj.email,
+    phone: obj.telefone,
+    city: obj.cidade,
+    cep: obj.cep,
+    accepted: false
+  }
   try {
-    const { data } = await api.post('/users', obj);
+    const result = await api.post('/users', {});
 
-    console.log(data)
-    
+    console.log(result)
+
+    return
   } catch (error) {
     const errorResponse = handleRequestError(error);
     return errorResponse;
