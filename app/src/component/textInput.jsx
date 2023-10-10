@@ -115,6 +115,7 @@ function InputText({info, baseRef, action, btn}) {
             : 
             setText }
           value={text}
+          secureTextEntry={ title === 'Senha' || title === 'Novamente' && true }
           style={occurrence ? styles.occurrence.input : styles.input}
         />
     </View>

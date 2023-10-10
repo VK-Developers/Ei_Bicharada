@@ -18,6 +18,8 @@ export const NewUser = [
   {title: 'Telefone', maxLength: 17, type: 'numeric'},
   {title: 'Cidade', maxLength: 15, type: 'default'},
   {title: 'CEP', maxLength: 9, type: 'numeric'},
+  {title: 'Senha', maxLength: 9, type: 'default'},
+  {title: 'Novamente', maxLength: 9, type: 'default'},
 ]
 
 export const ResgateDenuncia = [

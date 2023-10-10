@@ -3,17 +3,15 @@ import Context from '../../context/Context';
 import { StyleSheet, View, ScrollView, TouchableOpacity, Text } from 'react-native';
 //Components
 import TextInput from '../../component/textInput';
-// import CheckboxInput from '../../component/checkboxInput';
 import Background from '../../component/background';
 import { NewUser as arrayText } from '../../localized/structures';
 import str from '../../localized/strings';
 import validateForms from '../../hooks/validateForms';
 
-import { postUser } from '../../services/postRequest';
-
+// import { postUser } from '../../services/postRequest';
 
 function NewUser({navigation}) {
-  const { setLogin } = useContext(Context)
+  const { setLogin } = useContext(Context);
   const [listiner, setLister] = useState({});
   const [isButtonVisible, setIsButtonVisible] = useState(true);
   const [sendForms, setSendForms] = useState(false);
@@ -21,12 +19,16 @@ function NewUser({navigation}) {
 
   useEffect(() => {
     const canSendIt = validateForms(listiner, 3);
-    setSendForms(canSendIt)
+    setSendForms(canSendIt);
   }, [listiner]);
 
   const handlePress = async () => {
-    const addUser = await postUser(listiner);
-    setLogin(prev => ({...prev, email: listiner.email, status: true}))
+    // const addUser = await postUser(listiner);
+    setLogin(prev => ({
+      ...prev,
+      email: listiner.email,
+      status: true
+    }));
     navigation.navigate('Login');
   }
 
@@ -51,7 +53,11 @@ function NewUser({navigation}) {
         </View>
       </ScrollView>
       {isButtonVisible && (
-        <TouchableOpacity disabled={!sendForms} style={[styles.submitBtn, !sendForms && { backgroundColor: 'gray' }]} onPress={handlePress}>
+        <TouchableOpacity 
+          disabled={!sendForms} 
+          onPress={handlePress}
+          style={[styles.submitBtn, !sendForms && { backgroundColor: 'gray' }]} 
+        >
             <Text style={styles.submitBtn.text}>{str.createAccount}</Text>
         </TouchableOpacity>
       )}

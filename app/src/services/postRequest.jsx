@@ -1,3 +1,5 @@
+import axios from 'axios';
+
 import api from "./api";
 import handleRequestError from "../hooks/handleRequestError";
 
@@ -21,11 +23,12 @@ export const postUser = async (obj) => {
     phone: obj.telefone,
     city: obj.cidade,
     cep: obj.cep,
+    password: obj.senha,
     accepted: false
   }
   try {
-    const result = await api.post('/users', {});
-
+    // const result = await api.post('/users/', {});
+    const result = await axios.post('193.203.183.47:3001/users', format);
     console.log(result)
 
     return
