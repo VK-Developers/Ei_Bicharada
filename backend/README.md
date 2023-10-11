@@ -27,3 +27,7 @@ module.exports = {
 **Populating DB:** `npx sequelize-cli db:seed:all`
 
 
+ROUTES MISSING:
+
+LAR TEMPORARIO
+APOIADORES

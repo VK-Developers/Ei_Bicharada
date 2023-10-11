@@ -2,31 +2,19 @@
 
 /** @type {import('sequelize-cli').Migration} */
 module.exports = {
-  up: async (queryInterface, Sequelize) => {
-    await queryInterface.createTable('rescues', {
+  async up (queryInterface, Sequelize) {
+    await queryInterface.createTable('homes', {
       id: {
         allowNull: false,
         autoIncrement: true,
         primaryKey: true,
         type: Sequelize.INTEGER,
       },
-      animal: {
+      name: {
         allowNull: false,
         type: Sequelize.STRING
       },
-      walking: {
-        allowNull: false,
-        type: Sequelize.BOOLEAN
-      },
-      description: {
-        allowNull: false,
-        type: Sequelize.STRING
-      },
-      hour: {
-        allowNull: false,
-        type: Sequelize.STRING
-      },
-      adress: {
+      phone: {
         allowNull: false,
         type: Sequelize.STRING
       },
@@ -34,17 +22,13 @@ module.exports = {
         allowNull: false,
         type: Sequelize.STRING
       },
-      picture: {
+      animal: {
         allowNull: false,
         type: Sequelize.STRING
       },
-      accepted: {
+      period: {
         allowNull: false,
-        type: Sequelize.BOOLEAN
-      },
-      newRequest: {
-        allowNull: false,
-        type: Sequelize.BOOLEAN
+        type: Sequelize.STRING
       },
       created: {
         allowNull: false,
@@ -53,7 +37,7 @@ module.exports = {
     });
   },
 
-  down: async (queryInterface, _Sequelize) => {
-    await queryInterface.dropTable('rescues');
+  async down (queryInterface, _Sequelize) {
+    await queryInterface.dropTable('homes');
   }
 };

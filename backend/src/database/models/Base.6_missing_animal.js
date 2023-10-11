@@ -4,22 +4,23 @@ const {
 } = require('sequelize');
 
 module.exports = (sequelize, DataTypes) => {
-  class products extends Model {
-    // define association here
+  class missing_animals extends Model {
+    static associate(models) {
+      // define association here
+    }
   }
-  products.init({
+
+  missing_animals.init({
     name: DataTypes.STRING,
-    price: DataTypes.FLOAT,
     description: DataTypes.STRING,
-    inStock: {
-      type: DataTypes.BOOLEAN,
-      field: 'in_stock'
-    },
     picture: DataTypes.STRING,
   }, {
     sequelize,
-    modelName: 'product',
+    modelName: 'missingAnimals',
     timestamps: true,
+    updatedAt: false,
+    createdAt: 'created'
   });
-  return products;
+  
+  return missing_animals;
 };

@@ -3,7 +3,7 @@
 /** @type {import('sequelize-cli').Migration} */
 module.exports = {
   async up (queryInterface, Sequelize) {
-    await queryInterface.createTable('adoptions', {
+    await queryInterface.createTable('missing_animals', {
       id: {
         allowNull: false,
         autoIncrement: true,
@@ -22,6 +22,11 @@ module.exports = {
         allowNull: false,
         type: Sequelize.STRING
       },
+      accepted: {
+        allowNull: false,
+        type: Sequelize.BOOLEAN,
+        defaultValue: false,
+      },
       created: {
         allowNull: false,
         type: Sequelize.DATE,
@@ -30,6 +35,6 @@ module.exports = {
   },
 
   async down (queryInterface, _Sequelize) {
-    await queryInterface.dropTable('adoptions');
+    await queryInterface.dropTable('missing_animals');
   }
 };
