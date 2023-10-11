@@ -1,6 +1,6 @@
 
 1. Crie o arquivo '.sequelizerc'
- 
+
 ```
 const path = require('path');
 
