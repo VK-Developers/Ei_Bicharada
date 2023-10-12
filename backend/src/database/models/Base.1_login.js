@@ -1,12 +1,12 @@
 "use strict";
 const { Model } = require("sequelize");
 module.exports = (sequelize, DataTypes) => {
-  class login extends Model {
+  class logins extends Model {
     static associate(models) {
       // define association here
     }
   }
-  login.init(
+  logins.init(
     {
       email: DataTypes.STRING,
       password: DataTypes.STRING,
@@ -17,5 +17,5 @@ module.exports = (sequelize, DataTypes) => {
       timestamps: false,
     }
   );
-  return login;
+  return logins;
 };
