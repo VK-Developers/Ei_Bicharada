@@ -1,4 +1,4 @@
-name: Create API
+name: Create API Branch
 
 on:
   push:
@@ -6,18 +6,19 @@ on:
       - main
 
 jobs:
-  deploy:
+  create-api-branch:
     runs-on: ubuntu-latest
 
-    permissions:
-      contents: write
-
     steps:
-    - name: Checkout code
-      uses: actions/checkout@v2
+      - name: Checkout code
+        uses: actions/checkout@v2
 
-      - name: Deploy
-        uses: JamesIves/github-pages-deploy-action@4.1.1
-        with:
-          branch: api
-          folder: backend
+      - name: Copy Backend to API Branch
+        run: |
+          git checkout -b api
+          cp -r backend/* .
+          git add .
+          git commit -m "Copy backend to api branch"
+          git push origin api
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
