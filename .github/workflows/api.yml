@@ -1,0 +1,24 @@
+name: Backend Branch
+
+on:
+  push:
+    branches:
+      - main
+
+jobs:
+  copy-backend:
+    runs-on: ubuntu-latest
+
+    steps:
+    - name: Checkout code
+      uses: actions/checkout@v2
+
+    - name: Copy Backend to Branch
+      run: |
+        git checkout -b api
+        git rm -r backend/ --cached
+        git add .
+        git commit -m "Copy backend to api"
+        git push origin api
+      env:
+        GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
