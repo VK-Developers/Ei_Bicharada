@@ -1,29 +1,28 @@
-name: Create API Branch
+# name: Deploy Backend to VPS
 
-on:
-  push:
-    branches:
-      - main
+# on:
+#   push:
+#     branches:
+#       - main
 
-jobs:
-  create-api-branch:
-    runs-on: ubuntu-latest
+# jobs:
+#   deploy:
+#     runs-on: ubuntu-latest
 
-    steps:
-      - name: Set up Git identity
-        run: |
-          git config --global user.email "vincenzofdg.dev@gmail.com"
-          git config --global user.name "Vincenzofdg"
+#     steps:
+#       - name: Checkout code
+#         uses: actions/checkout@v2
+#         with:
+#           path: backend # Defina o caminho para o diretório "backend"
 
-      - name: Checkout code
-        uses: actions/checkout@v2
-
-      - name: Copy Backend to API Branch
-        run: |
-          git checkout -b api
-          cp -r backend/* .
-          git add .
-          git commit -m "Copy backend to api branch"
-          git push origin api
-        env:
-          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+#       - name: Deploy to VPS
+#         uses: appleboy/ssh-action@master
+#         with:
+#           host: ${{ secrets.SSH_HOST }}
+#           username: ${{ secrets.SSH_USERNAME }}
+#           key: ${{ secrets.SSH_PRIVATE_KEY }}
+#           script: |
+#             cd /home/hey_pet_api
+#             git pull
+#         env:
+#           SSH_AUTH_SOCK: ${{ secrets.SSH_AUTH_SOCK }}
