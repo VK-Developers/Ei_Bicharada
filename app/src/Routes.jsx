@@ -19,7 +19,7 @@ import PrestacaoDeContasScreen from './screens/stack/PrestacaoDeContas';
 import ApoiadoresScreen from './screens/stack/Apoiadores';
 // Sub Stacks
 import ProductScreen from './screens/subScreens/Product';
-import PaymentScreen from './screens/subScreens/Payment';
+// import PaymentScreen from './screens/subScreens/Payment';
 
 const Stack = createStackNavigator();
 

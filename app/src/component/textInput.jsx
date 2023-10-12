@@ -5,7 +5,7 @@ import formatKey from '../hooks/formatKey';
 
 const { width } = Dimensions.get('window');
 
-function InputText({info, baseRef, action}) {
+function InputText({info, baseRef, action, btn}) {
   const {title, maxLength, type} = info;
   const [text, setText] = useState(info.title === 'Telefone' ? '+55 ' : '');
   const inputRef = useRef();
@@ -79,12 +79,28 @@ function InputText({info, baseRef, action}) {
     initial > 3 && setText(i);
   }
 
+  const cepFormat = (i) => {
+    const initial = i.length;
+    const state = text.length;
+    
+    if (i.length === 5 && state > initial) return setText(`${i}`);
+    if (i.length === 5) return setText(`${i}-`);
+
+    setText(i);
+  }
+
   return (
     <View style={occurrence ? styles.occurrence : styles.container}>
         <Text style={styles.text}>{title}:</Text>
         <TextInput
           ref={inputRef}
-          onFocus={() => HandleScroll(inputRef, baseRef, 100)}
+          onFocus={() => {
+            !!btn && btn(false)
+            HandleScroll(inputRef, baseRef, 100)
+          }}
+          onBlur={() => {
+            !!btn && btn(true)
+          }}
           keyboardType={type}
           returnKeyType="done"
           editable
@@ -92,10 +108,14 @@ function InputText({info, baseRef, action}) {
           multiline={occurrence ? true : false}
           maxLength={maxLength}
           onChangeText={type !== 'default' ? 
-            (title === 'Data' ? dateFormat : (title === 'Telefone' ? phoneFormat : hourFormat )) 
+            (title === 'Data' ? dateFormat : (
+              title === 'Telefone' ? phoneFormat : (
+                title === 'CEP' ? cepFormat : phoneFormat
+              ))) 
             : 
             setText }
           value={text}
+          secureTextEntry={ title === 'Senha' || title === 'Novamente' && true }
           style={occurrence ? styles.occurrence.input : styles.input}
         />
     </View>

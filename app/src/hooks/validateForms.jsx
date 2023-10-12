@@ -11,15 +11,15 @@ const validateForms = (obj, i) => {
     const descricao = !!obj.descricao && obj.descricao.length >= 8;
     const cidade = !!obj.cidade && obj.cidade.length >= 4;
     const bairro = !!obj.bairro && obj.bairro.length >= 4;
-
+    const senha = !!obj.senha && obj.senha >= 8;
     const nome = !!obj.nome && obj.nome.length >= 3;
-    const email = !!obj.email && emailRegex.test(obj.email)
+    const email = !!obj.email && emailRegex.test(obj.email);
 
     const validation = {
         1: andando && horario && picture && animal && cidade && endereco && ocorrido,
         2: descricao && endereco && bairro && cidade && data && horario,
-        3: nome && email && cidade
-    }
+        3: nome && email && cidade && senha && (obj.senha === obj.novamente)
+    };
     return validation[i];
 }
 
