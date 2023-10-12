@@ -1,3 +1,5 @@
+yaml
+Copy code
 name: Create API Branch
 
 on:
@@ -10,6 +12,11 @@ jobs:
     runs-on: ubuntu-latest
 
     steps:
+      - name: Set up Git identity
+        run: |
+          git config --global user.email "vincenzofdg.dev@gmail.com"
+          git config --global user.name "Vincenzofdg"
+
       - name: Checkout code
         uses: actions/checkout@v2
 
