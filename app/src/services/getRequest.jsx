@@ -30,3 +30,23 @@ export const getUsers = async () => {
     console.error(...errorResponse);
   }
 };
+
+export const getAdoptions = async () => {
+  try {
+    const { data } = await api.get('/adoptions');
+    return data
+  } catch (error) {
+    const errorResponse = handleRequestError(error)
+    console.error(...errorResponse);
+  }
+};
+
+export const getMissing = async () => {
+  try {
+    const { data } = await api.get('/missing-animals');
+    return data
+  } catch (error) {
+    const errorResponse = handleRequestError(error)
+    console.error(...errorResponse);
+  }
+};

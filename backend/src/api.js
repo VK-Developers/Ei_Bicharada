@@ -1,6 +1,6 @@
 const express = require("express");
 require("express-async-errors");
-const { user, rescue, product, login, adoption } = require("./routes");
+const { user, rescue, product, login, adoption, missingAnimal } = require("./routes");
 
 const { cors } = require("./tools");
 const { errorHandler } = require("./middlewares");
@@ -13,9 +13,9 @@ api.use("/login", login);
 api.use("/users", user);
 
 api.use("/adoptions", adoption);
+api.use("/missing-animals", missingAnimal);
 
 
-// api.use("/lost-animals", lostAnimal);
 api.use("/rescues", rescue);
 // api.use("/complaints", complaint);
 // api.use("/home", home);

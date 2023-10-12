@@ -1,4 +1,4 @@
-const { adoption: service } = require('../services');
+const { missingAnimal: service } = require('../services');
 
 module.exports = {
     getAll: async (_req, res, _next) => {
@@ -9,5 +9,5 @@ module.exports = {
         const { id } = req.params;
         const {status, result} = await service.getById(id);
         return res.status(status).json(result);
-    },
+    }
 };

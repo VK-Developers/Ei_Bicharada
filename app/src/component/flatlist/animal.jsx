@@ -4,13 +4,13 @@ import { StyleSheet, Image, View, Text, TouchableOpacity } from 'react-native';
 import str from '../../localized/strings'
 
 function Animal({info}) {
-      const {foto, description, name} = info;
+      const {picture, description, name} = info;
 
       const handleClick = () => console.log(name)
 
       return (
             <TouchableOpacity style={styles.container} onPress={handleClick}>
-                  <Image style={styles.img} source={{uri: foto}} />
+                  <Image style={styles.img} source={{uri: picture}} />
                   <View style={styles.info}>
                         <View style={[styles.desc, {marginBottom: 5}]}>
                               <Text style={{color: 'black', fontWeight: '600', marginRight: 15}}>{str.name + ':'}</Text>

@@ -16,7 +16,8 @@ module.exports = (sequelize, DataTypes) => {
     picture: DataTypes.STRING,
   }, {
     sequelize,
-    modelName: 'missingAnimals',
+    modelName: 'missingAnimal',
+    tableName: "missing_animals",
     timestamps: true,
     updatedAt: false,
     createdAt: 'created'

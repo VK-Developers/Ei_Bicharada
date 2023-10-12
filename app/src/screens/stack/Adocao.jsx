@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { useFocusEffect } from '@react-navigation/native';
 import { StyleSheet, SafeAreaView, FlatList, View, Text } from 'react-native';
 //Components
@@ -6,17 +6,25 @@ import Footer from '../../component/footer';
 import Header from '../../component/header';
 import Background from '../../component/background'
 import Animal from '../../component/flatlist/animal';
-
 import ToggleMenu from '../../component/ToggleMenu';
 import Docao from '../../component/modals/Docao';
 import str from '../../localized/strings'
-// Most come from API
-import {animalsAdocao} from '../../mock'
+
+import { getAdoptions } from '../../services/getRequest';
 
 function Adocao({route: { params }}) {
+  const [animals, setAnimals] = useState([]);
   const [modal, setModal] = useState(false);
   const [option, setOption] = useState(false);
   const [scrollY, setScrollY] = useState(0);
+
+  useEffect(() => {
+    async function FetchData() {
+      const fetchAnimals = await getAdoptions();
+      setAnimals(fetchAnimals)
+    }
+    FetchData();
+  }, [])
 
   useFocusEffect(
     React.useCallback(() => {
@@ -36,7 +44,7 @@ function Adocao({route: { params }}) {
               <ToggleMenu level={scrollY} />
               <SafeAreaView style={styles.container}>
                 <FlatList 
-                  data={animalsAdocao}
+                  data={animals}
                   renderItem={renderComponente}
                   keyExtractor={({id}) => 'adopt-' + id}
                   onScroll={(event) => setScrollY(event.nativeEvent.contentOffset.y)}
