@@ -1,8 +1,17 @@
 const models = require('../database/models');
 
 module.exports = {
-    getAll: async () => {
-        const result = await models.adoption.findAll();
+    getAll: async (accepted) => {
+        if (accepted === undefined) {
+            const result = await models.adoption.findAll();
+            return {status: 200, result};
+        }
+        
+        const result = await models.adoption.findAll({
+            where: {
+                accepted: JSON.parse(accepted)
+              }
+        });
 
         return {status: 200, result};
     },

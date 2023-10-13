@@ -1,8 +1,10 @@
-import React from 'react';
+import React, {useState} from 'react';
 import { StyleSheet, KeyboardAvoidingView, View, TouchableOpacity, Dimensions, ImageBackground, Image, Text, ScrollView } from 'react-native';
 import images from '../localized/images';
 import InputText from '../component/login/TextInput';
 import Buttom from '../component/login/Buttom';
+import Background from '../component/background';
+import Loader from '../component/Loader';
 
 import strings from '../localized/strings';
 import Footer from '../component/footer';
@@ -10,9 +12,10 @@ import Footer from '../component/footer';
 const { height, width } = Dimensions.get('window');
 
 function Login() {
-  return (
+  const [loader, setLoader] = useState(false)
+  return !loader ? (
     <>
-      <ImageBackground source={images.backgrounds.five} resizeMode="cover" style={styles.background} />
+      <Background img={'five'} />
       <KeyboardAvoidingView style={styles.page}>
         <ScrollView keyboardShouldPersistTaps="always">
           <View>
@@ -25,7 +28,7 @@ function Login() {
               <InputText type={'password'} title={strings.password[0]} placeholder={strings.password[1]} />
             </View>
             <View style={styles.submit}>
-              <Buttom type={'login'} title={strings.signIn}/>
+              <Buttom type={'login'} title={strings.signIn} action={setLoader} />
               <TouchableOpacity style={{margin: 10}}>
                 <Text style={styles.resetPassword}>{strings.passwordForgot}</Text>
               </TouchableOpacity>
@@ -36,7 +39,13 @@ function Login() {
         </ScrollView>
       </KeyboardAvoidingView>
     </>
-  );
+  ) :
+  (
+    <>
+      <Background img={'five'} />
+      <Loader />
+    </>
+  )
 }
 
 const styles = StyleSheet.create({

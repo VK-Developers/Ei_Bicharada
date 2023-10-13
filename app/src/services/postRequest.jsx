@@ -24,14 +24,12 @@ export const postUser = async (obj) => {
     city: obj.cidade,
     cep: obj.cep,
     password: obj.senha,
-    accepted: false
   }
+  
   try {
-    // const result = await api.post('/users/', {});
-    const result = await axios.post('193.203.183.47:3001/users', format);
-    console.log(result)
-
-    return
+    const request = await api.post('/users', format);
+    
+    return request.status
   } catch (error) {
     const errorResponse = handleRequestError(error);
     return errorResponse;

@@ -8,7 +8,7 @@ import { NewUser as arrayText } from '../../localized/structures';
 import str from '../../localized/strings';
 import validateForms from '../../hooks/validateForms';
 
-// import { postUser } from '../../services/postRequest';
+import { postUser } from '../../services/postRequest';
 
 function NewUser({navigation}) {
   const { setLogin } = useContext(Context);
@@ -23,7 +23,13 @@ function NewUser({navigation}) {
   }, [listiner]);
 
   const handlePress = async () => {
-    // const addUser = await postUser(listiner);
+    const addUser = await postUser(listiner);
+
+    if (addUser !== 201) {
+      console.log('ai')
+      return
+    }
+
     setLogin(prev => ({
       ...prev,
       email: listiner.email,

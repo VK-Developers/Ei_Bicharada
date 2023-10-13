@@ -18,7 +18,7 @@ module.exports = {
     },
     create: async (req, res, _next) => {
         const {password, ...userData} = req.body;
-
+        
         const {status, msg} = await service.create(userData, password);
 
         return res.status(status).json(msg);

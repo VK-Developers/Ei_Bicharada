@@ -2,7 +2,7 @@ import React from 'react';
 import {Modal, StyleSheet, Text, Pressable, View} from 'react-native';
 import str from '../../localized/strings'
 
-const Docao = ({show, action, option}) => {
+const Adocao = ({show, action, option}) => {
     const handlePress = (param) => {
         option(param)
         action(!show);
@@ -90,4 +90,4 @@ const styles = StyleSheet.create({
     },
 });
 
-export default Docao;
+export default Adocao;

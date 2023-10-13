@@ -7,8 +7,8 @@ import Header from '../../component/header';
 import Background from '../../component/background'
 import Animal from '../../component/flatlist/animal';
 import ToggleMenu from '../../component/ToggleMenu';
-import Docao from '../../component/modals/Docao';
-import str from '../../localized/strings'
+import AdocaoModal from '../../component/modals/Adocao';
+import str from '../../localized/strings';
 
 import { getAdoptions } from '../../services/getRequest';
 
@@ -20,7 +20,7 @@ function Adocao({route: { params }}) {
 
   useEffect(() => {
     async function FetchData() {
-      const fetchAnimals = await getAdoptions();
+      const fetchAnimals = await getAdoptions(params.token);
       setAnimals(fetchAnimals)
     }
     FetchData();
@@ -36,7 +36,7 @@ function Adocao({route: { params }}) {
 
   return (
     <>
-      <Docao show={modal} action={setModal} option={setOption}/>
+      <AdocaoModal show={modal} action={setModal} option={setOption}/>
       <Background img={'tree'} />
       {
         !!modal && ( !option ? (

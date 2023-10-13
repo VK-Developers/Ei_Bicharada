@@ -9,13 +9,13 @@ import images from '../../localized/images';
 const { width } = Dimensions.get('window');
 
 function MenuLinks({name}) {
-  const {setMenu} = useContext(Context);
+  const {setMenu, token} = useContext(Context);
   const { navigate } = useNavigation();
 
   const handlePress = () => {
     setMenu(false)
     const linkName = format(name);
-    navigate(linkName, { name })
+    navigate(linkName, { name, token })
   }
 
   return (

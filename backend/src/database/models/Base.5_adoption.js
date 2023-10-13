@@ -14,6 +14,7 @@ module.exports = (sequelize, DataTypes) => {
     name: DataTypes.STRING,
     description: DataTypes.STRING,
     picture: DataTypes.STRING,
+    accepted: DataTypes.BOOLEAN,
   }, {
     sequelize,
     modelName: 'adoption',

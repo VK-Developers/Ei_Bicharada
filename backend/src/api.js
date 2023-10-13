@@ -14,9 +14,8 @@ api.use("/users", user);
 
 api.use("/adoptions", adoption);
 api.use("/missing-animals", missingAnimal);
+api.use("/rescues", rescue); // enviar fotos
 
-
-api.use("/rescues", rescue);
 // api.use("/complaints", complaint);
 // api.use("/home", home);
 api.use("/products", product);

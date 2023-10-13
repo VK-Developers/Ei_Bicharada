@@ -1,8 +1,9 @@
 const { adoption: service } = require('../services');
 
 module.exports = {
-    getAll: async (_req, res, _next) => {
-        const {status, result} = await service.getAll();
+    getAll: async (req, res, _next) => {
+        const accepted = req.query.accepted;
+        const {status, result} = await service.getAll(accepted);
         return res.status(status).json(result);
     },
     getById: async (req, res, _next) => {

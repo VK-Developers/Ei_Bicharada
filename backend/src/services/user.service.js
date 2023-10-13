@@ -21,8 +21,9 @@ module.exports = {
         const [updatedUser] = await models.user.update(obj, { where: { id } });
         return updatedUser;
     },
-    create: async(data, password) => {
+    create: async (data, password) => {
         const validatedObj = await validation.newUser(data);
+        
         const doesUserExists = !!await models.user.findOne(
             { 
                 where: { 
