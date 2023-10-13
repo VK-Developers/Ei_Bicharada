@@ -4,7 +4,7 @@ module.exports = async (req, res, next) => {
   const token = req.headers.authorization;
 
   try {
-    if (!token) return res.status(401).json({ msg: 'Token not found' });
+    if (!token) return res.status(401).json({ msg: 'oops you are not allowed =(' });
 
     verifyToken(token);
 

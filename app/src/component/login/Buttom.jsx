@@ -21,8 +21,8 @@ export default function Buttom({title, type, action}) {
         return
       };
 
-      setLogin(prev => ({...prev, status: false}))
       action(false);
+      setLogin(prev => ({...prev, status: false}))
       return
     }
 
