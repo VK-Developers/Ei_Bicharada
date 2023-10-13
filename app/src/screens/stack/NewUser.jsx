@@ -7,12 +7,14 @@ import Background from '../../component/background';
 import { NewUser as arrayText } from '../../localized/structures';
 import str from '../../localized/strings';
 import validateForms from '../../hooks/validateForms';
+import UserModal from '../../component/modals/Sent'
 
 import { postUser } from '../../services/postRequest';
 
 function NewUser({navigation}) {
   const { setLogin } = useContext(Context);
   const [listiner, setLister] = useState({});
+  const [modal, setModal] = useState(false);
   const [isButtonVisible, setIsButtonVisible] = useState(true);
   const [sendForms, setSendForms] = useState(false);
   const scrollViewRef = useRef();
@@ -26,7 +28,7 @@ function NewUser({navigation}) {
     const addUser = await postUser(listiner);
 
     if (addUser !== 201) {
-      console.log('ai')
+      setModal(true)
       return
     }
 
@@ -41,6 +43,7 @@ function NewUser({navigation}) {
   return (
     <>
       <Background img={'tree'} />
+      { !!modal && <UserModal nav={false} show={modal} action={setModal} text={str.modal.newUser} /> }
       <ScrollView ref={scrollViewRef} extraScrollHeight={20} keyboardShouldPersistTaps="handled">
         <View style={styles.container}>
               { 

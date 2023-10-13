@@ -17,6 +17,7 @@ export default {
   },
 
   modal: {
+    newUser: ['Email ja Registrado \ntente outro', 'entendido'],
     resgate: ['Resgate registrado/adicionado \ncom sucesso', 'fechar'],
     denuncia: ['Denúncia registrada com \nsucesso', 'continuar'],
     evento: ['Solicitação de evento enviada \ncom sucesso', 'confirmar'],
@@ -26,7 +27,7 @@ export default {
       'entendido'
     ],
     adocao: [
-      'lorem lorem lorem lorem lorem lorem lorem lorem loremlorem lorem lorem lorem lorem lorem lorem lorem lorem lorem lorem lorem lorem lorem lorem lorem lorem lorem',
+    'Qual dessas maneiras você escolherá para fazer a diferença hoje?\n\nSelecione uma das opções abaixo e toque no coração de um animalzinho:',
       'Adotar um pet',
       'Realizar uma doação'
     ],

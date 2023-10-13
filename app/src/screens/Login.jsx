@@ -32,7 +32,7 @@ function Login() {
               <TouchableOpacity style={{margin: 10}}>
                 <Text style={styles.resetPassword}>{strings.passwordForgot}</Text>
               </TouchableOpacity>
-              <Buttom type={'newUser'} title={strings.signUp}/>
+              <Buttom type={'newUser'} title={strings.signUp} action={setLoader} />
             </View>
           </View>
           <Footer exeption={true} />
