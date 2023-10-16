@@ -6,23 +6,21 @@ import Header from '../../component/header';
 import ToggleMenu from '../../component/ToggleMenu';
 import Background from '../../component/background'
 
-// import { getProducts } from '../../services/getRequest';
-
-import { products } from '../../mock';
+import { getProducts } from '../../services/getRequest';
 
 const { width } = Dimensions.get('screen');
 
 function NossosProdutos({navigation, route: { params }}) {
   const [scrollY, setScrollY] = useState(0);
-  // const [products, setProducts] = useState([]);
+  const [products, setProducts] = useState([]);
 
-  // useEffect(() => {
-  //   async function requestFunction() {
-  //     const allProducts = await getProducts();
-  //     setProducts(allProducts)
-  //   }
-  //   requestFunction()
-  // }, [])
+  useEffect(() => {
+    async function FetchData() {
+      const allProducts = await getProducts(params.token);
+      setProducts(allProducts)
+    }
+    FetchData()
+  }, [])
 
   const handlePress = (load) => navigation.navigate('Product', { ...load });
 
@@ -37,7 +35,7 @@ function NossosProdutos({navigation, route: { params }}) {
           {
             products.map((product, i) => (
               <TouchableOpacity style={styles.product} key={'product-' + i} onPress={() => handlePress(product)}>
-                <Image source={product.picture} style={styles.product.img} />
+                <Image source={{uri: product.picture}} style={styles.product.img} />
               </TouchableOpacity>
             ))
           }

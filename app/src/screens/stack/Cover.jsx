@@ -2,21 +2,22 @@ import React, { useEffect } from 'react';
 import { StyleSheet, BackHandler, Dimensions, View } from 'react-native';
 import MenuLinks from '../../component/menu/MenuLinks';
 import { menuTopics as topics } from '../../localized/structures';
+import Background from '../../component/background';
 
 const {height, width} = Dimensions.get('window');
 
 function Cover() {
 
-  useEffect(() => {
-    function RemoveBackHandler() {
-        BackHandler.addEventListener('hardwareBackPress', () => true);
-      }
-      RemoveBackHandler();
-  }, [])
+  // useEffect(() => {
+  //   function RemoveBackHandler() {
+  //       BackHandler.addEventListener('hardwareBackPress', () => true);
+  //     }
+  //     RemoveBackHandler();
+  // }, [])
 
   return (
     <>
-      <View style={styles.backgroundSolid}/>
+      <Background img={'test'} cover={true} />
       <View>
         <View style={styles.mask}>
           <View style={styles.background} />
@@ -32,13 +33,6 @@ function Cover() {
 }
 
 const styles = StyleSheet.create({
-  backgroundSolid: {
-    position: 'absolute',
-    height,
-    width,
-    backgroundColor: '#0047AB',
-    zIndex: 0,
-  },
   mask: {
     position: 'absolute',
     top: 0,

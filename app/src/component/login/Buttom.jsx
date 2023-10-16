@@ -12,14 +12,18 @@ export default function Buttom({title, type, action}) {
     const handlePress = async () => {
       type === 'newUser' && navigate('NewUser');
       action(true);
+
+
       const {status, ...inputValue} = login;
 
-      const logIn = await postLogin(inputValue)
+      const logIn = await postLogin(inputValue);
+
       if (!!logIn.token) {
         setToken(logIn.token)
         navigate('Cover')
         return
       };
+
 
       action(false);
       setLogin(prev => ({...prev, status: false}))

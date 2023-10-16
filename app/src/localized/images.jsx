@@ -5,6 +5,7 @@ export default {
     tree: require('../assets/backgrounds/03.png'),
     four: require('../assets/backgrounds/04.png'),
     five: require('../assets/backgrounds/05.png'),
+    test: require('../assets/backgrounds/test.png'),
   },
   donate: require('../assets/donate.png'),
   logo: require('../assets/logo.png'),

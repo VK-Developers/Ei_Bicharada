@@ -46,3 +46,18 @@ export const getMissing = async (token) => {
     console.error(...errorResponse);
   }
 };
+
+export const getProducts = async (token) => {
+  try {
+    const { data } = await api.get(
+      '/products',
+      {
+        headers: { 'Authorization': token }
+      }
+    );
+    return data
+  } catch (error) {
+    const errorResponse = handleRequestError(error)
+    console.error(...errorResponse);
+  }
+};

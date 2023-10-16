@@ -7,7 +7,7 @@ import Return from '../../component/return';
 const { width, height } = Dimensions.get('screen');
 
 function Product({navigation, route: { params }}) {
-    const { description, inStock, name, picture, price, qrCode } = params;
+    const { description, inStock, name, picture, price } = params;
 
     const btn = () => {
         const background = { backgroundColor: inStock ? 'green' : 'red' };
@@ -32,7 +32,7 @@ function Product({navigation, route: { params }}) {
             <ScrollView style={styles.container}>
                 <View>
                     <Return nav={navigation} />
-                    <Image source={picture} style={styles.preview}/>
+                    <Image source={{uri: picture}} style={styles.preview}/>
                     <Text style={styles.price}>R$ {price.toFixed(2)}</Text>
 
                     <View style={styles.content}>

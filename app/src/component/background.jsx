@@ -5,13 +5,13 @@ import images from '../localized/images';
 
 const {height, width} = Dimensions.get('window')
 
-function Background({img}) {
+function Background({img, cover}) {
       const { backgrounds } = images
       return (
             <ImageBackground
                   source={backgrounds[img]}
                   resizeMode="cover"
-                  style={styles.container}
+                  style={[styles.container, {opacity: !!cover ? 1 : 0.1}]}
             />
       );
 }
@@ -21,7 +21,6 @@ const styles = StyleSheet.create({
             position: 'absolute',
             height,
             width,
-            opacity: 0.08,
             zIndex: -1,
       }
 })
