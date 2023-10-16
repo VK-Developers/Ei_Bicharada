@@ -13,7 +13,6 @@ export default function Buttom({title, type, action}) {
       type === 'newUser' && navigate('NewUser');
       action(true);
 
-
       const {status, ...inputValue} = login;
 
       const logIn = await postLogin(inputValue);
@@ -23,7 +22,6 @@ export default function Buttom({title, type, action}) {
         navigate('Cover')
         return
       };
-
 
       action(false);
       setLogin(prev => ({...prev, status: false}))
