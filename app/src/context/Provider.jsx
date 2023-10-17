@@ -5,11 +5,13 @@ function MyProvider({children}) {
   const [login, setLogin] = useState({email: '', password: '', status: true});
   const [token, setToken] = useState('');
   const [menu, setMenu] = useState(true);
-
+  const [loader, setLoader] = useState(false);
+  
   const obj = {
     login, setLogin,
     menu, setMenu,
-    token, setToken
+    token, setToken,
+    loader, setLoader
   };
 
   useEffect(() => console.log('App - Hey Pet!'), [])

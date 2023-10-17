@@ -7,7 +7,12 @@ export default {
   signUp: 'Criar Conta',
   return: 'Voltar',
   name: 'Nome',
-  createAccount: 'CRIAR CONTA',
+
+  newUser: {
+    basic: ['Informacoes Basicas', 'CONTINUAR...'],
+    city: ['Regiao de Interesse', 'CONFIRMAR'],
+    password: ['Senha', 'CRIAR CONTA']
+  },
 
   doacao: {
     title: 'Doação',

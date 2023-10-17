@@ -61,13 +61,3 @@ export const getProducts = async (token) => {
     console.error(...errorResponse);
   }
 };
-
-export const test = async () => {
-  try {
-    const { data } = await api.get('/');
-    return data
-  } catch (error) {
-    const errorResponse = handleRequestError(error)
-    console.error(...errorResponse);
-  }
-};

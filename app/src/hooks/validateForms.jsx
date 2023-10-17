@@ -1,5 +1,7 @@
 const validateForms = (obj, i) => {
     const emailRegex = /^[A-Za-z0-9._%+-]+@[A-Za-z0-9.-]+\.[A-Za-z]{2,}$/;
+    const telefoneRegex = /^\+\d{2} \d{2} \d{5}-\d{4}$/;
+    const cepRegex = /^\d{5}-\d{3}$/;
 
     const andando = !!obj.andando;
     const horario = !!obj.horario;
@@ -14,11 +16,19 @@ const validateForms = (obj, i) => {
     const senha = !!obj.senha && obj.senha >= 8;
     const nome = !!obj.nome && obj.nome.length >= 3;
     const email = !!obj.email && emailRegex.test(obj.email);
+    const telefone = !!obj.telefone && telefoneRegex.test(obj.telefone);
+    const cep = !!obj.cep && cepRegex.test(obj.cep);
+
+    const region = !!obj.region;
 
     const validation = {
         1: andando && horario && picture && animal && cidade && endereco && ocorrido,
         2: descricao && endereco && bairro && cidade && data && horario,
-        3: nome && email && cidade && senha && (obj.senha === obj.novamente)
+        3: {
+            basic: nome && email && cidade && telefone && cep,
+            city: region,
+            password: senha && (obj.senha === obj.novamente)
+        }
     };
     return validation[i];
 }

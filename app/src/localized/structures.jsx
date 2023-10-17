@@ -1,6 +1,5 @@
 export const menuTopics = [
   'Adoção',
-  // 'Doação',
   'Animais Perdidos',
   'Resgate',
   'Denúncias',
@@ -12,15 +11,19 @@ export const menuTopics = [
   'Apoiadores',
 ]
 
-export const NewUser = [
-  {title: 'Nome', maxLength: 15, type: 'default'},
-  {title: 'Email', maxLength: 35, type: 'default'},
-  {title: 'Telefone', maxLength: 17, type: 'numeric'},
-  {title: 'Cidade', maxLength: 15, type: 'default'},
-  {title: 'CEP', maxLength: 9, type: 'numeric'},
-  {title: 'Senha', maxLength: 9, type: 'default'},
-  {title: 'Novamente', maxLength: 9, type: 'default'},
-]
+export const NewUser = {
+  basic: [
+    {title: 'Nome', maxLength: 15, type: 'default'},
+    {title: 'Email', maxLength: 35, type: 'default'},
+    {title: 'Telefone', maxLength: 17, type: 'numeric'},
+    {title: 'Cidade', maxLength: 15, type: 'default'},
+    {title: 'CEP', maxLength: 9, type: 'numeric'},
+  ],
+  password: [
+    {title: 'Senha', maxLength: 9, type: 'default'},
+    {title: 'Novamente', maxLength: 9, type: 'default'},
+  ]
+}
 
 export const ResgateDenuncia = [
   {title: 'Animal', maxLength: 15, type: 'default'},
@@ -40,41 +43,7 @@ export const events = [
   {title: 'Horário', maxLength: 5, type: 'numeric'},
 ]
 
-export const news = [
-  {
-    id: 1,
-    title: 'Titulo 01',
-    content: 'lorem lorem lorem lorem lorem lorem lorem lorem lorem',
-    data: '00/00/00'
-  },
-  {
-    id: 2,
-    title: 'Titulo 02',
-    content: 'lorem lorem lorem lorem lorem lorem lorem lorem lorem',
-    data: '00/00/00'
-  },
-  {
-    id: 3,
-    title: 'Titulo 03',
-    content: 'lorem lorem lorem lorem lorem lorem lorem lorem lorem',
-    data: '00/00/00'
-  },
-  {
-    id: 4,
-    title: 'Titulo 04',
-    content: 'lorem lorem lorem lorem lorem lorem lorem lorem lorem',
-    data: '00/00/00'
-  },
-  {
-    id: 5,
-    title: 'Titulo 05',
-    content: 'lorem lorem lorem lorem lorem lorem lorem lorem lorem',
-    data: '00/00/00'
-  },
-  {
-    id: 6,
-    title: 'Titulo 06',
-    content: 'lorem lorem lorem lorem lorem lorem lorem lorem lorem',
-    data: '00/00/00'
-  }
+export const regions = [
+  ['Mogi das cruzes', 'Itaquaquecetuba', 'Guararema Suzano', 'Biritiba Mirim', 'Salesópolis', 'Guarulhos', 'Arujá', 'Santa Isabel', 'Ferraz de Vasconcelos' ,'Poá'],
+  ['Rio Claro', 'Cordeirópolis Limeira', 'Leme', 'Araras', 'Mogi Guaçu', 'Mogi Mirim', 'Conchal']
 ]

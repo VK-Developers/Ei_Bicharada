@@ -6,12 +6,12 @@ import { Text, TouchableOpacity, StyleSheet } from 'react-native';
 import { postLogin } from '../../services/postRequest';
 
 export default function Buttom({title, type, action}) {
-  const { login, setLogin, setToken } = useContext(Context);
-  const {navigate} = useNavigation();
+  const { login, setLogin, setToken, setLoader } = useContext(Context);
+  const { navigate } = useNavigation();
 
     const handlePress = async () => {
-      type === 'newUser' && navigate('NewUser');
-      action(true);
+      if ( type === 'newUser') return navigate('NewUser');
+      setLoader(true);
 
       const {status, ...inputValue} = login;
 
@@ -23,7 +23,7 @@ export default function Buttom({title, type, action}) {
         return
       };
 
-      action(false);
+      setLoader(false);
       setLogin(prev => ({...prev, status: false}))
       return
     }

@@ -1,18 +1,19 @@
-import React, { useState } from 'react';
+import React, { useContext } from 'react';
+import Context from '../context/Context';
 import { StyleSheet, KeyboardAvoidingView, View, TouchableOpacity, Dimensions, Image, Text, ScrollView } from 'react-native';
 import images from '../localized/images';
 import InputText from '../component/login/TextInput';
 import Buttom from '../component/login/Buttom';
 import Background from '../component/background';
 import Loader from '../component/Loader';
+import Footer from '../component/footer';
 
 import strings from '../localized/strings';
-import Footer from '../component/footer';
 
 const { height, width } = Dimensions.get('window');
 
 function Login() {
-  const [loader, setLoader] = useState(false);
+  const { loader } = useContext(Context);
 
   return !loader ? (
     <>
@@ -29,11 +30,11 @@ function Login() {
               <InputText type={'password'} title={strings.password[0]} placeholder={strings.password[1]} />
             </View>
             <View style={styles.submit}>
-              <Buttom type={'login'} title={strings.signIn} action={setLoader} />
+              <Buttom type={'login'} title={strings.signIn} />
               <TouchableOpacity style={{margin: 10}}>
                 <Text style={styles.resetPassword}>{strings.passwordForgot}</Text>
               </TouchableOpacity>
-              <Buttom type={'newUser'} title={strings.signUp} action={setLoader} />
+              <Buttom type={'newUser'} title={strings.signUp} />
             </View>
           </View>
           <Footer exeption={true} />
