@@ -22,11 +22,12 @@ export const postUser = async (obj) => {
     city: obj.cidade,
     cep: obj.cep,
     password: obj.senha,
+    region: obj.region
   }
-  
+
   try {
     const request = await api.post('/users', format);
-    
+
     return request.status
   } catch (error) {
     const errorResponse = handleRequestError(error);

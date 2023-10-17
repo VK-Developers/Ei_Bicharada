@@ -1,11 +1,13 @@
 import React, {useRef, useState, useEffect, useContext} from 'react';
 import Context from '../../context/Context';
-import { StyleSheet, View, ScrollView, TouchableOpacity, Text } from 'react-native';
+import { StyleSheet, View, ScrollView, TouchableOpacity, Text, Image } from 'react-native';
 //Components
 import TextInput from '../../component/textInput';
 import Background from '../../component/background';
+import EmailModal from '../../component/modals/Email';
 import { NewUser as structure, regions } from '../../localized/structures';
 import str from '../../localized/strings';
+import images from '../../localized/images';
 import validateForms from '../../hooks/validateForms';
 
 import { postUser } from '../../services/postRequest';
@@ -15,6 +17,7 @@ function NewUser({navigation}) {
   const [type, setType] = useState('basic');
   const [isButtonVisible, setIsButtonVisible] = useState(true);
   const [sendForms, setSendForms] = useState(false);
+  const [modal, setModal] = useState(false);
   const [listiner, setLister] = useState({});
 
   const scrollViewRef = useRef();
@@ -22,23 +25,26 @@ function NewUser({navigation}) {
   useEffect(() => {
     const canSendIt = validateForms(listiner, 3);
     setSendForms(canSendIt[type]);
+    console.log(listiner)
   }, [listiner, type]);
  
   const handlePress = async () => {
-    if (type === 'basic') {
-      // ver se o email ja existe
-      console.log(listiner.email)
-    }
-
     if (type === 'password') {
-      // const addUser = await postUser(listiner);
+      const addUser = await postUser(listiner);
+      
+      if (addUser !== 203) {
+        setLogin(prev => ({
+          ...prev,
+          email: listiner.email,
+          status: true
+        }));
+        navigation.navigate('Login');
+        return
+      }
+
       console.log(listiner)
-      setLogin(prev => ({
-        ...prev,
-        email: listiner.email,
-        status: true
-      }));
-      navigation.navigate('Login');
+
+      setModal(true)
     }
 
     setType(prev => {
@@ -51,6 +57,23 @@ function NewUser({navigation}) {
   return (
     <>
       <Background img={'tree'} />
+      <EmailModal show={modal} action={setModal} data={setLister}/>
+      
+      {
+        type !== "basic" && (
+          <TouchableOpacity 
+            style={styles.return}
+            onPress={() => setType(prev => {
+              if (prev === 'password') return 'city';
+              if (prev === 'city') return 'basic'
+              return prev
+            })}
+          >
+            <Image source={images.arrow} style={styles.return.icon} />
+          </TouchableOpacity>
+        )
+      }
+
       <ScrollView ref={scrollViewRef} extraScrollHeight={20} keyboardShouldPersistTaps="handled">
         <View style={styles.titleContainer}>
           <Text style={styles.titleContainer.text}>{str.newUser[type][0]}</Text>
@@ -80,15 +103,15 @@ function NewUser({navigation}) {
             const divisionText = 'Regiao ' + (i + 1);
             return (
               <View key={divisionText} style={styles.regionContainer}>
-                <Text style={styles.regionContainer.title}>{divisionText}</Text>
                 {
                   regiao.map(local => {
                     return (
                       <TouchableOpacity
                         key={local}
-                        style={[styles.regionContainer.btn, listiner.region === local && {backgroundColor: 'blue'}]}
+                        style={[styles.regionContainer.btn, listiner.region === local && {backgroundColor: '#6082B6'}]}
                         onPress={() => setLister(prev => ({...prev, region: prev.region === local ? '' : local}))}
                       >
+                        <Image source={images.backgrounds.one} style={styles.regionContainer.btn.icon}/>
                         <Text style={[styles.regionContainer.btn.text, listiner.region === local && {color: 'white'}]}>{local}</Text>
                       </TouchableOpacity>
                     )
@@ -118,7 +141,7 @@ function NewUser({navigation}) {
         </View>
 
       </ScrollView>
-      {isButtonVisible && (
+      {(isButtonVisible && !modal) && (
         type !== 'city' ? (
           <TouchableOpacity 
             onPress={handlePress}
@@ -144,7 +167,16 @@ function NewUser({navigation}) {
 const styles = StyleSheet.create({
   container: {
     paddingTop: 10,
-    paddingLeft: 15,
+  },
+  return: {
+    position: 'absolute',
+    top: 20,
+    left: 20,
+    zIndex: 10,
+    icon: {
+      width: 40,
+      height: 40,
+    }
   },
   titleContainer: {
     padding: 20,
@@ -157,24 +189,24 @@ const styles = StyleSheet.create({
     }
   },
   regionContainer: {
-    padding: 10,
-    title: {
-      fontSize: 20,
-      color: 'black',
-      fontWeight: '600',
-      margin: 10
-    },
+    width: "100%",
     btn: {
-      backgroundColor: 'gray',
+      backgroundColor: '#B2BEB5',
       marginBottom: 10,
-      width: 200,
+      width: "85%",
       alignSelf: 'center',
-      padding: 20,
-      marginLeft: 50,
+      padding: 15,
       borderRadius: 30,
+      flexDirection: 'row',
+      alignItems: 'center',
+      icon: {
+        width: 35,
+        height: 35,
+      },
       text: {
+        flexGrow: 1,
         textAlign: 'center',
-        fontSize: 16,
+        fontSize: 18,
         color: 'black',
         fontWeight: '600'
       }

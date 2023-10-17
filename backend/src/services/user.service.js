@@ -41,7 +41,7 @@ module.exports = {
             return {status: 201, msg: 'usuario criado com sucesso'};
         }
         
-        return {status: 409, msg: 'usuario ja existe'};
+        return {status: 203, msg: 'usuario ja existe'};
     },
     destroy: async(id) => {
         const userDeleted = await models.user.destroy({ where: {id } });

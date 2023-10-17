@@ -3,6 +3,7 @@ const { LogIntoApp } = require("../controllers");
 
 const login = Router();
 
-login.post("/", LogIntoApp);
+login
+     .post("/", LogIntoApp);
 
 module.exports = login;

@@ -10,7 +10,7 @@ export default {
 
   newUser: {
     basic: ['Informacoes Basicas', 'CONTINUAR...'],
-    city: ['Regiao de Interesse', 'CONFIRMAR'],
+    city: ['Região de Interesse', 'CONFIRMAR'],
     password: ['Senha', 'CRIAR CONTA']
   },
 
