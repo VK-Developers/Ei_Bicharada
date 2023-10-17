@@ -26,6 +26,10 @@ module.exports = {
         allowNull: false,
         type: Sequelize.STRING
       },
+      region: {
+        allowNull: false,
+        type: Sequelize.STRING
+      },
       cep: {
         allowNull: false,
         type: Sequelize.STRING

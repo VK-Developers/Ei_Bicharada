@@ -14,10 +14,6 @@ module.exports = {
         allowNull: false,
         type: Sequelize.STRING
       },
-      cpf: {
-        allowNull: false,
-        type: Sequelize.STRING
-      },
       amount: {
         allowNull: false,
         type: Sequelize.FLOAT

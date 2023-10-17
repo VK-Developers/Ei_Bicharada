@@ -9,7 +9,6 @@ module.exports = (sequelize, DataTypes) => {
   }
   contributions.init({
     name: DataTypes.STRING,
-    cpf: DataTypes.STRING,
     amount: DataTypes.FLOAT,
   }, {
     sequelize,
