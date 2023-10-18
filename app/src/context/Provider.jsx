@@ -1,8 +1,9 @@
 import React, {useEffect, useState} from 'react';
+import { LOGIN, PASSWORD } from "@env";
 import Context from './Context';
 
 function MyProvider({children}) {
-  const [login, setLogin] = useState({email: '', password: '', status: true});
+  const [login, setLogin] = useState({email: LOGIN || '', password: PASSWORD || '', status: true});
   const [token, setToken] = useState('');
   const [menu, setMenu] = useState(true);
   const [loader, setLoader] = useState(false);
