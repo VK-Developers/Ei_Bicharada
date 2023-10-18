@@ -133,42 +133,4 @@ const Resgate = () => {
 };
 
 export default Resgate;
-{
-  /*<input type="time" name="" id="" className="space-y-3 rounded-md shadow-lg border-black border-[0.20px]" />
-  
-className="text-sm text-grey-500
-            file:mr-5 file:py-2 file:px-6
-            file:rounded-full file:border-0
-            file:text-sm file:font-medium
-            file:bg-blue-50 file:text-blue-700
-            hover:file:cursor-pointer hover:file:bg-amber-50
-            hover:file:text-amber-700
-          
 
-  <select
-                
-                
-                className="w-3/12 rounded-md shadow-lg border-black border-[0.20px]"
-                  id="cidades"
-                  name="cidades"
-                >
-                  <option value="santos">Santos</option>
-                  <option value="sao-vicente">São Vicente</option>
-                  <option value="praia-grande">Praia Grande</option>
-                  <option value="guaruja">Guarujá</option>
-                  <option value="bertioga">Bertioga</option>
-                  <option value="itanhaem">Itanhaém</option>
-                  <option value="mongagua">Mongaguá</option>
-                  <option value="peruibe">Peruibe</option>
-                </select> 
-                <div className="space-x-6 flex-grow flex">
-                <input type="text" name="animal" id="animal" placeholder="Animal"
-                       className=" flex-col  rounded-md shadow-lg border-black border-[0.20px]"
-                />
-                <input type="date" name="animal" id="animal" placeholder="Animal"
-                       className=" flex-col w-80  rounded-md shadow-lg border-black border-[0.20px]"
-                />
-              </div>
-}
-*/
-}
