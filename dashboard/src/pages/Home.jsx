@@ -5,11 +5,12 @@ import Header from '../components/Header';
 const Home = () => {
     const [content, setContent] = useState('Denuncia');
 
+    
   return (
     <div className='flex bg-[#f0f8ff] ' >
       <Navbar action={setContent} selected={content} />
       <div className='flex-col flex flex-grow'>
-        <Header />
+        <Header  />
         <div className='flex-grow'>
         { Content[content] }
       </div>
