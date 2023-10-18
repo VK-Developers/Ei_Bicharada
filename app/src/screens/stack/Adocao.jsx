@@ -1,92 +1,60 @@
-import React, { useState, useEffect } from 'react';
-import { useFocusEffect } from '@react-navigation/native';
-import { StyleSheet, SafeAreaView, FlatList, View, Text } from 'react-native';
+import React, { useState, useEffect, useContext } from 'react';
+import Context from '../../context/Context';
+import { StyleSheet, SafeAreaView, FlatList } from 'react-native';
 //Components
 import Footer from '../../component/footer';
 import Header from '../../component/header';
+import NewAnimal from '../../component/NewAnimal';
 import Background from '../../component/background'
 import Animal from '../../component/flatlist/animal';
 import ToggleMenu from '../../component/ToggleMenu';
-import AdocaoModal from '../../component/modals/Adocao';
-import str from '../../localized/strings';
+import Loader from '../../component/Loader';
 
 import { getAdoptions } from '../../services/getRequest';
 
 function Adocao({route: { params }}) {
+  const { loader, setLoader } = useContext(Context);
   const [animals, setAnimals] = useState([]);
-  const [modal, setModal] = useState(false);
-  const [option, setOption] = useState(false);
   const [scrollY, setScrollY] = useState(0);
 
   useEffect(() => {
+    setLoader(true)
     async function FetchData() {
       const fetchAnimals = await getAdoptions(params.token);
-      setAnimals(fetchAnimals)
+      setAnimals(fetchAnimals);
+      setLoader(false);
     }
     FetchData();
   }, [])
-
-  useFocusEffect(
-    React.useCallback(() => {
-      setModal(false)
-    }, [])
-  );
 
   const renderComponente = ({ item }) => <Animal info={item} /> 
 
   return (
     <>
-      <AdocaoModal show={modal} action={setModal} option={setOption}/>
       <Background img={'tree'} />
+      <ToggleMenu level={scrollY} />
       {
-        !!modal && ( !option ? (
-            <>
-              <ToggleMenu level={scrollY} />
-              <SafeAreaView style={styles.container}>
-                <FlatList 
-                  data={animals}
-                  renderItem={renderComponente}
-                  keyExtractor={({id}) => 'adopt-' + id}
-                  onScroll={(event) => setScrollY(event.nativeEvent.contentOffset.y)}
-                  ListHeaderComponent={() => <Header name={params.name} />}
-                  ListFooterComponent={() => <Footer />}
-                />
-              </SafeAreaView>
-            </>
-          ) : (
-            <>
-              <ToggleMenu level={scrollY} />
-              <SafeAreaView style={[styles.container, styles.doacao]}>
-                
-                <View style={{flexGrow: 1}}>
-                  <View>
-                    <Header name={str.doacao.title} />
-                  </View>
-                  <View style={{flexGrow: 1}}>
-                    <View style={styles.infoContainer}>
-                      <Text style={styles.text}>{str.doacao.retirada[0]}</Text>
-                      <Text style={styles.text}>{str.doacao.retirada[1]}</Text>
-                    </View>
-
-                    <View style={styles.bar} />
-
-                    <View style={styles.infoContainer}>
-                      <Text style={styles.text}>{str.doacao.coleta[0]}</Text>
-                      <Text style={styles.text}>{str.doacao.coleta[1]}</Text>
-                    </View>
-
-                    <View style={styles.bar} />
-
-                    <View style={styles.infoContainer}>
-                      <Text style={styles.text}>{str.doacao[0]}</Text>
-                      <Text style={styles.text}>{str.doacao[1]}</Text>
-                    </View>
-                  </View>
-                </View>
-                <Footer />
-              </SafeAreaView>
-            </>
-          )
+        !loader ? (
+          <SafeAreaView style={styles.container}>
+            <FlatList 
+              data={animals}
+              renderItem={renderComponente}
+              keyExtractor={({id}) => 'adopt-' + id}
+              onScroll={(event) => setScrollY(event.nativeEvent.contentOffset.y)}
+              ListHeaderComponent={() => (
+                <>
+                  <Header name={params.name} />
+                  <NewAnimal type={'adoption'} />
+                </>
+              )}
+              ListFooterComponent={() => <Footer />}
+            />
+          </SafeAreaView>
+        ) : (
+          <>
+            <Background img={'tree'} />
+            <Loader />
+          </>
         )
       }
     </>

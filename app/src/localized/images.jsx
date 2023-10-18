@@ -10,6 +10,7 @@ export default {
   donate: require('../assets/donate.png'),
   logo: require('../assets/logo.png'),
   arrow: require('../assets/arrow.png'),
+  plus: require('../assets/plus.png'),
   camera: require('../assets/camera.png'),
   spLogo: require('../assets/brasao.png'),
   checked: require('../assets/checked.png'),

@@ -7,6 +7,10 @@ export default {
   signUp: 'Criar Conta',
   return: 'Voltar',
   name: 'Nome',
+  newPet: {
+    adoption: 'adicionar um pet para doação',
+    lost: 'adicionar um pet',
+  },
 
   newUser: {
     basic: ['Informacoes Basicas', 'CONTINUAR...'],
@@ -22,7 +26,6 @@ export default {
   },
 
   modal: {
-    newUser: ['Email ja Registrado \ntente outro', 'entendido'],
     resgate: ['Resgate registrado/adicionado \ncom sucesso', 'fechar'],
     denuncia: ['Denúncia registrada com \nsucesso', 'continuar'],
     evento: ['Solicitação de evento enviada \ncom sucesso', 'confirmar'],
@@ -30,11 +33,6 @@ export default {
     larTemporario: [
       'Seus dados são confidenciais, sendo a responsabilidade pela preservação e sigilo da ATESP.\n\nAqui, você pode escolher o tipo de animal que deseja receber em sua casa por um período determinado',
       'entendido'
-    ],
-    adocao: [
-    'Qual dessas maneiras você escolherá para fazer a diferença hoje?\n\nSelecione uma das opções abaixo e toque no coração de um animalzinho:',
-      'Adotar um pet',
-      'Realizar uma doação'
     ],
   }
 };

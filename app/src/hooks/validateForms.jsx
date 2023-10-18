@@ -13,7 +13,7 @@ const validateForms = (obj, i) => {
     const descricao = !!obj.descricao && obj.descricao.length >= 8;
     const cidade = !!obj.cidade && obj.cidade.length >= 4;
     const bairro = !!obj.bairro && obj.bairro.length >= 4;
-    const senha = !!obj.senha && obj.senha >= 8;
+    const senha = !!obj.senha && obj.senha.length >= 6;
     const nome = !!obj.nome && obj.nome.length >= 3;
     const email = !!obj.email && emailRegex.test(obj.email);
     const telefone = !!obj.telefone && telefoneRegex.test(obj.telefone);
