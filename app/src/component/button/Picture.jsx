@@ -1,8 +1,8 @@
 import React, {useState, useEffect} from 'react';
 import { StyleSheet, TouchableOpacity, Image } from 'react-native';
 
-import camera from '../hooks/camera';
-import images from '../localized/images';
+import camera from '../../hooks/camera';
+import images from '../../localized/images';
 
 function PicureIcon({action, state}) {
   const [checked, setChecked] = useState(false);

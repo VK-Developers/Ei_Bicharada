@@ -2,8 +2,8 @@ import React, {useRef, useState, useEffect, useContext} from 'react';
 import Context from '../../context/Context';
 import { StyleSheet, View, ScrollView, TouchableOpacity, Text, Image } from 'react-native';
 //Components
-import TextInput from '../../component/textInput';
-import Background from '../../component/background';
+import TextInput from '../../component/input/Form';
+import Background from '../../component/Background';
 import EmailModal from '../../component/modals/Email';
 import { NewUser as structure, regions } from '../../localized/structures';
 import str from '../../localized/strings';

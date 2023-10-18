@@ -2,9 +2,9 @@ import React, { useState, useEffect } from 'react';
 import { useFocusEffect } from '@react-navigation/native';
 import { StyleSheet, SafeAreaView, FlatList, View, Text } from 'react-native';
 //Components
-import Footer from '../../component/footer';
-import Header from '../../component/header';
-import Background from '../../component/background'
+import Footer from '../../component/Footer';
+import Header from '../../component/Header';
+import Background from '../../component/Background'
 import Animal from '../../component/flatlist/animal';
 import ToggleMenu from '../../component/ToggleMenu';
 // import AdocaoModal from '../../component/modals/Adocao';

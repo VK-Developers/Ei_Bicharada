@@ -1,8 +1,8 @@
 import React from 'react';
 import { StyleSheet, Text, TouchableOpacity, Image } from 'react-native';
 
-import images from '../localized/images';
-import str from '../localized/strings';
+import images from '../../localized/images';
+import str from '../../localized/strings';
 
 function Return({nav}) {
   return (

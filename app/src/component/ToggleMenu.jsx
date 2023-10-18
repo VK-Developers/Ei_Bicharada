@@ -2,7 +2,7 @@ import React, {useContext} from 'react';
 import Context from '../context/Context';
 import { StyleSheet, TouchableOpacity, View, Dimensions } from 'react-native';
 
-import MenuLinks from './menu/MenuLinks';
+import MenuLinks from './button/Menu';
 import { menuTopics as topics } from '../localized/structures';
 
 const {width, height} = Dimensions.get('screen');

@@ -1,8 +1,8 @@
 import React from 'react';
 import { StyleSheet, ScrollView, Image, TouchableOpacity, View, Text, Dimensions } from 'react-native';
 //Components
-import Background from '../../component/background';
-import Return from '../../component/return';
+import Background from '../../component/Background';
+import Return from '../../component/button/Return';
 
 import images from '../../localized/images';
 

@@ -1,10 +1,10 @@
 import React from 'react';
 import { StyleSheet, SafeAreaView, View, Text } from 'react-native';
 //Components
-import Footer from '../../component/footer';
-import Header from '../../component/header';
+import Footer from '../../component/Footer';
+import Header from '../../component/Header';
 import ToggleMenu from '../../component/ToggleMenu';
-import Background from '../../component/background'
+import Background from '../../component/Background'
 
 import str from '../../localized/strings'
 

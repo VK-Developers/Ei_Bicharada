@@ -2,10 +2,10 @@ import React, {useRef, useState, useEffect} from 'react';
 import { useFocusEffect } from '@react-navigation/native';
 import { StyleSheet, ScrollView, Dimensions, View } from 'react-native';
 //Components
-import Header from '../../component/header';
+import Header from '../../component/Header';
 // import Footer from '../../component/footer';
 import ToggleMenu from '../../component/ToggleMenu';
-import Background from '../../component/background';
+import Background from '../../component/Background';
 // import { events } from '../../localized/structures';
 import str from '../../localized/strings';
 // import TextInput from '../../component/textInput';

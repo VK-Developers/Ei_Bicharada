@@ -1,11 +1,11 @@
 import React, {useState, useRef, useEffect} from 'react';
 import { StyleSheet, View, Text, Dimensions, TextInput } from 'react-native';
-import HandleScroll from '../hooks/HandleScroll';
-import formatKey from '../hooks/formatKey';
+import HandleScroll from '../../hooks/HandleScroll';
+import formatKey from '../../hooks/formatKey';
 
 const { width } = Dimensions.get('window');
 
-function InputText({info, baseRef, action, btn}) {
+function FormInput({info, baseRef, action, btn}) {
   const {title, maxLength, type} = info;
   const [text, setText] = useState(info.title === 'Telefone' ? '+55 ' : '');
   const inputRef = useRef();
@@ -156,4 +156,4 @@ const styles = StyleSheet.create({
   }
 })
 
-export default InputText;
+export default FormInput;

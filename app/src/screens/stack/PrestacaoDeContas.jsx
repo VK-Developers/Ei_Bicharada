@@ -2,9 +2,9 @@ import React from 'react';
 import { StyleSheet, View, Text, Image, TouchableOpacity } from 'react-native';
 import images from '../../localized/images'
 //Components
-import Footer from '../../component/footer';
-import Header from '../../component/header';
-import Background from '../../component/background';
+import Footer from '../../component/Footer';
+import Header from '../../component/Header';
+import Background from '../../component/Background';
 import ToggleMenu from '../../component/ToggleMenu';
 
 function PrestacaoDeContas({route: { params }}) {

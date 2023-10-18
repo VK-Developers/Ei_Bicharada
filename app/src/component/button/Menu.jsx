@@ -1,14 +1,13 @@
 import React, {useContext} from 'react';
 import Context from '../../context/Context';
-import { StyleSheet, TouchableOpacity, Text, Image, Dimensions, View } from 'react-native';
+import { StyleSheet, TouchableOpacity, Text, Image, View } from 'react-native';
 import { useNavigation } from '@react-navigation/native';
 import format from '../../hooks/formatRouteName';
 
 import images from '../../localized/images';
 
-const { width } = Dimensions.get('window');
 
-function MenuLinks({name}) {
+function MenuButtom({name}) {
   const {setMenu, token} = useContext(Context);
   const { navigate } = useNavigation();
 
@@ -48,4 +47,4 @@ const styles = StyleSheet.create({
   }
 })
 
-export default MenuLinks;
+export default MenuButtom;

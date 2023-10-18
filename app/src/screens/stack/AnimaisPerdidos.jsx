@@ -1,12 +1,12 @@
 import React, {useState, useEffect} from 'react';
 import { StyleSheet, SafeAreaView, FlatList } from 'react-native';
 //Components
-import Footer from '../../component/footer';
-import Header from '../../component/header';
+import Footer from '../../component/Footer';
+import Header from '../../component/Header';
 import ToggleMenu from '../../component/ToggleMenu';
-import Background from '../../component/background'
+import Background from '../../component/Background'
 import Animal from '../../component/flatlist/animal';
-import NewAnimal from '../../component/NewAnimal';
+import NewAnimal from '../../component/button/NewAnimal';
 
 import { getMissing } from '../../services/getRequest';
 

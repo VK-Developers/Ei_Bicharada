@@ -1,10 +1,10 @@
 import React, {useState, useEffect} from 'react';
 import { StyleSheet, ScrollView, Image, TouchableOpacity, View, Dimensions } from 'react-native';
 //Components
-import Footer from '../../component/footer';
-import Header from '../../component/header';
+import Footer from '../../component/Footer';
+import Header from '../../component/Header';
 import ToggleMenu from '../../component/ToggleMenu';
-import Background from '../../component/background'
+import Background from '../../component/Background'
 
 import { getProducts } from '../../services/getRequest';
 

@@ -1,14 +1,14 @@
 import React, {useRef, useState, useEffect} from 'react';
 import { StyleSheet, View, ScrollView, Dimensions } from 'react-native';
 //Components
-import Footer from '../../component/footer';
-import Header from '../../component/header';
-import TextInput from '../../component/textInput';
-import CheckboxInput from '../../component/checkboxInput';
-import Background from '../../component/background';
+import Footer from '../../component/Footer';
+import Header from '../../component/Header';
+import TextInput from '../../component/input/Form';
+import CheckboxInput from '../../component/input/CheckBox';
+import Background from '../../component/Background';
 import { ResgateDenuncia as arrayText } from '../../localized/structures';
 import str from '../../localized/strings';
-import PictureIcon from '../../component/pictureIcon';
+import PictureIcon from '../../component/button/Picture';
 import validateForms from '../../hooks/validateForms';
 
 import Sent from '../../component/modals/Sent';

@@ -2,7 +2,7 @@ import React, {useContext} from 'react';
 import Context from '../../context/Context';
 import { View, Text, TextInput, StyleSheet, Platform } from 'react-native';
 
-export default function InputText({title, placeholder, type}) {
+export default function LoginInput({title, placeholder, type}) {
   const { login, setLogin } = useContext(Context);
 
   const isIOS = Platform.OS === 'ios' && {height: 50}

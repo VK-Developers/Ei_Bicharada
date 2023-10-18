@@ -2,9 +2,9 @@ import React from 'react';
 import { StyleSheet, SafeAreaView, Dimensions, ImageBackground } from 'react-native';
 //Components
 // import Footer from '../../component/footer';
-import Header from '../../component/header';
+import Header from '../../component/Header';
 import ToggleMenu from '../../component/ToggleMenu';
-import Background from '../../component/background';
+import Background from '../../component/Background';
 
 const {height, width} = Dimensions.get('window')
 

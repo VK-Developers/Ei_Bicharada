@@ -5,7 +5,7 @@ import { Text, TouchableOpacity, StyleSheet } from 'react-native';
 
 import { postLogin } from '../../services/postRequest';
 
-export default function Buttom({title, type, action}) {
+export default function Login({title, type}) {
   const { login, setLogin, setToken, setLoader } = useContext(Context);
   const { navigate } = useNavigation();
 

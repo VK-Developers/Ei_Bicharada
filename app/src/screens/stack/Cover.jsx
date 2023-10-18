@@ -1,19 +1,21 @@
-import React, { useEffect } from 'react';
+import React, { useEffect, useContext } from 'react';
+import Context from '../../context/Context';
 import { StyleSheet, BackHandler, Dimensions, View } from 'react-native';
-import MenuLinks from '../../component/menu/MenuLinks';
+import MenuLinks from '../../component/button/Menu';
 import { menuTopics as topics } from '../../localized/structures';
-import Background from '../../component/background';
+import Background from '../../component/Background';
 
 const {height, width} = Dimensions.get('window');
 
 function Cover() {
-
-  // useEffect(() => {
-  //   function RemoveBackHandler() {
-  //       BackHandler.addEventListener('hardwareBackPress', () => true);
-  //     }
-  //     RemoveBackHandler();
-  // }, [])
+  const {setLoader} = useContext(Context);
+  useEffect(() => {
+    // function RemoveBackHandler() {
+    //     BackHandler.addEventListener('hardwareBackPress', () => true);
+    //   }
+    //   RemoveBackHandler();
+    setLoader(false)
+  }, [])
 
   return (
     <>

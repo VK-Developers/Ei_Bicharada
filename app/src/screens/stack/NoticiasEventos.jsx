@@ -1,9 +1,9 @@
 import React, {useState} from 'react';
 import { StyleSheet, SafeAreaView, Dimensions, View, FlatList } from 'react-native';
 //Components
-import Header from '../../component/header';
+import Header from '../../component/Header';
 import ToggleMenu from '../../component/ToggleMenu';
-import Background from '../../component/background';
+import Background from '../../component/Background';
 import New from '../../component/feed/New';
 
 import { news } from '../../localized/structures';

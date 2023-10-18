@@ -2,11 +2,11 @@ import React, { useContext } from 'react';
 import Context from '../context/Context';
 import { StyleSheet, KeyboardAvoidingView, View, TouchableOpacity, Dimensions, Image, Text, ScrollView } from 'react-native';
 import images from '../localized/images';
-import InputText from '../component/login/TextInput';
-import Buttom from '../component/login/Buttom';
-import Background from '../component/background';
+import InputText from '../component/input/Login';
+import Buttom from '../component/button/Login';
+import Background from '../component/Background';
 import Loader from '../component/Loader';
-import Footer from '../component/footer';
+import Footer from '../component/Footer';
 
 import strings from '../localized/strings';
 

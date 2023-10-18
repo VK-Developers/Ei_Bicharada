@@ -2,10 +2,10 @@ import React, { useState, useEffect, useContext } from 'react';
 import Context from '../../context/Context';
 import { StyleSheet, SafeAreaView, FlatList } from 'react-native';
 //Components
-import Footer from '../../component/footer';
-import Header from '../../component/header';
-import NewAnimal from '../../component/NewAnimal';
-import Background from '../../component/background'
+import Footer from '../../component/Footer';
+import Header from '../../component/Header';
+import NewAnimal from '../../component/button/NewAnimal';
+import Background from '../../component/Background'
 import Animal from '../../component/flatlist/animal';
 import ToggleMenu from '../../component/ToggleMenu';
 import Loader from '../../component/Loader';

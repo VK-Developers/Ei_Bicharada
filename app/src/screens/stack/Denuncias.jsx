@@ -2,13 +2,13 @@ import React, {useRef, useState, useEffect, useContext} from 'react';
 import Context from '../../context/Context';
 import { StyleSheet, View, ScrollView, Dimensions, Modal } from 'react-native';
 // Components
-import Footer from '../../component/footer';
-import Header from '../../component/header';
+import Footer from '../../component/Footer';
+import Header from '../../component/Header';
 import ToggleMenu from '../../component/ToggleMenu';
-import PictureIcon from '../../component/pictureIcon';
-import CheckboxInput from '../../component/checkboxInput';
-import TextInput from '../../component/textInput'
-import Background from '../../component/background';
+import PictureIcon from '../../component/button/Picture';
+import CheckboxInput from '../../component/input/CheckBox';
+import TextInput from '../../component/input/Form'
+import Background from '../../component/Background';
 import { ResgateDenuncia as arrayText } from '../../localized/structures';
 import str from '../../localized/strings';
 import validateForms from '../../hooks/validateForms';
