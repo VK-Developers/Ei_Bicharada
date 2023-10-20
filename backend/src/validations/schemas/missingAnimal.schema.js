@@ -3,11 +3,12 @@ const Joi = require('joi');
 module.exports = {
     create: Joi.object({
         animal: Joi.string().min(3).required(),
-        walking: Joi.bool().required(),
+        name: Joi.string().min(3).required(),
         description: Joi.string().min(6).required(),
-        hour: Joi.string().regex(/^(0[0-9]|1[0-9]|2[0-3]):[0-5][0-9]$/), // 00:00
-        adress: Joi.string().min(6).required(),
-        city: Joi.string().min(4).required(),
+        neutered: Joi.bool().required(),
+        sex: Joi.bool().required(),
+        user: Joi.string(),
+        region: Joi.string(),
         picture: Joi.string().required(),
         accepted: Joi.bool(),
         newRequest: Joi.bool(),

@@ -8,7 +8,6 @@ const { width, height } = Dimensions.get('screen');
 
 function Animal({navigation, route: {params}}) {
     const {name, description, picture} = params;
-    // Adicionar Idade e se eh castrado no DB e contato
 
     return (
         <>

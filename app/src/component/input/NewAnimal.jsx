@@ -6,8 +6,9 @@ import formatName from '../../hooks/formatRouteName';
 export default function LoginInput({title, placeholder, type, data}) {
   
   const TextType = () => {
+    const keyName = formatName(title.toLowerCase())
     const handleChange = (value) => {
-      const keyName = formatName(title.toLowerCase())
+      
       data.action(prev => ({ 
         ...prev,
         [keyName]: value,
@@ -20,6 +21,7 @@ export default function LoginInput({title, placeholder, type, data}) {
         onChangeText={handleChange}
         placeholder={placeholder}
         style={styles.input}
+        numberOfLines={keyName === 'descricao' ? 7 : 1}
         placeholderTextColor='black'
       />
     )

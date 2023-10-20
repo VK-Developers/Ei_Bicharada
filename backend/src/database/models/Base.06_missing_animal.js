@@ -11,8 +11,13 @@ module.exports = (sequelize, DataTypes) => {
   }
 
   missing_animals.init({
+    animal: DataTypes.STRING,
     name: DataTypes.STRING,
-    description: DataTypes.STRING,
+    description: DataTypes.TEXT('medium'),
+    neutered: DataTypes.BOOLEAN,
+    sex: DataTypes.BOOLEAN,
+    user: DataTypes.STRING,
+    region: DataTypes.STRING,
     picture: DataTypes.STRING,
     accepted: DataTypes.BOOLEAN,
   }, {

@@ -10,7 +10,7 @@ module.exports = {
         phone: '+55 13 9999-9999',
         city: 'Santos',
         cep: '18274-635',
-        region: 'Santa Isabel',
+        region: 'Neverland',
         created: new Date(),
       },
       {
@@ -19,7 +19,7 @@ module.exports = {
         phone: '+55 13 9999-9999',
         city: 'Sao Vicente',
         cep: '77834-258',
-        region: 'Santa Isabel',
+        region: 'Neverland',
         created: new Date(),
       },
       {
@@ -28,7 +28,7 @@ module.exports = {
         phone: '+55 13 9999-9999',
         city: 'Sao Vicente',
         cep: '11794-536',
-        region: 'Santa Isabel',
+        region: 'Neverland',
         created: new Date(),
       },
     ], {});

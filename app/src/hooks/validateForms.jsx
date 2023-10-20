@@ -8,9 +8,9 @@ const validateForms = (obj, i) => {
     const data = !!obj.data;
     const picture = !!obj.picture;
     const animal = !!obj.animal && obj.animal.length >= 3;
-    const endereco = !!obj.endereco && obj.endereco.length >= 8;
-    const ocorrido = !!obj.ocorrido && obj.ocorrido.length >= 8;
-    const descricao = !!obj.descricao && obj.descricao.length >= 8;
+    const endereco = !!obj.endereco && obj.endereco.length >= 6;
+    const ocorrido = !!obj.ocorrido && obj.ocorrido.length >= 6;
+    const descricao = !!obj.descricao && obj.descricao.length >= 6;
     const cidade = !!obj.cidade && obj.cidade.length >= 4;
     const bairro = !!obj.bairro && obj.bairro.length >= 4;
     const senha = !!obj.senha && obj.senha.length >= 6;

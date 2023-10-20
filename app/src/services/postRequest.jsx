@@ -38,7 +38,10 @@ export const postUser = async (obj) => {
 export const postNewAnimal = async (obj, where, token) => {
   const url = where === 'adoption' ? '/adoptions' : '/missing-animals';
 
+  console.log(obj)
+
   const send = {
+    animal: obj.animal,
     name: obj.nome,
     description: obj.descricao,
     neutered: obj.castrado,
@@ -46,16 +49,16 @@ export const postNewAnimal = async (obj, where, token) => {
     picture: obj.picture[0]
   }
 
+  try {
+    const request = await api.post(url, send, {
+      headers: {
+        'Authorization': token
+      }
+    });
 
-  // try {
-  //   const { data } = await api.post(url, obj, {
-  //     headers: {
-  //       'Authorization': token
-  //     }
-  //   });
-
-  // } catch (error) {
-  //   const errorResponse = handleRequestError(error);
-  //   return errorResponse;
-  // }
+    return request;
+  } catch (error) {
+    const errorResponse = handleRequestError(error);
+    return errorResponse;
+  }
 };

@@ -1,7 +1,11 @@
 const models = require('../database/models');
+const { missingAnimal: validation } = require('../validations');
+const { authentication } = require('../tools')
 
 module.exports = {
-    getAll: async (accepted) => {
+    getAll: async (accepted, token) => {
+        const { region } = authentication.verifyToken(token);
+
         if (accepted === undefined) {
             const result = await models.missingAnimal.findAll();
             return {status: 200, result};
@@ -9,6 +13,7 @@ module.exports = {
         
         const result = await models.missingAnimal.findAll({
             where: {
+                region,
                 accepted: JSON.parse(accepted)
               }
         });
@@ -19,5 +24,14 @@ module.exports = {
         const result = await models.missingAnimal.findByPk(id);
         if (!result) return {status: 200, result: []};
         return {status: 200, result};
+    },
+    create: async (obj, token) => {
+        const {email, region} = authentication.verifyToken(token)
+ 
+        const validatedObj = await validation.new({...obj, user: email, region});
+
+        await models.missingAnimal.create(validatedObj);
+
+        return {status: 201, msg: 'animal registrado sucesso'};
     },
 }

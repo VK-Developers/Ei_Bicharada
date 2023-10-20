@@ -10,11 +10,31 @@ module.exports = {
         primaryKey: true,
         type: Sequelize.INTEGER
       },
+      animal: {
+        allowNull: false,
+        type: Sequelize.STRING
+      },
       name: {
         allowNull: false,
         type: Sequelize.STRING
       },
       description: {
+        allowNull: false,
+        type: Sequelize.TEXT('medium')
+      },
+      neutered: {
+        allowNull: false,
+        type: Sequelize.BOOLEAN
+      },
+      sex: {
+        allowNull: false,
+        type: Sequelize.BOOLEAN
+      },
+      user: {
+        allowNull: false,
+        type: Sequelize.STRING
+      },
+      region: {
         allowNull: false,
         type: Sequelize.STRING
       },
