@@ -1,32 +1,14 @@
 import React from 'react';
-import { StyleSheet, ScrollView, Image, TouchableOpacity, View, Text, Dimensions } from 'react-native';
+import { StyleSheet, ScrollView, Image, View, Text, Dimensions } from 'react-native';
 //Components
 import Background from '../../component/Background';
 import Return from '../../component/button/Return';
 
-import images from '../../localized/images';
-
 const { width, height } = Dimensions.get('screen');
 
-function Product({navigation, route: { params }}) {
-    const { description, inStock, name, picture, price, qrCode } = params;
-
-    const btn = () => {
-        const background = { backgroundColor: inStock ? 'green' : 'red' };
-        const text = inStock ? 'Comprar' : 'Indisponivel';
-
-        const handlePress = () => navigation.navigate('Payment', { qrCode })
-
-        return (
-            <TouchableOpacity 
-                disabled={!inStock} 
-                style={[styles.buy, background]}
-                onPress={handlePress}
-            >
-                <Text style={styles.buy.text}>{text}</Text>
-            </TouchableOpacity>
-        )
-    }
+function Animal({navigation, route: {params}}) {
+    const {name, description, picture} = params;
+    // Adicionar Idade e se eh castrado no DB e contato
 
     return (
         <>
@@ -34,8 +16,7 @@ function Product({navigation, route: { params }}) {
             <ScrollView style={styles.container}>
                 <View>
                     <Return nav={navigation} />
-                    <Image source={picture} style={styles.preview}/>
-                    <Text style={styles.price}>R$ {price.toFixed(2)}</Text>
+                    <Image source={{uri: picture}} style={styles.preview}/>
 
                     <View style={styles.content}>
                         <Text style={styles.title}>{name}</Text>
@@ -48,7 +29,10 @@ function Product({navigation, route: { params }}) {
                         <Text style={styles.text}>{description}</Text>
                     </View>
                 </View>
-                { btn() }
+                <View style={styles.content}>
+                    <Text style={styles.title}>Contato Para Adoação</Text>
+                    <Text style={styles.title}>+55 55 55555-5555</Text>
+                </View>
             </ScrollView>
         </>
   );
@@ -63,7 +47,7 @@ const styles = StyleSheet.create({
         backgroundColor: 'white',
         width,
         height: height * 0.3,
-        objectFit: 'contain'
+        objectFit: 'cover'
     },
     price: {
         color: 'black',
@@ -87,24 +71,7 @@ const styles = StyleSheet.create({
         color: 'black',
         fontSize: 18,
         fontWeight: '500',
-    },
-    buy: {
-        width: width - 30,
-        alignSelf: 'center',
-        height: height * 0.07,
-        borderRadius: 10,
-        justifyContent: 'center',
-        alignItems: 'center',
-        marginBottom: 20,
-
-        position: 'relative',
-        bottom: 0,
-        text: {
-            color: 'black',
-            fontSize: 26,
-            fontWeight: '800',
-        }
     }
 })
 
-export default Product;
+export default Animal;

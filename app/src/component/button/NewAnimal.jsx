@@ -1,15 +1,12 @@
-import React, {useState} from 'react';
+import React from 'react';
 import { StyleSheet, Text, TouchableOpacity, Image } from 'react-native';
 
 import images from '../../localized/images';
 import str from '../../localized/strings';
 
-function NewAnimal({type}) {
-  // const []
+function NewAnimal({type, action}) {
 
-  const handleClick = () => {
-    console.log(type)
-  }
+  const handleClick = () => action(true)
 
   return (
     <TouchableOpacity style={styles.container} onPress={handleClick}>

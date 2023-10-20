@@ -28,6 +28,7 @@ export default function checkboxInput({info, action}) {
           tintColors={{ false: 'black' }}
         />
         <Text style={styles.label}>{text}</Text>
+        
       </View>
     )
   }

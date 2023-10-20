@@ -34,3 +34,28 @@ export const postUser = async (obj) => {
     return errorResponse;
   }
 }
+
+export const postNewAnimal = async (obj, where, token) => {
+  const url = where === 'adoption' ? '/adoptions' : '/missing-animals';
+
+  const send = {
+    name: obj.nome,
+    description: obj.descricao,
+    neutered: obj.castrado,
+    sex: obj.sexo,
+    picture: obj.picture[0]
+  }
+
+
+  // try {
+  //   const { data } = await api.post(url, obj, {
+  //     headers: {
+  //       'Authorization': token
+  //     }
+  //   });
+
+  // } catch (error) {
+  //   const errorResponse = handleRequestError(error);
+  //   return errorResponse;
+  // }
+};

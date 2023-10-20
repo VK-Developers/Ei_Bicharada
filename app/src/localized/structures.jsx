@@ -43,7 +43,15 @@ export const events = [
   {title: 'Horário', maxLength: 5, type: 'numeric'},
 ]
 
+export const newAnimal = [
+  {title: 'Animal', placeholder: 'tipo de animal', type: 'default'},
+  {title: 'Castrado', placeholder: ['Sim', 'Não'], type: 'select'},
+  {title: 'Sexo', placeholder: ['Macho', 'Fêmea'], type: 'select'},
+  {title: 'Nome', placeholder: 'nome do pet', type: 'default'},
+  {title: 'Descrição', placeholder: 'nos fale sobre o pet...', type: 'default'},
+]
+
 export const regions = [
-  ['Mogi das cruzes', 'Itaquaquecetuba', 'Guararema Suzano', 'Biritiba Mirim', 'Salesópolis', 'Guarulhos', 'Arujá', 'Santa Isabel', 'Ferraz de Vasconcelos' ,'Poá'],
+  ['Americana', 'Mogi das cruzes', 'Itaquaquecetuba', 'Guararema Suzano', 'Biritiba Mirim', 'Salesópolis', 'Guarulhos', 'Arujá', 'Santa Isabel', 'Ferraz de Vasconcelos' ,'Poá'],
   ['Rio Claro', 'Cordeirópolis Limeira', 'Leme', 'Araras', 'Mogi Guaçu', 'Mogi Mirim', 'Conchal']
 ]

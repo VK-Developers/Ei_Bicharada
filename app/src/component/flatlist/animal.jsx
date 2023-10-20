@@ -3,10 +3,10 @@ import { StyleSheet, Image, View, Text, TouchableOpacity } from 'react-native';
 
 import str from '../../localized/strings'
 
-function Animal({info}) {
+function Animal({info, nav}) {
       const {picture, description, name} = info;
 
-      const handleClick = () => console.log(name)
+      const handleClick = () => nav.navigate('Animal', {...info});
 
       return (
             <TouchableOpacity style={styles.container} onPress={handleClick}>

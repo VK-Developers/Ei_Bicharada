@@ -7,6 +7,9 @@ export default {
   signUp: 'Criar Conta',
   return: 'Voltar',
   name: 'Nome',
+  sendForm: "Enviar Formulário",
+  sendFormSucess: "Solicitação enviada com sucesso!!",
+  ok: "OK",
   newPet: {
     adoption: 'adicionar um pet para doação',
     lost: 'adicionar um pet',
@@ -29,7 +32,6 @@ export default {
     resgate: ['Resgate registrado/adicionado \ncom sucesso', 'fechar'],
     denuncia: ['Denúncia registrada com \nsucesso', 'continuar'],
     evento: ['Solicitação de evento enviada \ncom sucesso', 'confirmar'],
-
     larTemporario: [
       'Seus dados são confidenciais, sendo a responsabilidade pela preservação e sigilo da ATESP.\n\nAqui, você pode escolher o tipo de animal que deseja receber em sua casa por um período determinado',
       'entendido'

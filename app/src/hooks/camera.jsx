@@ -1,6 +1,6 @@
-import { launchCamera } from 'react-native-image-picker';
+import { launchCamera, launchImageLibrary } from 'react-native-image-picker';
 
-function camera(state) {
+function camera(state, type) {
   const save = (res) => {
     const conditionsToSave = !res.didCancel && !res.error && !res.errorCode;
     const cameraError = !res.errorCode;
@@ -9,21 +9,30 @@ function camera(state) {
       prev => (
         {
           ...prev, 
-          picture: res.assets[0].uri
+          picture: [res.assets[0].uri, type]
         }
       )
     );
   }
 
-  launchCamera(
-    { 
+  const config = {
+    camera: {
       mediaType: 'photo',
       quality: 0.5,
       maxWidth: 500,
       maxHeight: 500,
-    }, 
-    (response) => save(response)
-  );
+    },
+    folder: {
+      mediaType: 'photo',
+    }
+  }
+
+  const action = {
+    camera: () => launchCamera(config[type], (response) => save(response)),
+    folder: () => launchImageLibrary(config[type], (response) => save(response)),
+  }
+
+  return action[type]
 };
 
 export default camera;

@@ -9,11 +9,13 @@ import Background from '../../component/Background'
 import Animal from '../../component/flatlist/animal';
 import ToggleMenu from '../../component/ToggleMenu';
 import Loader from '../../component/Loader';
+import NewAnimalModal from '../../component/modals/NewAnimal'
 
 import { getAdoptions } from '../../services/getRequest';
 
-function Adocao({route: { params }}) {
+function Adocao({navigation, route: { params }}) {
   const { loader, setLoader } = useContext(Context);
+  const [modal, setModal] = useState(false);
   const [animals, setAnimals] = useState([]);
   const [scrollY, setScrollY] = useState(0);
 
@@ -27,12 +29,13 @@ function Adocao({route: { params }}) {
     FetchData();
   }, [])
 
-  const renderComponente = ({ item }) => <Animal info={item} /> 
+  const renderComponente = ({ item }) => <Animal info={item} nav={navigation} /> 
 
   return (
     <>
       <Background img={'tree'} />
       <ToggleMenu level={scrollY} />
+      { !!modal && <NewAnimalModal show={modal} action={setModal} type={'adoption'} /> }
       {
         !loader ? (
           <SafeAreaView style={styles.container}>
@@ -44,7 +47,7 @@ function Adocao({route: { params }}) {
               ListHeaderComponent={() => (
                 <>
                   <Header name={params.name} />
-                  <NewAnimal type={'adoption'} />
+                  <NewAnimal type={'adoption'} action={setModal}/>
                 </>
               )}
               ListFooterComponent={() => <Footer />}

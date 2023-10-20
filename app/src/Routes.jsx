@@ -6,10 +6,13 @@ import { StatusBar } from 'react-native';
 import LoginScreen from './screens/Login';
 import NewUserScreen from './screens/stack/NewUser';
 import CoverScreen from './screens/stack/Cover';
+
+import AdocaoScreen from './screens/stack/Adocao';
+
 import ResgateScreen from './screens/stack/Resgate';
 import DenunciasScreen from './screens/stack/Denuncias';
 import AnimaisPerdidosScreen from './screens/stack/AnimaisPerdidos';
-import AdocaoScreen from './screens/stack/Adocao';
+
 import ContribuicaoScreen from './screens/stack/Contribuicao';
 import LarTemporarioScreen from './screens/stack/LarTemporario';
 // import DivulgacaoScreen from './screens/stack/Divulgacao';
@@ -19,6 +22,7 @@ import PrestacaoDeContasScreen from './screens/stack/PrestacaoDeContas';
 import ApoiadoresScreen from './screens/stack/Apoiadores';
 // Sub Stacks
 import ProductScreen from './screens/subScreens/Product';
+import AnimalScreen from './screens/subScreens/Animal';
 // import PaymentScreen from './screens/subScreens/Payment';
 
 const Stack = createStackNavigator();
@@ -57,6 +61,7 @@ export default function App() {
         <Stack.Screen name="Apoiadores" component={ApoiadoresScreen} />
         {/* Sub Screens */}
         <Stack.Screen name="Product" component={ProductScreen} />
+        <Stack.Screen name="Animal" component={AnimalScreen} />
         {/* <Stack.Screen name="Payment" component={PaymentScreen} /> */}
 
         {/* <Stack.Screen name="Divulgação" component={DivulgacaoScreen} /> */}

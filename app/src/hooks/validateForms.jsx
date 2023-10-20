@@ -18,8 +18,11 @@ const validateForms = (obj, i) => {
     const email = !!obj.email && emailRegex.test(obj.email);
     const telefone = !!obj.telefone && telefoneRegex.test(obj.telefone);
     const cep = !!obj.cep && cepRegex.test(obj.cep);
-
     const region = !!obj.region;
+    const castrado = obj.castrado !== undefined ;
+    const sexo = obj.castrado !== undefined ;
+
+    // console.log(castrado)
 
     const validation = {
         1: andando && horario && picture && animal && cidade && endereco && ocorrido,
@@ -28,7 +31,9 @@ const validateForms = (obj, i) => {
             basic: nome && email && cidade && telefone && cep,
             city: region,
             password: senha && (obj.senha === obj.novamente)
-        }
+        },
+        // NewAnimal
+        4: animal && castrado && nome && descricao && sexo && picture
     };
     return validation[i];
 }
