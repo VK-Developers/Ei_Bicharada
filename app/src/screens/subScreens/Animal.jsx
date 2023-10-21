@@ -7,7 +7,7 @@ import Return from '../../component/button/Return';
 const { width, height } = Dimensions.get('screen');
 
 function Animal({navigation, route: {params}}) {
-    const {name, description, picture, contact} = params;
+    const {name, description, picture} = params;
 
     return (
         <>
@@ -22,9 +22,12 @@ function Animal({navigation, route: {params}}) {
                         <Text style={styles.text}>{description}</Text>
                     </View>
                 </View>
-                <View style={styles.content}>
+                <View style={[styles.content]}>
                     <Text style={styles.title}>Contato Para Adoação</Text>
-                    <Text style={styles.title}>{contact}</Text>
+                    <Text style={styles.title}>+55 13 98854-2973</Text>
+                    <Text style={styles.title}>+55 19 98284-9344</Text>
+                    <Text style={styles.title}>+55 19 98284-9344</Text>
+                    <Text style={styles.title}>suporte@atespets.com.br</Text>
                 </View>
             </ScrollView>
         </>

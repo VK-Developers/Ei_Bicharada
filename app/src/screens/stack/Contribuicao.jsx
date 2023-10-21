@@ -1,46 +1,28 @@
 import React from 'react';
-import { StyleSheet, SafeAreaView, View, Text } from 'react-native';
+import { StyleSheet, View, Text, Image, Dimensions } from 'react-native';
+
+const { height } = Dimensions.get('screen');
 //Components
 import Footer from '../../component/Footer';
 import Header from '../../component/Header';
 import ToggleMenu from '../../component/ToggleMenu';
-import Background from '../../component/Background'
+import Background from '../../component/Background';
 
-import str from '../../localized/strings'
+import images from '../../localized/images';
 
 function Contribuicao({route: { params }}) {
   return (
     <>
-      <Background img={'tree'} />
-      <ToggleMenu />
-      <SafeAreaView style={styles.container}>
-        <View style={{flexGrow: 1}}>
-          <View>
-            <Header name={params.name} />
-          </View>
-          <View style={{flexGrow: 1}}>
-            <View style={styles.infoContainer}>
-              <Text style={styles.text}>{str.retirada[0]}</Text>
-              <Text style={styles.text}>{str.retirada[1]}</Text>
-            </View>
-
-            <View style={styles.bar} />
-
-            <View style={styles.infoContainer}>
-              <Text style={styles.text}>{str.coleta[0]}</Text>
-              <Text style={styles.text}>{str.coleta[1]}</Text>
-            </View>
-
-            <View style={styles.bar} />
-
-            <View style={styles.infoContainer}>
-              <Text style={styles.text}>{str.doacao[0]}</Text>
-              <Text style={styles.text}>{str.doacao[1]}</Text>
-            </View>
-          </View>
+    <Background img={'tree'} />
+    <ToggleMenu />
+      <View style={styles.container}>
+        <View style={{ flexGrow: 1 }}>
+          <Header name={params.name} />
         </View>
         <Footer />
-      </SafeAreaView>
+      </View>
+      <Image source={images.piggy} style={styles.piggy}/>
+      <Text style={styles.money}>R$ 100,00</Text>
     </>
   );
 }
@@ -66,6 +48,23 @@ const styles = StyleSheet.create({
     alignSelf: 'center',
     backgroundColor: 'black',
     borderRadius: 20,
+  },
+  piggy: {
+    width: 300,
+    height: 300,
+    position: 'absolute',
+    zIndex: 0,
+    top: height * 0.20,
+    alignSelf: 'center'
+  },
+  money: {
+    color: 'black',
+    position: 'absolute',
+    zIndex: 1,
+    top: height * 0.4,
+    alignSelf: 'center',
+    fontSize: 26,
+    fontWeight: '800'
   }
 })
 

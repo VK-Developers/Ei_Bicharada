@@ -21,7 +21,7 @@ export default {
   newUser: {
     basic: ['Informacoes Basicas', 'CONTINUAR...'],
     city: ['Região de Interesse', 'CONFIRMAR'],
-    password: ['Senha', 'CRIAR CONTA']
+    password: ['Criar Senha', 'CRIAR CONTA']
   },
   doacao: {
     title: 'Doação',

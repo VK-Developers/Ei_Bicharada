@@ -8,6 +8,7 @@ export default {
     test: require('../assets/backgrounds/test.png'),
   },
   donate: require('../assets/donate.png'),
+  piggy: require('../assets/piggy.png'),
   logo: require('../assets/logo.png'),
   arrow: require('../assets/arrow.png'),
   plus: require('../assets/plus.png'),

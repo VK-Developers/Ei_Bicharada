@@ -122,6 +122,7 @@ function NewUser({navigation}) {
 
         {/* password */}
         <View style={[styles.container, type !== 'password' && {display: 'none' }]}>
+          
         {
           structure.password.map((text, i) => {
             return (

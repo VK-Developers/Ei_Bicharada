@@ -1,5 +1,5 @@
 import React from 'react';
-import { StyleSheet, View, Text, Image, TouchableOpacity } from 'react-native';
+import { StyleSheet, View } from 'react-native';
 import images from '../../localized/images'
 //Components
 import Footer from '../../component/Footer';
@@ -13,19 +13,13 @@ function PrestacaoDeContas({route: { params }}) {
     <Background img={'tree'} />
     <ToggleMenu />
       <View style={styles.container}>
-        <View>
+        <View style={{flexGrow:1}}>
           <Header name={params.name} />
           <View style={{flexGrow: 1}}>
-            <View style={styles.infoContainer}>
-              <Text style={styles.text}>Acompanhe e Saiba</Text>
-              <Text style={styles.text}>Quanto Custa</Text>
-            </View>
-            <TouchableOpacity style={styles.iconContainer}>
-              <Image source={images.donate} style={styles.iconContainer.icon} />
-            </TouchableOpacity>
-            <View style={styles.infoContainer}>
-              <Text style={styles.text}>Cada Doação</Text>
-            </View>
+
+            
+
+
           </View>
         </View>
         <Footer />
