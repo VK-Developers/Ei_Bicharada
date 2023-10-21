@@ -18,7 +18,7 @@ const { height } = Dimensions.get('screen');
 
 function Resgate({navigation, route: { params }}) {
   const [scrollY, setScrollY] = useState(0);
-  const [listiner, setLister] = useState({});
+  const [listiner, setListiner] = useState({});
   const [modal, setModal] = useState(false);
   const [sendForms, setSendForms] = useState(false);
   const scrollViewRef = useRef();
@@ -32,25 +32,26 @@ function Resgate({navigation, route: { params }}) {
     <>
       <Background img={'tree'} />
       <ToggleMenu level={scrollY} />
-      <Sent 
+      <Sent
         show={modal}
         action={setModal}
         nav={navigation}
+        reset={setListiner}
         text={str.modal.resgate}
       />
       <ScrollView onScroll={(event) => setScrollY(event.nativeEvent.contentOffset.y)} ref={scrollViewRef} extraScrollHeight={20} keyboardShouldPersistTaps="handled">
         <View style={styles.container}>
           <View>
             <Header name={params.name} />
-            <PictureIcon action={setLister} state={listiner} />
+            <PictureIcon action={setListiner} state={listiner} />
               { 
                 arrayText.map((text, i) => {
-                  if (i === 1) return <CheckboxInput key={text.title} info={text} action={setLister} />
+                  if (i === 1) return <CheckboxInput key={text.title} info={text} action={setListiner} />
                   return (
                     <TextInput 
                       key={text.title} 
                       info={text}
-                      action={setLister}
+                      action={setListiner}
                       baseRef={scrollViewRef}
                     />
                   )
@@ -59,7 +60,7 @@ function Resgate({navigation, route: { params }}) {
           </View>
           <Footer 
             sendIt={sendForms} 
-            obj={listiner} 
+            obj={{data: listiner, from: 'rescue'}}
             modal={setModal}
           />
         </View>

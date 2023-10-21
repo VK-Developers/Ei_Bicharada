@@ -11,7 +11,7 @@ import { newAnimal as structure } from '../../localized/structures';
 import { postNewAnimal } from '../../services/postRequest';
 
 const NewAnimal = ({ show, action, type }) => {
-    const { token } = useContext(Context);
+    const { token, setLoader } = useContext(Context);
     const [sent, setSent] = useState(false);
     const [canSubmit, setCanSubmit] = useState(false);
     const [listiner, setListiner] = useState({});
@@ -24,7 +24,9 @@ const NewAnimal = ({ show, action, type }) => {
     const handleClose =  () => action(false);
 
     const handleSubmit = async () => {
+        setLoader(true);
         await postNewAnimal(listiner, type, token);
+        setLoader(false);
         setSent(true);
     }
 

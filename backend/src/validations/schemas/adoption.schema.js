@@ -8,6 +8,7 @@ module.exports = {
         neutered: Joi.bool().required(),
         sex: Joi.bool().required(),
         user: Joi.string(),
+        contact: Joi.string(),
         region: Joi.string(),
         picture: Joi.string().required(),
         accepted: Joi.bool(),

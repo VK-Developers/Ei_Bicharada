@@ -1,26 +1,39 @@
-import React, {useState} from 'react';
+import React, {useState, useEffect, useContext} from 'react';
+import Context from '../../context/Context';
 import { StyleSheet, SafeAreaView, Dimensions, View, FlatList } from 'react-native';
 //Components
 import Header from '../../component/Header';
 import ToggleMenu from '../../component/ToggleMenu';
 import Background from '../../component/Background';
-import New from '../../component/feed/New';
+import New from '../../component/flatlist/New';
 
-import { news } from '../../localized/structures';
+import { getNewAndEvent } from '../../services/getRequest';
 
 const {height, width} = Dimensions.get('window');
 
-function NoticiasEventos({route: { params }}) {
+function NoticiasEventos({navigation, route: { params }}) {
+  const { setLoader } = useContext(Context);
+  const [news, setNews] = useState([]);
   const [scrollY, setScrollY] = useState(0);
 
-  const renderComponente = ({item}) => <New info={item} />
+  useEffect(() => {
+    console.log(params.name)
+    setLoader(true)
+    async function FetchData() {
+      const fetchNews = await getNewAndEvent(params.token);
+      setNews(fetchNews);
+      setLoader(false);
+    }
+    FetchData();
+  }, [])
+
+  const renderComponente = ({item}) => <New nav={navigation} info={item} />
 
   return (
     <>
-      {!params.first ? <Background img={'four'} /> : <View style={styles.backgroundSolid}/>}
-      <ToggleMenu level={scrollY} first={params.first} />
+      <Background img={'four'} />
+      <ToggleMenu level={scrollY} />
       <SafeAreaView style={styles.container}>
-        {!params.first && (
           <View style={styles.news}>
             <FlatList 
               data={news}
@@ -28,11 +41,9 @@ function NoticiasEventos({route: { params }}) {
               keyExtractor={({id}) => 'lost-' + id}
               onScroll={(event) => setScrollY(event.nativeEvent.contentOffset.y)}
               ItemSeparatorComponent={ <View style={{height: 20}} /> }
-              ListHeaderComponent={() => <Header name={'NOTICIAS & EVENTOS'} /> }
-              ListFooterComponent={() => <View style={{height: 20}} />}
+              ListHeaderComponent={() => <Header name={params.name} /> }
             />
           </View>
-        )}
       </SafeAreaView>
     </>
   );

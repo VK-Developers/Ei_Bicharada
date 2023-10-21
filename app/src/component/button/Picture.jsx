@@ -11,8 +11,10 @@ function PicureIcon({action, state}) {
     !!state.picture && setChecked(true)
   }, [state])
 
-  const handlePress = () => camera(action);
-
+  const handlePress = () => {
+    const openCamera = camera(action, 'camera');
+    openCamera()
+  }
   return (
     <TouchableOpacity style={styles.conteiner} onPress={handlePress}>
       <Image style={styles.icon} source={images.camera} />

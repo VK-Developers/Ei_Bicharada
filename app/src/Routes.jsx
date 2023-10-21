@@ -23,7 +23,8 @@ import ApoiadoresScreen from './screens/stack/Apoiadores';
 // Sub Stacks
 import ProductScreen from './screens/subScreens/Product';
 import AnimalScreen from './screens/subScreens/Animal';
-// import PaymentScreen from './screens/subScreens/Payment';
+import PaymentScreen from './screens/subScreens/Payment';
+import ArticleScreen from './screens/subScreens/Article';
 
 const Stack = createStackNavigator();
 
@@ -62,7 +63,8 @@ export default function App() {
         {/* Sub Screens */}
         <Stack.Screen name="Product" component={ProductScreen} />
         <Stack.Screen name="Animal" component={AnimalScreen} />
-        {/* <Stack.Screen name="Payment" component={PaymentScreen} /> */}
+        <Stack.Screen name="Payment" component={PaymentScreen} />
+        <Stack.Screen name="Article" component={ArticleScreen} />
 
         {/* <Stack.Screen name="Divulgação" component={DivulgacaoScreen} /> */}
       </Stack.Navigator>

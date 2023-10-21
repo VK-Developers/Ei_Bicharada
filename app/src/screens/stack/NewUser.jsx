@@ -25,7 +25,6 @@ function NewUser({navigation}) {
   useEffect(() => {
     const canSendIt = validateForms(listiner, 3);
     setSendForms(canSendIt[type]);
-    console.log(listiner)
   }, [listiner, type]);
  
   const handlePress = async () => {
@@ -41,9 +40,7 @@ function NewUser({navigation}) {
         navigation.navigate('Login');
         return
       }
-
-      console.log(listiner)
-
+      
       setModal(true)
     }
 

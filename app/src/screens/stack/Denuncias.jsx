@@ -1,6 +1,6 @@
 import React, {useRef, useState, useEffect, useContext} from 'react';
 import Context from '../../context/Context';
-import { StyleSheet, View, ScrollView, Dimensions, Modal } from 'react-native';
+import { StyleSheet, View, ScrollView, Dimensions } from 'react-native';
 // Components
 import Footer from '../../component/Footer';
 import Header from '../../component/Header';
@@ -20,7 +20,7 @@ const { height } = Dimensions.get('screen')
 function Denuncias({navigation, route: { params }}) {
   const [scrollY, setScrollY] = useState(0);
   const {menu} = useContext(Context);
-  const [listiner, setLister] = useState({});
+  const [listiner, setListiner] = useState({});
   const [modal, setModal] = useState(false);
   const [sendForms, setSendForms] = useState(false);
   const scrollViewRef = useRef();
@@ -38,21 +38,22 @@ function Denuncias({navigation, route: { params }}) {
         show={modal}
         action={setModal}
         nav={navigation}
+        reset={setListiner}
         text={str.modal.denuncia}
       />
       <ScrollView onScroll={(event) => setScrollY(event.nativeEvent.contentOffset.y)} ref={scrollViewRef} extraScrollHeight={20} keyboardShouldPersistTaps="handled">
         <View style={[styles.container, {opacity: menu ? 0.25 : 1}]}>
           <View>
             <Header name={params.name} />
-            <PictureIcon action={setLister} state={listiner} />
+            <PictureIcon action={setListiner} state={listiner} />
             { 
                 arrayText.map((text, i) => {
-                  if (i === 1) return <CheckboxInput key={text.title} info={text} action={setLister} />
+                  if (i === 1) return <CheckboxInput key={text.title} info={text} action={setListiner} />
                   return (
                     <TextInput
                       key={text.title} 
                       info={text}
-                      action={setLister}
+                      action={setListiner}
                       baseRef={scrollViewRef}
                     />
                   )
@@ -61,7 +62,7 @@ function Denuncias({navigation, route: { params }}) {
           </View>
           <Footer 
             sendIt={sendForms} 
-            obj={listiner} 
+            obj={{data: listiner, from: 'complains'}}
             modal={setModal}
           />
         </View>

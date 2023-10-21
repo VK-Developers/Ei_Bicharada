@@ -3,4 +3,7 @@ module.exports.user = require("./user.controller");
 module.exports.adoption = require("./adoption.controller");
 module.exports.missingAnimal = require("./missingAnimal.controller");
 module.exports.rescue = require("./rescue.controller");
+module.exports.complain = require("./complain.controller");
 module.exports.product = require("./product.controller");
+module.exports.newEvent = require("./newEvent.controller");
+module.exports.sponsor = require("./sponsor.controller");

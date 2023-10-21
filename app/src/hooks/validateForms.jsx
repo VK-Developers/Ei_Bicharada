@@ -3,7 +3,7 @@ const validateForms = (obj, i) => {
     const telefoneRegex = /^\+\d{2} \d{2} \d{5}-\d{4}$/;
     const cepRegex = /^\d{5}-\d{3}$/;
 
-    const andando = !!obj.andando;
+    const andando = obj.andando !== undefined;
     const horario = !!obj.horario;
     const data = !!obj.data;
     const picture = !!obj.picture;
@@ -21,8 +21,6 @@ const validateForms = (obj, i) => {
     const region = !!obj.region;
     const castrado = obj.castrado !== undefined ;
     const sexo = obj.castrado !== undefined ;
-
-    // console.log(castrado)
 
     const validation = {
         1: andando && horario && picture && animal && cidade && endereco && ocorrido,

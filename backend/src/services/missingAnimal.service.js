@@ -26,9 +26,9 @@ module.exports = {
         return {status: 200, result};
     },
     create: async (obj, token) => {
-        const {email, region} = authentication.verifyToken(token)
+        const {email, region, phone} = authentication.verifyToken(token)
  
-        const validatedObj = await validation.new({...obj, user: email, region});
+        const validatedObj = await validation.new({...obj, user: email, region, contact: phone});
 
         await models.missingAnimal.create(validatedObj);
 

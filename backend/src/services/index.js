@@ -3,4 +3,7 @@ module.exports.user = require("./user.service");
 module.exports.adoption = require("./adoption.service");
 module.exports.missingAnimal = require("./missingAnimal.service");
 module.exports.rescue = require("./rescue.service");
+module.exports.complain = require("./complain.service");
 module.exports.product = require("./product.service");
+module.exports.newEvent = require("./newEvent.service");
+module.exports.sponsor = require("./sponsor.service");

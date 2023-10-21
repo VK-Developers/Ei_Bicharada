@@ -1,5 +1,6 @@
 const models = require('../database/models');
-const { rescue: validation } = require('../validations')
+const { rescue: validation } = require('../validations');
+const { authentication } = require('../tools');
 
 module.exports = {
     getAll: async () => {
@@ -33,13 +34,15 @@ module.exports = {
 
         return {status: 200, result: 'rescue updated'};
     },
-    create: async(obj) => {
+    create: async(obj, token) => {
+        console.log(obj)
+        const {email, region} = authentication.verifyToken(token);
         const validatedObj = await validation.new(obj)
-
+        
         const newRescue = await models.rescue.create({
             ...validatedObj,
-            accepted: false,
-            newRequest: true
+            user: email,
+            region,
         });
         return {status: 201, result: newRescue};
     },

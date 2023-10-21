@@ -21,9 +21,10 @@ function FormInput({info, baseRef, action, btn}) {
   const occurrence = (title === 'Ocorrido' || title === 'Descrição');
 
   const hourFormat = (i) => {
-    const didDelete = text.length > i.length;
+    const initial = i.length;
+    const state = text.length;
 
-    if (!!didDelete) return setText('')
+    if (state > initial) return setText(`${i}`);
     
     if (i.length === 2) {
       const checkLiminit = Number(i) > 24
@@ -110,7 +111,7 @@ function FormInput({info, baseRef, action, btn}) {
           onChangeText={type !== 'default' ? 
             (title === 'Data' ? dateFormat : (
               title === 'Telefone' ? phoneFormat : (
-                title === 'CEP' ? cepFormat : phoneFormat
+                title === 'CEP' ? cepFormat : hourFormat
               ))) 
             : 
             setText }

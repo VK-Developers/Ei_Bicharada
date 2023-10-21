@@ -1,6 +1,6 @@
 const models = require('../database/models');
 const { adoption: validation } = require('../validations');
-const { authentication } = require('../tools')
+const { authentication } = require('../tools');
 
 module.exports = {
     getAll: async (accepted, token) => {
@@ -28,9 +28,9 @@ module.exports = {
         return {status: 200, result};
     },
     create: async (obj, token) => {
-        const {email, region} = authentication.verifyToken(token)
+        const {email, region, phone} = authentication.verifyToken(token);
  
-        const validatedObj = await validation.new({...obj, user: email, region});
+        const validatedObj = await validation.new({...obj, user: email, region, contact: phone});
 
         await models.adoption.create(validatedObj);
 

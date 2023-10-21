@@ -15,6 +15,7 @@ module.exports = (sequelize, DataTypes) => {
   }, {
     sequelize,
     modelName: 'newAndEvent',
+    tableName: "news_and_events",
     timestamps: true,
     updatedAt: false,
     createdAt: 'created'

@@ -2,13 +2,11 @@ import React, { useState, useEffect, useContext } from 'react';
 import Context from '../../context/Context';
 import { StyleSheet, SafeAreaView, FlatList } from 'react-native';
 //Components
-import Footer from '../../component/Footer';
 import Header from '../../component/Header';
 import ToggleMenu from '../../component/ToggleMenu';
 import Background from '../../component/Background'
 import Animal from '../../component/flatlist/animal';
 import NewAnimal from '../../component/button/NewAnimal';
-import Loader from '../../component/Loader';
 import NewAnimalModal from '../../component/modals/NewAnimal'
 
 import { getMissing } from '../../services/getRequest';
@@ -20,11 +18,11 @@ function AnimaisPerdidos({navigation, route: { params }}) {
   const [scrollY, setScrollY] = useState(0);
 
   useEffect(() => {
-    setLoader(true)
+    setLoader(true);
     async function FetchData() {
       const data = await getMissing(params.token);
-      setAnimals(data)
-      setLoader(false)
+      setAnimals(data);
+      setLoader(false);
     }
     FetchData();
   }, [])
@@ -50,13 +48,11 @@ function AnimaisPerdidos({navigation, route: { params }}) {
               <NewAnimal type={'lost'} action={setModal} />
             </>
           )}
-          ListFooterComponent={() => <Footer />}
         />
       </SafeAreaView>
         ) : (
           <>
             <Background img={'tree'} />
-            <Loader />
           </>
         )
       }

@@ -20,7 +20,7 @@ module.exports = {
       },
       description: {
         allowNull: false,
-        type: Sequelize.STRING
+        type: Sequelize.TEXT('medium')
       },
       hour: {
         allowNull: false,
@@ -31,6 +31,14 @@ module.exports = {
         type: Sequelize.STRING
       },
       city: {
+        allowNull: false,
+        type: Sequelize.STRING
+      },
+      user: {
+        allowNull: false,
+        type: Sequelize.STRING
+      },
+      region: {
         allowNull: false,
         type: Sequelize.STRING
       },

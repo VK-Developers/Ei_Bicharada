@@ -1,22 +1,33 @@
-import React from 'react';
+import React, {useContext} from 'react';
+import Context from '../context/Context';
 import { StyleSheet, View, Image, Dimensions, Text, TouchableOpacity } from 'react-native';
 import images from '../localized/images';
+import str from '../localized/strings';
+
+import { postRescueComplains } from '../services/postRequest';
 
 const {height} = Dimensions.get('window');
 
 function Footer({sendIt, exeption, obj, modal}) {
+  const {token, setLoader} = useContext(Context);
 
-  const handleSubmit = () => modal(true);
+  const handleSubmit = async () => {
+    setLoader(true)
+    await postRescueComplains(obj.data, obj.from, token)
+    setLoader(false)
+    modal(true)
+  };
 
   return (
     <View style={[styles.container, !!exeption && { alignSelf: 'center' }]}>
       <View style={styles.spLogo}>
         <Image source={images.spLogo} style={styles.logo.sp}/>
         <View style={styles.spText}>
-          <Text style={styles.title}>ATESP</Text>
-          <Text style={styles.spanText}>Associação dos Técnicos em</Text>
-          <Text style={styles.spanText}>Edificações Auxiliares e Afins</Text>
-          <Text style={styles.spanText}>do Estado de São Paulo </Text>
+          <Text style={styles.title}>{str.footer.title}</Text>
+          {
+            str.footer.subTitle.map((content, i) => <Text key={'sub-' + i} style={styles.spanText}>{content}</Text>)
+          }
+
         </View>
       </View>
       {

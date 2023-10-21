@@ -1,10 +1,14 @@
 import React from 'react';
 import {Modal, StyleSheet, Text, Pressable, View} from 'react-native';
 
-const Sent = ({ show, action, nav, text }) => {
+const Sent = ({ show, action, nav, text, reset }) => {
     const handlePress = () => {
         action(!show);
-        typeof nav !== 'boolean' && nav.navigate('NoticiasEventos')
+        if (typeof nav !== 'boolean') {
+            reset({})
+            nav.navigate('Cover');
+            return
+        }
     }
     return (
         <Modal

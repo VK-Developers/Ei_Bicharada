@@ -1,45 +1,41 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState } from 'react';
 import { StyleSheet, View, Text, Dimensions } from 'react-native';
 import CheckBox from '@react-native-community/checkbox';
 
 const {width} = Dimensions.get('screen');
 
 export default function checkboxInput({info, action}) {
-  const [selected, setSelected] = useState({});
+  const [selected, setSelected] = useState({yes: null, no: null});
 
-  useEffect(() => {
-    const key = Object.keys(selected)
+  const handleChange = (value, condition) => {
+    setSelected({ ...condition })
+
     action(prev => ({
       ...prev,
-      andando: key == 'op1' ? true : false
+      andando: value
     }))
-  }, [selected])
+  };
 
-  const checkbox = (text, indice) => {
-    const target = `op${indice + 1}`
-    const handleChange = (param) => setSelected({ [target]: param })
-
-    return (
-      <View key={'check-' + indice} style={{flexDirection: 'row'}}>
-        <CheckBox
-          value={selected[target]}
-          onValueChange={handleChange}
-          style={{marginRight: 2}}
-          tintColors={{ false: 'black' }}
-        />
-        <Text style={styles.label}>{text}</Text>
-        
-      </View>
-    )
-  }
+ 
 
   return (
     <View style={styles.container}>
       <Text style={styles.text}>{info.title}?</Text>
       <View style={styles.selection}>
-        {
-          info.options.map((e, i) => checkbox(e, i))
-        }
+        <CheckBox
+          value={selected['yes']}
+          onValueChange={() => handleChange(true, {yes: true, no: false})}
+          style={{marginRight: 2}}
+          tintColors={{ false: 'black' }}
+        />
+        <Text style={[styles.label, {marginRight: 10}]}>sim</Text>
+        <CheckBox
+          value={selected['no']}
+          onValueChange={() => handleChange(false, {yes: false, no: true})}
+          style={{marginRight: 2}}
+          tintColors={{ false: 'black' }}
+        />
+        <Text style={[styles.label, {marginRight: 10}]}>nao</Text>
       </View>
     </View>
   );

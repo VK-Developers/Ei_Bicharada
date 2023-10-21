@@ -11,6 +11,13 @@ module.exports = {
         date: '19/09/2023',
         created: new Date(),
       },
+      {
+        type: 'release',
+        title: 'Versão de Inauguração!!! v1.1',
+        content: "Estamos lançando a primeira versão do app, espero que gostem!! ",
+        date: '20/10/2023',
+        created: new Date(),
+      },
     ], {});
   },
 

@@ -10,24 +10,25 @@ export default {
   sendForm: "Enviar Formulário",
   sendFormSucess: "Solicitação enviada com sucesso!!",
   ok: "OK",
+  footer: {
+    title: "ATESP",
+    subTitle: ['Associação dos Técnicos em', 'Edificações Auxiliares e Afins', 'do Estado de São Paulo']
+  },
   newPet: {
     adoption: 'adicionar um pet para doação',
     lost: 'adicionar um pet',
   },
-
   newUser: {
     basic: ['Informacoes Basicas', 'CONTINUAR...'],
     city: ['Região de Interesse', 'CONFIRMAR'],
     password: ['Senha', 'CRIAR CONTA']
   },
-
   doacao: {
     title: 'Doação',
     retirada: ['Agendar Retirada', '(13) 9XXXX - XXXX'],
     coleta: ['Ponto de Coleta', 'Rua: XXXXXXXXXX'],
     doacao: ['Doação Financeira', 'Pix: XXXXXXXXXX'],
   },
-
   modal: {
     resgate: ['Resgate registrado/adicionado \ncom sucesso', 'fechar'],
     denuncia: ['Denúncia registrada com \nsucesso', 'continuar'],

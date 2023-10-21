@@ -13,7 +13,7 @@ function Product({navigation, route: { params }}) {
         const background = { backgroundColor: inStock ? 'green' : 'red' };
         const text = inStock ? 'Comprar' : 'Indisponivel';
 
-        const handlePress = () => navigation.navigate('Payment', { qrCode })
+        const handlePress = () => navigation.navigate('Payment')
 
         return (
             <TouchableOpacity 
@@ -37,12 +37,6 @@ function Product({navigation, route: { params }}) {
 
                     <View style={styles.content}>
                         <Text style={styles.title}>{name}</Text>
-                        <Text style={styles.text}>{description}</Text>
-                        <Text style={styles.text}>{description}</Text>
-                        <Text style={styles.text}>{description}</Text>
-                        <Text style={styles.text}>{description}</Text>
-                        <Text style={styles.text}>{description}</Text>
-                        <Text style={styles.text}>{description}</Text>
                         <Text style={styles.text}>{description}</Text>
                     </View>
                 </View>

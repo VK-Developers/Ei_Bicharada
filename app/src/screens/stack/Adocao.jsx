@@ -2,13 +2,12 @@ import React, { useState, useEffect, useContext } from 'react';
 import Context from '../../context/Context';
 import { StyleSheet, SafeAreaView, FlatList } from 'react-native';
 //Components
-import Footer from '../../component/Footer';
+// import Footer from '../../component/Footer';
 import Header from '../../component/Header';
 import NewAnimal from '../../component/button/NewAnimal';
 import Background from '../../component/Background'
 import Animal from '../../component/flatlist/animal';
 import ToggleMenu from '../../component/ToggleMenu';
-import Loader from '../../component/Loader';
 import NewAnimalModal from '../../component/modals/NewAnimal'
 
 import { getAdoptions } from '../../services/getRequest';
@@ -50,13 +49,12 @@ function Adocao({navigation, route: { params }}) {
                   <NewAnimal type={'adoption'} action={setModal}/>
                 </>
               )}
-              ListFooterComponent={() => <Footer />}
+              // ListFooterComponent={() => <Footer />}
             />
           </SafeAreaView>
         ) : (
           <>
             <Background img={'tree'} />
-            <Loader />
           </>
         )
       }

@@ -1,7 +1,7 @@
-import React, {useState, useEffect} from 'react';
+import React, {useState, useEffect, useContext} from 'react';
+import Context from '../../context/Context';
 import { StyleSheet, ScrollView, Image, TouchableOpacity, View, Dimensions } from 'react-native';
 //Components
-import Footer from '../../component/Footer';
 import Header from '../../component/Header';
 import ToggleMenu from '../../component/ToggleMenu';
 import Background from '../../component/Background'
@@ -11,13 +11,16 @@ import { getProducts } from '../../services/getRequest';
 const { width } = Dimensions.get('screen');
 
 function NossosProdutos({navigation, route: { params }}) {
+  const { loader, setLoader } = useContext(Context);
   const [scrollY, setScrollY] = useState(0);
   const [products, setProducts] = useState([]);
 
   useEffect(() => {
+    setLoader(true);
     async function FetchData() {
       const allProducts = await getProducts(params.token);
-      setProducts(allProducts)
+      setProducts(allProducts);
+      setLoader(false);
     }
     FetchData()
   }, [])
@@ -28,21 +31,28 @@ function NossosProdutos({navigation, route: { params }}) {
     <>
     <Background img={'tree'} />
     <ToggleMenu level={scrollY} />
-    <ScrollView onScroll={(event) => setScrollY(event.nativeEvent.contentOffset.y)} style={styles.container}>
-      <View>
-        <Header name={params.name} />
-        <View style={styles.products}>
-          {
-            products.map((product, i) => (
-              <TouchableOpacity style={styles.product} key={'product-' + i} onPress={() => handlePress(product)}>
-                <Image source={{uri: product.picture}} style={styles.product.img} />
-              </TouchableOpacity>
-            ))
-          }
-        </View>
-      </View>
-      <Footer />
-    </ScrollView>
+    {
+      !loader ? (
+        <ScrollView onScroll={(event) => setScrollY(event.nativeEvent.contentOffset.y)} style={styles.container}>
+          <View>
+            <Header name={params.name} />
+            <View style={styles.products}>
+              {
+                products.map((product, i) => (
+                  <TouchableOpacity style={styles.product} key={'product-' + i} onPress={() => handlePress(product)}>
+                    <Image source={{uri: product.picture}} style={styles.product.img} />
+                  </TouchableOpacity>
+                ))
+              }
+            </View>
+          </View>
+        </ScrollView>
+      ) : (
+        <>
+          <Background img={'tree'} />
+        </>
+      ) 
+    }
   </>
   );
 }

@@ -17,6 +17,7 @@ module.exports = (sequelize, DataTypes) => {
     neutered: DataTypes.BOOLEAN,
     sex: DataTypes.BOOLEAN,
     user: DataTypes.STRING,
+    contact: DataTypes.STRING,
     region: DataTypes.STRING,
     picture: DataTypes.STRING,
     accepted: DataTypes.BOOLEAN,

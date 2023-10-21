@@ -7,7 +7,7 @@ import Return from '../../component/button/Return';
 const { width, height } = Dimensions.get('screen');
 
 function Animal({navigation, route: {params}}) {
-    const {name, description, picture} = params;
+    const {name, description, picture, contact} = params;
 
     return (
         <>
@@ -20,17 +20,11 @@ function Animal({navigation, route: {params}}) {
                     <View style={styles.content}>
                         <Text style={styles.title}>{name}</Text>
                         <Text style={styles.text}>{description}</Text>
-                        <Text style={styles.text}>{description}</Text>
-                        <Text style={styles.text}>{description}</Text>
-                        <Text style={styles.text}>{description}</Text>
-                        <Text style={styles.text}>{description}</Text>
-                        <Text style={styles.text}>{description}</Text>
-                        <Text style={styles.text}>{description}</Text>
                     </View>
                 </View>
                 <View style={styles.content}>
                     <Text style={styles.title}>Contato Para Adoação</Text>
-                    <Text style={styles.title}>+55 55 55555-5555</Text>
+                    <Text style={styles.title}>{contact}</Text>
                 </View>
             </ScrollView>
         </>

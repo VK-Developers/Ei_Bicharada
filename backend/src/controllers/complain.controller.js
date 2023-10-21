@@ -1,4 +1,4 @@
-const { rescue: service } = require('../services');
+const { complain: service } = require('../services');
 
 module.exports = {
     getAll: async (_req, res, _next) => {

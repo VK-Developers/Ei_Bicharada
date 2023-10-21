@@ -10,14 +10,16 @@ module.exports = (sequelize, DataTypes) => {
   complains.init({
     animal: DataTypes.STRING,
     walking: DataTypes.BOOLEAN,
-    description: DataTypes.STRING,
+    description: DataTypes.TEXT('medium'),
     hour: DataTypes.STRING,
     adress: DataTypes.STRING,
     city: DataTypes.STRING,
+    user: DataTypes.STRING,
+    region: DataTypes.STRING,
     picture: DataTypes.STRING,
   }, {
     sequelize,
-    modelName: 'complains',
+    modelName: 'complain',
     timestamps: true,
     updatedAt: false,
     createdAt: 'created'
