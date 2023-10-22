@@ -9,30 +9,30 @@ export default function Login({title, type}) {
   const { login, setLogin, setToken, setLoader } = useContext(Context);
   const { navigate } = useNavigation();
 
-    const handlePress = async () => {
-      if ( type === 'newUser') return navigate('NewUser');
-      setLoader(true);
+  const handlePress = async () => {
+    if ( type === 'newUser') return navigate('NewUser');
+    setLoader(true);
 
-      const {status, ...inputValue} = login;
+    const {status, ...inputValue} = login;
 
-      const logIn = await postLogin(inputValue);
+    const logIn = await postLogin(inputValue);
 
-      if (!!logIn.token) {
-        setToken(logIn.token)
-        navigate('Cover')
-        return
-      };
-
-      setLoader(false);
-      setLogin(prev => ({...prev, status: false}))
+    if (!!logIn.token) {
+      setToken(logIn.token)
+      navigate('Cover')
       return
-    }
+    };
 
-    return (
-        <TouchableOpacity onPress={handlePress} style={styles.buttom}>
-          <Text style={styles.title}>{title}</Text>
-        </TouchableOpacity>
-    );
+    setLoader(false);
+    setLogin(prev => ({...prev, status: false}))
+    return
+  }
+
+  return (
+      <TouchableOpacity onPress={handlePress} style={styles.buttom}>
+        <Text style={styles.title}>{title}</Text>
+      </TouchableOpacity>
+  );
 }
 
 const styles = StyleSheet.create({

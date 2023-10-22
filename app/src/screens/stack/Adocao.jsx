@@ -2,7 +2,6 @@ import React, { useState, useEffect, useContext } from 'react';
 import Context from '../../context/Context';
 import { StyleSheet, SafeAreaView, FlatList } from 'react-native';
 //Components
-// import Footer from '../../component/Footer';
 import Header from '../../component/Header';
 import NewAnimal from '../../component/button/NewAnimal';
 import Background from '../../component/Background'
@@ -26,9 +25,9 @@ function Adocao({navigation, route: { params }}) {
       setLoader(false);
     }
     FetchData();
-  }, [])
+  }, []);
 
-  const renderComponente = ({ item }) => <Animal info={item} nav={navigation} /> 
+  const renderComponente = ({ item }) => <Animal info={item} nav={navigation} />
 
   return (
     <>
@@ -38,19 +37,29 @@ function Adocao({navigation, route: { params }}) {
       {
         !loader ? (
           <SafeAreaView style={styles.container}>
-            <FlatList 
-              data={animals}
-              renderItem={renderComponente}
-              keyExtractor={({id}) => 'adopt-' + id}
-              onScroll={(event) => setScrollY(event.nativeEvent.contentOffset.y)}
-              ListHeaderComponent={() => (
-                <>
-                  <Header name={params.name} />
-                  <NewAnimal type={'adoption'} action={setModal}/>
-                </>
-              )}
-              // ListFooterComponent={() => <Footer />}
-            />
+            {animals.length !== 0 ? (
+              <FlatList 
+                data={animals}
+                renderItem={renderComponente}
+                keyExtractor={({id}) => 'adopt-' + id}
+                onScroll={(event) => {
+                  const yPosition = event.nativeEvent.contentOffset.y
+                  setScrollY(yPosition)
+                }}
+                ListHeaderComponent={() => (
+                  <>
+                    <Header name={params.name} />
+                    <NewAnimal type={'adoption'} action={setModal} />
+                  </>
+                )}
+              />
+            ) : (
+              <>
+                <Header name={params.name} />
+                <NewAnimal type={'adoption'} action={setModal} />
+                <Animal />
+              </>
+            )}
           </SafeAreaView>
         ) : (
           <>
@@ -67,7 +76,6 @@ const styles = StyleSheet.create({
     marginTop: 25,
   },
   doacao: {
-    // marginTop: 25,
     height: '97%',
     justifyContent: 'space-between'
   },

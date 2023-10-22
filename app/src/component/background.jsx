@@ -11,17 +11,23 @@ function Background({img, cover}) {
             <ImageBackground
                   source={backgrounds[img]}
                   resizeMode="cover"
-                  style={[styles.container, {opacity: !!cover ? 1 : 0.1}]}
+                  style={[
+                        styles.container,
+                        {
+                              zIndex: !!cover ? 1 : -1,
+                              opacity: !!cover ? 1 : 0.1
+                        }
+                  ]}
             />
       );
 }
 
 const styles = StyleSheet.create({
       container: {
+            backgroundColor: 'white',
             position: 'absolute',
             height,
             width,
-            zIndex: -1,
       }
 })
 

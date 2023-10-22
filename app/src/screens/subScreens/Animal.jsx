@@ -16,18 +16,16 @@ function Animal({navigation, route: {params}}) {
                 <View>
                     <Return nav={navigation} />
                     <Image source={{uri: picture}} style={styles.preview}/>
-
                     <View style={styles.content}>
                         <Text style={styles.title}>{name}</Text>
                         <Text style={styles.text}>{description}</Text>
                     </View>
                 </View>
-                <View style={[styles.content]}>
+                <View style={styles.content}>
                     <Text style={styles.title}>Contato Para Adoação</Text>
-                    <Text style={styles.title}>+55 13 98854-2973</Text>
-                    <Text style={styles.title}>+55 19 98284-9344</Text>
-                    <Text style={styles.title}>+55 19 98284-9344</Text>
-                    <Text style={styles.title}>suporte@atespets.com.br</Text>
+                    <Text style={styles.title}>+55 (13) 988542973</Text>
+                    <Text style={styles.title}>+55 (19) 982849344</Text>
+                    <Text style={styles.title}>comercialmarcelo@atespets.com.br</Text>
                 </View>
             </ScrollView>
         </>

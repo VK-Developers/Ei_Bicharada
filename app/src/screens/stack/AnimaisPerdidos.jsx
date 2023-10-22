@@ -27,7 +27,10 @@ function AnimaisPerdidos({navigation, route: { params }}) {
     FetchData();
   }, [])
 
-  const renderComponente = ({ item }) => <Animal info={item} nav={navigation} />
+  const renderComponente = ({ item }) => {
+    if (animals === 0) return <Animal /> 
+    return <Animal info={item} nav={navigation} />
+  }
 
   return (
     <>
@@ -36,20 +39,20 @@ function AnimaisPerdidos({navigation, route: { params }}) {
       { !!modal && <NewAnimalModal show={modal} action={setModal} type={'lost'} /> }
       {
         !loader ? (
-      <SafeAreaView style={styles.container}>
-        <FlatList 
-          data={animals}
-          renderItem={renderComponente}
-          keyExtractor={({id}) => 'lost-' + id}
-          onScroll={(event) => setScrollY(event.nativeEvent.contentOffset.y)}
-          ListHeaderComponent={() => (
-            <>
-              <Header name={params.name} />
-              <NewAnimal type={'lost'} action={setModal} />
-            </>
-          )}
-        />
-      </SafeAreaView>
+          <SafeAreaView style={styles.container}>
+            <FlatList 
+              data={animals}
+              renderItem={renderComponente}
+              keyExtractor={({id}) => 'lost-' + id}
+              onScroll={(event) => setScrollY(event.nativeEvent.contentOffset.y)}
+              ListHeaderComponent={() => (
+                <>
+                  <Header name={params.name} />
+                  <NewAnimal type={'lost'} action={setModal} />
+                </>
+              )}
+            />
+          </SafeAreaView>
         ) : (
           <>
             <Background img={'tree'} />

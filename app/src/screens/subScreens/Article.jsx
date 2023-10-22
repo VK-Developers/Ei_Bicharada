@@ -15,8 +15,6 @@ function Article({
     }
 }){
 
-    console.log(date)
-
     return (
         <>
             <Background img={'tree'} />
@@ -26,8 +24,6 @@ function Article({
                     <Text style={styles.title}>{title}</Text>
                     <Text style={styles.date}>{date}</Text>
                     <Text style={styles.text}>{content}</Text>
-
-
                 </View>
             </ScrollView>
         </>

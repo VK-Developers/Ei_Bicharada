@@ -25,6 +25,7 @@ import ProductScreen from './screens/subScreens/Product';
 import AnimalScreen from './screens/subScreens/Animal';
 import PaymentScreen from './screens/subScreens/Payment';
 import ArticleScreen from './screens/subScreens/Article';
+import AbuseConfirmScreen from './screens/subScreens/AbuseConfirm';
 
 const Stack = createStackNavigator();
 
@@ -65,8 +66,7 @@ export default function App() {
         <Stack.Screen name="Animal" component={AnimalScreen} />
         <Stack.Screen name="Payment" component={PaymentScreen} />
         <Stack.Screen name="Article" component={ArticleScreen} />
-
-        {/* <Stack.Screen name="Divulgação" component={DivulgacaoScreen} /> */}
+        <Stack.Screen name="AbuseConfirm" component={AbuseConfirmScreen} />
       </Stack.Navigator>
     </NavigationContainer>
   );

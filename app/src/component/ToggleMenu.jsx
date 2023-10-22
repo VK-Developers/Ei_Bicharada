@@ -3,7 +3,10 @@ import Context from '../context/Context';
 import { StyleSheet, TouchableOpacity, View, Dimensions } from 'react-native';
 
 import MenuLinks from './button/Menu';
+import SOSKitty from './button/SOSKitty'
 import { menuTopics as topics } from '../localized/structures';
+import Background from './Background';
+import LogOut from './LogOut';
 
 const {width, height} = Dimensions.get('screen');
 
@@ -11,13 +14,17 @@ function ToggleMenu({level}) {
   const {menu, setMenu} = useContext(Context);
 
   const handlePress = () => setMenu(!menu);
+
   return !menu ? (
     <TouchableOpacity  style={[styles.containerClose, {display: level >= 25 ? 'none' : 'flex' }]} onPress={handlePress}>
       { [...Array.from({length: 3})].map((_b, i) => <View key={'bar' + i} style={styles.bar} /> )}
     </TouchableOpacity>
   ) : (
     <>
+      <LogOut />
       <TouchableOpacity style={styles.container} onPress={handlePress} />
+      {/* Marcelo Request =/ */}
+      <Background img={'test'} cover={true} />
       <View style={styles.shape}/>
       <View style={styles.content}>
         <TouchableOpacity style={styles.close} onPress={handlePress}>
@@ -27,6 +34,7 @@ function ToggleMenu({level}) {
         {
           topics.map(topic => <MenuLinks key={topic + '-menu'} name={topic} />)
         }
+        <SOSKitty />
       </View>
     </>
 
@@ -36,7 +44,7 @@ function ToggleMenu({level}) {
 const styles = StyleSheet.create({
   container: {
     position: 'absolute',
-    zIndex: 1,
+    zIndex: 2,
     height,
     width,
   },
@@ -46,7 +54,7 @@ const styles = StyleSheet.create({
     width: width * 0.8,
     height,
     borderBottomRightRadius: 1000,
-    zIndex: 2,
+    zIndex: 3,
   },
   content: {
     marginTop: 10,
@@ -55,7 +63,7 @@ const styles = StyleSheet.create({
     justifyContent: 'space-around',
     position: 'absolute',
     top: 0,
-    zIndex: 3
+    zIndex: 4
   },
   close: {
     position: 'absolute',
@@ -65,7 +73,7 @@ const styles = StyleSheet.create({
     height: 35,
     justifyContent: 'center',
     alignItems: 'center',
-    zIndex: 4,
+    zIndex: 5,
   },
   containerClose: {
     position: 'absolute',

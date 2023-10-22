@@ -4,22 +4,25 @@ import { StyleSheet, BackHandler, Dimensions, View } from 'react-native';
 import MenuLinks from '../../component/button/Menu';
 import { menuTopics as topics } from '../../localized/structures';
 import Background from '../../component/Background';
+import LogOut from '../../component/LogOut';
+import SOSKitty from '../../component/button/SOSKitty';
 
 const {height, width} = Dimensions.get('window');
 
 function Cover() {
   const {setLoader} = useContext(Context);
   useEffect(() => {
-    // function RemoveBackHandler() {
-    //     BackHandler.addEventListener('hardwareBackPress', () => true);
-    //   }
-    //   RemoveBackHandler();
+    function RemoveBackHandler() {
+        BackHandler.addEventListener('hardwareBackPress', () => true);
+      }
+      RemoveBackHandler();
     setLoader(false)
   }, [])
 
   return (
     <>
       <Background img={'test'} cover={true} />
+      <LogOut />
       <View>
         <View style={styles.mask}>
           <View style={styles.background} />
@@ -28,6 +31,7 @@ function Cover() {
             { 
               topics.map(topic => <MenuLinks key={topic + '-menu'} name={topic} />)
             }
+            <SOSKitty />
         </View>
       </View>
     </>

@@ -4,7 +4,7 @@ import { StyleSheet, ScrollView, Image, TouchableOpacity, View, Dimensions } fro
 //Components
 import Header from '../../component/Header';
 import ToggleMenu from '../../component/ToggleMenu';
-import Background from '../../component/Background'
+import Background from '../../component/Background';
 
 import { getProducts } from '../../services/getRequest';
 
@@ -38,10 +38,10 @@ function NossosProdutos({navigation, route: { params }}) {
             <Header name={params.name} />
             <View style={styles.products}>
               {
-                products.map((product, i) => (
-                  <TouchableOpacity style={styles.product} key={'product-' + i} onPress={() => handlePress(product)}>
-                    <Image source={{uri: product.picture}} style={styles.product.img} />
-                  </TouchableOpacity>
+                products.map((product, i) =>  (
+                    <TouchableOpacity style={styles.product} key={'product-' + i} onPress={() => handlePress(product)}>
+                      <Image source={{uri: product.picture}} style={styles.product.img} />
+                    </TouchableOpacity>
                 ))
               }
             </View>

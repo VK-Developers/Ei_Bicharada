@@ -58,7 +58,7 @@ const NewAnimal = ({ show, action, type }) => {
                                     const run = openCamera(setListiner, 'folder')
                                     run();
                                 }}>
-                                    <Image style={styles.logo} source={images.folder} />
+                                    <Image style={{width: 70, height: 70}} source={images.folder} />
                                     {!!listiner.picture && listiner.picture[1] === 'folder' && <Image style={styles.checked} source={images.checked} /> }
                                 </TouchableOpacity>
                                 {
@@ -151,7 +151,8 @@ const styles = StyleSheet.create({
     },
     pictureContainer: {
         flexDirection: 'row',
-        justifyContent: 'space-around'
+        justifyContent: 'space-around',
+        alignItems: 'center'
     },
     logo: {
         width: 80,
