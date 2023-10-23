@@ -8,6 +8,7 @@ const {
      adoption,
      missingAnimal,
      complain,
+     home,
      newEvent,
      sponsor,
      victim,
@@ -28,7 +29,7 @@ api.use("/adoptions", adoption); // enviar fotos
 api.use("/missing-animals", missingAnimal); // enviar fotos
 api.use("/rescues", rescue); // enviar fotos
 api.use("/complains", complain); // enviar fotos
-// api.use("/home", home);
+api.use("/homes", home);
 api.use("/products", product);
 api.use("/news-events", newEvent);
 api.use("/contributions", contribution);

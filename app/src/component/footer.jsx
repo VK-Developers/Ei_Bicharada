@@ -4,7 +4,7 @@ import { StyleSheet, View, Image, Dimensions, Text, TouchableOpacity } from 'rea
 import images from '../localized/images';
 import str from '../localized/strings';
 
-import { postRescueComplains } from '../services/postRequest';
+import { postRescueComplains, postHome } from '../services/postRequest';
 
 const {height} = Dimensions.get('window');
 
@@ -12,7 +12,15 @@ function Footer({sendIt, exeption, obj, modal}) {
   const {token, setLoader} = useContext(Context);
 
   const handleSubmit = async () => {
-    setLoader(true)
+    setLoader(true);
+
+    if (obj.from === 'home') {
+      await postHome(obj.data, token)
+      setLoader(false);
+      modal(true)
+      return
+    }
+    
     await postRescueComplains(obj.data, obj.from, token)
     setLoader(false)
     modal(true)

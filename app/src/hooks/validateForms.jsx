@@ -5,14 +5,12 @@ const validateForms = (obj, i) => {
 
     const andando = obj.andando !== undefined;
     const horario = !!obj.horario;
-    const data = !!obj.data;
     const picture = !!obj.picture;
     const animal = !!obj.animal && obj.animal.length >= 3;
     const endereco = !!obj.endereco && obj.endereco.length >= 6;
     const ocorrido = !!obj.ocorrido && obj.ocorrido.length >= 6;
     const descricao = !!obj.descricao && obj.descricao.length >= 6;
     const cidade = !!obj.cidade && obj.cidade.length >= 4;
-    const bairro = !!obj.bairro && obj.bairro.length >= 4;
     const senha = !!obj.senha && obj.senha.length >= 6;
     const nome = !!obj.nome && obj.nome.length >= 3;
     const email = !!obj.email && emailRegex.test(obj.email);
@@ -22,9 +20,12 @@ const validateForms = (obj, i) => {
     const castrado = obj.castrado !== undefined ;
     const sexo = obj.castrado !== undefined ;
 
+    const tipo = obj.animal !== undefined ;
+    const tempo = obj.tempo !== undefined ;
+
     const validation = {
         1: andando && horario && picture && animal && cidade && endereco && ocorrido,
-        2: descricao && endereco && bairro && cidade && data && horario,
+        2: nome && telefone && cidade && tipo && tempo,
         3: {
             basic: nome && email && cidade && telefone && cep,
             city: region,

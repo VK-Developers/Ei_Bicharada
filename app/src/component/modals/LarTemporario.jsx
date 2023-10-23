@@ -14,12 +14,12 @@ const LarTemporario = ({ show, action }) => {
         >
             <View style={styles.container}>
                 <View style={styles.content}>
-                    <Text style={styles.text}>{str.modal.larTemporario[0]}</Text>
+                    <Text style={styles.text}>{str.modal.larTemporario01[0]}</Text>
                     <Pressable
                         style={styles.button}
                         onPress={handlePress}
                     >
-                        <Text style={styles.btnText}>{str.modal.larTemporario[1]}</Text>
+                        <Text style={styles.btnText}>{str.modal.larTemporario01[1]}</Text>
                     </Pressable>
                 </View>
             </View>

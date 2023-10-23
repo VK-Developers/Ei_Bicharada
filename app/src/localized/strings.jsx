@@ -38,10 +38,11 @@ export default {
   modal: {
     resgate: ['Resgate registrado/adicionado \ncom sucesso', 'fechar'],
     denuncia: ['Denúncia registrada com \nsucesso', 'continuar'],
-    evento: ['Solicitação de evento enviada \ncom sucesso', 'confirmar'],
-    larTemporario: [
-      'Seus dados são confidenciais, sendo a responsabilidade pela preservação e sigilo da ATESP.\n\nAqui, você pode escolher o tipo de animal que deseja receber em sua casa por um período determinado',
+    
+    larTemporario01: [
+      'Seus dados são confidenciais, sendo a responsabilidade pela preservação e sigilo da ATESP.\n\nAqui, você pode escolher o tipo de animal que deseja receber em sua casa por um período determinado.',
       'entendido'
     ],
+    larTemporario02: ['Solicitação de de cadastro de lar temporário\n enviada com sucesso.', 'confirmar'],
   }
 };

@@ -22,11 +22,11 @@ module.exports = {
         allowNull: false,
         type: Sequelize.STRING
       },
-      animal: {
+      type: {
         allowNull: false,
         type: Sequelize.STRING
       },
-      period: {
+      duration: {
         allowNull: false,
         type: Sequelize.STRING
       },

@@ -4,6 +4,7 @@ module.exports.adoption = require("./adoption.controller");
 module.exports.missingAnimal = require("./missingAnimal.controller");
 module.exports.rescue = require("./rescue.controller");
 module.exports.complain = require("./complain.controller");
+module.exports.home = require("./home.controller");
 module.exports.product = require("./product.controller");
 module.exports.newEvent = require("./newEvent.controller");
 module.exports.contribution = require("./contribution.controller");

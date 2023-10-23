@@ -55,7 +55,6 @@ const styles = StyleSheet.create({
     marginRight: 10,
   },
   selection: {
-    // backgroundColor: 'green',
     flexGrow: 1,
     flexDirection: 'row',
     justifyContent: 'space-around'

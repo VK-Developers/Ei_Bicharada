@@ -1,13 +1,13 @@
 const { Router } = require("express");
-const { victim: controller } = require('../controllers');
+const { home: controller } = require('../controllers');
 const { token } = require('../middlewares')
 
 const { getAll, create } = controller;
 
-const victim = Router();
+const home = Router();
 
-victim
+home
      .get("/", [token, getAll])
      .post("/", [token, create])
 
-module.exports = victim;
+module.exports = home;

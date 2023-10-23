@@ -89,6 +89,29 @@ export const postRescueComplains = async (obj, where, token) => {
   }
 };
 
+export const postHome = async (obj, token) => {
+  const send = {
+    name: obj.nome,
+    phone: obj.telefone,
+    city: obj.cidade,
+    type: obj.animal,
+    duration: obj.tempo,
+  }
+
+  try {
+    const request = await api.post('/homes', send, {
+      headers: {
+        'Authorization': token
+      }
+    });
+
+    return request;
+  } catch (error) {
+    const errorResponse = handleRequestError(error);
+    return errorResponse;
+  }
+};
+
 export const postVictims = async (token) => {
   try {
     const request = await api.post(

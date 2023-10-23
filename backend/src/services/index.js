@@ -4,6 +4,7 @@ module.exports.adoption = require("./adoption.service");
 module.exports.missingAnimal = require("./missingAnimal.service");
 module.exports.rescue = require("./rescue.service");
 module.exports.complain = require("./complain.service");
+module.exports.home = require("./home.service");
 module.exports.product = require("./product.service");
 module.exports.newEvent = require("./newEvent.service");
 module.exports.contribution = require("./contribution.service");

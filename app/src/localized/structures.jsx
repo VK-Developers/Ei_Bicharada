@@ -34,13 +34,10 @@ export const ResgateDenuncia = [
   {title: 'Cidade', maxLength: 15, type: 'default'},
 ]
 
-export const events = [
-  {title: 'Descrição', maxLength: 50, type: 'default'},
-  {title: 'Endereço', maxLength: 20, type: 'default'},
-  {title: 'Bairro', maxLength: 15, type: 'default'},
-  {title: 'Cidade', maxLength: 8, type: 'default'},
-  {title: 'Data', maxLength: 8, type: 'numeric'},
-  {title: 'Horário', maxLength: 5, type: 'numeric'},
+export const LarTemporario = [
+  {title: 'Nome', maxLength: 15, type: 'default'},
+  {title: 'Telefone', maxLength: 17, type: 'numeric'},
+  {title: 'Cidade', maxLength: 15, type: 'default'},
 ]
 
 export const newAnimal = [

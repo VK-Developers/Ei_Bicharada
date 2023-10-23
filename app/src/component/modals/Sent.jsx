@@ -1,11 +1,10 @@
 import React from 'react';
 import {Modal, StyleSheet, Text, Pressable, View} from 'react-native';
 
-const Sent = ({ show, action, nav, text, reset }) => {
+const Sent = ({ show, action, nav, text }) => {
     const handlePress = () => {
         action(!show);
         if (typeof nav !== 'boolean') {
-            reset({})
             nav.navigate('Cover');
             return
         }
