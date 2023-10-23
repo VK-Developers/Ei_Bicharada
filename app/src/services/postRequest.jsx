@@ -1,9 +1,14 @@
 import api from "./api";
 import handleRequestError from "../hooks/handleRequestError";
 
-export const postLogin = async (obj) => {
+export const postLogin = async ({email, password}) => {
+  const format = {
+    email: (email.toLowerCase()).trim(),
+    password
+  }
+
   try {
-    const { data } = await api.post('/login', obj);
+    const { data } = await api.post('/login', format);
 
     if (!data.token) return { token: false };
 
@@ -15,14 +20,15 @@ export const postLogin = async (obj) => {
 };
 
 export const postUser = async (obj) => {
+  console.log(obj.email.replace(' ', ''), '|')
   const format = {
-    name: obj.nome,
-    email: obj.email,
+    name: obj.nome.trim(),
+    email: (obj.email.toLowerCase()).trim(),
     phone: obj.telefone,
-    city: obj.cidade,
-    cep: obj.cep,
+    city: obj.cidade.trim(),
+    cep: obj.cep.trim(),
     password: obj.senha,
-    region: obj.region
+    region: obj.region.trim()
   }
 
   try {
@@ -39,9 +45,9 @@ export const postNewAnimal = async (obj, where, token) => {
   const url = where === 'adoption' ? '/adoptions' : '/missing-animals';
 
   const send = {
-    animal: obj.animal,
-    name: obj.nome,
-    description: obj.descricao,
+    animal: obj.animal.trim(),
+    name: obj.nome.trim(),
+    description: obj.descricao.trim(),
     neutered: obj.castrado,
     sex: obj.sexo,
     picture: obj.picture[0]
@@ -66,12 +72,12 @@ export const postRescueComplains = async (obj, where, token) => {
   const url = where === 'rescue' ? '/rescues' : '/complains';
 
   const send = {
-    animal: obj.animal,
+    animal: obj.animal.trim(),
     walking: obj.andando,
-    description: obj.ocorrido,
+    description: obj.ocorrido.trim(),
     hour: obj.horario,
-    adress: obj.endereco,
-    city: obj.cidade,
+    adress: obj.endereco.trim(),
+    city: obj.cidade.trim(),
     picture: obj.picture[0]
   }
 
@@ -91,7 +97,7 @@ export const postRescueComplains = async (obj, where, token) => {
 
 export const postHome = async (obj, token) => {
   const send = {
-    name: obj.nome,
+    name: obj.nome.trim(),
     phone: obj.telefone,
     city: obj.cidade,
     type: obj.animal,

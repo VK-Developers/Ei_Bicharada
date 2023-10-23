@@ -21,7 +21,7 @@ function Contribuicao({route: { params }}) {
   useEffect(() => {
     async function FetchData() {
       const getAmount = await getContributions(params.token);
-      setAmount(getAmount)
+      setAmount((getAmount === null || !getAmount) ? 0 : getAmount)
   }
   FetchData();
   }, [])

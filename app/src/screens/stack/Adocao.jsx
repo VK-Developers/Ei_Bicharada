@@ -37,7 +37,7 @@ function Adocao({navigation, route: { params }}) {
       {
         !loader ? (
           <SafeAreaView style={styles.container}>
-            {animals.length !== 0 ? (
+            { animals.length !== 0 ? (
               <FlatList 
                 data={animals}
                 renderItem={renderComponente}
