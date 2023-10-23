@@ -29,7 +29,7 @@ api.use("/users", user);
 api.use("/adoptions", adoption);
 api.use("/missing-animals", missingAnimal);
 api.use("/rescues", rescue);
-api.use("/complains", complain); // enviar fotos
+api.use("/complains", complain);
 api.use("/homes", home);
 api.use("/products", product);
 api.use("/news-events", newEvent);
