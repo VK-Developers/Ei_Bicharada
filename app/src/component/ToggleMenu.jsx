@@ -24,7 +24,7 @@ function ToggleMenu({level}) {
       <LogOut />
       <TouchableOpacity style={styles.container} onPress={handlePress} />
       {/* Marcelo Request =/ */}
-      <Background img={'test'} cover={true} />
+      <Background img={'tree'} cover={true} />
       <View style={styles.shape}/>
       <View style={styles.content}>
         <TouchableOpacity style={styles.close} onPress={handlePress}>

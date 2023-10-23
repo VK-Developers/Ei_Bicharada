@@ -21,7 +21,7 @@ function Cover() {
 
   return (
     <>
-      <Background img={'test'} cover={true} />
+      <Background img={'tree'} cover={true} />
       <LogOut />
       <View>
         <View style={styles.mask}>
