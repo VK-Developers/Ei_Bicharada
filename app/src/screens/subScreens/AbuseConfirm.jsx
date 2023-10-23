@@ -19,7 +19,7 @@ function AbuseConfirme({navigation}) {
 
         async function FetchData() {
             const fetchVictims = await getVictims(token);
-            const check = fetchVictims.some(i => i.email === login.email);
+            const check = fetchVictims.some(i => i.email === (login.email.toLowerCase()).trim());
             setIsOnList(check)
 
             setLoader(false)
@@ -58,7 +58,7 @@ function AbuseConfirme({navigation}) {
                     <>
                         <View style={styles.containerText}>
                             <Text style={styles.text}>Sua solicitação ja está com nossa equipe</Text>
-                            <Text style={styles.text}>Fique calma estamos a caminho.</Text>
+                            <Text style={styles.text}>Fique calma, a Polícia Militar já está a caminho.</Text>
                         </View>
                         <TouchableOpacity
                             onPress={() => navigation.navigate('Cover')}

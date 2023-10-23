@@ -1,5 +1,6 @@
 const express = require("express");
 require("express-async-errors");
+const path = require('path');
 const { 
      user,
      rescue,
@@ -25,9 +26,9 @@ api.use(cors);
 api.use("/login", login);
 api.use("/users", user);
 
-api.use("/adoptions", adoption); // enviar fotos
-api.use("/missing-animals", missingAnimal); // enviar fotos
-api.use("/rescues", rescue); // enviar fotos
+api.use("/adoptions", adoption);
+api.use("/missing-animals", missingAnimal);
+api.use("/rescues", rescue);
 api.use("/complains", complain); // enviar fotos
 api.use("/homes", home);
 api.use("/products", product);
@@ -35,6 +36,11 @@ api.use("/news-events", newEvent);
 api.use("/contributions", contribution);
 api.use("/sponsors", sponsor);
 api.use("/victims", victim);
+
+api.use('/pictures/adoptions/', express.static(path.join(__dirname, '/pictures/adoptions')));
+api.use('/pictures/missing-animals/', express.static(path.join(__dirname, '/pictures/missing-animals')));
+api.use('/pictures/rescues/', express.static(path.join(__dirname, '/pictures/rescues')));
+api.use('/pictures/complains/', express.static(path.join(__dirname, '/pictures/complains')));
 
 api.use(errorHandler);
 
