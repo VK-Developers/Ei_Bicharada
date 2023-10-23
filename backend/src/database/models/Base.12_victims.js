@@ -10,6 +10,7 @@ module.exports = (sequelize, DataTypes) => {
   victims.init({
     name: DataTypes.STRING,
     email: DataTypes.STRING,
+    phone: DataTypes.STRING,
     new: DataTypes.BOOLEAN,
   }, {
     sequelize,

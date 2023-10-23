@@ -6,4 +6,6 @@ module.exports.rescue = require("./rescue.route");
 module.exports.complain = require("./complain.route");
 module.exports.product = require("./product.route");
 module.exports.newEvent = require("./newEvent.route");
+module.exports.contribution = require("./contribution.route");
 module.exports.sponsor = require("./sponsor.route");
+module.exports.victim = require("./victim.route");

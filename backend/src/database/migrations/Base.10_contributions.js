@@ -14,6 +14,10 @@ module.exports = {
         allowNull: false,
         type: Sequelize.STRING
       },
+      region: {
+        allowNull: false,
+        type: Sequelize.STRING
+      },
       amount: {
         allowNull: false,
         type: Sequelize.FLOAT

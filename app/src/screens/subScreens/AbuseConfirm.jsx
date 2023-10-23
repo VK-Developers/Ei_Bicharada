@@ -1,4 +1,4 @@
-import React, {useContext, useEffect} from 'react';
+import React, {useContext, useEffect, useState} from 'react';
 import Context from '../../context/Context';
 import { StyleSheet, TouchableOpacity, View, Text } from 'react-native';
 //Components
@@ -7,41 +7,77 @@ import Footer from '../../component/Footer';
 
 // import EmergencialEmail from '../../hooks/EmergencialEmail';
 
+import { getVictims } from '../../services/getRequest';
+import { postVictims } from '../../services/postRequest';
+
 function AbuseConfirme({navigation}) {
-    const {token} = useContext(Context);
+    const {token, login, setLoader, loader} = useContext(Context);
+    const [isOnList, setIsOnList] = useState(false)
 
     useEffect(() => {
+        setLoader(true)
 
+        async function FetchData() {
+            const fetchVictims = await getVictims(token);
+            const check = fetchVictims.some(i => i.email === login.email);
+            setIsOnList(check)
+
+            setLoader(false)
+        }
+        FetchData();
     }, [])
 
-    const handleHelp = () => {
-        // console.log(token);
+    const handleHelp = async () => {
+        await postVictims(token);
         // EmergencialEmail();
+
+        navigation.navigate('Cover');
     }
 
-    return (
+    return !loader ? (
         <>
             <Background img={'six'} />
             <View style={styles.container}>
-                <View style={styles.containerText}>
-                    <Text style={styles.text}>Esperamos que esteja bem!</Text>
-                    <Text style={styles.text}>Por gentileza nos confirme se realmente precisa de ajuda.</Text>
-                    <Text style={styles.text}>Lembre-se você não esta sozinha 🩷🩷</Text>
-                </View>
-                <View style={styles.containerBtn}>
-                    <TouchableOpacity onPress={handleHelp} style={[styles.btn, {backgroundColor: 'green'}]}>
-                        <Text style={[styles.text, {color: 'white'}]}>Sim</Text>
-                    </TouchableOpacity>
-                    <TouchableOpacity onPress={() => navigation.navigate('Cover')} style={[styles.btn, {backgroundColor: 'red'}]}>
-                        <Text style={[styles.text, {color: 'white'}]}>Não</Text>
-                    </TouchableOpacity>
-                </View>
+                {!isOnList ? (
+                    <>
+                        <View style={styles.containerText}>
+                            <Text style={styles.text}>Esperamos que esteja bem!</Text>
+                            <Text style={styles.text}>Por gentileza nos confirme se realmente precisa de ajuda.</Text>
+                            <Text style={styles.text}>Lembre-se você não esta sozinha 🩷🩷</Text>
+                        </View>
+                        <View style={styles.containerBtn}>
+                            <TouchableOpacity onPress={handleHelp} style={[styles.btn, {backgroundColor: 'green'}]}>
+                                <Text style={[styles.text, {color: 'white'}]}>Sim</Text>
+                            </TouchableOpacity>
+                            <TouchableOpacity onPress={() => navigation.navigate('Cover')} style={[styles.btn, {backgroundColor: 'red'}]}>
+                                <Text style={[styles.text, {color: 'white'}]}>Não</Text>
+                            </TouchableOpacity>
+                        </View>
+                    </>
+                ) : (
+                    <>
+                        <View style={styles.containerText}>
+                            <Text style={styles.text}>Sua solicitação ja está com nossa equipe</Text>
+                            <Text style={styles.text}>Fique calma estamos a caminho.</Text>
+                        </View>
+                        <TouchableOpacity
+                            onPress={() => navigation.navigate('Cover')}
+                            style={[styles.btn, { backgroundColor: '#FF00FF', marginTop: 30 }]}
+                        >
+                            <Text style={[styles.text, {color: 'white'}]}>Confirmar</Text>
+                        </TouchableOpacity>
+                    </>
+                )}
             </View>
             <View style={styles.footer}>
                 <Footer />
             </View>
         </>
-  );
+    ) : (
+        <>
+            <Background img={'six'} />
+        </>
+    )
 }
 
 const styles = StyleSheet.create({

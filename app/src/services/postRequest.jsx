@@ -88,3 +88,20 @@ export const postRescueComplains = async (obj, where, token) => {
     return errorResponse;
   }
 };
+
+export const postVictims = async (token) => {
+  try {
+    const request = await api.post(
+      '/victims',
+      {},
+      {
+        headers: { 'Authorization': token }
+      }
+    );
+
+    return request;
+  } catch (error) {
+    const errorResponse = handleRequestError(error);
+    return errorResponse;
+  }
+};

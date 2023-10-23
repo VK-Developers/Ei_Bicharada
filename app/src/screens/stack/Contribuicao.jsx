@@ -1,5 +1,8 @@
-import React from 'react';
-import { StyleSheet, View, Text, Image, Dimensions } from 'react-native';
+import React, {useEffect, useState} from 'react';
+import Clipboard from '@react-native-clipboard/clipboard';
+import { StyleSheet, View, Text, Image, Dimensions, TouchableOpacity } from 'react-native';
+
+import str from '../../localized/strings';
 
 const { height } = Dimensions.get('screen');
 //Components
@@ -8,9 +11,26 @@ import Header from '../../component/Header';
 import ToggleMenu from '../../component/ToggleMenu';
 import Background from '../../component/Background';
 
+import { getContributions } from '../../services/getRequest';
+
 import images from '../../localized/images';
 
 function Contribuicao({route: { params }}) {
+  const [amount, setAmount] = useState(0);
+
+  useEffect(() => {
+    async function FetchData() {
+      const getAmount = await getContributions(params.token);
+      setAmount(getAmount)
+  }
+  FetchData();
+  }, [])
+
+  const handlePress = () => {
+    Clipboard.setString(str.pixKey);
+    alert(str.donateAlert);
+  }
+  
   return (
     <>
     <Background img={'tree'} />
@@ -19,10 +39,14 @@ function Contribuicao({route: { params }}) {
         <View style={{ flexGrow: 1 }}>
           <Header name={params.name} />
         </View>
+        <Text style={styles.donateBtn.title}>{str.donateTitle}</Text>
+        <TouchableOpacity onPress={handlePress} style={styles.donateBtn}>
+          <Text style={styles.donateBtn.placeholder}>{str.donateBtn}</Text>
+        </TouchableOpacity>
         <Footer />
       </View>
       <Image source={images.piggy} style={styles.piggy}/>
-      <Text style={styles.money}>R$ 100,00</Text>
+      <Text style={styles.money}>{'R$ ' + amount.toFixed(2).replace('.', ',')}</Text>
     </>
   );
 }
@@ -65,6 +89,27 @@ const styles = StyleSheet.create({
     alignSelf: 'center',
     fontSize: 26,
     fontWeight: '800'
+  },
+  donateBtn: {
+    backgroundColor: '#F8C8DC',
+    padding: 10, 
+    marginBottom: 20, 
+    marginTop: 15, 
+    width: "70%", 
+    alignSelf: 'center', 
+    borderRadius: 20,
+    title: {
+      color:'black',
+      fontSize: 22,
+      fontWeight: '700',
+      alignSelf: 'center',
+    },
+    placeholder: {
+      color:'black',
+      fontSize: 20,
+      fontWeight: '700',
+      textAlign: 'center'
+    }
   }
 })
 

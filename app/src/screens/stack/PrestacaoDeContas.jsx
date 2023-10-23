@@ -22,6 +22,11 @@ function PrestacaoDeContas({route: { params }}) {
                 <WebView
                   source={{ uri: googleView + url }}
                   style={{flexGrow: 1}}
+                  cacheEnabled={false}
+                  onError={(syntheticEvent) => {
+                    const { nativeEvent } = syntheticEvent;
+                    console.warn('WebView error:', nativeEvent);
+                  }}
                 />
             </View>
           </View>

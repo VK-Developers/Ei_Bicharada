@@ -9,6 +9,7 @@ module.exports = (sequelize, DataTypes) => {
   }
   contributions.init({
     name: DataTypes.STRING,
+    region: DataTypes.STRING,
     amount: DataTypes.FLOAT,
   }, {
     sequelize,

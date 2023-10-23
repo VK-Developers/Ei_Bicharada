@@ -6,4 +6,6 @@ module.exports.rescue = require("./rescue.service");
 module.exports.complain = require("./complain.service");
 module.exports.product = require("./product.service");
 module.exports.newEvent = require("./newEvent.service");
+module.exports.contribution = require("./contribution.service");
 module.exports.sponsor = require("./sponsor.service");
+module.exports.victim = require("./victim.service");

@@ -10,6 +10,12 @@ export default {
   sendForm: "Enviar Formulário",
   sendFormSucess: "Solicitação enviada com sucesso!!",
   ok: "OK",
+
+  donateTitle: 'Contribua você também!',
+  donateBtn: 'Copiar Chave PIX!',
+  donateAlert: 'Chave PIX Copiada',
+  pixKey: '7498723572348585',
+
   footer: {
     title: "ATESP",
     subTitle: ['Associação dos Técnicos em', 'Edificações Auxiliares e Afins', 'do Estado de São Paulo']

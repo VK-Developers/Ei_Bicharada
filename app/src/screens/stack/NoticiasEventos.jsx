@@ -17,7 +17,6 @@ function NoticiasEventos({navigation, route: { params }}) {
   const [scrollY, setScrollY] = useState(0);
 
   useEffect(() => {
-    console.log(params.name)
     setLoader(true)
     async function FetchData() {
       const fetchNews = await getNewAndEvent(params.token);

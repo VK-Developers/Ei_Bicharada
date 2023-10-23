@@ -91,3 +91,33 @@ export const getSponsors = async (token) => {
     console.error(...errorResponse);
   }
 };
+
+export const getVictims = async (token) => {
+  try {
+    const { data } = await api.get(
+      '/victims',
+      {
+        headers: { 'Authorization': token }
+      }
+    );
+    return data
+  } catch (error) {
+    const errorResponse = handleRequestError(error)
+    console.error(...errorResponse);
+  }
+};
+
+export const getContributions = async (token) => {
+  try {
+    const { data } = await api.get(
+      '/contributions',
+      {
+        headers: { 'Authorization': token }
+      }
+    );
+    return data
+  } catch (error) {
+    const errorResponse = handleRequestError(error)
+    console.error(...errorResponse);
+  }
+};

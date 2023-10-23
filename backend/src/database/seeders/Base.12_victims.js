@@ -7,6 +7,7 @@ module.exports = {
       {
         name: 'Beatriz',
         email: 'beatriz@gmail.com',
+        phone: '+55 55 55555-5555',
         created: new Date(),
       },
     ], {});

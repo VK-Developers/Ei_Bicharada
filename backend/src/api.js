@@ -9,7 +9,9 @@ const {
      missingAnimal,
      complain,
      newEvent,
-     sponsor
+     sponsor,
+     victim,
+     contribution
 } = require("./routes");
 
 const { cors } = require("./tools");
@@ -29,7 +31,9 @@ api.use("/complains", complain); // enviar fotos
 // api.use("/home", home);
 api.use("/products", product);
 api.use("/news-events", newEvent);
+api.use("/contributions", contribution);
 api.use("/sponsors", sponsor);
+api.use("/victims", victim);
 
 api.use(errorHandler);
 

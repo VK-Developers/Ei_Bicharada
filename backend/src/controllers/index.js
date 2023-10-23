@@ -6,4 +6,6 @@ module.exports.rescue = require("./rescue.controller");
 module.exports.complain = require("./complain.controller");
 module.exports.product = require("./product.controller");
 module.exports.newEvent = require("./newEvent.controller");
+module.exports.contribution = require("./contribution.controller");
 module.exports.sponsor = require("./sponsor.controller");
+module.exports.victim = require("./victim.controller");
