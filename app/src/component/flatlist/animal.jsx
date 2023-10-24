@@ -9,7 +9,7 @@ function Animal({info, nav}) {
 
       return (!!info && !!nav) ? (
             <TouchableOpacity style={styles.container} onPress={handleClick}>
-                  <Image style={styles.img} source={{uri: info.picture}} />
+                  <Image style={styles.img} source={{uri: "http://" + info.picture}} />
                   <View style={styles.info}>
                         <View style={[styles.desc, {marginBottom: 5}]}>
                               <Text style={{color: 'black', fontWeight: '600', marginRight: 15}}>{str.name + ':'}</Text>

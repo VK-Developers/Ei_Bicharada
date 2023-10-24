@@ -1,5 +1,6 @@
 import api from "./api";
 import handleRequestError from "../hooks/handleRequestError";
+import upLoadImage from "./upLoadImage";
 
 export const postLogin = async ({email, password}) => {
   const format = {
@@ -54,6 +55,8 @@ export const postNewAnimal = async (obj, where, token) => {
   }
 
   try {
+    upLoadImage(obj.picture[0])
+
     const request = await api.post(url, send, {
       headers: {
         'Authorization': token

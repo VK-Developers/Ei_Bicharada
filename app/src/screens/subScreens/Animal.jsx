@@ -15,7 +15,7 @@ function Animal({navigation, route: {params}}) {
             <ScrollView style={styles.container}>
                 <View>
                     <Return nav={navigation} />
-                    <Image source={{uri: picture}} style={styles.preview}/>
+                    <Image source={{uri: "http://" + picture}} style={styles.preview}/>
                     <View style={styles.content}>
                         <Text style={styles.title}>{name}</Text>
                         <Text style={styles.text}>{description}</Text>

@@ -1,19 +1,20 @@
 const express = require("express");
 require("express-async-errors");
 const path = require('path');
+
 const { 
-     user,
-     rescue,
-     product,
-     login,
-     adoption,
-     missingAnimal,
-     complain,
-     home,
-     newEvent,
-     sponsor,
-     victim,
-     contribution
+  user,
+  rescue,
+  product,
+  login,
+  adoption,
+  missingAnimal,
+  complain,
+  home,
+  newEvent,
+  sponsor,
+  victim,
+  contribution,
 } = require("./routes");
 
 const { cors } = require("./tools");
@@ -25,7 +26,6 @@ api.use(cors);
 
 api.use("/login", login);
 api.use("/users", user);
-
 api.use("/adoptions", adoption);
 api.use("/missing-animals", missingAnimal);
 api.use("/rescues", rescue);
@@ -37,10 +37,10 @@ api.use("/contributions", contribution);
 api.use("/sponsors", sponsor);
 api.use("/victims", victim);
 
-api.use('/pictures/adoptions/', express.static(path.join(__dirname, '/pictures/adoptions')));
-api.use('/pictures/missing-animals/', express.static(path.join(__dirname, '/pictures/missing-animals')));
-api.use('/pictures/rescues/', express.static(path.join(__dirname, '/pictures/rescues')));
-api.use('/pictures/complains/', express.static(path.join(__dirname, '/pictures/complains')));
+api.use('/pictures/adoptions/', express.static(path.join(__dirname, '../uploads/adoptions')));
+api.use('/pictures/missing-animals/', express.static(path.join(__dirname, '../uploads/missing-animals')));
+api.use('/pictures/rescues/', express.static(path.join(__dirname, '../uploads/rescues')));
+api.use('/pictures/complains/', express.static(path.join(__dirname, '../uploads/complains')));
 
 api.use(errorHandler);
 

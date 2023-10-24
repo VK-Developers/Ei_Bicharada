@@ -13,7 +13,7 @@ export const menuTopics = [
 
 export const NewUser = {
   basic: [
-    {title: 'Nome', maxLength: 15, type: 'default'},
+    {title: 'Nome', maxLength: 20, type: 'default'},
     {title: 'Email', maxLength: 35, type: 'default'},
     {title: 'Telefone', maxLength: 17, type: 'numeric'},
     {title: 'Cidade', maxLength: 15, type: 'default'},

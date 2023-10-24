@@ -1,24 +1,24 @@
 .DS_Store
 node_modules/
 .env
-.vscode
+.vscode/
 
-src/pictures/adoptions/*.jpeg
-src/pictures/adoptions/*.jpg
-src/pictures/adoptions/*.png
-src/pictures/adoptions/*.webp
+uploads/adoptions/*.jpeg
+uploads/adoptions/*.jpg
+uploads/adoptions/*.png
+uploads/adoptions/*.webp
 
-src/pictures/complains/*.jpeg
-src/pictures/complains/*.jpg
-src/pictures/complains/*.png
-src/pictures/complains/*.webp
+uploads/complains/*.jpeg
+uploads/complains/*.jpg
+uploads/complains/*.png
+uploads/complains/*.webp
 
-src/pictures/missing-animals/*.jpeg
-src/pictures/missing-animals/*.jpg
-src/pictures/missing-animals/*.png
-src/pictures/missing-animals/*.webp
+uploads/missing-animals/*.jpeg
+uploads/missing-animals/*.jpg
+uploads/missing-animals/*.png
+uploads/missing-animals/*.webp
 
-src/pictures/rescues/*.jpeg
-src/pictures/rescues/*.jpg
-src/pictures/rescues/*.png
-src/pictures/rescues/*.webp
+uploads/rescues/*.jpeg
+uploads/rescues/*.jpg
+uploads/rescues/*.png
+uploads/rescues/*.webp
