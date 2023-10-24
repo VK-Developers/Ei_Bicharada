@@ -2,14 +2,18 @@ const express = require("express");
 require("express-async-errors");
 
 const routes = require("./routes");
-
 const { cors } = require("./tools");
 const { errorHandler } = require("./middlewares");
 
 const api = express();
+
 api.use(express.json());
 api.use(cors);
 
+// View Pictures
+api.use('/uploads', routes.picture)
+
+// Requests
 api.use("/login", routes.login);
 api.use("/users", routes.user);
 api.use("/adoptions", routes.adoption);
@@ -22,8 +26,6 @@ api.use("/news-events", routes.newEvent);
 api.use("/contributions", routes.contribution);
 api.use("/sponsors", routes.sponsor);
 api.use("/victims", routes.victim);
-
-api.use('/uploads', routes.picture)
 
 api.use(errorHandler);
 
