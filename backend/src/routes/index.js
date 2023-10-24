@@ -10,3 +10,5 @@ module.exports.newEvent = require("./newEvent.route");
 module.exports.contribution = require("./contribution.route");
 module.exports.sponsor = require("./sponsor.route");
 module.exports.victim = require("./victim.route");
+
+module.exports.picture = require("./picture.route");

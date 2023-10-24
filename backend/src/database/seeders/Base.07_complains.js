@@ -13,7 +13,7 @@ module.exports = {
         city: 'Santos',
         user: 'vincenzo@adm.com',
         region: 'Neverland',
-        picture: 'path/path/',
+        picture: 'uploads/complains/',
         created: new Date(),
       },
       {
@@ -25,7 +25,7 @@ module.exports = {
         city: 'Sao Vicente',
         user: 'vincenzo@adm.com',
         region: 'Neverland',
-        picture: 'path/path/',
+        picture: 'uploads/complains/',
         created: new Date(),
       },
       {
@@ -37,7 +37,7 @@ module.exports = {
         city: 'Sao Vicente',
         user: 'vincenzo@adm.com',
         region: 'Neverland',
-        picture: 'path/path/',
+        picture: 'uploads/complains/',
         created: new Date(),
       },
       {
@@ -49,7 +49,7 @@ module.exports = {
         city: 'Santos',
         user: 'vincenzo@adm.com',
         region: 'Neverland',
-        picture: 'path/path/',
+        picture: 'uploads/complains/',
         created: new Date(),
       },
       {
@@ -61,7 +61,7 @@ module.exports = {
         city: 'San Maran',
         user: 'vincenzo@adm.com',
         region: 'Neverland',
-        picture: 'path/path/',
+        picture: 'uploads/complains/',
         created: new Date(),
       },
       {
@@ -73,7 +73,7 @@ module.exports = {
         city: 'Santos',
         user: 'vincenzo@adm.com',
         region: 'Neverland',
-        picture: 'path/path/',
+        picture: 'uploads/complains/',
         created: new Date(),
       },
     ], {});
