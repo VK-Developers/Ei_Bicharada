@@ -18,143 +18,218 @@ const Resgate = () => {
 
   return (
     <>
-      <div className="flex-col flex">
-        <div className="m-4 space-x-2 space-y-3 h-10 ">
-          <input
-            type="text"
-            name="animal"
-            id="animal"
-            placeholder="Animal"
-            className="w-5/12 text-2xl rounded-md shadow-sm p-1 shadow-black border-black border-[0.20px]"
-          />
-          <input
-            type="time"
-            name="horario"
-            id="horario"
-            className="rounded-md text-center w-1/12 text-lg shadow-sm p-1 shadow-black border-black border-[0.20px]"
-          />
-        </div>
-        <div className="m-4 space-x-2 space-y-3 h-10 ">
-          <input
-            type="text"
-            name="endereco"
-            id="endereco"
-            placeholder="Endereço"
-            className="w-5/12 text-2xl rounded-md shadow-sm p-1 shadow-black border-black border-[0.20px]"
-          />
-          <select
-            className=" text-md text-center rounded-md shadow-sm m-2 shadow-black border-black border-[0.20px]"
-            id="cidades"
-            name="cidades"
-          >
-            <option value="santos">Santos</option>
-            <option value="sao-vicente">São Vicente</option>
-            <option value="praia-grande">Praia Grande</option>
-            <option value="guaruja">Guarujá</option>
-            <option value="bertioga">Bertioga</option>
-            <option value="itanhaem">Itanhaém</option>
-            <option value="mongagua">Mongaguá</option>
-            <option value="peruibe">Peruibe</option>
-          </select>
-        </div>
-        <div className="m-4 space-x-2 flex-row flex h-10 ">
-          <div className="flex flex-col w-3/12">
-            <textarea
-              name="message"
-              rows="5"
-              cols="30"
-              placeholder="Ocorrido"
-              className="min-h-[250px] max-h-[250px] rounded-md shadow-sm p-1 shadow-black border-black border-[0.20px]"
-            ></textarea>
-
-            <div className="flex flex-row bg-white gap-2 p-2 rounded-md items-center text-center text-lg shadow-sm mt-4 shadow-black border-black border-[0.20px]">
-              <label className="text-2xl" htmlFor="">
-                Esta se Movendo?
-              </label>
-              <label className="text-xl pl-4" htmlFor="">
-                Sim
-              </label>
-              <input
-                type="checkbox"
-                name="trueMove"
-                checked={isTrueMoveChecked}
-                onChange={() => setIsTrueMoveChecked(true)}
-              />
-              <label className="text-xl pl-4" htmlFor="">
-                Não
-              </label>
-              <input
-                type="checkbox"
-                name="falseMove"
-                checked={!isTrueMoveChecked}
-                onChange={() => setIsTrueMoveChecked(false)}
-              />
+      <section className="py-1 bg-blueGray-50 ">
+        <div className=" w-full lg:w-8/12 px-4 mx-auto mt-6">
+          <div className="relative flex flex-col min-w-0 break-words w-full mb-6 shadow-lg rounded-lg bg-blueGray-100 border-0">
+            <div className="rounded-t bg-white mb-0 px-6 py-6">
+              <div className="text-center flex justify-between">
+                <h6 className="text-blueGray-700 text-xl font-bold">
+                  My account
+                </h6>
+                <button
+                  className="bg-pink-500 text-white active:bg-pink-600 font-bold uppercase text-xs px-4 py-2 rounded shadow hover:shadow-md outline-none focus:outline-none mr-1 ease-linear transition-all duration-150"
+                  type="button"
+                >
+                  Settings
+                </button>
+              </div>
             </div>
-            
-
-            <div alt="Botões" className="flex flex-row gap-10 p-2 mt-4">
-              <button className="rounded-xl border-2 p-2 border-black hover:text-white hover:bg-green-600">Enviar</button>
-            </div>
-          </div>
-
-          <div className="ml-4 w-3/12 max-w-[468px] h-[250px]">
-            <label
-              htmlFor="dropzone-file"
-              className="flex flex-col items-center justify-center h-full border-2 border-gray-300 border-dashed rounded-lg cursor-pointer bg-gray-50 dark:hover:bg-bray-800 dark:bg-gray-700 hover:bg-gray-100 dark:border-gray-600 dark:hover:border-gray-500 dark:hover:bg-gray-600"
-              style={{
-                backgroundImage: `url(${imageUrl})`,
-                backgroundSize: "contain",
-                backgroundRepeat: "no-repeat",
-                backgroundPosition: "center",
-                objectFit: "fill",
-              }}
-            >
-              {!imageUrl && (
-                <div className="flex flex-col items-center justify-center pt-5 pb-6">
-                  <p className="mb-2 text-sm text-gray-500 dark:text-gray-400">
-                    <span className="font-semibold">Clique para enviar</span> ou arraste para dentro
-                  </p>
-                  <p className="text-xs text-gray-500 dark:text-gray-400">
-                    SVG, PNG, JPG
-                  </p>
+            <div className="flex-auto px-4 lg:px-10 py-10 pt-0">
+              <form>
+                <h6 className="text-blueGray-400 text-sm mt-3 mb-6 font-bold uppercase">
+                  User Information
+                </h6>
+                <div className="flex flex-wrap">
+                  <div className="w-full lg:w-6/12 px-4">
+                    <div className="relative w-full mb-3">
+                      <label
+                        className="block uppercase text-blueGray-600 text-xs font-bold mb-2"
+                        htmlFor="grid-password"
+                      >
+                        Username
+                      </label>
+                      <input
+                        type="text"
+                        className="border-0 px-3 py-3 placeholder-blueGray-300 text-blueGray-600 bg-white rounded text-sm shadow focus:outline-none focus:ring w-full ease-linear transition-all duration-150"
+                        defaultValue="lucky.jesse"
+                      />
+                    </div>
+                  </div>
+                  <div className="w-full lg:w-6/12 px-4">
+                    <div className="relative w-full mb-3">
+                      <label
+                        className="block uppercase text-blueGray-600 text-xs font-bold mb-2"
+                        htmlFor="grid-password"
+                      >
+                        Email address
+                      </label>
+                      <input
+                        type="email"
+                        className="border-0 px-3 py-3 placeholder-blueGray-300 text-blueGray-600 bg-white rounded text-sm shadow focus:outline-none focus:ring w-full ease-linear transition-all duration-150"
+                        defaultValue="jesse@example.com"
+                      />
+                    </div>
+                  </div>
+                  <div className="w-full lg:w-6/12 px-4">
+                    <div className="relative w-full mb-3">
+                      <label
+                        className="block uppercase text-blueGray-600 text-xs font-bold mb-2"
+                        htmlFor="grid-password"
+                      >
+                        First Name
+                      </label>
+                      <input
+                        type="text"
+                        className="border-0 px-3 py-3 placeholder-blueGray-300 text-blueGray-600 bg-white rounded text-sm shadow focus:outline-none focus:ring w-full ease-linear transition-all duration-150"
+                        defaultValue="Lucky"
+                      />
+                    </div>
+                  </div>
+                  <div className="w-full lg:w-6/12 px-4">
+                    <div className="relative w-full mb-3">
+                      <label
+                        className="block uppercase text-blueGray-600 text-xs font-bold mb-2"
+                        htmlFor="grid-password"
+                      >
+                        Last Name
+                      </label>
+                      <input
+                        type="text"
+                        className="border-0 px-3 py-3 placeholder-blueGray-300 text-blueGray-600 bg-white rounded text-sm shadow focus:outline-none focus:ring w-full ease-linear transition-all duration-150"
+                        defaultValue="Jesse"
+                      />
+                    </div>
+                  </div>
                 </div>
-              )}
-              <input
-                id="dropzone-file"
-                type="file"
-                className="hidden"
-                onChange={handleImageUpload}
-              />
-            </label>
-            <div className="flex flex-row bg-white gap-2 p-2 rounded-md items-center text-center text-lg shadow-sm mt-4 shadow-black border-black border-[0.20px]">
-              <label className="text-2xl" htmlFor="">
-                Esta Castrado?
-              </label>
-              <label className="text-xl pl-4" htmlFor="">
-                Sim
-              </label>
-              <input
-                type="checkbox"
-                name="trueMove"
-                checked={isTrueMoveChecked}
-                onChange={() => setIsTrueMoveChecked(true)}
-              />
-              <label className="text-xl pl-4" htmlFor="">
-                Não
-              </label>
-              <input
-                type="checkbox"
-                name="falseMove"
-                checked={!isTrueMoveChecked}
-                onChange={() => setIsTrueMoveChecked(false)}
-              />
+
+                <hr className="mt-6 border-b-1 border-blueGray-300" />
+
+                <h6 className="text-blueGray-400 text-sm mt-3 mb-6 font-bold uppercase">
+                  Contact Information
+                </h6>
+                <div className="flex flex-wrap">
+                  <div className="w-full lg:w-12/12 px-4">
+                    <div className="relative w-full mb-3">
+                      <label
+                        className="block uppercase text-blueGray-600 text-xs font-bold mb-2"
+                        htmlFor="grid-password"
+                      >
+                        Address
+                      </label>
+                      <input
+                        type="text"
+                        className="border-0 px-3 py-3 placeholder-blueGray-300 text-blueGray-600 bg-white rounded text-sm shadow focus:outline-none focus:ring w-full ease-linear transition-all duration-150"
+                        defaultValue="Bld Mihail Kogalniceanu, nr. 8 Bl 1, Sc 1, Ap 09"
+                      />
+                    </div>
+                  </div>
+                  <div className="w-full lg:w-4/12 px-4">
+                    <div className="relative w-full mb-3">
+                      <label
+                        className="block uppercase text-blueGray-600 text-xs font-bold mb-2"
+                        htmlFor="grid-password"
+                      >
+                        City
+                      </label>
+                      <input
+                        type="text"
+                        className="border-0 px-3 py-3 placeholder-blueGray-300 text-blueGray-600 bg-white rounded text-sm shadow focus:outline-none focus:ring w-full ease-linear transition-all duration-150"
+                        defaultValue="New York"
+                      />
+                    </div>
+                  </div>
+                  <div className="w-full lg:w-4/12 px-4">
+                    <div className="relative w-full mb-3">
+                      <label
+                        className="block uppercase text-blueGray-600 text-xs font-bold mb-2"
+                        htmlFor="grid-password"
+                      >
+                        Country
+                      </label>
+                      <input
+                        type="text"
+                        className="border-0 px-3 py-3 placeholder-blueGray-300 text-blueGray-600 bg-white rounded text-sm shadow focus:outline-none focus:ring w-full ease-linear transition-all duration-150"
+                        defaultValue="United States"
+                      />
+                    </div>
+                  </div>
+                  <div className="w-full lg:w-4/12 px-4">
+                    <div className="relative w-full mb-3">
+                      <label
+                        className="block uppercase text-blueGray-600 text-xs font-bold mb-2"
+                        htmlFor="grid-password"
+                      >
+                        Postal Code
+                      </label>
+                      <input
+                        type="text"
+                        className="border-0 px-3 py-3 placeholder-blueGray-300 text-blueGray-600 bg-white rounded text-sm shadow focus:outline-none focus:ring w-full ease-linear transition-all duration-150"
+                        defaultValue="Postal Code"
+                      />
+                    </div>
+                  </div>
+                </div>
+
+                <hr className="mt-6 border-b-1 border-blueGray-300" />
+
+                <h6 className="text-blueGray-400 text-sm mt-3 mb-6 font-bold uppercase">
+                  About Me
+                </h6>
+                <div className="flex flex-wrap">
+                  <div className="w-full lg:w-12/12 px-4">
+                    <div className="relative w-full mb-3">
+                      <label
+                        className="block uppercase text-blueGray-600 text-xs font-bold mb-2"
+                        htmlFor="grid-password"
+                      >
+                        About me
+                      </label>
+                      <textarea
+                        className="border-0 px-3 py-3 placeholder-blueGray-300 text-blueGray-600 bg-white rounded text-sm shadow focus:outline-none focus:ring w-full ease-linear transition-all duration-150"
+                        rows="4"
+                      >
+                        A beautiful UI Kit and Admin for JavaScript &amp;
+                        Tailwind CSS. It is Free and Open Source.
+                      </textarea>
+                    </div>
+                  </div>
+                </div>
+              </form>
             </div>
           </div>
+          <footer className="relative pt-8 pb-6 mt-2">
+            <div className="container mx-auto px-4">
+              <div className="flex flex-wrap items-center md:justify-between justify-center">
+                <div className="w-full md:w-6/12 px-4 mx-auto text-center">
+                  <div className="text-sm text-blueGray-500 font-semibold py-1">
+                    Made with{" "}
+                    <a
+                      href="https://www.creative-tim.com/product/notus-js"
+                      className="text-blueGray-500 hover:text-gray-800"
+                      target="_blank"
+                      rel="noopener noreferrer"
+                    >
+                      Notus JS
+                    </a>{" "}
+                    by{" "}
+                    <a
+                      href="https://www.creative-tim.com"
+                      className="text-blueGray-500 hover:text-blueGray-800"
+                      target="_blank"
+                      rel="noopener noreferrer"
+                    >
+                      Creative Tim
+                    </a>
+                    .
+                  </div>
+                </div>
+              </div>
+            </div>
+          </footer>
         </div>
-      </div>
+      </section>
     </>
   );
 };
 
 export default Resgate;
-

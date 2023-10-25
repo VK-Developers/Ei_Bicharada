@@ -17,7 +17,7 @@ const Resgate = () => {
   };
 
   return (
-    <div className=" w-full ">
+    <>
       <div className="flex-col flex">
         <div className="m-4 space-x-2 space-y-3 h-10 ">
           <input
@@ -152,7 +152,7 @@ const Resgate = () => {
           </div>
         </div>
       </div>
-    </div>
+    </>
   );
 };
 

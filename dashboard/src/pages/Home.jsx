@@ -7,7 +7,7 @@ const Home = () => {
 
     
   return (
-    <div className='flex bg-[#f0f8ff] ' >
+    <div className='flex' >
       <Navbar action={setContent} selected={content} />
       <div className='flex-col flex flex-grow'>
         <Header  />
