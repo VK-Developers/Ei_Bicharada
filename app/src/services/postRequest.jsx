@@ -1,6 +1,6 @@
 import api from "./api";
+// import RNFetchBlob from 'rn-fetch-blob';
 import handleRequestError from "../hooks/handleRequestError";
-import upLoadImage from "./upLoadImage";
 
 export const postLogin = async ({email, password}) => {
   const format = {
@@ -45,21 +45,34 @@ export const postUser = async (obj) => {
 export const postNewAnimal = async (obj, where, token) => {
   const url = where === 'adoption' ? '/adoptions' : '/missing-animals';
 
+  const date = new Date();
+  const formattedDate = `${date.getDate()}-${date.getMonth() + 1}-${date.getFullYear()}`;
+  const name = obj.nome.replace(/\s/g, "").replace(/,/g, "_").replace(/\./g, "");
+  const nameToSave = `${formattedDate}_${name.toLowerCase()}.jpg`;
+
+  const formData = new FormData();
+
+  formData.append('file', {
+    uri: obj.picture[0],
+    type: 'image/jpeg',
+    name: nameToSave, 
+  });
+
   const send = {
     animal: obj.animal.trim(),
     name: obj.nome.trim(),
     description: obj.descricao.trim(),
     neutered: obj.castrado,
     sex: obj.sexo,
-    picture: obj.picture[0]
   }
 
-  try {
-    upLoadImage(obj.picture[0])
+  formData.append('data', JSON.stringify(send));
 
-    const request = await api.post(url, send, {
+  try {
+    const request = await api.post(url, formData, {
       headers: {
-        'Authorization': token
+        'Authorization': token,
+        'Content-Type': 'multipart/form-data',
       }
     });
 
@@ -74,6 +87,20 @@ export const postNewAnimal = async (obj, where, token) => {
 export const postRescueComplains = async (obj, where, token) => {
   const url = where === 'rescue' ? '/rescues' : '/complains';
 
+  const date = new Date();
+  const dateFormat = `${date.getDate()}-${date.getMonth() + 1}-${date.getFullYear()}`;
+  const name = obj.animal.replace(/\s/g, "").replace(/,/g, "_").replace(/:/g, "-").replace(/\./g, "");
+  const time = obj.horario.replace(/:/g, "-")
+  const nameToSave = `${dateFormat}_${time}_${name.toLowerCase()}.jpg`;
+
+  const formData = new FormData();
+
+  formData.append('file', {
+    uri: obj.picture[0],
+    type: 'image/jpeg',
+    name: nameToSave, 
+  });
+
   const send = {
     animal: obj.animal.trim(),
     walking: obj.andando,
@@ -81,13 +108,15 @@ export const postRescueComplains = async (obj, where, token) => {
     hour: obj.horario,
     adress: obj.endereco.trim(),
     city: obj.cidade.trim(),
-    picture: obj.picture[0]
   }
 
+  formData.append('data', JSON.stringify(send));
+
   try {
-    const request = await api.post(url, send, {
+    const request = await api.post(url, formData, {
       headers: {
-        'Authorization': token
+        'Authorization': token,
+        'Content-Type': 'multipart/form-data',
       }
     });
 

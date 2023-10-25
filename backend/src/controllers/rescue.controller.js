@@ -17,10 +17,18 @@ module.exports = {
         return res.status(status).json(result);
     },
     create: async(req, res, _next) => {
-        const obj = req.body;
         const token = req.headers.authorization;
+        const data = JSON.parse(req.body.data);
+        const photo = req.file.filename;
 
-        const {status, result} = await service.create(obj, token);
+        const {status, result} = await service.create(
+            {
+                ...data, 
+                picture: 'uploads/rescues/' + photo
+            }, 
+            token
+        );
+
         return res.status(status).json(result);
     },
     destroy: async(req, res, _next) => {
