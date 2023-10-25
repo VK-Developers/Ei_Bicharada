@@ -13,6 +13,7 @@ module.exports = (sequelize, DataTypes) => {
     city: DataTypes.STRING,
     type: DataTypes.STRING,
     duration: DataTypes.STRING,
+    new: DataTypes.BOOLEAN,
   }, {
     sequelize,
     modelName: 'home',

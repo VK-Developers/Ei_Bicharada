@@ -12,6 +12,7 @@ module.exports = (sequelize, DataTypes) => {
     type: DataTypes.STRING,
     content: DataTypes.TEXT('long'),
     date: DataTypes.STRING,
+    picture: DataTypes.STRING,
   }, {
     sequelize,
     modelName: 'newAndEvent',

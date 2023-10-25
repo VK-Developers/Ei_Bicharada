@@ -34,10 +34,10 @@ module.exports = {
         allowNull: false,
         type: Sequelize.STRING
       },
-      accepted: {
+      new: {
         allowNull: false,
         type: Sequelize.BOOLEAN,
-        defaultValue: false,
+        defaultValue: true,
       },
       created: {
         allowNull: false,

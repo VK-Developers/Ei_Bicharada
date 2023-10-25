@@ -1,5 +1,4 @@
 import api from "./api";
-// import RNFetchBlob from 'rn-fetch-blob';
 import handleRequestError from "../hooks/handleRequestError";
 
 export const postLogin = async ({email, password}) => {
@@ -19,27 +18,6 @@ export const postLogin = async ({email, password}) => {
     return errorResponse;
   }
 };
-
-export const postUser = async (obj) => {
-  const format = {
-    name: obj.nome.trim(),
-    email: (obj.email.toLowerCase()).trim(),
-    phone: obj.telefone,
-    city: obj.cidade.trim(),
-    cep: obj.cep.trim(),
-    password: obj.senha,
-    region: obj.region.trim()
-  }
-
-  try {
-    const request = await api.post('/users', format);
-
-    return request.status
-  } catch (error) {
-    const errorResponse = handleRequestError(error);
-    return errorResponse;
-  }
-}
 
 export const postNewAnimal = async (obj, where, token) => {
   const url = where === 'adoption' ? '/adoptions' : '/missing-animals';

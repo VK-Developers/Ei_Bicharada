@@ -1,5 +1,6 @@
 module.exports.LogIntoApp = require("./login.controller");
 module.exports.user = require("./user.controller");
+module.exports.region = require("./region.controller");
 module.exports.adoption = require("./adoption.controller");
 module.exports.missingAnimal = require("./missingAnimal.controller");
 module.exports.rescue = require("./rescue.controller");

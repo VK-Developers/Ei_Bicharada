@@ -16,6 +16,7 @@ api.use('/uploads', routes.picture)
 // Requests
 api.use("/login", routes.login);
 api.use("/users", routes.user);
+api.use("/regions", routes.region);
 api.use("/adoptions", routes.adoption);
 api.use("/missing-animals", routes.missingAnimal);
 api.use("/rescues", routes.rescue);

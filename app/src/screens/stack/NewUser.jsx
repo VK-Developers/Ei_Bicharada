@@ -10,11 +10,13 @@ import str from '../../localized/strings';
 import images from '../../localized/images';
 import validateForms from '../../hooks/validateForms';
 
-import { postUser } from '../../services/postRequest';
+import { createUser } from '../../services/user';
+import { regionList } from '../../services/region'
 
 function NewUser({navigation}) {
   const { setLogin } = useContext(Context);
   const [type, setType] = useState('basic');
+  const [regions, setRegions] = useState([]);
   const [isButtonVisible, setIsButtonVisible] = useState(true);
   const [sendForms, setSendForms] = useState(false);
   const [modal, setModal] = useState(false);
@@ -23,13 +25,21 @@ function NewUser({navigation}) {
   const scrollViewRef = useRef();
 
   useEffect(() => {
+    async function FetchData() {
+      const data = await regionList()
+      setRegions(data)
+    }
+    FetchData()
+  }, []);
+
+  useEffect(() => {
     const canSendIt = validateForms(listiner, 3);
     setSendForms(canSendIt[type]);
   }, [listiner, type]);
  
   const handlePress = async () => {
     if (type === 'password') {
-      const addUser = await postUser(listiner);
+      const addUser = await createUser(listiner);
       
       if (addUser !== 203) {
         setLogin({
@@ -98,29 +108,20 @@ function NewUser({navigation}) {
         {/* city */}
         <View style={[styles.container, type !== 'city' && {display: 'none' }]}>
         {
-          regions.map((regiao, i) => {
-            const divisionText = 'Regiao ' + (i + 1);
+          regions.map(({city}) => {
+            const key = city.replace(' ', '_');
             return (
-              <View key={divisionText} style={styles.regionContainer}>
-                {
-                  regiao.map(local => {
-                    return (
-                      <TouchableOpacity
-                        key={local}
-                        style={[styles.regionContainer.btn, listiner.region === local && {backgroundColor: '#6082B6'}]}
-                        onPress={() => {
-
-                          setLister(prev => ({...prev, region: prev.region === local ? '' : local}))
-                          setType('basic')
-                        }}
-                      >
-                        <Image source={images.backgrounds.one} style={styles.regionContainer.btn.icon}/>
-                        <Text style={[styles.regionContainer.btn.text, listiner.region === local && {color: 'white'}]}>{local}</Text>
-                      </TouchableOpacity>
-                    )
-                  })
-                }
-              </View>
+              <TouchableOpacity
+                key={key}
+                style={[styles.regionContainer.btn, listiner.region === city && {backgroundColor: '#6082B6'}]}
+                onPress={() => {
+                  setLister(prev => ({...prev, region: prev.region === city ? '' : city}))
+                  setType('basic')
+                }}
+              >
+                <Image source={images.backgrounds.one} style={styles.regionContainer.btn.icon}/>
+                <Text style={[styles.regionContainer.btn.text, listiner.region === city && {color: 'white'}]}>{city}</Text>
+              </TouchableOpacity>
             )
           })
         }

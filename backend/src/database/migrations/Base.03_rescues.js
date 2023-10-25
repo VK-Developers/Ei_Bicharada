@@ -46,12 +46,7 @@ module.exports = {
         allowNull: false,
         type: Sequelize.STRING
       },
-      accepted: {
-        allowNull: false,
-        defaultValue: false,
-        type: Sequelize.BOOLEAN,
-      },
-      newRequest: {
+      new: {
         allowNull: false,
         defaultValue: true,
         type: Sequelize.BOOLEAN,

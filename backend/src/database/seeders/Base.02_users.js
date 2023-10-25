@@ -5,32 +5,14 @@ module.exports = {
   async up (queryInterface, _Sequelize) {
     await queryInterface.bulkInsert('users', [
       {
-        name: 'Vincenzo',
-        email: 'vincenzo@adm.com',
-        phone: '+55 13 9999-9999',
-        city: 'Santos',
-        cep: '18274-635',
-        region: 'Neverland',
+        name: 'System Adm',
+        email: 'atespets.app@gmail.com',
+        phone: '+55 99 9999-9999',
+        city: 'all',
+        cep: '11111-111',
+        region: 'all',
         created: new Date(),
-      },
-      {
-        name: 'Marcelo',
-        email: 'marcelojuvenal@gmail.com',
-        phone: '+55 13 9999-9999',
-        city: 'Sao Vicente',
-        cep: '77834-258',
-        region: 'Neverland',
-        created: new Date(),
-      },
-      {
-        name: 'Fabio',
-        email: 'humorsapiens2@hotmail.com',
-        phone: '+55 13 9999-9999',
-        city: 'Sao Vicente',
-        cep: '11794-536',
-        region: 'Neverland',
-        created: new Date(),
-      },
+      }
     ], {});
   },
 

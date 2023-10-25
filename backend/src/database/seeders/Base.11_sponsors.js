@@ -6,11 +6,13 @@ module.exports = {
     await queryInterface.bulkInsert('sponsors', [
       {
         name: 'Alfredo',
-        picture: 'https://www.atespets.com.br/sponsors/alfredo.jpeg',
+        picture: '/sponsors/alfredo/card.jpeg',
+        flier: '/sponsors/alfredo/flier.jpeg',
       },
       {
         name: 'Banguela e Alistar',
-        picture: 'https://www.atespets.com.br/sponsors/banguela_alistar.jpeg',
+        picture: '/sponsors/banguela_alistar/card.jpeg',
+        flier: '/sponsors/banguela_alistar/flier.jpeg',
       },
     ], {});
   },

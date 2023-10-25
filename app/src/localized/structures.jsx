@@ -41,14 +41,9 @@ export const LarTemporario = [
 ]
 
 export const newAnimal = [
-  {title: 'Animal', placeholder: 'tipo de animal', type: 'default'},
+  {title: 'Animal', placeholder: '', type: 'default'},
   {title: 'Castrado', placeholder: ['Sim', 'Não'], type: 'select'},
   {title: 'Sexo', placeholder: ['Macho', 'Fêmea'], type: 'select'},
   {title: 'Nome', placeholder: 'nome do pet', type: 'default'},
   {title: 'Descrição', placeholder: 'nos fale sobre o pet...', type: 'default'},
-]
-
-export const regions = [
-  ['Americana', 'Mogi das cruzes', 'Itaquaquecetuba', 'Guararema Suzano', 'Biritiba Mirim', 'Salesópolis', 'Guarulhos', 'Arujá', 'Santa Isabel', 'Ferraz de Vasconcelos' ,'Poá'],
-  ['Rio Claro', 'Cordeirópolis Limeira', 'Leme', 'Araras', 'Mogi Guaçu', 'Mogi Mirim', 'Conchal']
 ]

@@ -10,6 +10,7 @@ module.exports = (sequelize, DataTypes) => {
   sponsors.init({
     name: DataTypes.STRING,
     picture: DataTypes.STRING,
+    flier: DataTypes.STRING,
   }, {
     sequelize,
     modelName: 'sponsor',

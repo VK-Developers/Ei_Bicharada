@@ -18,6 +18,10 @@ module.exports = {
         allowNull: false,
         type: Sequelize.STRING
       },
+      flier: {
+        allowNull: false,
+        type: Sequelize.STRING
+      }
     });
   },
 

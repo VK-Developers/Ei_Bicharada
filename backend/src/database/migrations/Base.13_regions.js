@@ -3,41 +3,36 @@
 /** @type {import('sequelize-cli').Migration} */
 module.exports = {
   async up (queryInterface, Sequelize) {
-    await queryInterface.createTable('news_and_events', {
+    await queryInterface.createTable('regions', {
       id: {
         allowNull: false,
         autoIncrement: true,
         primaryKey: true,
         type: Sequelize.INTEGER,
       },
-      title: {
+      city: {
         allowNull: false,
         type: Sequelize.STRING
       },
-      type: {
+      delegate: {
         allowNull: false,
+        defaultValue: '',
         type: Sequelize.STRING
       },
-      content: {
+      email: {
         allowNull: false,
-        type: Sequelize.TEXT('long')
-      },
-      date: {
-        allowNull: false,
+        defaultValue: '',
         type: Sequelize.STRING
       },
-      picture: {
+      phone: {
         allowNull: false,
+        defaultValue: '',
         type: Sequelize.STRING
-      },
-      created: {
-        allowNull: false,
-        type: Sequelize.DATE,
       },
     });
   },
 
   async down (queryInterface, _Sequelize) {
-    await queryInterface.dropTable('news_and_events');
+    await queryInterface.dropTable('regions');
   }
 };

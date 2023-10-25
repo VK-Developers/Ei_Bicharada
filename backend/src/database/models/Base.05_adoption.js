@@ -20,7 +20,7 @@ module.exports = (sequelize, DataTypes) => {
     contact: DataTypes.STRING,
     region: DataTypes.STRING,
     picture: DataTypes.STRING,
-    accepted: DataTypes.BOOLEAN,
+    new: DataTypes.BOOLEAN,
   }, {
     sequelize,
     modelName: 'adoption',

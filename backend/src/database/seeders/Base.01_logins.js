@@ -7,16 +7,8 @@ module.exports = {
       "logins",
       [
         {
-          email: "vincenzo@adm.com",
-          password: "vincenzo213",
-        },
-        {
-          email: "marcelojuvenal@gmail.com",
-          password: "0314186574",
-        },
-        {
-          email: "humorsapiens2@hotmail.com",
-          password: "Fa375150",
+          email: "atespets.app@gmail.com",
+          password: "Atesp@213",
         }
       ],
       {}

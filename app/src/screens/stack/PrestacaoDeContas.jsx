@@ -9,7 +9,7 @@ import ToggleMenu from '../../component/ToggleMenu';
 
 function PrestacaoDeContas({route: { params }}) {
   const googleView = 'https://docs.google.com/gview?embedded=true&url=';
-  const url = 'https://atespets.com.br/accountabilities/template.pdf'
+  const url = 'https://atespets.com.br/accountabilities/current.pdf'
 
   return (
     <>

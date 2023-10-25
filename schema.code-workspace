@@ -9,12 +9,12 @@
 			"path": "backend/src/database"
 		},
 		{
-			"name": "Mobile",
-			"path": "app/src"
-		},
-		{
 			"name": "Backend",
 			"path": "backend/src"
+		},
+		{
+			"name": "Mobile",
+			"path": "app/src"
 		}
 	]
 }

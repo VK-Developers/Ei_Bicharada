@@ -1,8 +1,10 @@
-import React, {useContext} from 'react';
+import React, {useContext, useState} from 'react';
 import Context from '../../context/Context';
-import { View, Text, TextInput, StyleSheet, Platform } from 'react-native';
+import { View, Text, TextInput, StyleSheet, Platform, TouchableOpacity, Image } from 'react-native';
+import images from '../../localized/images';
 
 export default function LoginInput({title, placeholder, type}) {
+  const [showPassword, setShowPassword] = useState(false)
   const { login, setLogin } = useContext(Context);
 
   const isIOS = Platform.OS === 'ios' && {height: 50}
@@ -19,14 +21,26 @@ export default function LoginInput({title, placeholder, type}) {
   return (
     <View style={styles.container}>
       <Text style={styles.title}>{title}</Text>
-      <TextInput
-        value={login[type]}
-        onChangeText={handleChange}
-        placeholder={placeholder}
-        style={[styles.input, isIOS, valid]}
-        placeholderTextColor='black'
-        secureTextEntry={type === 'password' && true}
-      />
+      <View style={{position: 'relative'}}>
+        <TextInput
+          value={login[type]}
+          onChangeText={handleChange}
+          placeholder={placeholder}
+          style={[styles.input, isIOS, valid]}
+          placeholderTextColor='black'
+          secureTextEntry={(type === 'password' && !showPassword) && true}
+        />
+
+        {type === 'password' && (
+          <TouchableOpacity onPress={() => setShowPassword(!showPassword)} style={{position: 'absolute', top: 10, right: 20}}>
+            { !showPassword ? (
+              <Image source={images.notVisible} style={{width: 30,height: 30}} />
+            ) : (
+              <Image source={images.visible} style={{width: 30,height: 30}} />
+            )}  
+          </TouchableOpacity>
+        )}
+      </View>
     </View>
   );
 }

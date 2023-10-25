@@ -19,6 +19,7 @@ module.exports = (sequelize, DataTypes) => {
     user: DataTypes.STRING,
     region: DataTypes.STRING,
     picture: DataTypes.STRING,
+    new: DataTypes.BOOLEAN,
   }, {
     sequelize,
     modelName: 'rescue',
