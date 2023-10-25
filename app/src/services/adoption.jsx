@@ -5,7 +5,7 @@ import FormatName from "../hooks/upLoadName"
 const URL = '/adoptions'
 
 const userParams = {
-    accepted: true
+  accepted: true
 }
 
 const submitObj = (param) => ({

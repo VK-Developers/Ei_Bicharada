@@ -7,6 +7,8 @@ import ToggleMenu from '../../component/ToggleMenu';
 import Background from '../../component/Background';
 import CardSponsor from '../../component/flatlist/Sponsor'
 
+import str from '../../localized/strings'
+
 import { getSponsors } from '../../services/getRequest';
 
 const {width, height} = Dimensions.get('screen');
@@ -27,14 +29,14 @@ function Apoiadores({navigation, route: { params }}) {
     FetchData();
   }, [])
 
-  const renderComponente = ({item}) => <CardSponsor action={setSelected} nav={navigation} info={item} />
+  const renderComponente = ({item}) => <CardSponsor https={str.https} action={setSelected} nav={navigation} info={item} />
 
   return (
     <>
     <Background img={'tree'} />
     { !!selected ? (
         <TouchableOpacity onPress={() => setSelected('')} style={styles.full}>
-          <ImageBackground source={{uri: selected}} style={styles.img} />
+          <ImageBackground source={{uri: str.https + selected}} style={styles.img} />
         </TouchableOpacity>
       ) : (
         <>

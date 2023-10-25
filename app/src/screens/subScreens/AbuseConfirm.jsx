@@ -4,11 +4,9 @@ import { StyleSheet, TouchableOpacity, View, Text } from 'react-native';
 //Components
 import Background from '../../component/Background';
 import Footer from '../../component/Footer';
+import { registreVictime, victimsList } from '../../services/victims';
 
 // import EmergencialEmail from '../../hooks/EmergencialEmail';
-
-import { getVictims } from '../../services/getRequest';
-import { postVictims } from '../../services/postRequest';
 
 function AbuseConfirme({navigation}) {
     const {token, login, setLoader, loader} = useContext(Context);
@@ -18,7 +16,7 @@ function AbuseConfirme({navigation}) {
         setLoader(true)
 
         async function FetchData() {
-            const fetchVictims = await getVictims(token);
+            const fetchVictims = await victimsList(token);
             const check = fetchVictims.some(i => i.email === (login.email.toLowerCase()).trim());
             setIsOnList(check)
 
@@ -28,7 +26,7 @@ function AbuseConfirme({navigation}) {
     }, [])
 
     const handleHelp = async () => {
-        await postVictims(token);
+        await registreVictime(token);
         // EmergencialEmail();
 
         navigation.navigate('Cover');
@@ -87,7 +85,7 @@ const styles = StyleSheet.create({
         alignItems: 'center'
     },
     containerText: {
-
+        padding: 10
     },
     text: {
         color: 'black',

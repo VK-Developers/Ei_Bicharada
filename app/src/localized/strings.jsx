@@ -11,6 +11,7 @@ export default {
   sendFormSucess: "Solicitação enviada com sucesso!!",
   ok: "OK",
   server: "http://193.203.183.47:3001/",
+  https: "https://atespets.com.br/",
 
   donateTitle: 'Contribua você também!',
   donateBtn: 'Copiar Chave PIX!',

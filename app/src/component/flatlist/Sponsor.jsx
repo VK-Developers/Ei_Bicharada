@@ -1,14 +1,16 @@
 import React from 'react';
 import { StyleSheet, TouchableOpacity, Text, ImageBackground, View } from 'react-native';
 
-function Sponsor({ info, action }) {
+function Sponsor({ info, action, https }) {
     const { name, picture } = info;
 
-    const handlePress = () => action(picture);
-
+    const handlePress = () => {
+        const flier = picture.replace('card', 'flier')
+        action(flier);
+    }
     return (
         <TouchableOpacity onPress={handlePress} style={styles.container}>
-            <ImageBackground source={{ uri: picture }} style={styles.background} resizeMode="cover">
+            <ImageBackground source={{ uri: https + picture }} style={styles.background} resizeMode="cover">
                 <View style={styles.content}>
                     <Text style={styles.title}>{name}</Text>
                 </View>
