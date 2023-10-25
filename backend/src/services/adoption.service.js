@@ -6,7 +6,7 @@ module.exports = {
     getAll: async (accepted, token) => {
         const { region } = authentication.verifyToken(token);
         
-        if (accepted === undefined) {
+        if (accepted === undefined || region === 'all') {
             const result = await models.adoption.findAll();
             return {status: 200, result};
         }
@@ -14,7 +14,7 @@ module.exports = {
         const result = await models.adoption.findAll({
             where: {
                 region,
-                accepted: JSON.parse(accepted)
+                new: !JSON.parse(accepted)
               }
         });
 

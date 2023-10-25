@@ -1,4 +1,5 @@
-import React, { useState, useEffect, useContext } from 'react';
+import React, { useState, useContext } from 'react';
+import { useFocusEffect } from '@react-navigation/native';
 import Context from '../../context/Context';
 import { StyleSheet, SafeAreaView, FlatList } from 'react-native';
 //Components
@@ -9,7 +10,7 @@ import Animal from '../../component/flatlist/animal';
 import NewAnimal from '../../component/button/NewAnimal';
 import NewAnimalModal from '../../component/modals/NewAnimal'
 
-import { getMissing } from '../../services/getRequest';
+import { acceptedMissing } from '../../services/missingAnimals';
 
 function AnimaisPerdidos({navigation, route: { params }}) {
   const { loader, setLoader } = useContext(Context);
@@ -17,15 +18,18 @@ function AnimaisPerdidos({navigation, route: { params }}) {
   const [animals, setAnimals] = useState([]);
   const [scrollY, setScrollY] = useState(0);
 
-  useEffect(() => {
-    setLoader(true);
-    async function FetchData() {
-      const data = await getMissing(params.token);
-      setAnimals(data);
-      setLoader(false);
-    }
-    FetchData();
-  }, [])
+  useFocusEffect(
+    React.useCallback(() => {
+      setLoader(true)
+      fetchData();
+    }, [])
+  );
+
+  const fetchData = async () => {
+    const data = await acceptedMissing(params.token);
+    setAnimals(data);
+    setLoader(false);
+  }
 
   const renderComponente = ({ item }) => <Animal info={item} nav={navigation} />
 

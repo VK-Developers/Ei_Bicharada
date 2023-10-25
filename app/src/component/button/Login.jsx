@@ -4,8 +4,7 @@ import { useNavigation } from '@react-navigation/native';
 import { Text, TouchableOpacity, StyleSheet } from 'react-native';
 
 import { createCache } from '../../hooks/cache'
-
-import { postLogin } from '../../services/postRequest';
+import { logIn as submitToLogIn } from '../../services/logIn';
 
 export default function Login({title, type}) {
   const { login, setLogin, setToken, setLoader } = useContext(Context);
@@ -17,7 +16,7 @@ export default function Login({title, type}) {
 
     const {status, ...inputValue} = login;
 
-    const logIn = await postLogin(inputValue);
+    const logIn = await submitToLogIn(inputValue);
 
     if (!!logIn.token) {
       await createCache('logIn', inputValue)

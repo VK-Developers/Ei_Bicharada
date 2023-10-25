@@ -1,64 +1,46 @@
 import api from "./api";
 import handleRequestError from "../hooks/handleRequestError";
 
-export const postLogin = async ({email, password}) => {
-  const format = {
-    email: (email.toLowerCase()).trim(),
-    password
-  }
+// export const postNewAnimal = async (obj, where, token) => {
+//   const url = where === 'adoption' ? '/adoptions' : '/missing-animals';
 
-  try {
-    const { data } = await api.post('/login', format);
+//   const date = new Date();
+//   const formattedDate = `${date.getDate()}-${date.getMonth() + 1}-${date.getFullYear()}`;
+//   const name = obj.nome.replace(/\s/g, "").replace(/,/g, "_").replace(/\./g, "");
+//   const nameToSave = `${formattedDate}_${name.toLowerCase()}.jpg`;
 
-    if (!data.token) return { token: false };
+//   const formData = new FormData();
 
-    return { token: data.token }
-  } catch (error) {
-    const errorResponse = handleRequestError(error);
-    return errorResponse;
-  }
-};
+//   formData.append('file', {
+//     uri: obj.picture[0],
+//     type: 'image/jpeg',
+//     name: nameToSave, 
+//   });
 
-export const postNewAnimal = async (obj, where, token) => {
-  const url = where === 'adoption' ? '/adoptions' : '/missing-animals';
+//   const send = {
+//     animal: obj.animal.trim(),
+//     name: obj.nome.trim(),
+//     description: obj.descricao.trim(),
+//     neutered: obj.castrado,
+//     sex: obj.sexo,
+//   }
 
-  const date = new Date();
-  const formattedDate = `${date.getDate()}-${date.getMonth() + 1}-${date.getFullYear()}`;
-  const name = obj.nome.replace(/\s/g, "").replace(/,/g, "_").replace(/\./g, "");
-  const nameToSave = `${formattedDate}_${name.toLowerCase()}.jpg`;
+//   formData.append('data', JSON.stringify(send));
 
-  const formData = new FormData();
+//   try {
+//     const request = await api.post(url, formData, {
+//       headers: {
+//         'Authorization': token,
+//         'Content-Type': 'multipart/form-data',
+//       }
+//     });
 
-  formData.append('file', {
-    uri: obj.picture[0],
-    type: 'image/jpeg',
-    name: nameToSave, 
-  });
-
-  const send = {
-    animal: obj.animal.trim(),
-    name: obj.nome.trim(),
-    description: obj.descricao.trim(),
-    neutered: obj.castrado,
-    sex: obj.sexo,
-  }
-
-  formData.append('data', JSON.stringify(send));
-
-  try {
-    const request = await api.post(url, formData, {
-      headers: {
-        'Authorization': token,
-        'Content-Type': 'multipart/form-data',
-      }
-    });
-
-    return request;
-  } catch (error) {
-    const errorResponse = handleRequestError(error);
-    return errorResponse;
-  }
-};
+//     return request;
+//   } catch (error) {
+//     const errorResponse = handleRequestError(error);
+//     return errorResponse;
+//   }
+// };
 
 
 export const postRescueComplains = async (obj, where, token) => {

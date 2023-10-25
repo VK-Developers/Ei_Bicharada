@@ -8,7 +8,9 @@ import openCamera from '../../hooks/camera';
 
 import str from '../../localized/strings';
 import { newAnimal as structure } from '../../localized/structures';
-import { postNewAnimal } from '../../services/postRequest';
+// import { postNewAnimal } from '../../services/postRequest';
+import { createAdoptions } from '../../services/adoption';
+import { createMissing } from '../../services/missingAnimals';
 
 const NewAnimal = ({ show, action, type }) => {
     const { token, setLoader } = useContext(Context);
@@ -25,7 +27,13 @@ const NewAnimal = ({ show, action, type }) => {
 
     const handleSubmit = async () => {
         setLoader(true);
-        await postNewAnimal(listiner, type, token);
+
+        if (type === "adoption") {
+            await createAdoptions(listiner, token);
+        } else {
+            await createMissing(listiner, token);
+        }
+        
         setLoader(false);
         setSent(true);
     }
