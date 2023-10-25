@@ -32,11 +32,11 @@ function NewUser({navigation}) {
       const addUser = await postUser(listiner);
       
       if (addUser !== 203) {
-        setLogin(prev => ({
-          ...prev,
+        setLogin({
           email: listiner.email,
+          password: '',
           status: true
-        }));
+        });
         navigation.navigate('Login');
         return
       }
@@ -44,11 +44,7 @@ function NewUser({navigation}) {
       setModal(true)
     }
 
-    setType(prev => {
-      if (prev === 'basic') return 'city';
-      if (prev === 'city') return 'password'
-      return prev
-    })
+    setType('password')
   }
 
   return (
@@ -57,14 +53,10 @@ function NewUser({navigation}) {
       <EmailModal show={modal} action={setModal} data={setLister}/>
       
       {
-        type !== "basic" && (
+        type === "password" && (
           <TouchableOpacity 
             style={styles.return}
-            onPress={() => setType(prev => {
-              if (prev === 'password') return 'city';
-              if (prev === 'city') return 'basic'
-              return prev
-            })}
+            onPress={() => setType('basic')}
           >
             <Image source={images.arrow} style={styles.return.icon} />
           </TouchableOpacity>
@@ -72,9 +64,11 @@ function NewUser({navigation}) {
       }
 
       <ScrollView ref={scrollViewRef} extraScrollHeight={20} keyboardShouldPersistTaps="handled">
-        <View style={styles.titleContainer}>
-          <Text style={styles.titleContainer.text}>{str.newUser[type][0]}</Text>
-        </View>
+        {type !== 'city' && (
+          <View style={styles.titleContainer}>
+            <Text style={styles.titleContainer.text}>{str.newUser[type][0]}</Text>
+          </View>
+        )}
 
         {/* basics */}
         <View style={[styles.container, type !== 'basic' && {display: 'none' }]}>
@@ -91,6 +85,14 @@ function NewUser({navigation}) {
               )
             })
           }
+
+        <TouchableOpacity
+          style={[styles.regionContainer.btn, { marginTop: 30, backgroundColor: '#6082B6' }]}
+          onPress={() => setType('city')}
+        >
+          <Image source={images.backgrounds.one} style={styles.regionContainer.btn.icon}/>
+          <Text style={[styles.regionContainer.btn.text]}>{(!listiner.region || listiner.region === '') ? "região de interesse" : listiner.region}</Text>
+        </TouchableOpacity>
         </View>
 
         {/* city */}
@@ -106,7 +108,11 @@ function NewUser({navigation}) {
                       <TouchableOpacity
                         key={local}
                         style={[styles.regionContainer.btn, listiner.region === local && {backgroundColor: '#6082B6'}]}
-                        onPress={() => setLister(prev => ({...prev, region: prev.region === local ? '' : local}))}
+                        onPress={() => {
+
+                          setLister(prev => ({...prev, region: prev.region === local ? '' : local}))
+                          setType('basic')
+                        }}
                       >
                         <Image source={images.backgrounds.one} style={styles.regionContainer.btn.icon}/>
                         <Text style={[styles.regionContainer.btn.text, listiner.region === local && {color: 'white'}]}>{local}</Text>
@@ -140,7 +146,7 @@ function NewUser({navigation}) {
 
       </ScrollView>
       {(isButtonVisible && !modal) && (
-        type !== 'city' ? (
+        type !== 'city' && (
           <TouchableOpacity 
             onPress={handlePress}
             disabled={!sendForms}
@@ -148,15 +154,7 @@ function NewUser({navigation}) {
           >
               <Text style={styles.submitBtn.text}>{str.newUser[type][1]}</Text>
           </TouchableOpacity>
-        ) : (!!listiner.region && (
-          <TouchableOpacity 
-            onPress={handlePress}
-            disabled={!sendForms}
-            style={[styles.submitBtn, !sendForms && { backgroundColor: 'gray' }]} 
-          >
-              <Text style={styles.submitBtn.text}>{str.newUser[type][1]}</Text>
-          </TouchableOpacity>
-        ))
+        )
       )}
     </>
   );

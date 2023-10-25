@@ -21,7 +21,6 @@ export const postLogin = async ({email, password}) => {
 };
 
 export const postUser = async (obj) => {
-  console.log(obj.email.replace(' ', ''), '|')
   const format = {
     name: obj.nome.trim(),
     email: (obj.email.toLowerCase()).trim(),

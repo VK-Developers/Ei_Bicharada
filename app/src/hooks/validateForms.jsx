@@ -31,11 +31,9 @@ const validateForms = (obj, i) => {
         1: andando && horario && picture && animal && cidade && endereco && ocorrido,
         2: nome && telefone && cidade && tipo && tempo,
         3: {
-            basic: nome && email && cidade && telefone && cep,
-            city: region,
+            basic: nome && email && cidade && telefone && cep && region,
             password: senha && (obj.senha === obj.novamente)
         },
-        // NewAnimal
         4: animal && castrado && nome && descricao && sexo && picture
     };
     return validation[i];

@@ -26,7 +26,7 @@ export default {
     lost: 'adicionar um pet',
   },
   newUser: {
-    basic: ['Informacoes Basicas', 'CONTINUAR...'],
+    basic: ['Informações Básicas', 'CONTINUAR...'],
     city: ['Região de Interesse', 'CONFIRMAR'],
     password: ['Criar Senha', 'CRIAR CONTA']
   },
