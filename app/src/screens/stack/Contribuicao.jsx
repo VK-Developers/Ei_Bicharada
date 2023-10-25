@@ -1,6 +1,6 @@
 import React, {useEffect, useState} from 'react';
 import Clipboard from '@react-native-clipboard/clipboard';
-import { StyleSheet, View, Text, Image, Dimensions, TouchableOpacity } from 'react-native';
+import { StyleSheet, View, Text, Image, Dimensions, TouchableOpacity, Alert } from 'react-native';
 
 import str from '../../localized/strings';
 
@@ -28,7 +28,7 @@ function Contribuicao({route: { params }}) {
 
   const handlePress = () => {
     Clipboard.setString(str.pixKey);
-    alert(str.donateAlert);
+    Alert.alert(null, str.donateAlert);
   }
   
   return (

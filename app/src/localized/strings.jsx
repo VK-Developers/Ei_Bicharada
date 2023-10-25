@@ -14,8 +14,8 @@ export default {
 
   donateTitle: 'Contribua você também!',
   donateBtn: 'Copiar Chave PIX!',
-  donateAlert: 'Chave PIX Copiada',
-  pixKey: '7498723572348585',
+  donateAlert: 'Chave PIX Copiada\n\n CNPJ: 52.643.341/0001-89',
+  pixKey: '52.643.341/0001-89',
 
   footer: {
     title: "ATESP",

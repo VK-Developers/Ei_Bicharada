@@ -2,6 +2,8 @@ import React, {useEffect, useState} from 'react';
 import { LOGIN, PASSWORD } from "@env";
 import Context from './Context';
 
+import { checkCache } from '../hooks/cache';
+
 function MyProvider({children}) {
   const [login, setLogin] = useState({email: LOGIN || '', password: PASSWORD || '', status: true});
   const [token, setToken] = useState('');
@@ -15,7 +17,17 @@ function MyProvider({children}) {
     loader, setLoader
   };
 
-  useEffect(() => console.log('App - Hey Pet!'), [])
+  useEffect(() => {
+    async function GetCache() {
+      const cache = await checkCache('logIn')
+
+      if (!cache) return
+      setLogin({...cache, status: true})
+    }
+
+    GetCache()
+    console.log('App - Hey Pet!')
+  }, [])
 
   return <Context.Provider value={obj}>{children}</Context.Provider>;
 }

@@ -3,6 +3,8 @@ import Context from '../../context/Context';
 import { useNavigation } from '@react-navigation/native';
 import { Text, TouchableOpacity, StyleSheet } from 'react-native';
 
+import { createCache } from '../../hooks/cache'
+
 import { postLogin } from '../../services/postRequest';
 
 export default function Login({title, type}) {
@@ -18,13 +20,16 @@ export default function Login({title, type}) {
     const logIn = await postLogin(inputValue);
 
     if (!!logIn.token) {
+      await createCache('logIn', inputValue)
       setToken(logIn.token)
       navigate('Cover')
       return
     };
 
+
     setLoader(false);
     setLogin(prev => ({...prev, status: false}))
+    
     return
   }
 
