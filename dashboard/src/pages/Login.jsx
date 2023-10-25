@@ -28,7 +28,7 @@ const Login = () => {
                 <h2 className='text-4xl dark:text-white font-bold text-center'>Login</h2>
                 <div className='flex flex-col text-gray-300 py-2'>
                     <label>Username</label>
-                    <input className='rounded-lg bg-gray-700 mt-2 p-2 focus:border-blue-500 focus:bg-gray-500 focus:outline-none' type="text" />
+                    <input className='rounded-lg bg-gray-700 mt-2 p-2 focus:border-blue-500 focus:bg-gray-500 focus:outline-none' type="email" />
                 </div>
                 <div className='flex flex-col text-gray-300 py-2'>
                     <label>Password</label>
