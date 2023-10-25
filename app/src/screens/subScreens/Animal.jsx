@@ -7,7 +7,7 @@ import Return from '../../component/button/Return';
 const { width, height } = Dimensions.get('screen');
 
 function Animal({navigation, route: {params}}) {
-    const {name, description, picture} = params;
+    const {name, description, picture, server} = params;
 
     return (
         <>
@@ -15,7 +15,7 @@ function Animal({navigation, route: {params}}) {
             <ScrollView style={styles.container}>
                 <View>
                     <Return nav={navigation} />
-                    <Image source={{uri: "http://" + picture}} style={styles.preview}/>
+                    <Image source={{uri: server + picture}} style={styles.preview}/>
                     <View style={styles.content}>
                         <Text style={styles.title}>{name}</Text>
                         <Text style={styles.text}>{description}</Text>

@@ -5,11 +5,11 @@ import str from '../../localized/strings';
 import images from '../../localized/images';
 
 function Animal({info, nav}) {
-      const handleClick = () => nav.navigate('Animal', {...info});
+      const handleClick = () => nav.navigate('Animal', {...info, server: str.server});
 
       return (!!info && !!nav) ? (
             <TouchableOpacity style={styles.container} onPress={handleClick}>
-                  <Image style={styles.img} source={{uri: "http://" + info.picture}} />
+                  <Image style={styles.img} source={{uri: str.server + info.picture}} />
                   <View style={styles.info}>
                         <View style={[styles.desc, {marginBottom: 5}]}>
                               <Text style={{color: 'black', fontWeight: '600', marginRight: 15}}>{str.name + ':'}</Text>
