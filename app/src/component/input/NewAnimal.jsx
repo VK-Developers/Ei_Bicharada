@@ -7,8 +7,7 @@ export default function LoginInput({title, placeholder, type, data}) {
   
   const TextType = () => {
     const keyName = formatName(title.toLowerCase())
-    const handleChange = (value) => {
-      
+    const handleChange = (value) => {      
       data.action(prev => ({ 
         ...prev,
         [keyName]: value,
@@ -22,6 +21,7 @@ export default function LoginInput({title, placeholder, type, data}) {
         placeholder={placeholder}
         style={styles.input}
         numberOfLines={keyName === 'descricao' ? 7 : 1}
+        multiline={keyName === 'descricao' ? true : false}
         placeholderTextColor='black'
       />
     )

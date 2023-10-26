@@ -46,7 +46,7 @@ function Denuncias({navigation, route: { params }}) {
         reset={setListiner}
         text={str.modal.denuncia}
       />
-      <ScrollView onScroll={(event) => setScrollY(event.nativeEvent.contentOffset.y)} ref={scrollViewRef} extraScrollHeight={20} keyboardShouldPersistTaps="handled">
+      <ScrollView style={{flex: 1}} onScroll={(event) => setScrollY(event.nativeEvent.contentOffset.y)} ref={scrollViewRef} keyboardShouldPersistTaps="handled">
         <View style={[styles.container, {opacity: menu ? 0.25 : 1}]}>
           <View>
             <Header name={params.name} />
@@ -68,12 +68,12 @@ function Denuncias({navigation, route: { params }}) {
                 })
               }
           </View>
-          <Footer 
-            sendIt={sendForms} 
-            obj={{data: listiner, from: 'complains'}}
-            modal={setModal}
-          />
         </View>
+        <Footer 
+          sendIt={sendForms} 
+          obj={{data: listiner, from: 'complains'}}
+          modal={setModal}
+        />
       </ScrollView>
     </>
   );
@@ -81,7 +81,6 @@ function Denuncias({navigation, route: { params }}) {
 
 const styles = StyleSheet.create({
   container: {
-    height: height * 0.89,
     marginTop: 25,
     justifyContent: 'space-between',
   }

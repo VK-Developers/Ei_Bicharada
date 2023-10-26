@@ -43,7 +43,7 @@ function Resgate({navigation, route: { params }}) {
         reset={setListiner}
         text={str.modal.resgate}
       />
-      <ScrollView onScroll={(event) => setScrollY(event.nativeEvent.contentOffset.y)} ref={scrollViewRef} extraScrollHeight={20} keyboardShouldPersistTaps="handled">
+      <ScrollView style={{flex: 1}} onScroll={(event) => setScrollY(event.nativeEvent.contentOffset.y)} ref={scrollViewRef} keyboardShouldPersistTaps="handled">
         <View style={styles.container}>
           <View>
             <Header name={params.name} />
@@ -65,12 +65,12 @@ function Resgate({navigation, route: { params }}) {
                 })
               }
           </View>
-          <Footer 
-            sendIt={sendForms} 
-            obj={{data: listiner, from: 'rescue'}}
-            modal={setModal}
-          />
         </View>
+        <Footer 
+          sendIt={sendForms} 
+          obj={{data: listiner, from: 'rescue'}}
+          modal={setModal}
+        />
       </ScrollView>
     </>
   );
@@ -78,9 +78,8 @@ function Resgate({navigation, route: { params }}) {
 
 const styles = StyleSheet.create({
   container: {
-    height: height * 0.89,
     marginTop: 25,
-    justifyContent: 'space-between'
+    justifyContent: 'space-between',
   }
 })
 

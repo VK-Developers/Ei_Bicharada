@@ -8,6 +8,7 @@ const { width } = Dimensions.get('window');
 function FormInput({info, baseRef, action, btn}) {
   const {title, maxLength, type} = info;
   const [text, setText] = useState(info.title === 'Telefone' ? '+55 ' : '');
+  const [updateLine, setUpdateLine] = useState(false);
   const inputRef = useRef();
 
   useEffect(() => {
@@ -105,9 +106,16 @@ function FormInput({info, baseRef, action, btn}) {
           keyboardType={type}
           returnKeyType="done"
           editable
-          numberOfLines={occurrence ? 3 : 1}
+          
+       
           multiline={occurrence ? true : false}
+          numberOfLines={occurrence ? 4 : 1}
+
+
           maxLength={maxLength}
+          
+
+
           onChangeText={type !== 'default' ? 
             (title === 'Data' ? dateFormat : (
               title === 'Telefone' ? phoneFormat : (

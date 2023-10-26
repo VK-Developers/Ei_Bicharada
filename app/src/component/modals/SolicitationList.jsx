@@ -10,7 +10,7 @@ import images from '../../localized/images';
 const SolicitationList = ({ show, action, params: {name, token} }) => {
     const [list, setList] = useState([]);
     const [selected, setSelected] = useState(null);
-    const {setLoader} = useContext(Context);
+    const {setLoader, loader} = useContext(Context);
 
     useFocusEffect(
         React.useCallback(() => {
@@ -59,7 +59,7 @@ const SolicitationList = ({ show, action, params: {name, token} }) => {
     }
     const renderComponente = ({item}) => <ListCard info={item} action={setSelected} />
     
-    return (
+    return !loader && (
         <Modal
             animationType="fade"
             transparent={true}

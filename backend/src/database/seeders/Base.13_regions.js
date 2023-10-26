@@ -59,7 +59,10 @@ module.exports = {
         city: 'Rio Claro',
       },
       {
-        city: 'Cordeirópolis Limeira',
+        city: 'Cordeirópolis',
+      },
+      {
+        city: 'Limeira',
       },
       {
         city: 'Leme',
@@ -75,6 +78,21 @@ module.exports = {
       },
       {
         city: 'Conchal',
+      },
+      {
+        city: 'Itanhaém',
+      },
+      {
+        city: 'Cubatão',
+      },
+      {
+        city: 'Peruíbe',
+      },
+      {
+        city: 'Guarujá',
+      },
+      {
+        city: 'Santa Cruz da Conceição',
       },
     ], {});
   },

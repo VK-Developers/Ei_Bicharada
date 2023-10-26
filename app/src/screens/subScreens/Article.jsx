@@ -1,5 +1,5 @@
-import React from 'react';
-import { StyleSheet, ScrollView, View, Text } from 'react-native';
+import React, {useEffect, useState} from 'react';
+import { StyleSheet, ScrollView, View, Text, Image } from 'react-native';
 //Components
 import Background from '../../component/Background';
 import Return from '../../component/button/Return';
@@ -10,10 +10,17 @@ function Article({
         params: {
             title,
             content,
-            date
+            date,
+            picture
         }
     }
 }){
+    const [article, setArticle] = useState([])
+
+    useEffect(() => {
+        const contentArr = content.split('<IMG>');
+        setArticle(contentArr);
+    }, [])
 
     return (
         <>
@@ -23,7 +30,17 @@ function Article({
                 <View style={styles.content}>
                     <Text style={styles.title}>{title}</Text>
                     <Text style={styles.date}>{date}</Text>
-                    <Text style={styles.text}>{content}</Text>
+                    {
+                        article.length !== 1 ? (
+                            <>
+                                <Text style={styles.text}>{article[0]}</Text>
+                                <Image source={{uri: picture}} style={styles.image} />
+                                <Text style={styles.text}>{article[1]}</Text>
+                            </>
+                        ) : (
+                            <Text style={styles.text}>{article[0]}</Text>
+                        )
+                    }
                 </View>
             </ScrollView>
         </>
@@ -56,7 +73,12 @@ const styles = StyleSheet.create({
         color: 'black',
         textAlign: 'justify',
         fontSize: 20
-    }
+    },
+    image: {
+        width: "100%",
+        height: 250,
+        objectFit: 'cover'
+    },
 })
 
 export default Article;

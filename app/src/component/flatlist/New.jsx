@@ -1,16 +1,31 @@
 import React from 'react';
 import { StyleSheet, TouchableOpacity, Text, View } from 'react-native';
 
+import str from '../../localized/strings';
+
 function New({nav, info}) {
     const {content, title, date, type} = info;
 
     const handlePress = () => {
-        nav.navigate('Article', {content, title, date})
+        nav.navigate('Article', {content, title, date,  picture: str.https + info.picture})
     }
 
     const kindOfCard = {
-        noticia: () => (
+        new: () => (
             <TouchableOpacity onPress={handlePress} style={[styles.container, { backgroundColor: "#CCCCFF" }]}>
+                <Text numberOfLines={1} ellipsizeMode="tail" style={styles.title}>{title}</Text>
+                    <Text
+                        numberOfLines={3}
+                        ellipsizeMode="tail"
+                        style={styles.content}
+                    >
+                        {content}
+                    </Text>
+                <Text style={styles.data}>{date}</Text>
+            </TouchableOpacity>
+        ),
+        event: () => (
+            <TouchableOpacity onPress={handlePress} style={[styles.container, { backgroundColor: "#5F9EA0" }]}>
                 <Text numberOfLines={1} ellipsizeMode="tail" style={styles.title}>{title}</Text>
                     <Text
                         numberOfLines={3}
