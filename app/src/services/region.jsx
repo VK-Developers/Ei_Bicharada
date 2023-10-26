@@ -10,8 +10,3 @@ export const regionList = async () => {
         console.error(...errorResponse);
     }
 };
-
-export default {
-    regionList
-};
-  

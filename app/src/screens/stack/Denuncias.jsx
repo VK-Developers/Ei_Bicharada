@@ -6,6 +6,7 @@ import Footer from '../../component/Footer';
 import Header from '../../component/Header';
 import ToggleMenu from '../../component/ToggleMenu';
 import PictureIcon from '../../component/button/Picture';
+import ListBtn from '../../component/button/SolicitationList';
 import CheckboxInput from '../../component/input/CheckBox';
 import TextInput from '../../component/input/Form'
 import Background from '../../component/Background';
@@ -14,15 +15,18 @@ import str from '../../localized/strings';
 import validateForms from '../../hooks/validateForms';
 
 import Sent from '../../component/modals/Sent';
+import Solicitations from '../../component/modals/SolicitationList'
 
 const { height } = Dimensions.get('screen')
 
 function Denuncias({navigation, route: { params }}) {
-  const [scrollY, setScrollY] = useState(0);
-  const {menu} = useContext(Context);
+  const [sendForms, setSendForms] = useState(false);
+  const [listModal, setListModal] = useState(false);
   const [listiner, setListiner] = useState({});
   const [modal, setModal] = useState(false);
-  const [sendForms, setSendForms] = useState(false);
+  const [scrollY, setScrollY] = useState(0);
+  const {menu} = useContext(Context);
+
   const scrollViewRef = useRef();
 
   useEffect(() => {
@@ -33,7 +37,8 @@ function Denuncias({navigation, route: { params }}) {
   return (
     <>
       <Background img={'tree'} />
-       <ToggleMenu level={scrollY} />
+      <ToggleMenu level={scrollY} />
+      { !!listModal && <Solicitations show={listModal} action={setListModal} params={params} /> }
       <Sent
         show={modal}
         action={setModal}
@@ -45,7 +50,10 @@ function Denuncias({navigation, route: { params }}) {
         <View style={[styles.container, {opacity: menu ? 0.25 : 1}]}>
           <View>
             <Header name={params.name} />
-            <PictureIcon action={setListiner} state={listiner} />
+            <View style={{flexDirection: 'row', justifyContent: 'space-between', alignItems: 'center'}}>
+              <ListBtn state={{state: listModal, action: setListModal}}/>
+              <PictureIcon action={setListiner} state={listiner} params={params} />
+            </View>
             { 
                 arrayText.map((text, i) => {
                   if (i === 1) return <CheckboxInput key={text.title} info={text} action={setListiner} />

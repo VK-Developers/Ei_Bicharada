@@ -5,7 +5,7 @@ import FormatName from "../hooks/upLoadName"
 const URL = '/missing-animals'
 
 const userParams = {
-    accepted: true
+  accepted: true
 }
 
 const submitObj = (param) => ({
@@ -36,29 +36,29 @@ export const acceptedMissing = async (token) => {
 };
 
 export const createMissing = async (obj, token) => {
-    const upLoadName = FormatName(obj, 'lost')
-    const data = submitObj(obj)
+  const upLoadName = FormatName(obj, 'lost')
+  const data = submitObj(obj)
+
+  const formData = new FormData();
   
-    const formData = new FormData();
-    
-    formData.append('data', JSON.stringify(data));
-    formData.append('file', {
-      uri: obj.picture[0],
-      type: 'image/jpeg',
-      name: upLoadName, 
+  formData.append('data', JSON.stringify(data));
+  formData.append('file', {
+    uri: obj.picture[0],
+    type: 'image/jpeg',
+    name: upLoadName, 
+  });
+
+  try {
+    const request = await api.post(URL, formData, {
+      headers: {
+        'Authorization': token,
+        'Content-Type': 'multipart/form-data',
+      }
     });
-  
-    try {
-      const request = await api.post(URL, formData, {
-        headers: {
-          'Authorization': token,
-          'Content-Type': 'multipart/form-data',
-        }
-      });
-  
-      return request;
-    } catch (error) {
-      const errorResponse = handleRequestError(error);
-      return errorResponse;
-    }
+
+    return request;
+  } catch (error) {
+    const errorResponse = handleRequestError(error);
+    return errorResponse;
+  }
 };

@@ -5,9 +5,9 @@ const {
 
 module.exports = (sequelize, DataTypes) => {
   class users extends Model {
-    static associate(models) {
-      this.hasMany(models.rescue, {foreignKey: 'userId', as: 'rescues'})
-    }
+    // static associate(models) {
+    //   this.hasMany(models.rescue, {foreignKey: 'userId', as: 'rescues'})
+    // }
   }
   users.init({
     name: DataTypes.STRING,

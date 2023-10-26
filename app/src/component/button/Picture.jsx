@@ -25,7 +25,7 @@ function PicureIcon({action, state}) {
 
 const styles = StyleSheet.create({
   conteiner: {
-    alignSelf: 'flex-end'
+    alignSelf: 'flex-end',
   },
   icon: {
     width: 70,

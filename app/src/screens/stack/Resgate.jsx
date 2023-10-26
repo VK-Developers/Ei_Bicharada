@@ -9,14 +9,17 @@ import Background from '../../component/Background';
 import { ResgateDenuncia as arrayText } from '../../localized/structures';
 import str from '../../localized/strings';
 import PictureIcon from '../../component/button/Picture';
+import ListBtn from '../../component/button/SolicitationList';
 import validateForms from '../../hooks/validateForms';
 
-import Sent from '../../component/modals/Sent';
 import ToggleMenu from '../../component/ToggleMenu';
+import Sent from '../../component/modals/Sent';
+import Solicitations from '../../component/modals/SolicitationList'
 
 const { height } = Dimensions.get('screen');
 
 function Resgate({navigation, route: { params }}) {
+  const [listModal, setListModal] = useState(false);
   const [scrollY, setScrollY] = useState(0);
   const [listiner, setListiner] = useState({});
   const [modal, setModal] = useState(false);
@@ -32,6 +35,7 @@ function Resgate({navigation, route: { params }}) {
     <>
       <Background img={'tree'} />
       <ToggleMenu level={scrollY} />
+      { !!listModal && <Solicitations show={listModal} action={setListModal} params={params} /> }
       <Sent
         show={modal}
         action={setModal}
@@ -43,7 +47,10 @@ function Resgate({navigation, route: { params }}) {
         <View style={styles.container}>
           <View>
             <Header name={params.name} />
-            <PictureIcon action={setListiner} state={listiner} />
+            <View style={{flexDirection: 'row', justifyContent: 'space-between', alignItems: 'center'}}>
+              <ListBtn state={{state: listModal, action: setListModal}}/>
+              <PictureIcon action={setListiner} state={listiner} />
+            </View>
               { 
                 arrayText.map((text, i) => {
                   if (i === 1) return <CheckboxInput key={text.title} info={text} action={setListiner} />

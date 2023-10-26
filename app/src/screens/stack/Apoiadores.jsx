@@ -9,7 +9,7 @@ import CardSponsor from '../../component/flatlist/Sponsor'
 
 import str from '../../localized/strings'
 
-import { getSponsors } from '../../services/getRequest';
+import { sponsorsList } from '../../services/sponsor';
 
 const {width, height} = Dimensions.get('screen');
 
@@ -22,7 +22,7 @@ function Apoiadores({navigation, route: { params }}) {
   useEffect(() => {
     setLoader(true)
     async function FetchData() {
-      const fetchSponsors = await getSponsors(params.token);
+      const fetchSponsors = await sponsorsList(params.token);
       setSponsors(fetchSponsors);
       setLoader(false);
     }

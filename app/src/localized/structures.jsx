@@ -20,8 +20,8 @@ export const NewUser = {
     {title: 'CEP', maxLength: 9, type: 'numeric'},
   ],
   password: [
-    {title: 'Senha', maxLength: 9, type: 'default'},
-    {title: 'Novamente', maxLength: 9, type: 'default'},
+    {title: 'Senha', maxLength: 12, type: 'default'},
+    {title: 'Novamente', maxLength: 12, type: 'default'},
   ]
 }
 

@@ -31,21 +31,6 @@ export const getNewAndEvent = async (token) => {
   }
 };
 
-export const getSponsors = async (token) => {
-  try {
-    const { data } = await api.get(
-      '/sponsors',
-      {
-        headers: { 'Authorization': token }
-      }
-    );
-    return data
-  } catch (error) {
-    const errorResponse = handleRequestError(error)
-    console.error(...errorResponse);
-  }
-};
-
 
 export const getContributions = async (token) => {
   try {

@@ -1,6 +1,6 @@
 import api from "./api";
 import handleRequestError from "../hooks/handleRequestError";
-import FormatName from "../hooks/upLoadName"
+import FormatName from "../hooks/upLoadName";
 
 const URL = '/adoptions'
 

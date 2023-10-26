@@ -4,7 +4,10 @@ import { StyleSheet, View, Image, Dimensions, Text, TouchableOpacity } from 'rea
 import images from '../localized/images';
 import str from '../localized/strings';
 
-import { postRescueComplains, postHome } from '../services/postRequest';
+import { postRescueComplains } from '../services/postRequest';
+import { createHome } from '../services/home';
+import { createRescue } from '../services/rescue';
+import { createComplain } from '../services/complain';
 
 const {height} = Dimensions.get('window');
 
@@ -15,13 +18,13 @@ function Footer({sendIt, exeption, obj, modal}) {
     setLoader(true);
 
     if (obj.from === 'home') {
-      await postHome(obj.data, token)
-      setLoader(false);
-      modal(true)
-      return
+      await createHome(obj.data, token)
+    } else if (obj.from === 'rescue') {
+      await createRescue(obj.data, token)
+    } else {
+      await createComplain(obj.data, token)
     }
-    
-    await postRescueComplains(obj.data, obj.from, token)
+  
     setLoader(false)
     modal(true)
   };

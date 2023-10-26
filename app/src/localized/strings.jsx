@@ -10,6 +10,7 @@ export default {
   sendForm: "Enviar Formulário",
   sendFormSucess: "Solicitação enviada com sucesso!!",
   ok: "OK",
+  solicitationBtn: "Ver Solicitações",
   server: "http://193.203.183.47:3001/",
   https: "https://atespets.com.br/",
 

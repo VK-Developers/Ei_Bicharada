@@ -3,24 +3,37 @@ const { rescue: validation } = require('../validations');
 const { authentication } = require('../tools');
 
 module.exports = {
-    getAll: async () => {
+    getAll: async (accepted, token) => {
+        const { region } = authentication.verifyToken(token);
+
+        if (accepted === undefined || region === 'all') {
+            const result = await models.rescue.findAll();
+            return {status: 200, result};
+        }
+
         const result = await models.rescue.findAll({
-            attributes: { exclude: ['userId'] }
+            where: {
+                region,
+                new: JSON.parse(accepted)
+              }
         });
 
         return {status: 200, result};
     },
     getById: async (id) => {
-        const rescue = await models.rescue.findByPk(id, {
-            include: {
-                model: models.user, 
-                as: 'user',
-                attributes: { exclude: ['id', 'accepted', 'created'] }
-            },
-            attributes: { 
-                exclude: ['userId']
-            }
-        });
+        const rescue = await models.rescue.findByPk(
+            id, 
+            // {
+            //     include: {
+            //         model: models.user, 
+            //         as: 'user',
+            //         attributes: { exclude: ['id', 'accepted', 'created'] }
+            //     },
+            //     attributes: { 
+            //         exclude: ['userId']
+            //     }
+            // }
+        );
 
         if (!rescue) return {status: 404, result: []}; 
         return {status: 200, result: rescue};

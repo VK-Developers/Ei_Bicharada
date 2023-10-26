@@ -1,6 +1,8 @@
 import api from "./api";
 import handleRequestError from "../hooks/handleRequestError";
 
+const URL = '/users';
+
 const submitObj = (param) => ({
     name: param.nome.trim(),
     email: (param.email.toLowerCase()).trim(),
@@ -12,18 +14,13 @@ const submitObj = (param) => ({
 });
 
 export const createUser = async (obj) => {
-    const data = submitObj(obj)
-
+    const data = submitObj(obj);
+    
     try {
-        const request = await api.post('/users', data);
+        const request = await api.post(URL, data);
         return request.status
     } catch (error) {
         const errorResponse = handleRequestError(error);
         return errorResponse;
     }
 }
-
-export default {
-    createUser
-};
-  

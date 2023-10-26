@@ -3,8 +3,20 @@ const { complain: validation } = require('../validations');
 const { authentication } = require('../tools');
 
 module.exports = {
-    getAll: async () => {
-        const result = await models.complain.findAll();
+    getAll: async (accepted, token) => {
+        const { region } = authentication.verifyToken(token);
+
+        if (accepted === undefined || region === 'all') {
+            const result = await models.complain.findAll();
+            return {status: 200, result};
+        }
+
+        const result = await models.complain.findAll({
+            where: {
+                region,
+                new: JSON.parse(accepted)
+              }
+        });
 
         return {status: 200, result};
     },

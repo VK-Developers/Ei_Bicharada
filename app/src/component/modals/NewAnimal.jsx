@@ -8,7 +8,6 @@ import openCamera from '../../hooks/camera';
 
 import str from '../../localized/strings';
 import { newAnimal as structure } from '../../localized/structures';
-// import { postNewAnimal } from '../../services/postRequest';
 import { createAdoptions } from '../../services/adoption';
 import { createMissing } from '../../services/missingAnimals';
 
