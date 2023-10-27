@@ -44,6 +44,6 @@ export const newAnimal = [
   {title: 'Animal', placeholder: '', type: 'default'},
   {title: 'Castrado', placeholder: ['Sim', 'Não'], type: 'select'},
   {title: 'Sexo', placeholder: ['Macho', 'Fêmea'], type: 'select'},
-  {title: 'Nome', placeholder: 'nome do pet', type: 'default'},
-  {title: 'Descrição', placeholder: 'nos fale sobre o pet...', type: 'default'},
+  {title: 'Nome', placeholder: '', type: 'default'},
+  {title: 'Descrição', placeholder: '', type: 'default'},
 ]

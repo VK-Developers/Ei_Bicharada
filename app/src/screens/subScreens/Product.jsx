@@ -13,7 +13,7 @@ function Product({navigation, route: { params }}) {
         const background = { backgroundColor: inStock ? 'green' : 'red' };
         const text = inStock ? 'Comprar' : 'Indisponivel';
 
-        const handlePress = () => navigation.navigate('Payment')
+        const handlePress = () => navigation.navigate('Payment', {...params})
 
         return (
             <TouchableOpacity 

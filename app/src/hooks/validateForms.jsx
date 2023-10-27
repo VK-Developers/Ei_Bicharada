@@ -9,10 +9,10 @@ const validateForms = (obj, i) => {
     const animal = !!obj.animal && obj.animal.length >= 3;
     const endereco = !!obj.endereco && obj.endereco.length >= 6;
     const ocorrido = !!obj.ocorrido && obj.ocorrido.length >= 6;
-    const descricao = !!obj.descricao && obj.descricao.length >= 6;
+    const descricao = !!obj.descricao && obj.descricao.length >= 3;
     const cidade = !!obj.cidade && obj.cidade.length >= 4;
     const senha = !!obj.senha && obj.senha.length >= 6;
-    const nome = !!obj.nome && obj.nome.length >= 3;
+    const nome = !!obj.nome && obj.nome.length >= 2;
     
     const telefone = !!obj.telefone && telefoneRegex.test(obj.telefone);
     const cep = !!obj.cep && cepRegex.test(obj.cep);
