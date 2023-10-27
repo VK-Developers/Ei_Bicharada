@@ -2,7 +2,7 @@ export const menu = [
     "Denuncia",
     "Resgate",
     "Adocao",
-    "Eventos e Noticias",
+    "Eventos",
     "Noticias",
     "Lar Temporario",
 ]
