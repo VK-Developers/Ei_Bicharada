@@ -5,8 +5,8 @@ import {Modal, StyleSheet, TouchableOpacity, View, Text, ScrollView} from 'react
 
 import AdoptionRequests from '../../services/adoption'
 import MissingRequests from '../../services/missingAnimals'
-// import RescueRequests from '../../services/rescue'
-// import ComplainRequests from '../../services/complain'
+import RescueRequests from '../../services/rescue'
+import ComplainRequests from '../../services/complain'
 
 const AdmAction = ({ show, action, selected, state }) => {
     const { loader, token } = useContext(Context);
@@ -17,12 +17,13 @@ const AdmAction = ({ show, action, selected, state }) => {
     const resquests = {
         adoption: AdoptionRequests,
         missing: MissingRequests,
-        rescue: 'RescueRequests',
-        complain: 'ComplainRequests',
+        rescue: RescueRequests,
+        complain: ComplainRequests,
     }
 
     const handleRemove = async () => {
-        const request = resquests[route.name.toLowerCase().replace('t', '')];
+        const param = route.name.toLowerCase().replace('t', '');
+        const request = resquests[param];
         const newList = state.list.filter(i => i.id !== selected.id);
         const type = !!selected.name ? (
             !selected.new ? 'approved' : 'pendente'
@@ -31,17 +32,30 @@ const AdmAction = ({ show, action, selected, state }) => {
         );
 
         await request.delete(selected.id, token)
+
+        if (param === 'rescue' || param === 'complain') {
+            state.action(prev => ({pendente: [...prev.pendente, {...selected, new: false}], approved: newList}));
+            action(false)
+            return
+        }
+        
         state.action(prev => ({...prev, [type]: newList}));
         action(false)
     }
 
     const handleAdd = async () => {
-        const request = resquests[route.name.toLowerCase().replace('t', '')];
+        const param = route.name.toLowerCase().replace('t', '');
+        const request = resquests[param];
         const newList = state.list.filter(i => i.id !== selected.id);
+        const type = !!selected.name ? (
+            !selected.new ? 'approved' : 'pendente'
+        ) : (
+            !!selected.new ? 'approved' : 'pendente'
+        );
 
         await request.update(selected.id, token)
  
-        state.action(prev => ({pendente: newList, approved: [...prev.approved, {...selected, new: false}]}));
+        state.action(prev => ({pendente: newList, approved: [...prev.approved, {...selected, new: (param === 'rescue' || param === 'complain') ? true : false}]}));
         action(false)
     }
 
@@ -64,7 +78,7 @@ const AdmAction = ({ show, action, selected, state }) => {
                                     </View>
                                 </ScrollView>
                                 <TouchableOpacity style={[styles.btn, {width: '100%'}]} onPress={handleRemove}>
-                                    <Text style={styles.btn.text}>Remover</Text>
+                                    <Text style={styles.btn.text}>{!!selected.name ? 'Remover' : 'Arquivar'}</Text>
                                 </TouchableOpacity>
                             </>
                         ) : (
@@ -75,12 +89,14 @@ const AdmAction = ({ show, action, selected, state }) => {
                                     </View>
                                 </ScrollView>
                                 <View style={{flexDirection: 'row'}}>
-                                    <TouchableOpacity style={[styles.btn, {backgroundColor: 'green'}]} onPress={handleAdd}>
+                                    <TouchableOpacity style={[styles.btn, { backgroundColor: 'green', width: !!selected.name ? "50%" : "100%" }]} onPress={handleAdd}>
                                         <Text style={styles.btn.text}>{!!selected.name ? 'Aceitar' : 'Reativar'}</Text>
                                     </TouchableOpacity>
-                                    <TouchableOpacity style={styles.btn} onPress={handleRemove}>
-                                        <Text style={styles.btn.text}>{!!selected.name ? 'Recusar' : 'Deletar'}</Text>
-                                    </TouchableOpacity>
+                                    {!!selected.name && (
+                                        <TouchableOpacity style={[styles.btn, {width: "50%"}]} onPress={handleRemove}>
+                                            <Text style={styles.btn.text}>Recusar</Text>
+                                        </TouchableOpacity>
+                                    )}
                                 </View>
                             </>
                         )}
@@ -133,7 +149,7 @@ const styles = StyleSheet.create({
         position: 'relative',
         top: 0,
         backgroundColor: '#D2042D',
-        width: "50%",
+        
         alignSelf: 'center',
         justifyContent: 'center',
         alignItems: 'center',

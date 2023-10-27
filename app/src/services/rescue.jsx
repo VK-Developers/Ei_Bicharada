@@ -85,4 +85,30 @@ export const archiveRescue = async (id, token) => {
     console.error(...errorResponse);
   }
 };
-  
+
+export const returnRescue = async (id, token) => {
+  const obj = {
+    new: true
+  };
+
+  try {
+    const { data } = await api.put(
+      `${URL}/${id}`, obj,
+      {
+        headers: {
+          'Authorization': token,
+          'Content-Type': 'application/json'
+        }
+      }
+    );
+    return data;
+  } catch (error) {
+    const errorResponse = handleRequestError(error);
+    console.error(...errorResponse);
+  }
+};
+
+export default {
+  delete: archiveRescue,
+  update: returnRescue
+}

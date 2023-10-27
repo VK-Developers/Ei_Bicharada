@@ -37,7 +37,7 @@ function TComplain() {
 
   return (
     <>
-      {!!modal && <AdmAction selected={selected} show={modal} action={setModal} />}
+      {!!modal && <AdmAction state={{list: complains[kind], action: setComplains}} selected={selected} show={modal} action={setModal} />}
       <View style={styles.screen}>
         { !loader && (
           (complains.length !== 0 ? (
@@ -45,7 +45,6 @@ function TComplain() {
                 data={complains[kind]}
                 renderItem={renderCard}
                 keyExtractor={({animal}, i) => `${animal}-i`}
-                style={{paddingTop: 20}}
                 ListHeaderComponent={() => (
                   <View style={styles.header}>
                     <TouchableOpacity
@@ -85,7 +84,7 @@ const styles = StyleSheet.create({
     flexDirection: 'row',
     justifyContent: 'space-between',
     alignContent: 'center',
-    marginBottom: 20
+    marginBottom: 20,
   },
   btn: {
     width: "50%",

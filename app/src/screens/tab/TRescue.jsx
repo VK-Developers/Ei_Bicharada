@@ -37,7 +37,7 @@ function TRescue() {
 
   return (
     <>
-      {!!modal && <AdmAction selected={selected} show={modal} action={setModal} />}
+      {!!modal && <AdmAction state={{list: rescues[kind], action: setRescues}} selected={selected} show={modal} action={setModal} />}
       <View style={styles.screen}>
         { !loader && (
           (rescues.length !== 0 ? (
