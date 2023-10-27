@@ -12,7 +12,7 @@ const Navbar = ({action, selected}) => {
       <div
         className={` ${
           open ? "w-72" : "w-20 "
-        } bg-[#4a64b3]  p-5  pt-8 relative duration-300`}
+        } bg-[#024873]  p-5  pt-8 relative duration-300`}
       >
         <img
           src={setaIcon}
@@ -48,7 +48,7 @@ const Navbar = ({action, selected}) => {
               <div 
                 key={'link-' + i}
                 onClick={handleClick}
-                className={`${isSelected && "bg-indigo-500" } flex rounded-md p-2 cursor-pointer hover:bg-indigo-500 hover:font-semibold text-white text-lg items-center gap-3.5 mt-3.5`} >
+                className={`${isSelected && "bg-[#0365bc]" } flex rounded-md p-2 cursor-pointer hover:bg-[#0365bc] hover:font-semibold text-white text-lg items-center gap-3.5 mt-3.5`} >
                 <img src={menuIcons[formatedName]} />
                 { !!open && <p>{link}</p> }
               </div>

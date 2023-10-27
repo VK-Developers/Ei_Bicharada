@@ -9,8 +9,8 @@ const Home = () => {
   return (
     <div className='flex' >
       <Navbar action={setContent} selected={content} />
-      <div className='flex-col flex flex-grow'>
-        <Header  />
+      <div className='flex-col flex flex-grow bg-[#bfbfbf]'>
+    <Header />
         <div className='flex-grow'>
         { Content[content] }
       </div>
