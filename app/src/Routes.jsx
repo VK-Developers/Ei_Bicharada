@@ -45,20 +45,20 @@ const mainTheme = {
   }
 }
 
-const admTheme = {
-  ...DefaultTheme,
-  colors: {
-    ...DefaultTheme.colors,
-    background: '#353935',
-    text: 'black'
-  }
-}
+// const admTheme = {
+//   ...DefaultTheme,
+//   colors: {
+//     ...DefaultTheme.colors,
+//     background: '#36454F',
+//     text: 'black'
+//   }
+// }
 
 const AdmMenu = () => {
   const options = {
     headerShown: false,
     tabBarShowLabel: false,
-    tabBarActiveBackgroundColor: 'purple',
+    tabBarActiveBackgroundColor: '#483d8b',
     tabBarStyle: { 
       backgroundColor: 'rgb(07,25,51)',
       borderTopWidth: 0,

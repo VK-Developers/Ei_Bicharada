@@ -34,3 +34,18 @@ export const victimsList = async (token) => {
       console.error(...errorResponse);
     }
 };
+
+export const removeVictim = async (id, token) => {
+  try {
+    const { data } = await api.delete(
+      `${URL}/${id}`,
+      {
+        headers: { 'Authorization': token }
+      }
+    );
+    return data
+  } catch (error) {
+    const errorResponse = handleRequestError(error)
+    console.error(...errorResponse);
+  }
+};

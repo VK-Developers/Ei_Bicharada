@@ -26,4 +26,6 @@ export default {
   checked: require('../assets/checked.png'),
   enviar: require('../assets/enviar.png'),
   logout: require('../assets/logout.png'),
+  bin: require('../assets/bin.png'),
+  info: require('../assets/information.png'),
 };
