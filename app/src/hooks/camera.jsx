@@ -24,6 +24,9 @@ function camera(state, type) {
     },
     folder: {
       mediaType: 'photo',
+      quality: 0.5,
+      maxWidth: 500,
+      maxHeight: 500,
     }
   }
 

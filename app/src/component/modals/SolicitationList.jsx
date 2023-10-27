@@ -88,7 +88,24 @@ const SolicitationList = ({ show, action, params: {name, token} }) => {
                             <TouchableOpacity style={{padding: 10}} onPress={() => setSelected(null)}>
                                 <Image source={images.arrow} style={{width: 45, height: 45}} />
                             </TouchableOpacity>
-                            <Image source={selected.photo ? { uri: selected.photo } : images.backgrounds.one}  style={styles.preview} />
+                                {
+                                    !!selected.picture ? (
+                                        <Image 
+                                            source={{ uri: selected.picture }}
+                                            style={styles.preview}
+                                        />
+                                    ) : (
+                                        <Image 
+                                            source={images.backgrounds.one}
+                                            style={styles.preview}
+                                        />
+                                    )
+                                }
+                            {/* <Image 
+                                source={selected.photo ? { uri: selected.photo } : images.backgrounds.one}
+                                // source={{uri: `${selected.photo}`}}
+                                style={styles.preview}
+                            /> */}
                             <Text style={styles.title}>{selected.animal} - {selected.hour} {selected.created}</Text>
                             <Text style={styles.text}>{selected.description}</Text>
                             <Text style={[styles.text, {textAlign: 'center', fontSize: 20, fontWeight: '700'}]}>{`${selected.walking ? 'Animal esta andando' : 'Animal não esta andando'}`}</Text>

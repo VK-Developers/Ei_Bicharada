@@ -1,21 +1,18 @@
 import React from 'react';
 import { createStackNavigator } from '@react-navigation/stack';
-import { NavigationContainer, DefaultTheme} from '@react-navigation/native';
-import { StatusBar } from 'react-native';
+import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
+import { NavigationContainer, DefaultTheme } from '@react-navigation/native';
+import { StatusBar, Image } from 'react-native';
 // Stack Components
 import LoginScreen from './screens/Login';
 import NewUserScreen from './screens/stack/NewUser';
 import CoverScreen from './screens/stack/Cover';
-
 import AdocaoScreen from './screens/stack/Adocao';
-
 import ResgateScreen from './screens/stack/Resgate';
 import DenunciasScreen from './screens/stack/Denuncias';
 import AnimaisPerdidosScreen from './screens/stack/AnimaisPerdidos';
-
 import ContribuicaoScreen from './screens/stack/Contribuicao';
 import LarTemporarioScreen from './screens/stack/LarTemporario';
-// import DivulgacaoScreen from './screens/stack/Divulgacao';
 import NoticiasEventosScreenScreen from './screens/stack/NoticiasEventos';
 import NossosProdutosScreen from './screens/stack/NossosProdutos';
 import PrestacaoDeContasScreen from './screens/stack/PrestacaoDeContas';
@@ -26,16 +23,103 @@ import AnimalScreen from './screens/subScreens/Animal';
 import PaymentScreen from './screens/subScreens/Payment';
 import ArticleScreen from './screens/subScreens/Article';
 import AbuseConfirmScreen from './screens/subScreens/AbuseConfirm';
+// Tab
+import TAdoptionScreen from './screens/tab/TAdoption';
+import TMissingScreen from './screens/tab/TMissing';
+import TAlertScreen from './screens/tab/TAlert';
+import TRescueScreen from './screens/tab/TRescue';
+import TComplainScreen from './screens/tab/TComplain';
+
+
+import images from './localized/images';
 
 const Stack = createStackNavigator();
+const Tab = createBottomTabNavigator();
 
-const theme = {
+const mainTheme = {
   ...DefaultTheme,
   colors: {
     ...DefaultTheme.colors,
     background: '#f8f8ff',
+    text: 'white'
+  }
+}
+
+const admTheme = {
+  ...DefaultTheme,
+  colors: {
+    ...DefaultTheme.colors,
+    background: '#353935',
     text: 'black'
   }
+}
+
+const AdmMenu = () => {
+  const options = {
+    headerShown: false,
+    tabBarShowLabel: false,
+    tabBarActiveBackgroundColor: 'purple',
+    tabBarStyle: { 
+      backgroundColor: 'rgb(07,25,51)',
+      borderTopWidth: 0,
+      height: Platform.OS === 'ios' ? 85 : 65,
+    },
+    
+  };
+
+  const icon = (name, _focused) => {
+    const css = {width: 40, height: 40};
+    let imagePath;
+    switch (name) {
+      case 'adoption':
+        imagePath = images.tab.adoption;
+        break;
+      case 'missing':
+        imagePath = images.tab.missing;
+        break;
+      case 'alert':
+        imagePath = images.tab.alert;
+        break;
+      case 'rescue':
+        imagePath = images.tab.rescue;
+        break;
+      case 'complain':
+        imagePath = images.tab.complain;
+        break;
+    }
+    
+    return <Image source={imagePath} style={css} />
+  }
+
+  return (
+    <Tab.Navigator initialRouteName='TAlert' screenOptions={options} >
+      <Tab.Screen 
+        name="TAdoption" 
+        component={TAdoptionScreen}
+        options={{ tabBarIcon: ({focused}) => icon('adoption', focused) }}
+      />
+      <Tab.Screen
+        name="TMissing" 
+        component={TMissingScreen}
+        options={{ tabBarIcon: ({focused}) => icon('missing', focused) }}
+      />
+      <Tab.Screen 
+        name="TAlert"
+        component={TAlertScreen}
+        options={{ tabBarIcon: ({focused}) => icon('alert', focused) }}
+      />
+      <Tab.Screen 
+        name="TRescue"
+        component={TRescueScreen}
+        options={{ tabBarIcon: ({focused}) => icon('rescue', focused) }}
+      />
+      <Tab.Screen 
+        name="TComplain"
+        component={TComplainScreen}
+        options={{ tabBarIcon: ({focused}) => icon('complain', focused) }}
+      />
+    </Tab.Navigator>
+  )
 }
 
 export default function App() {
@@ -44,7 +128,7 @@ export default function App() {
   };
 
   return (
-    <NavigationContainer theme={theme}>
+    <NavigationContainer theme={mainTheme}>
       <StatusBar barStyle="light-content" backgroundColor="black" />
       <Stack.Navigator screenOptions={options} initialRouteName='Login'>
         <Stack.Screen name="Login" component={LoginScreen} />
@@ -67,7 +151,10 @@ export default function App() {
         <Stack.Screen name="Payment" component={PaymentScreen} />
         <Stack.Screen name="Article" component={ArticleScreen} />
         <Stack.Screen name="AbuseConfirm" component={AbuseConfirmScreen} />
+
+        <Stack.Screen name="Adm" component={AdmMenu} />
       </Stack.Navigator>
     </NavigationContainer>
+
   );
 }

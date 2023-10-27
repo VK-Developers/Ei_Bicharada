@@ -7,6 +7,13 @@ export default {
     five: require('../assets/backgrounds/05.png'),
     six: require('../assets/backgrounds/06.png'),
   },
+  tab: {
+    adoption: require('../assets/tabMenu/adoption.png'),
+    missing: require('../assets/tabMenu/missing.png'),
+    alert: require('../assets/tabMenu/alert.png'),
+    rescue: require('../assets/tabMenu/rescue.png'),
+    complain: require('../assets/tabMenu/complain.png'),
+  },
   visible: require('../assets/eye_open.png'),
   notVisible: require('../assets/eye_close.png'),
   piggy: require('../assets/piggy.png'),
