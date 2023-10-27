@@ -37,7 +37,7 @@ function TMissing() {
 
   return (
     <>
-      {!!modal && <AdmAction selected={selected} show={modal} action={setModal} />}
+      {!!modal && <AdmAction state={{list: animals[kind], action: setAnimals}} selected={selected} show={modal} action={setModal} />}
       <View style={styles.screen}>
         { !loader && (
           (animals.length !== 0 ? (
@@ -58,6 +58,7 @@ function TMissing() {
                       style={[styles.btn, kind === 'pendente' && {backgroundColor: '#483d8b'}]}
                     >
                       <Text style={[styles.text, kind === 'pendente' && { color: 'black' }]}>Pendente</Text>
+                      {animals['pendente'].length > 0 && <View style={styles.pendente} />}
                     </TouchableOpacity>
                   </View>
                 )}
@@ -89,13 +90,22 @@ const styles = StyleSheet.create({
   btn: {
     width: "50%",
     height: 50,
+    flexDirection: 'row',
     justifyContent: 'center',
+    alignItems: 'center',
     alignContent: 'center'
   },
   text: {
     fontSize: 18,
     textAlign: 'center',
     color: 'white'
+  },
+  pendente: {
+    marginLeft: 5,
+    width: 10,
+    height: 10,
+    backgroundColor: 'red',
+    borderRadius: 100
   }
 })
 

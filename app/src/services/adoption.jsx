@@ -62,3 +62,45 @@ export const createAdoptions = async (obj, token) => {
     return errorResponse;
   }
 };
+
+export const removeAdoption = async (id, token) => {
+  try {
+    const { data } = await api.delete(
+      `${URL}/${id}`,
+      {
+        headers: { 'Authorization': token }
+      }
+    );
+    return data
+  } catch (error) {
+    const errorResponse = handleRequestError(error)
+    console.error(...errorResponse);
+  }
+};
+
+export const updateAdoption = async (id, token) => {
+  const obj = {
+    new: false
+  };
+
+  try {
+    const { data } = await api.put(
+      `${URL}/${id}`, obj,
+      {
+        headers: {
+          'Authorization': token,
+          'Content-Type': 'application/json'
+        }
+      }
+    );
+    return data;
+  } catch (error) {
+    const errorResponse = handleRequestError(error);
+    console.error(...errorResponse);
+  }
+};
+
+export default {
+  delete: removeAdoption,
+  update: updateAdoption
+}

@@ -1,17 +1,51 @@
 import React, {useContext} from 'react';
+import { useRoute } from '@react-navigation/native';
 import Context from '../../context/Context';
 import {Modal, StyleSheet, TouchableOpacity, View, Text, ScrollView} from 'react-native';
 
-const AdmAction = ({ show, action, selected }) => {
-    const { loader } = useContext(Context);
+import AdoptionRequests from '../../services/adoption'
+import MissingRequests from '../../services/missingAnimals'
+// import RescueRequests from '../../services/rescue'
+// import ComplainRequests from '../../services/complain'
 
-    const handleClose = () => action(false);
-
-    const handleRemove = async () => {console.log('removel')}
-
-    const handleAdd = async () => {console.log('adicionou')}
+const AdmAction = ({ show, action, selected, state }) => {
+    const { loader, token } = useContext(Context);
+    const route = useRoute();
 
     const condition = !!selected.name ? !selected.new : selected.new 
+
+    const resquests = {
+        adoption: AdoptionRequests,
+        missing: MissingRequests,
+        rescue: 'RescueRequests',
+        complain: 'ComplainRequests',
+    }
+
+    const handleRemove = async () => {
+        const request = resquests[route.name.toLowerCase().replace('t', '')];
+        const newList = state.list.filter(i => i.id !== selected.id);
+        const type = !!selected.name ? (
+            !selected.new ? 'approved' : 'pendente'
+        ) : (
+            !!selected.new ? 'approved' : 'pendente'
+        );
+
+        await request.delete(selected.id, token)
+        state.action(prev => ({...prev, [type]: newList}));
+        action(false)
+    }
+
+    const handleAdd = async () => {
+        const request = resquests[route.name.toLowerCase().replace('t', '')];
+        const newList = state.list.filter(i => i.id !== selected.id);
+
+        await request.update(selected.id, token)
+ 
+        state.action(prev => ({pendente: newList, approved: [...prev.approved, {...selected, new: false}]}));
+        action(false)
+    }
+
+    
 
     return !loader && (
         <Modal
@@ -19,7 +53,7 @@ const AdmAction = ({ show, action, selected }) => {
             transparent={true}
             visible={show}
         >
-            <TouchableOpacity onPress={handleClose} style={styles.mask} />
+            <TouchableOpacity onPress={() => action(false)} style={styles.mask} />
                 <View style={styles.container}>
                     <View style={styles.content}>
                         {condition ? (
@@ -30,7 +64,7 @@ const AdmAction = ({ show, action, selected }) => {
                                     </View>
                                 </ScrollView>
                                 <TouchableOpacity style={[styles.btn, {width: '100%'}]} onPress={handleRemove}>
-                                    <Text style={styles.btn.text}>{!!selected.name ? 'Remover' : 'Arquivar'}</Text>
+                                    <Text style={styles.btn.text}>Remover</Text>
                                 </TouchableOpacity>
                             </>
                         ) : (
