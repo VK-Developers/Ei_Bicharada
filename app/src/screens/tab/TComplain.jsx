@@ -1,13 +1,15 @@
 import React, {useState, useContext} from 'react';
 import { useFocusEffect } from '@react-navigation/native';
 import Context from '../../context/Context'
-import { StyleSheet, View, FlatList, Text } from 'react-native';
+import { StyleSheet, View, FlatList, Text, TouchableOpacity } from 'react-native';
 import Card from '../../component/flatlist/Generic';
 import { visibleComplains } from '../../services/complain';
 
 function TComplain() {
   const { token, setLoader, loader } = useContext(Context);
-  const [complains, setComplains] = useState([]);
+  const [complains, setComplains] = useState({approved: [], pendente: []});
+  const [modal, setModal] = useState(false);
+  const [kind, setKind] = useState('approved');
 
   useFocusEffect(
     React.useCallback(() => {
@@ -17,9 +19,14 @@ function TComplain() {
   );
 
   const FetchData = async () => {
-    const data = await visibleComplains(token)
-    setComplains(data)
-    setLoader(false)
+    const data = await visibleComplains(token);
+    const approved = data.filter(i => i.new);
+    const pendente = data.filter(i => !i.new);
+
+    setComplains({approved, pendente})
+
+    setKind('approved');
+    setLoader(false);
   }
 
 
@@ -30,10 +37,26 @@ function TComplain() {
       { !loader && (
         (complains.length !== 0 ? (
             <FlatList 
-              data={complains}
+              data={complains[kind]}
               renderItem={renderCard}
               keyExtractor={({animal}, i) => `${animal}-i`}
               style={{paddingTop: 20}}
+              ListHeaderComponent={() => (
+                <View style={styles.header}>
+                  <TouchableOpacity
+                    onPress={() => setKind('approved')}
+                    style={[styles.btn, kind === 'approved' && { backgroundColor: '#483d8b' }]}
+                  >
+                    <Text style={[styles.text, kind === 'approved' && { color: 'black' }]}>Chamados</Text>
+                  </TouchableOpacity>
+                  <TouchableOpacity
+                    onPress={() => setKind('pendente')}
+                    style={[styles.btn, kind === 'pendente' && {backgroundColor: '#483d8b'}]}
+                  >
+                    <Text style={[styles.text, kind === 'pendente' && { color: 'black' }]}>Concluidos</Text>
+                  </TouchableOpacity>
+                </View>
+              )}
             />
           ) : (
             <View style={{flex: 1, justifyContent: 'center'}}>
@@ -50,6 +73,24 @@ const styles = StyleSheet.create({
   screen: {
     backgroundColor: '#36454F',
     flex: 1
+  },
+  header: {
+    backgroundColor: 'rgb(07,25,51)',
+    flexDirection: 'row',
+    justifyContent: 'space-between',
+    alignContent: 'center',
+    marginBottom: 20
+  },
+  btn: {
+    width: "50%",
+    height: 50,
+    justifyContent: 'center',
+    alignContent: 'center'
+  },
+  text: {
+    fontSize: 18,
+    textAlign: 'center',
+    color: 'white'
   }
 })
 

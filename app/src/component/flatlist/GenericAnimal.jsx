@@ -3,13 +3,11 @@ import { StyleSheet, Image, View, Text, TouchableOpacity } from 'react-native';
 
 import str from '../../localized/strings';
 
-function GenericAnimal({info}) {
-      // const handleClick = () => nav.navigate('Animal', {...info, server: str.server});
-
-      console.log(info.neutered)
+function GenericAnimal({info, action}) {
+      const handleClick = () => action(true);
 
       return (
-            <TouchableOpacity style={[styles.container, info.new && {backgroundColor: '#708090'}]}>
+            <TouchableOpacity style={styles.container} onPress={handleClick}>
                   <Image style={styles.img} source={{uri: str.server + info.picture}} />
                   <View style={styles.info}>
                         <View style={[styles.desc, {marginBottom: 5}]}>
@@ -32,7 +30,7 @@ function GenericAnimal({info}) {
 
 const styles = StyleSheet.create({
       container: {
-            marginBottom: 15,
+            marginBottom: 20,
             flexDirection: 'row',
             backgroundColor: 'rgba(0, 0, 0, 0.2)',
             width: "95%",

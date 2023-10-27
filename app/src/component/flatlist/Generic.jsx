@@ -3,13 +3,11 @@ import { StyleSheet, Image, View, Text, TouchableOpacity } from 'react-native';
 
 import str from '../../localized/strings';
 
-function Generic({info}) {
-      // const handleClick = () => nav.navigate('Animal', {...info, server: str.server});
-
-      console.log(info.neutered)
+function Generic({info, action}) {
+      const handlPress = () => action(true);
 
       return (
-            <TouchableOpacity style={[styles.container, !info.new && {backgroundColor: '#708090'}]}>
+            <TouchableOpacity style={styles.container} onPress={handlPress}>
                   <Image style={styles.img} source={{uri: str.server + info.picture}} />
                   <View style={styles.info}>
                         <View style={[styles.desc, {marginBottom: 5}]}>
