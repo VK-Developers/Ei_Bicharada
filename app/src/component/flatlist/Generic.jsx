@@ -4,7 +4,10 @@ import { StyleSheet, Image, View, Text, TouchableOpacity } from 'react-native';
 import str from '../../localized/strings';
 
 function Generic({info, action}) {
-      const handlPress = () => action(true);
+      const handlPress = () => {
+            action.modal(true);
+            action.choose(info)
+      };
 
       return (
             <TouchableOpacity style={styles.container} onPress={handlPress}>

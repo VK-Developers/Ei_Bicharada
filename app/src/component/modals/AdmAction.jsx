@@ -1,7 +1,17 @@
-import React from 'react';
-import {Modal, StyleSheet, TouchableOpacity, FlatList, View, Text, Image, ScrollView} from 'react-native';
+import React, {useContext} from 'react';
+import Context from '../../context/Context';
+import {Modal, StyleSheet, TouchableOpacity, View, Text, ScrollView} from 'react-native';
 
-const AdmAction = ({ show, action, params: {name, token} }) => {
+const AdmAction = ({ show, action, selected }) => {
+    const { loader } = useContext(Context);
+
+    const handleClose = () => action(false);
+
+    const handleRemove = async () => {console.log('removel')}
+
+    const handleAdd = async () => {console.log('adicionou')}
+
+    const condition = !!selected.name ? !selected.new : selected.new 
 
     return !loader && (
         <Modal
@@ -10,30 +20,38 @@ const AdmAction = ({ show, action, params: {name, token} }) => {
             visible={show}
         >
             <TouchableOpacity onPress={handleClose} style={styles.mask} />
-            {!selected ? (
                 <View style={styles.container}>
                     <View style={styles.content}>
-                    { list.length !== 0 ? (
-                        <FlatList 
-                            data={list}
-                            renderItem={renderComponente}
-                            keyExtractor={({id}) => 'list-' + id}
-                            style={{width: '100%'}} 
-                        />
+                        {condition ? (
+                            <>
+                                <ScrollView style={{width: '100%',flex: 1, padding: 20}}>
+                                    <View style={styles.contentContainer}>
+                                        <Text style={styles.text}>{selected.description}</Text>
+                                    </View>
+                                </ScrollView>
+                                <TouchableOpacity style={[styles.btn, {width: '100%'}]} onPress={handleRemove}>
+                                    <Text style={styles.btn.text}>{!!selected.name ? 'Remover' : 'Arquivar'}</Text>
+                                </TouchableOpacity>
+                            </>
                         ) : (
-                            <Text style={styles.noContent}>{`Sem soliticação de ${name.toLowerCase()}`}</Text>
+                            <>
+                                <ScrollView style={{width: '100%',flex: 1, padding: 20}}>
+                                    <View style={styles.contentContainer}>
+                                        <Text style={styles.text}>{selected.description}</Text>
+                                    </View>
+                                </ScrollView>
+                                <View style={{flexDirection: 'row'}}>
+                                    <TouchableOpacity style={[styles.btn, {backgroundColor: 'green'}]} onPress={handleAdd}>
+                                        <Text style={styles.btn.text}>{!!selected.name ? 'Aceitar' : 'Reativar'}</Text>
+                                    </TouchableOpacity>
+                                    <TouchableOpacity style={styles.btn} onPress={handleRemove}>
+                                        <Text style={styles.btn.text}>{!!selected.name ? 'Recusar' : 'Deletar'}</Text>
+                                    </TouchableOpacity>
+                                </View>
+                            </>
                         )}
                     </View>
                 </View>
-            ) : (
-                <View style={styles.container}>
-                    <View style={styles.content}>
-                        <ScrollView style={{ width: "100%", height: "100%"}}>
-                            
-                        </ScrollView>
-                    </View>
-                </View>
-            )}
         </Modal>
     );
 };
@@ -47,9 +65,9 @@ const styles = StyleSheet.create({
     content: {
         overflow: 'hidden',
         width: '85%',
-        height: '80%',
+        height: '40%',
         margin: 20,
-        backgroundColor: 'white',
+        backgroundColor: 'gray',
         borderRadius: 20,
         alignItems: 'center',
         shadowColor: '#000',
@@ -67,45 +85,29 @@ const styles = StyleSheet.create({
         height: "100%",
         backgroundColor: 'rgba(0, 0, 0, 0.25)',
     },
-    noContent: {
-        color: 'black',
-        fontSize: 20,
-        fontWeight: '600',
-        textAlign: 'center',
-        position: 'absolute',
-        bottom: '60%'
-    },
-    preview: {
-        width: '100%',
-        height: 200,
-        objectFit: 'cover'
-    },
-    title: {
-        color: 'black',
-        fontSize: 24,
-        fontWeight: '700',
-        marginTop: 30,
-        textAlign: 'center'
+
+    contentContainer: {
+        padding: 15,
+        borderRadius: 10,
+        marginBottom: 20,
     },
     text: {
-        color: 'black',
-        fontSize: 18,
-        fontWeight: '500',
-        textAlign: 'justify',
-        padding: 15
+        fontSize: 16,
+        fontWeight: '600'
     },
     btn: {
-        width: "90%",
+        position: 'relative',
+        top: 0,
+        backgroundColor: '#D2042D',
+        width: "50%",
         alignSelf: 'center',
-        borderRadius: 10,
         justifyContent: 'center',
         alignItems: 'center',
         padding: 10,
-        marginBottom: 12,
         text: {
-            color: 'black',
             fontSize: 22,
             fontWeight: '800',
+            textAlign: 'center'
         }
     }
 });

@@ -4,7 +4,10 @@ import { StyleSheet, Image, View, Text, TouchableOpacity } from 'react-native';
 import str from '../../localized/strings';
 
 function GenericAnimal({info, action}) {
-      const handleClick = () => action(true);
+      const handleClick = () => {
+            action.modal(true);
+            action.choose(info)
+      }
 
       return (
             <TouchableOpacity style={styles.container} onPress={handleClick}>
@@ -17,6 +20,10 @@ function GenericAnimal({info, action}) {
                         <View style={[styles.desc, {marginBottom: 5}]}>
                               <Text style={{color: 'black', fontWeight: '600', marginRight: 15}}>Castrado(a):</Text>
                               <Text style={{color: 'black', fontWeight: '800', fontSize: 16}}>{info.neutered ? 'Sim' : 'Não'}</Text>
+                        </View>
+                        <View style={[styles.desc, {marginBottom: 5}]}>
+                              <Text style={{color: 'black', fontWeight: '600', marginRight: 15}}>Animal:</Text>
+                              <Text style={{color: 'black', fontWeight: '800', fontSize: 16}}>{info.animal}</Text>
                         </View>
                         <View style={[styles.desc, {marginBottom: 5}]}>
                               <Text style={{color: 'black', fontWeight: '600', marginRight: 15}}>Sexo:</Text>
@@ -39,7 +46,6 @@ const styles = StyleSheet.create({
       },
       img: {
             width: 130,
-            height: 110,
             borderRadius: 10,
       },
       info: {

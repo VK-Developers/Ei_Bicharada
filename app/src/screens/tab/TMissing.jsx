@@ -3,6 +3,8 @@ import { useFocusEffect } from '@react-navigation/native';
 import Context from '../../context/Context'
 import { StyleSheet, View, FlatList, Text, TouchableOpacity } from 'react-native';
 import Animal from '../../component/flatlist/GenericAnimal';
+import AdmAction from '../../component/modals/AdmAction';
+
 import { acceptedMissing } from '../../services/missingAnimals';
 
 function TMissing() {
@@ -10,6 +12,7 @@ function TMissing() {
   const [animals, setAnimals] = useState({approved: [], pendente: []});
   const [modal, setModal] = useState(false);
   const [kind, setKind] = useState('approved');
+  const [selected, setSelected] = useState({});
 
   useFocusEffect(
     React.useCallback(() => {
@@ -23,8 +26,6 @@ function TMissing() {
     const approved = data.filter(i => !i.new);
     const pendente = data.filter(i => i.new);
 
-    console.log(approved)
-
     setAnimals({approved, pendente})
 
     setKind('approved')
@@ -32,41 +33,44 @@ function TMissing() {
   }
 
 
-  const renderCard = ({item}) => <Animal action={setModal} info={item} /> 
+  const renderCard = ({item}) => <Animal action={{modal: setModal, choose: setSelected}} info={item} /> 
 
   return (
-    <View style={styles.screen}>
-      { !loader && (
-        (animals.length !== 0 ? (
-            <FlatList 
-              data={animals[kind]}
-              renderItem={renderCard}
-              keyExtractor={({name}) => name}
-              ListHeaderComponent={() => (
-                <View style={styles.header}>
-                  <TouchableOpacity
-                    onPress={() => setKind('approved')}
-                    style={[styles.btn, kind === 'approved' && { backgroundColor: '#483d8b' }]}
-                  >
-                    <Text style={[styles.text, kind === 'approved' && { color: 'black' }]}>Aceitos</Text>
-                  </TouchableOpacity>
-                  <TouchableOpacity
-                    onPress={() => setKind('pendente')}
-                    style={[styles.btn, kind === 'pendente' && {backgroundColor: '#483d8b'}]}
-                  >
-                    <Text style={[styles.text, kind === 'pendente' && { color: 'black' }]}>Pendente</Text>
-                  </TouchableOpacity>
-                </View>
-              )}
-            />
-          ) : (
-            <View style={{flex: 1, justifyContent: 'center'}}>
-              <Text style={{fontSize: 18, fontWeight: '600', textAlign: 'center'}}>NENHUM ANIMAL PERDIDO</Text>
-            </View>
+    <>
+      {!!modal && <AdmAction selected={selected} show={modal} action={setModal} />}
+      <View style={styles.screen}>
+        { !loader && (
+          (animals.length !== 0 ? (
+              <FlatList 
+                data={animals[kind]}
+                renderItem={renderCard}
+                keyExtractor={({name}) => name}
+                ListHeaderComponent={() => (
+                  <View style={styles.header}>
+                    <TouchableOpacity
+                      onPress={() => setKind('approved')}
+                      style={[styles.btn, kind === 'approved' && { backgroundColor: '#483d8b' }]}
+                    >
+                      <Text style={[styles.text, kind === 'approved' && { color: 'black' }]}>Aceitos</Text>
+                    </TouchableOpacity>
+                    <TouchableOpacity
+                      onPress={() => setKind('pendente')}
+                      style={[styles.btn, kind === 'pendente' && {backgroundColor: '#483d8b'}]}
+                    >
+                      <Text style={[styles.text, kind === 'pendente' && { color: 'black' }]}>Pendente</Text>
+                    </TouchableOpacity>
+                  </View>
+                )}
+              />
+            ) : (
+              <View style={{flex: 1, justifyContent: 'center'}}>
+                <Text style={{fontSize: 18, fontWeight: '600', textAlign: 'center'}}>NENHUM ANIMAL PERDIDO</Text>
+              </View>
+            )
           )
-        )
-      )}
-    </View>
+        )}
+      </View>
+    </>
   );
 }
 

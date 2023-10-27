@@ -3,6 +3,8 @@ import { useFocusEffect } from '@react-navigation/native';
 import Context from '../../context/Context'
 import { StyleSheet, View, FlatList, Text, TouchableOpacity } from 'react-native';
 import Card from '../../component/flatlist/Generic';
+import AdmAction from '../../component/modals/AdmAction';
+
 import { visibleComplains } from '../../services/complain';
 
 function TComplain() {
@@ -10,6 +12,7 @@ function TComplain() {
   const [complains, setComplains] = useState({approved: [], pendente: []});
   const [modal, setModal] = useState(false);
   const [kind, setKind] = useState('approved');
+  const [selected, setSelected] = useState({});
 
   useFocusEffect(
     React.useCallback(() => {
@@ -30,42 +33,45 @@ function TComplain() {
   }
 
 
-  const renderCard = ({item}) => <Card info={item} /> 
+  const renderCard = ({item}) => <Card action={{modal: setModal, choose: setSelected}} info={item} /> 
 
   return (
-    <View style={styles.screen}>
-      { !loader && (
-        (complains.length !== 0 ? (
-            <FlatList 
-              data={complains[kind]}
-              renderItem={renderCard}
-              keyExtractor={({animal}, i) => `${animal}-i`}
-              style={{paddingTop: 20}}
-              ListHeaderComponent={() => (
-                <View style={styles.header}>
-                  <TouchableOpacity
-                    onPress={() => setKind('approved')}
-                    style={[styles.btn, kind === 'approved' && { backgroundColor: '#483d8b' }]}
-                  >
-                    <Text style={[styles.text, kind === 'approved' && { color: 'black' }]}>Chamados</Text>
-                  </TouchableOpacity>
-                  <TouchableOpacity
-                    onPress={() => setKind('pendente')}
-                    style={[styles.btn, kind === 'pendente' && {backgroundColor: '#483d8b'}]}
-                  >
-                    <Text style={[styles.text, kind === 'pendente' && { color: 'black' }]}>Concluidos</Text>
-                  </TouchableOpacity>
-                </View>
-              )}
-            />
-          ) : (
-            <View style={{flex: 1, justifyContent: 'center'}}>
-              <Text style={{fontSize: 18, fontWeight: '600', textAlign: 'center'}}>NENHUM DENUNCIA</Text>
-            </View>
+    <>
+      {!!modal && <AdmAction selected={selected} show={modal} action={setModal} />}
+      <View style={styles.screen}>
+        { !loader && (
+          (complains.length !== 0 ? (
+              <FlatList 
+                data={complains[kind]}
+                renderItem={renderCard}
+                keyExtractor={({animal}, i) => `${animal}-i`}
+                style={{paddingTop: 20}}
+                ListHeaderComponent={() => (
+                  <View style={styles.header}>
+                    <TouchableOpacity
+                      onPress={() => setKind('approved')}
+                      style={[styles.btn, kind === 'approved' && { backgroundColor: '#483d8b' }]}
+                    >
+                      <Text style={[styles.text, kind === 'approved' && { color: 'black' }]}>Chamados</Text>
+                    </TouchableOpacity>
+                    <TouchableOpacity
+                      onPress={() => setKind('pendente')}
+                      style={[styles.btn, kind === 'pendente' && {backgroundColor: '#483d8b'}]}
+                    >
+                      <Text style={[styles.text, kind === 'pendente' && { color: 'black' }]}>Concluidos</Text>
+                    </TouchableOpacity>
+                  </View>
+                )}
+              />
+            ) : (
+              <View style={{flex: 1, justifyContent: 'center'}}>
+                <Text style={{fontSize: 18, fontWeight: '600', textAlign: 'center'}}>NENHUM DENUNCIA</Text>
+              </View>
+            )
           )
-        )
-      )}
-    </View>
+        )}
+      </View>
+    </>
   );
 }
 
