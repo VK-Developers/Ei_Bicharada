@@ -4,7 +4,7 @@ const Header = () => {
     <div className="rounded-t bg-[#162b3a] mb-0 px-6 py-6">
               <div className="text-center flex">
                 <h6 className="text-white text-xl font-bold">
-                  
+                  Content
                 </h6>
                 <div className="ml-auto">
                 <button
