@@ -22,10 +22,10 @@ function Animal({navigation, route: {params}}) {
                     </View>
                 </View>
                 <View style={styles.content}>
-                    <Text style={styles.title}>Contato Para Adoação</Text>
-                    <Text style={styles.title}>+55 (13) 988542973</Text>
-                    <Text style={styles.title}>+55 (19) 982849344</Text>
-                    <Text style={styles.title}>comercialmarcelo@atespets.com.br</Text>
+                    <Text style={[styles.title, {fontSize: 21, fontStyle: 'italic'}]}>Contato Para Adoação</Text>
+                    <Text style={[styles.title, {fontSize: 20}]}>+55 (13) 98854 - 2973</Text>
+                    <Text style={[styles.title, {fontSize: 20}]}>+55 (19) 98284 - 9344</Text>
+                    <Text style={[styles.title, {fontSize: 18}]}>comercialmarcelo@atespets.com.br</Text>
                 </View>
             </ScrollView>
         </>

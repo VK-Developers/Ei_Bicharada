@@ -48,7 +48,6 @@ module.exports = {
         return {status: 200, result: 'rescue updated'};
     },
     create: async(obj, token) => {
-        console.log(obj)
         const {email, region} = authentication.verifyToken(token);
         const validatedObj = await validation.new(obj)
         
@@ -59,7 +58,7 @@ module.exports = {
         });
         return {status: 201, result: newRescue};
     },
-    destroy: async(id) => {
+    destroy: async (id) => {
         const rescueDeleted = await models.rescue.destroy({ where: { id } });
 
         if (rescueDeleted !== 1) return {status: 204, result: null};

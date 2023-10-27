@@ -11,7 +11,7 @@ import Header from '../../component/Header';
 import ToggleMenu from '../../component/ToggleMenu';
 import Background from '../../component/Background';
 
-import { getContributions } from '../../services/getRequest';
+import { contributionRegionCalc } from '../../services/contribution';
 
 import images from '../../localized/images';
 
@@ -20,7 +20,7 @@ function Contribuicao({route: { params }}) {
 
   useEffect(() => {
     async function FetchData() {
-      const getAmount = await getContributions(params.token);
+      const getAmount = await contributionRegionCalc(params.token);
       setAmount((getAmount === null || !getAmount) ? 0 : getAmount)
   }
   FetchData();

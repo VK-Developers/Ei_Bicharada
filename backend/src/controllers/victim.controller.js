@@ -11,4 +11,9 @@ module.exports = {
         const {status, result} = await service.create(token);
         return res.status(status).json(result);
     },
+    destroy: async(req, res, _next) => {
+        const { id } = req.params;
+        const {status, result} = await service.destroy(id);
+        return res.status(status).json(result);
+    },
 };

@@ -36,4 +36,20 @@ module.exports = {
 
         return {status: 201, msg: 'animal registrado sucesso'};
     },
+    update: async(obj, id) => {
+        const [updateAdopt] = await models.adoption.update(obj, {
+            where: { id }
+        });
+
+        if (updateAdopt !== 1) return {status: 204, result: null};
+
+        return {status: 200, result: 'adoption updated'};
+    },
+    destroy: async (id) => {
+        const adoptionDeleted = await models.adoption.destroy({ where: { id } });
+
+        if (adoptionDeleted !== 1) return {status: 204, result: null};
+
+        return {status: 200, result: 'adoption deleted'};
+    }
 }

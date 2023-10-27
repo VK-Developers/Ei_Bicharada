@@ -34,4 +34,20 @@ module.exports = {
 
         return {status: 201, msg: 'animal registrado sucesso'};
     },
+    update: async(obj, id) => {
+        const [updateMissing] = await models.missingAnimal.update(obj, {
+            where: { id }
+        });
+
+        if (updateMissing !== 1) return {status: 204, result: null};
+
+        return {status: 200, result: 'missing animal updated'};
+    },
+    destroy: async (id) => {
+        const missingDeleted = await models.missingAnimal.destroy({ where: { id } });
+
+        if (missingDeleted !== 1) return {status: 204, result: null};
+
+        return {status: 200, result: 'missing animal deleted'};
+    }
 }

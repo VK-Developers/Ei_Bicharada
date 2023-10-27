@@ -6,7 +6,8 @@ import Header from '../../component/Header';
 import ToggleMenu from '../../component/ToggleMenu';
 import Background from '../../component/Background';
 import Product from '../../component/flatlist/Product';
-import { getProducts } from '../../services/getRequest';
+
+import { allProducts } from '../../services/product';
 
 function NossosProdutos({navigation, route: { params }}) {
   const { loader, setLoader } = useContext(Context);
@@ -16,8 +17,8 @@ function NossosProdutos({navigation, route: { params }}) {
   useEffect(() => {
     setLoader(true);
     async function FetchData() {
-      const allProducts = await getProducts(params.token);
-      setProducts(allProducts);
+      const data = await allProducts(params.token);
+      setProducts(data);
       setLoader(false);
     }
     FetchData()

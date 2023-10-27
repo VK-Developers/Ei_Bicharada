@@ -7,7 +7,7 @@ import ToggleMenu from '../../component/ToggleMenu';
 import Background from '../../component/Background';
 import New from '../../component/flatlist/New';
 
-import { getNewAndEvent } from '../../services/getRequest';
+import { listAllEvents } from '../../services/newAndEvent';
 
 const {height, width} = Dimensions.get('window');
 
@@ -19,7 +19,7 @@ function NoticiasEventos({navigation, route: { params }}) {
   useEffect(() => {
     setLoader(true)
     async function FetchData() {
-      const fetchNews = await getNewAndEvent(params.token);
+      const fetchNews = await listAllEvents(params.token);
       setNews(fetchNews);
       setLoader(false);
     }

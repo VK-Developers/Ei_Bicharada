@@ -97,7 +97,7 @@ const NewAnimal = ({ show, action, type }) => {
                         }}>
                             <Text style={styles.text}>{str.sendFormSucess}</Text>
                             <Pressable style={[styles.button, {width: "50%"}]} onPress={handleClose}>
-                                && <Text style={styles.btnText}>{str.ok}</Text>
+                                <Text style={styles.btnText}>{str.ok}</Text>
                             </Pressable>
                         </View>
                     )}
