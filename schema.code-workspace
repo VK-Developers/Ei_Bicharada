@@ -15,6 +15,10 @@
 		{
 			"name": "Mobile",
 			"path": "app/src"
+		},
+		{
+			"name": "Dashboard",
+			"path": "dashboard"
 		}
 	]
 }
