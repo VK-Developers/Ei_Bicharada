@@ -1,99 +1,171 @@
+import { useState } from "react";
+
 const LarTemporario = () => {
+  const [imageUrl, setImageUrl] = useState("");
+  const [isTrueMoveChecked, setIsTrueMoveChecked] = useState(false);
+  const handleImageUpload = (e) => {
+    const file = e.target.files[0];
+    const reader = new FileReader();
+
+    reader.onload = (event) => {
+      setImageUrl(event.target.result);
+    };
+
+    if (file) {
+      reader.readAsDataURL(file);
+    }
+  };
 
   return (
     <>
-      <div className="flex-auto w-full">
-      <div className=" absolute text-center mx-[23%] m-7 p-8 w-5/12 max-h-full rounded-md shadow-black shadow-2xl bg-indigo-200">
-          <h2 className=" font-bold text-4xl">Lar Temporário</h2>
-          <br />
-          <form className="font-semibold m-2" action="">
-            <label className="text-2xl m-4" htmlFor="">
-              Nome do Cuidador{" "}
-            </label>
-            <br />
-            <input
-              className="w-6/12 rounded-md mt-2 h-8 border-black border-[0.20px]"
-              type="text"
-              name="cuidador"
-            />
-            <br /> <br />
-            <label className="text-2xl" htmlFor="">
-              Endereço
-            </label>
-            <br />
-            <input
-              className="w-6/12 rounded-md shadow-lg mt-2 border-black border-[0.20px]"
-              type="text"
-              name="endereco"
-              id=""
-            />
-            <br /> <br />
-            <label className="text-2xl" htmlFor="">Cep</label>
-            <br />  
-            <input className="rounded-md shadow-lg mt-2 border-black border-[0.20px]"  type="text" name="cep" id="" />
-            <br /> <br />
-            <label className="text-2xl" for="cidades">Cidade </label>
-            <br />
-            <select
-              className=" rounded-md shadow-lg mt-2 border-black border-[0.20px]"
-              id="cidades"
-              name="cidades"
-            >
-              <option value="santos">Santos</option>
-              <option value="sao-vicente">São Vicente</option>
-              <option value="praia-grande">Praia Grande</option>
-              <option value="guaruja">Guarujá</option>
-              <option value="bertioga">Bertioga</option>
-              <option value="itanhaem">Itanhaém</option>
-              <option value="mongagua">Mongaguá</option>
-              <option value="peruibe">Peruibe</option>
-            </select>
-            <br /> <br />
-            <label className="text-2xl" htmlFor="">Animal</label>
-            <br />  
-            <input className="rounded-md shadow-lg mt-2 border-black border-[0.20px]"  type="text" name="animais" id="" />
-            <br /> <br />
-            <label className='text-2xl' htmlFor="">Porte do Animal</label>
-            <br />
-              <label  >Pequeno Porte</label>
-              <br />
-               <input type="checkbox" className="w-4 h-4 text-blue-600 bg-gray-100 border-gray-300 rounded focus:ring-blue-500 dark:focus:ring-blue-600 dark:ring-offset-gray-800 focus:ring-2 dark:bg-gray-700 dark:border-gray-600" name="" id="sm-port" />
-               <br />
-               <label  >Médio Porte</label>
-              <br />
-               <input type="checkbox" className="w-4 h-4 text-blue-600 bg-gray-100 border-gray-300 rounded focus:ring-blue-500 dark:focus:ring-blue-600 dark:ring-offset-gray-800 focus:ring-2 dark:bg-gray-700 dark:border-gray-600" name="" id="-port" />
-               <br />
-               <label  >Grande Porte</label>
-              <br />
-               <input type="checkbox" className="w-4 h-4 text-blue-600 bg-gray-100 border-gray-300 rounded focus:ring-blue-500 dark:focus:ring-blue-600 dark:ring-offset-gray-800 focus:ring-2 dark:bg-gray-700 dark:border-gray-600" name="" id="lg-port" />
-               <br />
-            <label className="text-2xl" for="prazo">Tempo desejado </label>
-            <br />
-            <select
-              className="text-center rounded-md shadow-lg mt-2 border-black border-[0.20px]"
-              id="prazo"
-              name="prazo"
-            >
-              <option value="7d">7 Dias</option>
-              <option value="15d">15 Dias</option>
-              <option value="fulld">Prazo Indeterminado</option>
-            </select>
-            <br /> <br />
+    <div className="  bg-[#f0f8ff] lg:w-8/12  rounded-md mx-auto mt-6 ">
+      <div className="relative flex min-w-0 break-words w-full mb-6 shadow-lg rounded-lg bg-gray-100 border-0">
+        <div className="flex-auto px-4 lg:px-10  pt-0">
+          <form>
+            <h6 className=" text-md mt-3 mb-6 font-bold uppercase">
+            Lar Temporário
+            </h6>
+            <div className="flex flex-wrap">
+              <div className="w-full lg:w-6/12 px-4 mb-4 lg:mb-0">
+                <div className="relative w-full mb-3">
+                  <label
+                    className="block uppercase text-xs font-bold pl-2 mb-2"
+                    htmlFor="grid-password"
+                  >
+                   Nome
+                  </label>
+                  <input
+                    type="text"
+                    className="border-0 px-3 py-3  placeholder-gray-300 bg-white rounded text-sm shadow focus:outline-none focus:ring w-full ease-linear transition-all duration-150"
+                  />
+                </div>
+              </div>
+              <div className="w-full lg:w-2/12 px-4">
+                <div className="relative w-full mb-3">
+                  <label
+                    className="block uppercase text-xs font-bold pl-2 mb-2"
+                    htmlFor="grid-password"
+                  >
+                    Telefone
+                  </label>
+                  <input
+                    type="tel"
+                    className="border-0 px-3 py-3 placeholder-gray-300 bg-white rounded text-sm shadow focus:outline-none focus:ring w-full ease-linear transition-all duration-150"
+                    placeholder="(00) 99999-9999"
+                  />
+                </div>
+              </div>
+              <div className="w-full lg:w-4/12 px-4 mb-4 lg:mb-0">
+                <div className="relative w-full mb-3">
+                <label
+                    className="block uppercase text-xs font-bold pl-2 mb-2"
+                    htmlFor="grid-password"
+                  >
+                    Cidade
+                  </label>
+                  <select
+                    className="border-0 px-3 py-3  placeholder-gray-300 bg-white rounded text-sm shadow focus:outline-none focus:ring w-fulol2 ease-linear transition-all duration-150"
+                    id="cidades"
+                    name="cidades"
+                  >
+                    <option value="santos">Santos</option>
+                    <option value="sao-vicente">São Vicente</option>
+                    <option value="praia-grande">Praia Grande</option>
+                    <option value="guaruja">Guarujá</option>
+                    <option value="bertioga">Bertioga</option>
+                    <option value="itanhaem">Itanhaém</option>
+                    <option value="mongagua">Mongaguá</option>
+                    <option value="peruibe">Peruibe</option>
+                  </select>
+                </div>
+              </div>
+            </div>
 
-            <input
-              className=" rounded-md shadow-lg w-3/12 hover:bg-green-600 border-black border-[0.20px] hover:font-semibold hover:text-white"
-              type="submit"
-              value="Enviar"
-            />{" "}
-            <input
-              className=" rounded-md shadow-lg mx-4 w-3/12 hover:bg-red-700 border-black border-[0.20px] hover:font-semibold hover:text-white"
-              type="reset"
-              value="Limpar"
-            />
+            <div className="flex flex-wrap">
+              <div className="w-full lg:w-8/12 px-4 mb-4 lg:mb-0">
+                <div className="relative w-full mb-3">
+                  <label
+                    className="block uppercase text-xs font-bold pl-2 mb-2"
+                    htmlFor="grid-password"
+                  >
+                    Endereço
+                  </label>
+                  <input
+                    type="text"
+                    className="border-0 px-3 py-3  placeholder-gray-300 bg-white rounded text-sm shadow focus:outline-none focus:ring w-full ease-linear transition-all duration-150"
+                  />
+                </div>
+              </div>
+              <div className="w-full lg:w-2/12 px-4">
+                <div className="relative w-full mb-3">
+                <label
+                    className="block uppercase text-xs font-bold pl-2 mb-2"
+                    htmlFor="grid-password"
+                  >
+                    CEP
+                  </label>
+                 <input type="text" name="cep" id="cep" className="border-0 px-3 py-3  placeholder-gray-300 bg-white rounded text-sm shadow focus:outline-none focus:ring w-full ease-linear transition-all duration-150"/>
+                </div>
+              </div>
+            </div>
+            
+            <div className="flex flex-wrap">
+              <div className="w-full lg:w-2/12 px-4 mb-4 lg:mb-0">
+                <div className="relative w-full mb-3">
+                <label
+                    className="block uppercase text-xs font-bold pl-2 mb-2"
+                    htmlFor="grid-password"
+                  >
+                    Porte
+                  </label>
+                  <select
+                    className="border-0 px-3 py-3  placeholder-gray-300 bg-white rounded text-sm shadow focus:outline-none focus:ring w-fulol2 ease-linear transition-all duration-150"
+                    id="porte"
+                    name="porte"
+                  >
+                   <option value="pequeno">Pequeno</option>
+                   <option value="medio">Médio</option>
+                   <option value="grande">Grande</option>
+                  </select>
+                </div>
+              </div>
+
+
+              <div className="w-full lg:w-6/12 px-4">
+                <div className="relative w-full mb-3">
+                <label
+                    className="block uppercase text-xs font-bold pl-2 mb-2"
+                    htmlFor="grid-password"
+                  >
+                    Disponibilidade de Tempo
+                  </label>
+                  <select
+                    className="border-0 px-3 py-3  placeholder-gray-300 bg-white rounded text-sm shadow focus:outline-none focus:ring w-fulol2 ease-linear transition-all duration-150"
+                    id="tempo"
+                    name="tempo"
+                  >
+                    <option value="quinzenal">15 dias</option>
+                    <option value="quinzenal">30 dias</option>
+                    <option value="quinzenal">Mais de 30 dias</option>
+                  </select>
+               </div>
+              </div>
+            </div>
+            
+
+
+            <button
+                className=" bg-[#0365bc] ml-5 text-white active:bg-[#024873] font-bold uppercase text-xs px-4 py-2 rounded shadow hover:shadow-md outline-none focus:outline-none mr-1 ease-linear transition-all duration-150"
+                type="button"
+              >
+                Enviar
+              </button>
+            <hr className="my-2 border-b-1 w-/12 border-blue-300" />
           </form>
         </div>
       </div>
-    </>
+    </div>
+  </>
   )
 };
 
