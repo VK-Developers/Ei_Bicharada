@@ -18,22 +18,15 @@ export default function Login({title, type}) {
 
     const logIn = await submitToLogIn(inputValue);
 
-    if (
-      inputValue.email.toLowerCase() === "atespets.app@gmail.com" 
-      && 
-      inputValue.password === "Atesp@213"
-      ) {
-      await createCache('logIn', inputValue)
-      setToken(logIn.token)
-      navigate('Adm')
-      setLoader(false);
-      return
-    }
-
-
     if (!!logIn.token) {
       await createCache('logIn', inputValue)
       setToken(logIn.token)
+
+      if (logIn.type === 'adm') {
+        navigate('Adm')
+        return
+      }
+
       navigate('Cover')
       return
     };

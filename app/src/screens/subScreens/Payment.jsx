@@ -10,12 +10,25 @@ function Payment({navigation, route: { params }}) {
     const [qtd, setQtd] = useState('1');
     const [modal, setModal] = useState(false);
 
-    // console.log(params)
-
     return (
         <>
             <Background img={'tree'} />
-            {!!modal && <Modal show={modal} action={setModal} />}
+            {
+                !!modal && (
+                    <Modal 
+                        show={modal} 
+                        action={setModal}
+                        info={{
+                            pix: params.pix, 
+                            contact: params.contact, 
+                            qtd,
+                            price: params.price,
+                            name: params.name,
+                            total: (params.price * qtd).toLocaleString('pt-BR', { minimumFractionDigits: 2, maximumFractionDigits: 2 })
+                        }}
+                    />
+                )
+            }
             <View style={styles.container}>
                 <Return nav={navigation} />
                 <View style={styles.content}>

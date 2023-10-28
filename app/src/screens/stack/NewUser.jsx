@@ -1,11 +1,12 @@
 import React, {useRef, useState, useEffect, useContext} from 'react';
 import Context from '../../context/Context';
+import CheckBox from '@react-native-community/checkbox';
 import { StyleSheet, View, ScrollView, TouchableOpacity, Text, Image } from 'react-native';
 //Components
 import TextInput from '../../component/input/Form';
 import Background from '../../component/Background';
 import EmailModal from '../../component/modals/Email';
-import { NewUser as structure, regions } from '../../localized/structures';
+import { NewUser as structure } from '../../localized/structures';
 import str from '../../localized/strings';
 import images from '../../localized/images';
 import validateForms from '../../hooks/validateForms';
@@ -21,6 +22,7 @@ function NewUser({navigation}) {
   const [sendForms, setSendForms] = useState(false);
   const [modal, setModal] = useState(false);
   const [listiner, setLister] = useState({});
+  
 
   const scrollViewRef = useRef();
 
@@ -129,20 +131,27 @@ function NewUser({navigation}) {
 
         {/* password */}
         <View style={[styles.container, type !== 'password' && {display: 'none' }]}>
-          
-        {
-          structure.password.map((text, i) => {
-            return (
-              <TextInput 
-                key={'user-password-' + i} 
-                info={text}
-                action={setLister}
-                baseRef={scrollViewRef}
-                btn={setIsButtonVisible}
-              />
-            )
-          })
-        }
+          {
+            structure.password.map((text, i) => {
+              const [showPassword, setShowPassword] = useState(false)
+              const renderImage = !!showPassword ? images.visible : images.notVisible
+
+              return (
+                <View key={'user-password-' + i}>
+                  <TextInput 
+                    
+                    info={text}
+                    action={setLister}
+                    baseRef={scrollViewRef}
+                    btn={setIsButtonVisible}
+                  />
+                  {/* <TouchableOpacity onPress={() => setShowPassword(p => !p)}>
+                    <Image source={renderImage} style={{bottom: 20, right: 30, width: 30, height: 30, position: 'absolute'}}/>
+                  </TouchableOpacity> */}
+                </View>
+              )
+            })
+          }
         </View>
 
       </ScrollView>

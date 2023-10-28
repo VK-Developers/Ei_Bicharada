@@ -16,7 +16,7 @@ export const logIn = async (obj) => {
 
     if (!data.token) return { token: false };
 
-    return { token: data.token }
+    return { token: data.token, type: data.type }
   } catch (error) {
     const errorResponse = handleRequestError(error);
     return errorResponse;

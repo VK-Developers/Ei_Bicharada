@@ -5,41 +5,11 @@ module.exports = {
   async up (queryInterface, _Sequelize) {
     await queryInterface.bulkInsert('contributions', [
       {
-        name: 'Vincenzo',
-        amount: 55.30,
-        region: 'Neverland',
+        name: 'adm',
+        amount: 1000.00,
+        region: 'all',
         date: new Date(),
-      },
-      {
-        name: 'Roberto',
-        amount: 20.50,
-        region: 'Neverland',
-        date: new Date(),
-      },
-      {
-        name: 'Michael',
-        amount: 100.00,
-        region: 'Neverland',
-        date: new Date(),
-      },
-      {
-        name: 'Vincenzo',
-        amount: 45.30,
-        region: 'Neverland',
-        date: new Date(),
-      },
-      {
-        name: 'Roberto',
-        amount: 200.50,
-        region: 'Neverland',
-        date: new Date(),
-      },
-      {
-        name: 'Vincenzo',
-        amount: 155.30,
-        region: 'Neverland',
-        date: new Date(),
-      },
+      }
     ], {});
   },
 

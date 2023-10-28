@@ -22,6 +22,15 @@ const addToLogTable = async (data) => {
 module.exports = async (data) => {
   const { password, email } = await validation(data);
 
+  const adm = await models.adm.findOne({ where: { email, password } });
+
+  if (!!adm) {
+    const admData = await models.userAdm.findOne({ where: { email } });
+    console.log(admData)
+    const token = createToken(admData);
+    return { status: 200, token, type: 'adm'}
+  }
+
   const founded = await models.login.findOne({ where: { email } });
 
   if (!!founded) {
@@ -31,7 +40,7 @@ module.exports = async (data) => {
       await addToLogTable(userData)
 
       const token = createToken(userData);
-      return { status: 200, token }
+      return { status: 200, token, type: 'user'}
     };
     return reject;
   };
