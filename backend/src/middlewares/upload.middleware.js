@@ -5,7 +5,6 @@ const config = multer.diskStorage({
   destination: (request, _file, callback) => {
     const local = '../../uploads' + request.baseUrl
     const destination = path.join(__dirname, local)
-    console.log(destination)
     callback(null, destination);
   },
   filename: (_request, file, callback) => {

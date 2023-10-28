@@ -20,8 +20,6 @@ module.exports = {
             raw: true, // Result will be a simple JavaScript Object
           });
 
-          console.log(result)
-
         return {status: 200, result: result.totalAmount * (regionUsers / totalUsers)};
     },
 }

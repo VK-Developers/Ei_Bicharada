@@ -11,7 +11,6 @@ function AlertCard({info, token, list, action}) {
     const handleDelete = async () => {
         setLoader(true)
         const newList = list.filter(i => i.name !== name);
-        console.log(newList)
         await remove(id, token);
         action(newList)
         setLoader(false)
