@@ -20,7 +20,10 @@ module.exports = {
 
         // return {status: 200, result};
 
-        const result = await models.missingAnimal.findAll();
+        const result = await models.missingAnimal.findAll({
+          order: [['id', 'DESC']]
+        });
+        
         return {status: 200, result};
     },
     getById: async (id) => {
