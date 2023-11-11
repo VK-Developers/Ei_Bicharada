@@ -9,6 +9,7 @@ export const menuTopics = [
   'Contribuição',
   'Prestação de Contas',
   'Apoiadores',
+  'Rifas'
 ]
 
 export const NewUser = {

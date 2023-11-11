@@ -17,12 +17,14 @@ import NoticiasEventosScreenScreen from './screens/stack/NoticiasEventos';
 import NossosProdutosScreen from './screens/stack/NossosProdutos';
 import PrestacaoDeContasScreen from './screens/stack/PrestacaoDeContas';
 import ApoiadoresScreen from './screens/stack/Apoiadores';
+import RifasScreen from './screens/stack/Rifas';
 // Sub Stacks
 import ProductScreen from './screens/subScreens/Product';
 import AnimalScreen from './screens/subScreens/Animal';
 import PaymentScreen from './screens/subScreens/Payment';
 import ArticleScreen from './screens/subScreens/Article';
 import AbuseConfirmScreen from './screens/subScreens/AbuseConfirm';
+import RifaScreen from './screens/subScreens/Rifa'
 // Tab
 import TAdoptionScreen from './screens/tab/TAdoption';
 import TMissingScreen from './screens/tab/TMissing';
@@ -145,12 +147,14 @@ export default function App() {
         <Stack.Screen name="Noticias&Eventos" component={NoticiasEventosScreenScreen} />
         <Stack.Screen name="PrestacaodeContas" component={PrestacaoDeContasScreen} />
         <Stack.Screen name="Apoiadores" component={ApoiadoresScreen} />
+        <Stack.Screen name="Rifas" component={RifasScreen} />
         {/* Sub Screens */}
         <Stack.Screen name="Product" component={ProductScreen} />
         <Stack.Screen name="Animal" component={AnimalScreen} />
         <Stack.Screen name="Payment" component={PaymentScreen} />
         <Stack.Screen name="Article" component={ArticleScreen} />
         <Stack.Screen name="AbuseConfirm" component={AbuseConfirmScreen} />
+        <Stack.Screen name="Rifa" component={RifaScreen} />
 
         <Stack.Screen name="Adm" component={AdmMenu} />
       </Stack.Navigator>
