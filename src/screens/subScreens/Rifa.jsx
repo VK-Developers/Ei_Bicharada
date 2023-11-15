@@ -1,19 +1,18 @@
-import {useState} from 'react';
+import {useState, useEffect} from 'react';
 import { StyleSheet, ScrollView, Image, TouchableOpacity, View, Text, Dimensions } from 'react-native';
 //Components
 import Background from '../../component/Background';
 import Return from '../../component/button/Return';
 
-import { Rifa as mock } from '../../mock';
-
 const { width, height } = Dimensions.get('screen');
 
 function Rifa({navigation, route: { params }}) {
     const [modal, setModal] = useState(false)
-    const { name, picture, price } = params;
+    const { name, picture, price, qtd } = params;
+    console.log(params)
 
-    const handleClick = (info) => {
-        console.log(info)
+    const handleClick = () => {
+        console.log('click')
         setModal(true)
     }
 
@@ -34,28 +33,30 @@ function Rifa({navigation, route: { params }}) {
                 <Text style={[styles.text, styles.select]}>Selecione um número:</Text>
                 <View style={{flexDirection: 'row', flexWrap: 'wrap', justifyContent: 'center'}}>
                     {
-                        mock.map(data => {
-                            let css;
+                        [...Array.from({length: qtd})].map((_a, i) => {
+                            const num = i + 1;
+                            // let css;
+                            let css = styles['available']
                             let click = true;
 
-                            if (data.status === 'checking') {
-                                css = styles['checking'];
-                                click = false;
-                            } else if (data.status === 'unavailable') {
-                                css = styles['unavalible'];
-                                click = false;
-                            } else {
-                                css = styles['available']
-                            }
+                            // if (data.status === 'checking') {
+                            //     css = styles['checking'];
+                            //     click = false;
+                            // } else if (data.status === 'unavailable') {
+                            //     css = styles['unavalible'];
+                            //     click = false;
+                            // } else {
+                            //     css = styles['available']
+                            // }
 
                             return (
                                 <TouchableOpacity
-                                    key={`${name}-${data.id}`}
+                                    key={`${name}-${num}`}
                                     style={[styles.ball, css]}
                                     disabled={!click}
-                                    onPress={() => handleClick(data)}
+                                    onPress={handleClick}
                                 >
-                                    <Text style={[styles.text, css.text]}>{data.id}</Text>
+                                    <Text style={[styles.text, css.text]}>{num}</Text>
                                 </TouchableOpacity>
                             )
                         })

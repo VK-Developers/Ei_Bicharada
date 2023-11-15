@@ -9,7 +9,7 @@ export const menuTopics = [
   'Contribuição',
   'Prestação de Contas',
   'Apoiadores',
-  'Rifas'
+  'Pet & Sorte'
 ]
 
 export const NewUser = {

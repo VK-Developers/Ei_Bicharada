@@ -7,7 +7,9 @@ import ToggleMenu from '../../component/ToggleMenu';
 import Background from '../../component/Background';
 import Card from '../../component/flatlist/Rifa';
 
-import {Rifas as mock} from '../../mock';
+import { rafflesList } from '../../services/raffles'
+
+// import {Rifas as mock} from '../../mock';
 
 function Rifas({navigation, route: { params }}) {
   const { setLoader } = useContext(Context);
@@ -17,9 +19,9 @@ function Rifas({navigation, route: { params }}) {
   useEffect(() => {
     setLoader(true)
     async function FetchData() {
-      // const fetchData = await toDefine(params.token);
+      const data = await rafflesList(params.token);
 
-      setRifas(mock);
+      setRifas(data);
       setLoader(false);
     }
     FetchData();

@@ -1,11 +1,14 @@
 import React from 'react';
 import { StyleSheet, TouchableOpacity, Text, ImageBackground, View } from 'react-native';
+import str from '../../localized/strings'
 
 function Rifa({ info, nav }) {
-    const { name, entrance, picture } = info;
-    const price = entrance.toLocaleString('pt-BR', { minimumFractionDigits: 2, maximumFractionDigits: 2 })
+    const { name, entrance, productPicture } = info;
 
-    const handlePress = () => nav.navigate('Rifa', {name, picture, price})
+    const price = entrance.toLocaleString('pt-BR', { minimumFractionDigits: 2, maximumFractionDigits: 2 })
+    const picture = str.https + productPicture
+
+    const handlePress = () => nav.navigate('Rifa', {...info, picture, price})
 
     return (
         <TouchableOpacity onPress={handlePress} style={styles.container}>

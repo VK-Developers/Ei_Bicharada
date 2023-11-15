@@ -32,7 +32,6 @@ import TAlertScreen from './screens/tab/TAlert';
 import TRescueScreen from './screens/tab/TRescue';
 import TComplainScreen from './screens/tab/TComplain';
 
-
 import images from './localized/images';
 
 const Stack = createStackNavigator();
@@ -46,15 +45,6 @@ const mainTheme = {
     text: 'white'
   }
 }
-
-// const admTheme = {
-//   ...DefaultTheme,
-//   colors: {
-//     ...DefaultTheme.colors,
-//     background: '#36454F',
-//     text: 'black'
-//   }
-// }
 
 const AdmMenu = () => {
   const options = {
@@ -147,7 +137,7 @@ export default function App() {
         <Stack.Screen name="Noticias&Eventos" component={NoticiasEventosScreenScreen} />
         <Stack.Screen name="PrestacaodeContas" component={PrestacaoDeContasScreen} />
         <Stack.Screen name="Apoiadores" component={ApoiadoresScreen} />
-        <Stack.Screen name="Rifas" component={RifasScreen} />
+        <Stack.Screen name="Pet&Sorte" component={RifasScreen} />
         {/* Sub Screens */}
         <Stack.Screen name="Product" component={ProductScreen} />
         <Stack.Screen name="Animal" component={AnimalScreen} />
