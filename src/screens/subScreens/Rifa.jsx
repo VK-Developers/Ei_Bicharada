@@ -1,19 +1,46 @@
 import {useState, useEffect} from 'react';
-import { StyleSheet, ScrollView, Image, TouchableOpacity, View, Text, Dimensions } from 'react-native';
+import { StyleSheet, ScrollView, Image, TouchableOpacity, View, Text, Dimensions, Alert } from 'react-native';
 //Components
 import Background from '../../component/Background';
 import Return from '../../component/button/Return';
 
 const { width, height } = Dimensions.get('screen');
 
-function Rifa({navigation, route: { params }}) {
-    const [modal, setModal] = useState(false)
-    const { name, picture, price, qtd } = params;
-    console.log(params)
+import { takingNumber } from '../../services/raffles'
 
-    const handleClick = () => {
-        console.log('click')
-        setModal(true)
+function Rifa({navigation, route: { params }}) {
+    const [taken, setTaken] = useState({});
+    const [modal, setModal] = useState(false)
+    const { name, picture, price, qtd, numbers, token } = params;
+
+    useEffect(() =>  {
+        const orderedNumbers = numbers.reduce((acc, cur) => {
+            if (!cur.status) {
+                acc.pending.push(cur.number)
+                return acc
+            }
+            acc.closed.push(cur.number)
+            return acc
+        }, {closed: [], pending: []});
+
+        setTaken(orderedNumbers)
+    }, [])
+
+    const handleClick = async (number) => {
+        const obj = {
+            number,
+            raffle: params.id
+        }
+
+        const { canBuy } = await takingNumber(obj, token);
+
+        if (canBuy) {
+            setModal(true)
+            return
+        }
+
+        Alert.alert(null, 'Numero ja Comprado');
+        return
     }
 
     return (
@@ -34,27 +61,33 @@ function Rifa({navigation, route: { params }}) {
                 <View style={{flexDirection: 'row', flexWrap: 'wrap', justifyContent: 'center'}}>
                     {
                         [...Array.from({length: qtd})].map((_a, i) => {
+
+                            if (
+                                taken.closed === undefined
+                                &&
+                                taken.pending === undefined
+                            ) return
+
+
                             const num = i + 1;
-                            // let css;
+                  
                             let css = styles['available']
                             let click = true;
 
-                            // if (data.status === 'checking') {
-                            //     css = styles['checking'];
-                            //     click = false;
-                            // } else if (data.status === 'unavailable') {
-                            //     css = styles['unavalible'];
-                            //     click = false;
-                            // } else {
-                            //     css = styles['available']
-                            // }
+                            if (taken.closed.includes(num)) {
+                                css = styles['unavalible'];
+                                click = false;
+                            } else if (taken.pending.includes(num)) {
+                                css = styles['checking'];
+                                click = false;
+                            }
 
                             return (
                                 <TouchableOpacity
                                     key={`${name}-${num}`}
                                     style={[styles.ball, css]}
                                     disabled={!click}
-                                    onPress={handleClick}
+                                    onPress={() => handleClick(num)}
                                 >
                                     <Text style={[styles.text, css.text]}>{num}</Text>
                                 </TouchableOpacity>

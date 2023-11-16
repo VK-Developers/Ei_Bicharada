@@ -1,4 +1,5 @@
 import React, {useState, useEffect, useContext} from 'react';
+import { useFocusEffect } from '@react-navigation/native';
 import Context from '../../context/Context';
 import { StyleSheet, SafeAreaView, View, FlatList } from 'react-native';
 //Components
@@ -9,32 +10,32 @@ import Card from '../../component/flatlist/Rifa';
 
 import { rafflesList } from '../../services/raffles'
 
-// import {Rifas as mock} from '../../mock';
-
 function Rifas({navigation, route: { params }}) {
-  const { setLoader } = useContext(Context);
+  const { setLoader, token } = useContext(Context);
   const [scrollY, setScrollY] = useState(0);
   const [rifas, setRifas] = useState([]);
 
-  useEffect(() => {
-    setLoader(true)
-    async function FetchData() {
-      const data = await rafflesList(params.token);
+  useFocusEffect(
+    React.useCallback(() => {
+      fetchData();
+    }, [])
+  );
 
-      setRifas(data);
-      setLoader(false);
-    }
-    FetchData();
-  }, [])
+  useEffect(() => setLoader(true), [])
 
-  const renderComponente = ({item}) => <Card nav={navigation} info={item} />
+  const fetchData = async () => {
+    const data = await rafflesList(params.token);
+    setRifas(data);
+    setLoader(false);
+  }
+
+  const renderComponente = ({item}) => <Card nav={navigation} info={{...item, token}} />
 
   return (
     <>
       <Background img={'five'} />
       <ToggleMenu level={scrollY} />
       <SafeAreaView style={styles.container}>
-
         <View>
           <FlatList 
             data={rifas}
@@ -45,7 +46,6 @@ function Rifas({navigation, route: { params }}) {
             ListHeaderComponent={() => <Header name={params.name} /> }
           />
         </View>
-
       </SafeAreaView>
     </>
   );

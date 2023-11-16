@@ -18,3 +18,19 @@ export const rafflesList = async(token) => {
     return [];
   }
 };
+
+export const takingNumber = async(obj, token) => {
+  try {
+    await api.post(
+      `${URL}-number`,
+      obj,
+      {
+        headers: { 'Authorization': token }
+      }
+    );
+    return {canBuy: true}
+  } catch (error) {
+    return {canBuy: false};
+  }
+};
+
