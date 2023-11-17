@@ -3,8 +3,7 @@ import { StyleSheet, TouchableOpacity, Text, View, ImageBackground } from 'react
 
 import str from '../../localized/strings';
 
-function New({nav, info}) {
-    const [eventSelected, setEventSelected] = useState(false)
+function New({nav, info, eventCard}) {
     const {content, title, date, type} = info;
 
     const newPress = () => {
@@ -12,7 +11,10 @@ function New({nav, info}) {
     }
 
     const eventPress = () => {
-        setEventSelected(!eventSelected)
+        eventCard({
+            show: true,
+            img: str.https + info.picture
+        })
     }
 
 
@@ -31,7 +33,7 @@ function New({nav, info}) {
             <TouchableOpacity onPress={eventPress} style={styles.container}>
                 <ImageBackground 
                     source={{ uri: str.https + info.picture }} 
-                    style={[styles.background, !eventSelected ? { height: 250 } : styles.selected]} 
+                    style={[styles.background, { height: 250 }]} 
                     resizeMode="cover"
                 />
             </TouchableOpacity>
