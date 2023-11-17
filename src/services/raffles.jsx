@@ -34,3 +34,18 @@ export const takingNumber = async(obj, token) => {
   }
 };
 
+export const raffleInfo = async(id, token) => {
+  try {
+    const {data} = await api.get(
+      `${URL}/${id}`,
+      {
+        headers: { 'Authorization': token }
+      }
+    );
+    return data;
+  } catch (error) {
+    console.log('erro')
+    return [];
+  }
+};
+

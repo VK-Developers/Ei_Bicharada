@@ -11,13 +11,10 @@ export default {
   sendFormSucess: "Solicitação enviada com sucesso!!",
   ok: "OK",
   solicitationBtn: "Ver Solicitações",
-  server: "http://193.203.183.47:3001/",
-  https: "https://atespets.com.br/",
-
   donateTitle: 'Contribua você também!',
   donateBtn: 'Copiar Chave PIX!',
-  donateAlert: 'Chave PIX Copiada\n\n CNPJ: 52.643.341/0001-89',
-  pixKey: '52.643.341/0001-89',
+  
+  rifaWpp: (name, number, entrance) => `*Comprovante de pagamento*\nRifa: ${name}\nNúmero: ${number}\nValor: ${entrance}`,
 
   footer: {
     title: "ATESP",
@@ -32,12 +29,6 @@ export default {
     city: ['Região de Interesse', 'CONFIRMAR'],
     password: ['Criar Senha', 'CRIAR CONTA']
   },
-  doacao: {
-    title: 'Doação',
-    retirada: ['Agendar Retirada', '(13) 9XXXX - XXXX'],
-    coleta: ['Ponto de Coleta', 'Rua: XXXXXXXXXX'],
-    doacao: ['Doação Financeira', 'Pix: XXXXXXXXXX'],
-  },
   modal: {
     resgate: ['Resgate registrado/adicionado \ncom sucesso', 'fechar'],
     denuncia: ['Denúncia registrada com \nsucesso', 'continuar'],
@@ -47,5 +38,14 @@ export default {
       'entendido'
     ],
     larTemporario02: ['Solicitação de de cadastro de lar temporário\n enviada com sucesso.', 'confirmar'],
-  }
+  },
+
+
+
+  donateAlert: 'Chave PIX Copiada\n\n CNPJ: 52.643.341/0001-89',
+  
+  pixKey: '52.643.341/0001-89',
+  phoneNumber: '+5513991648700',
+  server: "http://193.203.183.47:3001/",
+  https: "https://atespets.com.br/",
 };

@@ -1,15 +1,19 @@
-import {useState, useEffect} from 'react';
+import {useState, useEffect, useContext} from 'react';
+import Context from '../../context/Context';
 import { StyleSheet, ScrollView, Image, TouchableOpacity, View, Text, Dimensions, Alert } from 'react-native';
 //Components
 import Background from '../../component/Background';
 import Return from '../../component/button/Return';
-
-const { width, height } = Dimensions.get('screen');
+import Modal from '../../component/modals/Rifa';
 
 import { takingNumber } from '../../services/raffles'
 
+const { width, height } = Dimensions.get('screen');
+
 function Rifa({navigation, route: { params }}) {
+    const {setLoader} = useContext(Context)
     const [taken, setTaken] = useState({});
+    const [actionInfo, setActionInfo] = useState({});
     const [modal, setModal] = useState(false)
     const { name, picture, price, qtd, numbers, token } = params;
 
@@ -27,6 +31,7 @@ function Rifa({navigation, route: { params }}) {
     }, [])
 
     const handleClick = async (number) => {
+        setLoader(true)
         const obj = {
             number,
             raffle: params.id
@@ -35,17 +40,21 @@ function Rifa({navigation, route: { params }}) {
         const { canBuy } = await takingNumber(obj, token);
 
         if (canBuy) {
+            setActionInfo(obj)
+            setLoader(false)
             setModal(true)
             return
         }
 
-        Alert.alert(null, 'Numero ja Comprado');
+        setLoader(false)
+        Alert.alert(null, 'Número já Comprado');
         return
     }
 
     return (
         <>
             <Background img={'tree'} />
+            {modal && <Modal show={modal} action={setModal} info={actionInfo} />}
             <ScrollView style={styles.container}>
                 <Return nav={navigation} />
                 <Image source={{uri: picture}} style={styles.preview}/>
@@ -108,7 +117,7 @@ const styles = StyleSheet.create({
         marginTop: 20,
         width,
         height: height * 0.3,
-        objectFit: 'cover'
+        objectFit: 'fill'
     },
     text: {
         color: 'black',
