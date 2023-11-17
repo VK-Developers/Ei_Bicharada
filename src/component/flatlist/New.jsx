@@ -1,51 +1,40 @@
-import React from 'react';
-import { StyleSheet, TouchableOpacity, Text, View } from 'react-native';
+import {useState} from 'react';
+import { StyleSheet, TouchableOpacity, Text, View, ImageBackground } from 'react-native';
 
 import str from '../../localized/strings';
 
 function New({nav, info}) {
+    const [eventSelected, setEventSelected] = useState(false)
     const {content, title, date, type} = info;
 
-    const handlePress = () => {
+    const newPress = () => {
         nav.navigate('Article', {content, title, date,  picture: str.https + info.picture})
     }
 
+    const eventPress = () => {
+        setEventSelected(!eventSelected)
+    }
+
+
     const kindOfCard = {
         new: () => (
-            <TouchableOpacity onPress={handlePress} style={[styles.container, { backgroundColor: "#CCCCFF" }]}>
-                <Text numberOfLines={1} ellipsizeMode="tail" style={styles.title}>{title}</Text>
-                    <Text
-                        numberOfLines={3}
-                        ellipsizeMode="tail"
-                        style={styles.content}
-                    >
-                        {content}
-                    </Text>
-                <Text style={styles.data}>{date}</Text>
+            <TouchableOpacity onPress={newPress} style={[styles.container, { backgroundColor: "#CCCCFF" }]}>
+                <ImageBackground source={{ uri: str.https + info.picture }} style={styles.background} resizeMode="cover">
+                    <View style={{backgroundColor: "rgba(0, 0, 0, 0.70)", height: 120, padding: 15, justifyContent: 'space-between'}}>
+                        <Text numberOfLines={1} ellipsizeMode="tail" style={styles.title}>{title}</Text>
+                        <Text style={styles.data}>{date}</Text>
+                    </View>
+                </ImageBackground>
             </TouchableOpacity>
         ),
         event: () => (
-            <TouchableOpacity onPress={handlePress} style={[styles.container, { backgroundColor: "#5F9EA0" }]}>
-                <Text numberOfLines={1} ellipsizeMode="tail" style={styles.title}>{title}</Text>
-                    <Text
-                        numberOfLines={3}
-                        ellipsizeMode="tail"
-                        style={styles.content}
-                    >
-                        {content}
-                    </Text>
-                <Text style={styles.data}>{date}</Text>
+            <TouchableOpacity onPress={eventPress} style={styles.container}>
+                <ImageBackground 
+                    source={{ uri: str.https + info.picture }} 
+                    style={[styles.background, !eventSelected ? { height: 250 } : styles.selected]} 
+                    resizeMode="cover"
+                />
             </TouchableOpacity>
-        ),
-        release: () => (
-            <View style={[styles.container, { backgroundColor: "#E4D00A" }]}>
-                <Text numberOfLines={1} ellipsizeMode="tail" style={styles.title}>{title}</Text>
-                <Text style={styles.title}>😍😍😍😍😍</Text>
-                    <Text style={styles.content}>
-                        {content}
-                    </Text>
-                <Text style={styles.data}>{date}</Text>
-            </View>
         ),
     }
 
@@ -60,28 +49,39 @@ function New({nav, info}) {
 const styles = StyleSheet.create({
     container: {
         borderRadius: 20,
-        padding: 10,
-        position: 'relative'
+        // padding: 10,
+        position: 'relative',
+        overflow: 'hidden',
+        
     },
     title: {
         alignSelf: 'center',
-        color: 'black',
         fontWeight: '600',
         fontSize: 20
     },
     content: {
         alignSelf: 'stretch',
-        color: 'black',
+        // color: 'black',
         fontWeight: '600',
         fontSize: 16,
         padding: 10,
+        
     },
     data: {
-        color: 'black',
+        // color: 'black',
         fontSize: 14,
         fontWeight: "700",
         alignSelf: 'flex-end'
 
+    },
+    background: {
+        flex: 1,
+    },
+    selected: {
+        // position: 'absolute',
+        // top: 0,
+        
+        height: 500
     }
 })
 

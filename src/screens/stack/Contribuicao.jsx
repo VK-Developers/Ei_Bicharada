@@ -1,4 +1,5 @@
-import React, {useEffect, useState} from 'react';
+import React, {useEffect, useState, useContext} from 'react';
+import Context from '../../context/Context';
 import Clipboard from '@react-native-clipboard/clipboard';
 import { StyleSheet, View, Text, Image, Dimensions, TouchableOpacity, Alert } from 'react-native';
 
@@ -16,6 +17,7 @@ import { contributionRegionCalc } from '../../services/contribution';
 import images from '../../localized/images';
 
 function Contribuicao({route: { params }}) {
+  const {infos} = useContext(Context)
   const [amount, setAmount] = useState(0);
 
   useEffect(() => {
@@ -27,8 +29,8 @@ function Contribuicao({route: { params }}) {
   }, [])
 
   const handlePress = () => {
-    Clipboard.setString(str.pixKey);
-    Alert.alert(null, str.donateAlert);
+    Clipboard.setString(infos.pix.key);
+    Alert.alert(null, str.donateAlert(infos.pix.key));
   }
   
   return (

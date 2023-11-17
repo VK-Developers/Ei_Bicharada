@@ -13,9 +13,6 @@ export default {
   solicitationBtn: "Ver Solicitações",
   donateTitle: 'Contribua você também!',
   donateBtn: 'Copiar Chave PIX!',
-  
-  rifaWpp: (name, number, entrance) => `*Comprovante de pagamento*\nRifa: ${name}\nNúmero: ${number}\nValor: ${entrance}`,
-
   footer: {
     title: "ATESP",
     subTitle: ['Associação dos Técnicos em', 'Edificações Auxiliares e Afins', 'do Estado de São Paulo']
@@ -39,13 +36,9 @@ export default {
     ],
     larTemporario02: ['Solicitação de de cadastro de lar temporário\n enviada com sucesso.', 'confirmar'],
   },
-
-
-
-  donateAlert: 'Chave PIX Copiada\n\n CNPJ: 52.643.341/0001-89',
+  donateAlert: (pix) => `Chave PIX Copiada\n\n CNPJ: ${pix}`,
+  rifaWpp: (name, number, entrance) => `*Comprovante pagamento*\n\nRifa: ${name}\nNúmero: ${number}\nValor: ${entrance}`,
   
-  pixKey: '52.643.341/0001-89',
-  phoneNumber: '+5513991648700',
   server: "http://193.203.183.47:3001/",
   https: "https://atespets.com.br/",
 };

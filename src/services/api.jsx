@@ -7,7 +7,7 @@ const server = {
 }
 
 const api = axios.create({
-  baseURL: server.android,
+  baseURL: server.api,
 });
 
 export default api;

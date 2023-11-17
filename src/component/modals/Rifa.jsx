@@ -9,7 +9,7 @@ import { raffleInfo } from '../../services/raffles'
 import str from '../../localized/strings';
 
 const Rifa = ({ show, action, info: {number, raffle} }) => {
-    const { token } = useContext(Context)
+    const { token, infos } = useContext(Context)
     const { navigate } = useNavigation();
 
     const handlePress = () => {
@@ -19,14 +19,13 @@ const Rifa = ({ show, action, info: {number, raffle} }) => {
 
     const PressWPP = async () => {
         const {entrance, name} = await raffleInfo(raffle, token)
-        const phoneNumber = '+5513991648700';
 
         const message = str.rifaWpp(name, number, entrance)
 
         // Formatar a mensagem para a URL
         const encodedMessage = encodeURIComponent(message);
 
-        const whatsappUrl = `whatsapp://send?phone=${phoneNumber}&text=${encodedMessage}`;
+        const whatsappUrl = `whatsapp://send?phone=${infos.raffle.contact}&text=${encodedMessage}`;
 
         Linking.canOpenURL(whatsappUrl)
             .then((supported) => {
@@ -40,8 +39,8 @@ const Rifa = ({ show, action, info: {number, raffle} }) => {
     }
 
     const PressPix = () => {
-        Clipboard.setString(str.pixKey);
-        Alert.alert(null, str.donateAlert);
+        Clipboard.setString(infos.pix.key);
+        Alert.alert(null, str.donateAlert(infos.pix.key));
     }
     
     return (

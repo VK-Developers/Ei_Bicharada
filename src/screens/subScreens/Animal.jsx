@@ -1,4 +1,5 @@
-import React from 'react';
+import {useContext} from 'react';
+import Context from '../../context/Context';
 import { StyleSheet, ScrollView, Image, View, Text, Dimensions } from 'react-native';
 //Components
 import Background from '../../component/Background';
@@ -7,6 +8,7 @@ import Return from '../../component/button/Return';
 const { width, height } = Dimensions.get('screen');
 
 function Animal({navigation, route: {params}}) {
+    const {infos} = useContext(Context);
     const {name, description, picture, server} = params;
 
     return (
@@ -22,10 +24,10 @@ function Animal({navigation, route: {params}}) {
                     </View>
                 </View>
                 <View style={styles.content}>
-                    <Text style={[styles.title, {fontSize: 21, fontStyle: 'italic', textAlign: 'left'}]}>Contato</Text>
-                    <Text style={[styles.title, {fontSize: 20}]}>+55 (13) 98854 - 2973</Text>
-                    <Text style={[styles.title, {fontSize: 20}]}>+55 (19) 98284 - 9344</Text>
-                    <Text style={[styles.title, {fontSize: 18}]}>comercialmarcelo@atespets.com.br</Text>
+                    <Text style={[styles.title, {fontSize: 21, fontStyle: 'italic'}]}>Entre em contato com a gente</Text>
+                    <Text style={[styles.title, {fontSize: 20}]}>{infos.adocao.tel01}</Text>
+                    <Text style={[styles.title, {fontSize: 20}]}>{infos.adocao.tel02}</Text>
+                    <Text style={[styles.title, {fontSize: 18}]}>{infos.adocao.email}</Text>
                 </View>
             </ScrollView>
         </>
