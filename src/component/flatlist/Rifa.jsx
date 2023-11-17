@@ -25,21 +25,21 @@ function Rifa({ info, nav }) {
 const styles = StyleSheet.create({
     container: {
         alignSelf: 'center',
-        height: 120,
+        height: 200,
         width: "95%",
         borderRadius: 20,
         overflow: 'hidden',
     },
     content: {
-        backgroundColor: "rgba(0, 0, 0, 0.60)",
+        backgroundColor: "rgba(0, 0, 0, 0.70)",
         flex: 1,
-        padding: 15,
+        padding: 25,
         justifyContent: 'space-between',
     },
     title: {
         color: 'white',
         fontWeight: '600',
-        fontSize: 22,
+        fontSize: 20,
     },
     background: {
         flex: 1,

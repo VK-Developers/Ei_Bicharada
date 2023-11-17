@@ -13,6 +13,7 @@ export default {
   solicitationBtn: "Ver Solicitações",
   donateTitle: 'Contribua você também!',
   donateBtn: 'Copiar Chave PIX!',
+  rifaPlaceHolder: 'Em Breve Novo Evento',
   footer: {
     title: "ATESP",
     subTitle: ['Associação dos Técnicos em', 'Edificações Auxiliares e Afins', 'do Estado de São Paulo']

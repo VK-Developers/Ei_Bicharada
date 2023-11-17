@@ -1,12 +1,14 @@
 import React, {useState, useEffect, useContext} from 'react';
 import { useFocusEffect } from '@react-navigation/native';
 import Context from '../../context/Context';
-import { StyleSheet, SafeAreaView, View, FlatList } from 'react-native';
+import { StyleSheet, SafeAreaView, View, FlatList, Text } from 'react-native';
 //Components
 import Header from '../../component/Header';
 import ToggleMenu from '../../component/ToggleMenu';
 import Background from '../../component/Background';
 import Card from '../../component/flatlist/Rifa';
+
+import str from '../../localized/strings';
 
 import { rafflesList } from '../../services/raffles'
 
@@ -35,18 +37,36 @@ function Rifas({navigation, route: { params }}) {
     <>
       <Background img={'five'} />
       <ToggleMenu level={scrollY} />
-      <SafeAreaView style={styles.container}>
-        <View>
-          <FlatList 
-            data={rifas}
-            renderItem={renderComponente}
-            keyExtractor={({id}) => 'rifa-' + id}
-            onScroll={(event) => setScrollY(event.nativeEvent.contentOffset.y)}
-            ItemSeparatorComponent={ <View style={{height: 20}} /> }
-            ListHeaderComponent={() => <Header name={params.name} /> }
-          />
-        </View>
-      </SafeAreaView>
+      {rifas.length > 0 ? (
+        <SafeAreaView style={styles.container}>
+          <View>
+            <FlatList 
+              data={rifas}
+              renderItem={renderComponente}
+              keyExtractor={({id}) => 'rifa-' + id}
+              onScroll={(event) => setScrollY(event.nativeEvent.contentOffset.y)}
+              ItemSeparatorComponent={ <View style={{height: 20}} /> }
+              ListHeaderComponent={() => <Header name={params.name} /> }
+            />
+          </View>
+        </SafeAreaView>
+        ) : (
+          <>
+            <SafeAreaView style={styles.container}>
+              <Header name={params.name} />
+            </SafeAreaView>
+            <View 
+              style={{position: 'absolute', top: "40%", width: "100%"}}
+            >
+              <Text 
+                style={{color: "black", fontSize: 18, fontWeight: "900", textAlign: 'center'}}
+              >
+                {str.rifaPlaceHolder}
+              </Text>
+            </View>
+          </>
+        )}
+      
     </>
   );
 }
