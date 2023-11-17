@@ -4,12 +4,12 @@ export const menuTopics = [
   'Resgate',
   'Denúncias',
   'Lar Temporário',
+  'Pet & Sorte',
   'Nossos Produtos',
   'Noticias & Eventos',
   'Contribuição',
   'Prestação de Contas',
   'Apoiadores',
-  'Pet & Sorte'
 ]
 
 export const NewUser = {
