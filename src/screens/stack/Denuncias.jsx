@@ -59,7 +59,7 @@ function Denuncias({navigation, route: { params }}) {
                   if (i === 1) return <CheckboxInput key={text.title} info={text} action={setListiner} />
                   return (
                     <TextInput
-                      key={text.title} 
+                      key={text.title}
                       info={text}
                       action={setListiner}
                       baseRef={scrollViewRef}

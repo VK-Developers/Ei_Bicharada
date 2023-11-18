@@ -5,6 +5,7 @@ const formatRouteName = (name) => {
           .replace(/\ã/g, 'a')
           .replace(/\ú/g, 'u')
           .replace(/\á/g, 'a')
+          .replace(/\í/g, 'i')
           .replace(/\s/g, '');
  
      return formated;

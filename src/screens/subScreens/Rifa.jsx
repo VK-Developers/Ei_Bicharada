@@ -61,9 +61,9 @@ function Rifa({navigation, route: { params }}) {
                 <Text style={[styles.text, styles.price]}>{`R$ ${price}`}</Text>
                 
                 <View style={styles.status}>
-                    <Text style={{fontWeight: '800', fontSize: 17, color: '#50C878'}}>Disponivel</Text>
+                    <Text style={{fontWeight: '800', fontSize: 17, color: '#50C878'}}>Disponível</Text>
                     <Text style={{fontWeight: '800', fontSize: 17, color: '#6082B6'}}>Em Análise</Text>
-                    <Text style={{fontWeight: '800', fontSize: 17, color: '#C41E3A'}}>Indisponivel</Text>
+                    <Text style={{fontWeight: '800', fontSize: 17, color: '#C41E3A'}}>Indisponível</Text>
                 </View>
 
                 <Text style={[styles.text, styles.select]}>Selecione um número:</Text>

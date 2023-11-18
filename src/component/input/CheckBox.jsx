@@ -28,14 +28,14 @@ export default function checkboxInput({info, action}) {
           style={{marginRight: 2}}
           tintColors={{ false: 'black' }}
         />
-        <Text style={[styles.label, {marginRight: 10}]}>sim</Text>
+        <Text style={[styles.label, {marginRight: 10}]}>Sim</Text>
         <CheckBox
           value={selected['no']}
           onValueChange={() => handleChange(false, {yes: false, no: true})}
           style={{marginRight: 2}}
           tintColors={{ false: 'black' }}
         />
-        <Text style={[styles.label, {marginRight: 10}]}>nao</Text>
+        <Text style={[styles.label, {marginRight: 10}]}>Não</Text>
       </View>
     </View>
   );

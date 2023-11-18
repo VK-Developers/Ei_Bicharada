@@ -6,7 +6,7 @@ export const menuTopics = [
   'Lar Temporário',
   'Pet & Sorte',
   'Nossos Produtos',
-  'Noticias & Eventos',
+  'Notícias & Eventos',
   'Contribuição',
   'Prestação de Contas',
   'Apoiadores',
@@ -28,7 +28,7 @@ export const NewUser = {
 
 export const ResgateDenuncia = [
   {title: 'Animal', maxLength: 15, type: 'default'},
-  {title: 'Esta andando', options: ['sim', 'não']},
+  {title: 'Esta andando', options: ['Sim', 'Não']},
   {title: 'Ocorrido', maxLength: 550, type: 'default'},
   {title: 'Horário', maxLength: 5, type: 'numeric'},
   {title: 'Endereço', maxLength: 25, type: 'default'},

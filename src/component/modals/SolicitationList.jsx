@@ -77,7 +77,7 @@ const SolicitationList = ({ show, action, params: {name, token} }) => {
                             style={{width: '100%'}} 
                         />
                         ) : (
-                            <Text style={styles.noContent}>{`Sem soliticação de ${name.toLowerCase()}`}</Text>
+                            <Text style={styles.noContent}>{`Sem solicitação de ${name.toLowerCase()}`}</Text>
                         )}
                     </View>
                 </View>

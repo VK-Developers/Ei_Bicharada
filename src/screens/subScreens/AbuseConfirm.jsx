@@ -55,7 +55,7 @@ function AbuseConfirme({navigation}) {
                 ) : (
                     <>
                         <View style={styles.containerText}>
-                            <Text style={styles.text}>Sua solicitação ja está com nossa equipe</Text>
+                            <Text style={styles.text}>Sua solicitação já está com nossa equipe</Text>
                             <Text style={styles.text}>Fique calma, a Polícia Militar já está a caminho.</Text>
                         </View>
                         <TouchableOpacity

@@ -22,8 +22,8 @@ function Sponsor({ info, action, https }) {
 const styles = StyleSheet.create({
     container: {
         alignSelf: 'center',
-        height: 150,
-        width: "90%",
+        height: 200,
+        width: "95%",
         borderRadius: 20,
         overflow: 'hidden',
     },

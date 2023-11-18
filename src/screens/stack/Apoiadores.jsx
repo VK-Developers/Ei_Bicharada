@@ -36,7 +36,7 @@ function Apoiadores({navigation, route: { params }}) {
     <Background img={'tree'} />
     { !!selected ? (
         <TouchableOpacity onPress={() => setSelected('')} style={styles.full}>
-          <ImageBackground source={{uri: str.https + selected}} style={styles.img} />
+          <ImageBackground source={{uri: str.https + selected}} style={styles.img} resizeMode="stretch" />
         </TouchableOpacity>
       ) : (
         <>
@@ -89,14 +89,13 @@ const styles = StyleSheet.create({
     }
   },
   full: {
+    flex: 1,
     alignItems: 'center',
-    width,
-    height,
-    backgroundColor: "rgba(0, 0, 0, 0.1)",
+    justifyContent: 'center',
+    backgroundColor: "rgba(0, 0, 0, 0.25)",
   },
   img: {
-    marginTop: 30,
-    width: width * 0.85, 
+    width,
     height: height * 0.85,
   }
 })

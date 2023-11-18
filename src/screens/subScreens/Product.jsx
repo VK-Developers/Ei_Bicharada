@@ -11,7 +11,7 @@ function Product({navigation, route: { params }}) {
 
     const btn = () => {
         const background = { backgroundColor: inStock ? 'green' : 'red' };
-        const text = inStock ? 'Comprar' : 'Indisponivel';
+        const text = inStock ? 'Comprar' : 'Indisponível';
 
         const handlePress = () => navigation.navigate('Payment', {...params})
 
