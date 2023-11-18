@@ -1,13 +1,19 @@
-import {useState} from 'react';
+import {useEffect, useState} from 'react';
 import { StyleSheet, TouchableOpacity, Text, View, ImageBackground } from 'react-native';
 
 import str from '../../localized/strings';
 
 function New({nav, info, eventCard}) {
+    const [imgPixel, setImgPixel] = useState(0)
     const {content, title, date, type} = info;
 
+    useEffect(() => {
+        const splitObj = type.split('+')
+        !splitObj[1] ? setImgPixel(250) : setImgPixel(Number(splitObj[1]))
+    }, [])
+
     const newPress = () => {
-        nav.navigate('Article', {content, title, date,  picture: str.https + info.picture})
+        nav.navigate('Article', {content, title, date,  picture: str.https + info.picture, heightPixel: imgPixel})
     }
 
     const eventPress = () => {
@@ -41,7 +47,8 @@ function New({nav, info, eventCard}) {
     }
 
     const renderFunction = () => {
-        const render = kindOfCard[type];
+        const t = type.split('+')
+        const render = kindOfCard[t[0]];
         return render()
     }
 
@@ -79,12 +86,6 @@ const styles = StyleSheet.create({
     background: {
         flex: 1,
     },
-    selected: {
-        // position: 'absolute',
-        // top: 0,
-        
-        height: 500
-    }
 })
 
 

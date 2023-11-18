@@ -11,7 +11,8 @@ function Article({
             title,
             content,
             date,
-            picture
+            picture,
+            heightPixel
         }
     }
 }){
@@ -34,7 +35,7 @@ function Article({
                         article.length !== 1 ? (
                             <>
                                 <Text style={styles.text}>{article[0]}</Text>
-                                <Image source={{uri: picture}} style={styles.image} />
+                                <Image source={{uri: picture}} style={[styles.image, {height: heightPixel}]} />
                                 <Text style={styles.text}>{article[1]}</Text>
                             </>
                         ) : (
@@ -72,13 +73,11 @@ const styles = StyleSheet.create({
     text: {
         color: 'black',
         textAlign: 'justify',
-        fontSize: 20
+        fontSize: 19
     },
     image: {
-        // width: "100%",
-        width: 250,
-        height: 250,
-        objectFit: 'cover'
+        width: "100%",
+        objectFit: 'contain'
     },
 })
 

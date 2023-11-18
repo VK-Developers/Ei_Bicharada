@@ -13,7 +13,7 @@ import str from '../../localized/strings';
 import { rafflesList } from '../../services/raffles'
 
 function Rifas({navigation, route: { params }}) {
-  const { setLoader, token } = useContext(Context);
+  const { setLoader, token, loader } = useContext(Context);
   const [scrollY, setScrollY] = useState(0);
   const [rifas, setRifas] = useState([]);
 
@@ -61,7 +61,7 @@ function Rifas({navigation, route: { params }}) {
               <Text 
                 style={{color: "black", fontSize: 18, fontWeight: "900", textAlign: 'center'}}
               >
-                {str.rifaPlaceHolder}
+                {!loader && str.rifaPlaceHolder}
               </Text>
             </View>
           </>
