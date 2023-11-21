@@ -23,7 +23,6 @@ function New({nav, info, eventCard}) {
         })
     }
 
-
     const kindOfCard = {
         new: () => (
             <TouchableOpacity onPress={newPress} style={[styles.container, { backgroundColor: "#CCCCFF" }]}>
@@ -66,7 +65,8 @@ const styles = StyleSheet.create({
     title: {
         alignSelf: 'center',
         fontWeight: '600',
-        fontSize: 20
+        fontSize: 18,
+        color: 'white'
     },
     content: {
         alignSelf: 'stretch',
@@ -77,8 +77,8 @@ const styles = StyleSheet.create({
         
     },
     data: {
-        // color: 'black',
-        fontSize: 14,
+        color: 'white',
+        fontSize: 13,
         fontWeight: "700",
         alignSelf: 'flex-end'
 
