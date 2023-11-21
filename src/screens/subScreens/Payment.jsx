@@ -33,7 +33,7 @@ function Payment({navigation, route: { params }}) {
                 <Return nav={navigation} />
                 <View style={styles.content}>
                     <View style={styles.item}>
-                        <Text style={styles.text}>{params.name}</Text>
+                        <Text style={[styles.text, {width: '65%'}]}>{params.name}</Text>
                         <View style={{flexDirection: 'row', alignItems: 'center'}}>
                             <Text style={styles.text}>qtd.</Text>
                             <TextInput 

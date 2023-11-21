@@ -117,7 +117,7 @@ const styles = StyleSheet.create({
         marginTop: 20,
         width,
         height: height * 0.3,
-        objectFit: 'fill'
+        objectFit: 'contain'
     },
     text: {
         color: 'black',
