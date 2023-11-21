@@ -48,7 +48,7 @@ const NewAnimal = ({ show, action, type }) => {
             <View  style={styles.container}>
                 <View style={styles.content}>
                     {!sent ? (
-                        <ScrollView style={{width: "100%"}}>
+                        <ScrollView style={{width: "100%"}} scrollEventThrottle={null}>
                             {
                                 structure.map((element, i) => (
                                     <Input

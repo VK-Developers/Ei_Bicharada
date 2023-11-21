@@ -1,6 +1,6 @@
 import React, {useRef, useState, useEffect} from 'react';
 import { useFocusEffect } from '@react-navigation/native';
-import { StyleSheet, ScrollView, Dimensions, View, Text } from 'react-native';
+import { StyleSheet, ScrollView, Dimensions, View, Text, SafeAreaView } from 'react-native';
 import CheckBox from '@react-native-community/checkbox';
 //Components
 import Header from '../../component/Header';
@@ -74,8 +74,8 @@ function LarTemporario({navigation, route: { params }}) {
       {
         !alertModal && (
           <>
-            <ScrollView onScroll={(event) => setScrollY(event.nativeEvent.contentOffset.y)} ref={scrollViewRef}>
-              <View style={styles.container}>
+            <ScrollView scrollEventThrottle={null} onScroll={(event) => setScrollY(event.nativeEvent.contentOffset.y)} ref={scrollViewRef}>
+              <SafeAreaView style={styles.container}>
                 <View>
                   <Header name={params.name} />
                     { 
@@ -157,7 +157,7 @@ function LarTemporario({navigation, route: { params }}) {
                   obj={{data: listiner, from: 'home'}}
                   modal={setModal}
                 />
-              </View>
+              </SafeAreaView>
             </ScrollView>
           
           </>

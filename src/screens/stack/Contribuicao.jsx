@@ -1,7 +1,7 @@
 import React, {useEffect, useState, useContext} from 'react';
 import Context from '../../context/Context';
 import Clipboard from '@react-native-clipboard/clipboard';
-import { StyleSheet, View, Text, Image, Dimensions, TouchableOpacity, Alert } from 'react-native';
+import { StyleSheet, View, Text, Image, Dimensions, TouchableOpacity, Alert, SafeAreaView } from 'react-native';
 
 import str from '../../localized/strings';
 
@@ -37,7 +37,7 @@ function Contribuicao({route: { params }}) {
     <>
     <Background img={'tree'} />
     <ToggleMenu />
-      <View style={styles.container}>
+      <SafeAreaView style={styles.container}>
         <View style={{ flexGrow: 1 }}>
           <Header name={params.name} />
         </View>
@@ -46,7 +46,7 @@ function Contribuicao({route: { params }}) {
           <Text style={styles.donateBtn.placeholder}>{str.donateBtn}</Text>
         </TouchableOpacity>
         <Footer />
-      </View>
+      </SafeAreaView>
       <Image source={images.piggy} style={styles.piggy}/>
       <Text style={styles.money}>{'R$ ' + amount.toFixed(2).replace('.', ',')}</Text>
     </>

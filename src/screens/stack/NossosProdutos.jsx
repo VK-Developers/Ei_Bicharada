@@ -1,6 +1,6 @@
 import React, {useState, useEffect, useContext} from 'react';
 import Context from '../../context/Context';
-import { StyleSheet, ScrollView, View } from 'react-native';
+import { StyleSheet, ScrollView, View, SafeAreaView } from 'react-native';
 //Components
 import Header from '../../component/Header';
 import ToggleMenu from '../../component/ToggleMenu';
@@ -30,15 +30,15 @@ function NossosProdutos({navigation, route: { params }}) {
     <ToggleMenu level={scrollY} />
     {
       !loader ? (
-        <ScrollView onScroll={(event) => setScrollY(event.nativeEvent.contentOffset.y)} style={styles.container}>
-          <View>
+        <ScrollView scrollEventThrottle={null} onScroll={(event) => setScrollY(event.nativeEvent.contentOffset.y)} style={styles.container}>
+          <SafeAreaView>
             <Header name={params.name} />
             <View style={styles.products}>
               {
                 products.map((product, i) =>  <Product key={`product-${i}`} nav={navigation} info={product} /> )
               }
             </View>
-          </View>
+          </SafeAreaView>
         </ScrollView>
       ) : (
         <>

@@ -55,7 +55,7 @@ function Rifa({navigation, route: { params }}) {
         <>
             <Background img={'tree'} />
             {modal && <Modal show={modal} action={setModal} info={actionInfo} />}
-            <ScrollView style={styles.container}>
+            <ScrollView scrollEventThrottle={null} style={styles.container}>
                 <Return nav={navigation} />
                 <Image source={{uri: picture}} style={styles.preview}/>
                 <Text style={[styles.text, styles.price]}>{`R$ ${price}`}</Text>

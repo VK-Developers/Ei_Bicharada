@@ -1,5 +1,5 @@
 import React from 'react';
-import { StyleSheet, View } from 'react-native';
+import { StyleSheet, View, SafeAreaView } from 'react-native';
 import { WebView } from 'react-native-webview';
 //Components
 import Footer from '../../component/Footer';
@@ -15,7 +15,7 @@ function PrestacaoDeContas({route: { params }}) {
     <>
       <Background img={'tree'} />
       <ToggleMenu />
-        <View style={styles.container}>
+        <SafeAreaView style={styles.container}>
           <View style={{ flexGrow: 1 }}>
             <Header name={params.name} />
             <View style={{ flexGrow: 1 }}>
@@ -31,7 +31,7 @@ function PrestacaoDeContas({route: { params }}) {
             </View>
           </View>
           <Footer />
-        </View>
+        </SafeAreaView>
     </>
   );
 }
@@ -53,7 +53,6 @@ const styles = StyleSheet.create({
     textAlign: 'center',
   },
   iconContainer: {
-
     alignSelf: 'center',
     backgroundColor: 'rgba(0, 0, 0, 0.1)',
     borderRadius: 20,

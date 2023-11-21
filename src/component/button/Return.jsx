@@ -1,5 +1,5 @@
 import React from 'react';
-import { StyleSheet, Text, TouchableOpacity, Image } from 'react-native';
+import { StyleSheet, Text, TouchableOpacity, Image, Platform } from 'react-native';
 
 import images from '../../localized/images';
 import str from '../../localized/strings';
@@ -15,6 +15,7 @@ function Return({nav}) {
 
 const styles = StyleSheet.create({
   container: {
+    marginTop: Platform.OS === 'ios' ? 25 : 0,
     flexDirection: 'row',
     alignItems: 'center',
   },

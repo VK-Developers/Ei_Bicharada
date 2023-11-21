@@ -72,7 +72,7 @@ const AdmAction = ({ show, action, selected, state }) => {
                     <View style={styles.content}>
                         {condition ? (
                             <>
-                                <ScrollView style={{width: '100%',flex: 1, padding: 20}}>
+                                <ScrollView style={{width: '100%',flex: 1, padding: 20}} scrollEventThrottle={null}>
                                     <View style={styles.contentContainer}>
                                         <Text style={styles.text}>{selected.description}</Text>
                                     </View>
@@ -83,7 +83,7 @@ const AdmAction = ({ show, action, selected, state }) => {
                             </>
                         ) : (
                             <>
-                                <ScrollView style={{width: '100%',flex: 1, padding: 20}}>
+                                <ScrollView style={{width: '100%',flex: 1, padding: 20}} scrollEventThrottle={null}>
                                     <View style={styles.contentContainer}>
                                         <Text style={styles.text}>{selected.description}</Text>
                                     </View>

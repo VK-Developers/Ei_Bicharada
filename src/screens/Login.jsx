@@ -19,7 +19,7 @@ function Login() {
     <>
       <Background img={'five'} />
       <KeyboardAvoidingView style={styles.page}>
-        <ScrollView keyboardShouldPersistTaps="always">
+        <ScrollView keyboardShouldPersistTaps="always" scrollEventThrottle={null}>
           <View>
             <View style={styles.titleContainer}>
               <Image source={images.logo} style={styles.logo} />

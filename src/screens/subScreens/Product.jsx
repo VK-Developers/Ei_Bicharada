@@ -29,7 +29,7 @@ function Product({navigation, route: { params }}) {
     return (
         <>
             <Background img={'tree'} />
-            <ScrollView style={styles.container}>
+            <ScrollView scrollEventThrottle={null} style={styles.container}>
                 <View>
                     <Return nav={navigation} />
                     <Image source={{uri: picture}} style={styles.preview}/>

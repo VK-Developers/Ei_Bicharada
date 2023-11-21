@@ -1,5 +1,5 @@
 import React, {useRef, useState, useEffect} from 'react';
-import { StyleSheet, View, ScrollView, Dimensions } from 'react-native';
+import { StyleSheet, View, ScrollView, SafeAreaView } from 'react-native';
 //Components
 import Footer from '../../component/Footer';
 import Header from '../../component/Header';
@@ -41,8 +41,8 @@ function Resgate({navigation, route: { params }}) {
         reset={setListiner}
         text={str.modal.resgate}
       />
-      <ScrollView style={{flex: 1}} onScroll={(event) => setScrollY(event.nativeEvent.contentOffset.y)} ref={scrollViewRef} keyboardShouldPersistTaps="handled">
-        <View style={styles.container}>
+      <ScrollView scrollEventThrottle={null} style={{flex: 1}} onScroll={(event) => setScrollY(event.nativeEvent.contentOffset.y)} ref={scrollViewRef} keyboardShouldPersistTaps="handled">
+        <SafeAreaView style={styles.container}>
           <View>
             <Header name={params.name} />
             <View style={{flexDirection: 'row', justifyContent: 'space-between', alignItems: 'center'}}>
@@ -63,7 +63,7 @@ function Resgate({navigation, route: { params }}) {
                 })
               }
           </View>
-        </View>
+        </SafeAreaView>
         <Footer 
           sendIt={sendForms} 
           obj={{data: listiner, from: 'rescue'}}

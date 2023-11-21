@@ -84,7 +84,7 @@ const SolicitationList = ({ show, action, params: {name, token} }) => {
             ) : (
                 <View style={styles.container}>
                     <View style={styles.content}>
-                        <ScrollView style={{ width: "100%", height: "100%"}}>
+                        <ScrollView style={{ width: "100%", height: "100%"}} scrollEventThrottle={null}>
                             <TouchableOpacity style={{padding: 10}} onPress={() => setSelected(null)}>
                                 <Image source={images.arrow} style={{width: 45, height: 45}} />
                             </TouchableOpacity>

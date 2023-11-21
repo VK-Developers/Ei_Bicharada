@@ -1,7 +1,7 @@
 import React, {useRef, useState, useEffect, useContext} from 'react';
 import Context from '../../context/Context';
 import CheckBox from '@react-native-community/checkbox';
-import { StyleSheet, View, ScrollView, TouchableOpacity, Text, Image } from 'react-native';
+import { StyleSheet, View, ScrollView, TouchableOpacity, Text, Image, SafeAreaView, Platform } from 'react-native';
 //Components
 import TextInput from '../../component/input/Form';
 import Background from '../../component/Background';
@@ -75,11 +75,11 @@ function NewUser({navigation}) {
         )
       }
 
-      <ScrollView ref={scrollViewRef} extraScrollHeight={20} keyboardShouldPersistTaps="handled">
+      <ScrollView scrollEventThrottle={null} ref={scrollViewRef} extraScrollHeight={20} keyboardShouldPersistTaps="handled">
         {type !== 'city' && (
-          <View style={styles.titleContainer}>
+          <SafeAreaView style={styles.titleContainer}>
             <Text style={styles.titleContainer.text}>{str.newUser[type][0]}</Text>
-          </View>
+          </SafeAreaView>
         )}
 
         {/* basics */}
@@ -108,7 +108,7 @@ function NewUser({navigation}) {
         </View>
 
         {/* city */}
-        <View style={[styles.container, type !== 'city' && {display: 'none' }]}>
+        <SafeAreaView style={[styles.container, type !== 'city' && {display: 'none' }]}>
         {
           regions.map(({city}) => {
             const key = city.replace(' ', '_');
@@ -127,7 +127,7 @@ function NewUser({navigation}) {
             )
           })
         }
-        </View>
+        </SafeAreaView>
 
         {/* password */}
         <View style={[styles.container, type !== 'password' && {display: 'none' }]}>
@@ -191,7 +191,9 @@ const styles = StyleSheet.create({
       textAlign: 'center',
       color: 'black',
       fontSize: 26,
-      fontWeight: '700'
+      fontWeight: '700',
+      marginTop: Platform.OS === 'ios' ? 20 : 0,
+      marginBottom: Platform.OS === 'ios' ? 20 : 0,
     }
   },
   regionContainer: {

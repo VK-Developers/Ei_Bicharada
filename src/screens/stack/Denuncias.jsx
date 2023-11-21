@@ -1,6 +1,6 @@
 import React, {useRef, useState, useEffect, useContext} from 'react';
 import Context from '../../context/Context';
-import { StyleSheet, View, ScrollView, Dimensions } from 'react-native';
+import { StyleSheet, View, ScrollView, SafeAreaView } from 'react-native';
 // Components
 import Footer from '../../component/Footer';
 import Header from '../../component/Header';
@@ -16,8 +16,6 @@ import validateForms from '../../hooks/validateForms';
 
 import Sent from '../../component/modals/Sent';
 import Solicitations from '../../component/modals/SolicitationList'
-
-const { height } = Dimensions.get('screen')
 
 function Denuncias({navigation, route: { params }}) {
   const [sendForms, setSendForms] = useState(false);
@@ -46,8 +44,8 @@ function Denuncias({navigation, route: { params }}) {
         reset={setListiner}
         text={str.modal.denuncia}
       />
-      <ScrollView style={{flex: 1}} onScroll={(event) => setScrollY(event.nativeEvent.contentOffset.y)} ref={scrollViewRef} keyboardShouldPersistTaps="handled">
-        <View style={[styles.container, {opacity: menu ? 0.25 : 1}]}>
+      <ScrollView scrollEventThrottle={null} style={{flex: 1}} onScroll={(event) => setScrollY(event.nativeEvent.contentOffset.y)} ref={scrollViewRef} keyboardShouldPersistTaps="handled">
+        <SafeAreaView style={[styles.container, {opacity: menu ? 0.25 : 1}]}>
           <View>
             <Header name={params.name} />
             <View style={{flexDirection: 'row', justifyContent: 'space-between', alignItems: 'center'}}>
@@ -68,7 +66,7 @@ function Denuncias({navigation, route: { params }}) {
                 })
               }
           </View>
-        </View>
+        </SafeAreaView>
         <Footer 
           sendIt={sendForms} 
           obj={{data: listiner, from: 'complains'}}
