@@ -1,7 +1,7 @@
 import React, { useState, useContext } from 'react';
 import { useFocusEffect } from '@react-navigation/native';
 import Context from '../../context/Context';
-import { StyleSheet, SafeAreaView, FlatList } from 'react-native';
+import { StyleSheet, SafeAreaView, FlatList, Platform } from 'react-native';
 //Components
 import Header from '../../component/Header';
 import ToggleMenu from '../../component/ToggleMenu';

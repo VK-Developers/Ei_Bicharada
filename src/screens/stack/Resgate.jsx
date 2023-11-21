@@ -16,8 +16,6 @@ import ToggleMenu from '../../component/ToggleMenu';
 import Sent from '../../component/modals/Sent';
 import Solicitations from '../../component/modals/SolicitationList'
 
-const { height } = Dimensions.get('screen');
-
 function Resgate({navigation, route: { params }}) {
   const [listModal, setListModal] = useState(false);
   const [scrollY, setScrollY] = useState(0);

@@ -1,6 +1,6 @@
 import React, {useContext} from 'react';
 import Context from '../context/Context';
-import { StyleSheet, TouchableOpacity, View, Dimensions } from 'react-native';
+import { StyleSheet, TouchableOpacity, View, Dimensions, Platform } from 'react-native';
 
 import MenuLinks from './button/Menu';
 import SOSKitty from './button/SOSKitty'
@@ -21,10 +21,9 @@ function ToggleMenu({level}) {
     </TouchableOpacity>
   ) : (
     <>
+      <Background img={'tree'} cover={true} />
       <LogOut />
       <TouchableOpacity style={styles.container} onPress={handlePress} />
-      {/* Marcelo Request =/ */}
-      <Background img={'tree'} cover={true} />
       <View style={styles.shape}/>
       <View style={styles.content}>
         <TouchableOpacity style={styles.close} onPress={handlePress}>
@@ -57,7 +56,8 @@ const styles = StyleSheet.create({
     zIndex: 3,
   },
   content: {
-    marginTop: 10,
+    // marginTop: 10,
+    marginTop: Platform.OS === 'ios' ? 60 : 10,
     height: height * 0.8,
     width: width * 0.8,
     justifyContent: 'space-around',
@@ -67,7 +67,8 @@ const styles = StyleSheet.create({
   },
   close: {
     position: 'absolute',
-    top: 15,
+    // top: 15,
+    marginTop: Platform.OS === 'ios' ? -25 : 15,
     right: 20,
     width: 45,
     height: 35,
@@ -77,7 +78,8 @@ const styles = StyleSheet.create({
   },
   containerClose: {
     position: 'absolute',
-    top: 15,
+    // top: 15,
+    top: Platform.OS === 'ios' ? 50 : 15,
     left: 20,
     width: 45,
     height: 30,
