@@ -8,7 +8,6 @@ const { width } = Dimensions.get('window');
 function FormInput({info, baseRef, action, btn}) {
   const {title, maxLength, type} = info;
   const [text, setText] = useState(info.title === 'Telefone' ? '+55 ' : '');
-  const [updateLine, setUpdateLine] = useState(false);
   const inputRef = useRef();
 
   useEffect(() => {

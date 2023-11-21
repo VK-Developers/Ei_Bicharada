@@ -65,9 +65,10 @@ const SolicitationList = ({ show, action, params: {name, token} }) => {
             transparent={true}
             visible={show}
         >
-            <TouchableOpacity onPress={handleClose} style={styles.mask} />
+            
             {!selected ? (
                 <View style={styles.container}>
+                    <TouchableOpacity onPress={handleClose} style={styles.mask} />
                     <View style={styles.content}>
                     { list.length !== 0 ? (
                         <FlatList 

@@ -49,8 +49,9 @@ const Rifa = ({ show, action, info: {number, raffle} }) => {
             transparent={true}
             visible={show}
         >
-            <TouchableOpacity onPress={() => action(false)} style={styles.mask} />
+            
                 <View style={styles.container}>
+                    <TouchableOpacity onPress={() => action(false)} style={styles.mask} />
                     <View style={styles.content}>
                         <Text style={[styles.text, {marginBottom: 30, marginTop: 30}]}>Agradecemos o seu interesse!</Text>
                         <View style={{backgroundColor: '#F9F6EE', flexGrow: 1, width: "95%", borderRadius: 15, padding: 20, alignItems: 'center'}}>

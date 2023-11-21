@@ -43,9 +43,10 @@ const NewAnimal = ({ show, action, type }) => {
             transparent={true}
             visible={show}
             onRequestClose={handleClose}
+            style={{backgroundColor: 'red'}}
         >
-            <TouchableOpacity onPress={handleClose} style={styles.mask} />
-            <View  style={styles.container}>
+            <View style={styles.container}>
+                <TouchableOpacity onPress={handleClose} style={styles.mask} />
                 <View style={styles.content}>
                     {!sent ? (
                         <ScrollView style={{width: "100%"}} scrollEventThrottle={null}>
@@ -116,9 +117,10 @@ const styles = StyleSheet.create({
     mask: {
         position: 'absolute',
         width: "100%",
-        height: "100%"
+        height: "100%",
     },
     content: {
+        backgroundColor: 'red',
         width: '90%',
         height: '85%',
         backgroundColor: 'white',
