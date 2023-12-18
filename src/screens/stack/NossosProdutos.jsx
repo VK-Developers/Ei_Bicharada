@@ -42,7 +42,7 @@ function NossosProdutos({navigation, route: { params }}) {
         </ScrollView>
       ) : (
         <>
-          <Background img={'tree'} />
+          <Background img={'tree'} tint={"#B87333"} />
         </>
       ) 
     }

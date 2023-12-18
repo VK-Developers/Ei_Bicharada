@@ -61,7 +61,7 @@ function NewUser({navigation}) {
 
   return (
     <>
-      <Background img={'tree'} />
+      <Background img={'tree'} tint={"#B87333"} />
       <EmailModal show={modal} action={setModal} data={setLister}/>
       
       {

@@ -63,6 +63,7 @@ const styles = StyleSheet.create({
     alignItems: 'center',
     height: height * 0.14,
 
+
     position: 'relative',
     bottom: 0,
     left: 0,

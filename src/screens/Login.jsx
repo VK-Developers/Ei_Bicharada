@@ -31,16 +31,13 @@ function Login() {
             </View>
             <View style={styles.submit}>
               <Buttom type={'login'} title={strings.signIn} />
-              {/* <TouchableOpacity style={{margin: 10}}>
-                <Text style={styles.resetPassword}>{strings.passwordForgot}</Text>
-              </TouchableOpacity> */}
               <View style={{height: 15}} />
               <Buttom type={'newUser'} title={strings.signUp} />
             </View>
           </View>
+          <Footer exeption={true} />
         </ScrollView>
       </KeyboardAvoidingView>
-      <Footer exeption={true} />
     </>
   ) :
   (

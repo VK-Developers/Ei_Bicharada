@@ -47,7 +47,7 @@ function NoticiasEventos({navigation, route: { params }}) {
               renderItem={renderComponente}
               keyExtractor={({id}) => 'lost-' + id}
               onScroll={(event) => setScrollY(event.nativeEvent.contentOffset.y)}
-              ItemSeparatorComponent={ <View style={{height: 20}} /> }
+              ItemSeparatorComponent={ <View style={{height: 5}} /> }
               ListHeaderComponent={() => <Header name={params.name} /> }
             />
           </View>

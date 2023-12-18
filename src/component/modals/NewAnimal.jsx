@@ -66,7 +66,20 @@ const NewAnimal = ({ show, action, type }) => {
                                     const run = openCamera(setListiner, 'folder')
                                     run();
                                 }}>
-                                    <Image style={{width: 70, height: 70}} source={images.folder} />
+                                    <Image style={{width: 70, height: 70, tintColor: "rgba(184, 115, 51, 0.5)"}} source={images.folder} />
+                                    <Text 
+                                        style={{
+                                            color: 'black',
+                                            fontWeight: '600',
+                                            position: 'absolute', 
+                                            height: 'auto',
+                                            alignSelf: 'center',
+                                            width: "100%",
+                                            textAlign: 'center',
+                                        }}
+                                    >
+                                        Galeria
+                                    </Text>
                                     {!!listiner.picture && listiner.picture[1] === 'folder' && <Image style={styles.checked} source={images.checked} /> }
                                 </TouchableOpacity>
                                 {

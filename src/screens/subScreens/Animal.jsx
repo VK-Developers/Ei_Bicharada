@@ -13,7 +13,7 @@ function Animal({navigation, route: {params}}) {
 
     return (
         <>
-            <Background img={'tree'} />
+            <Background img={'tree'} tint={"#B87333"} />
             <ScrollView scrollEventThrottle={null} style={styles.container}>
                 <View>
                     <Return nav={navigation} />
@@ -40,7 +40,7 @@ const styles = StyleSheet.create({
     },
     preview: {
         marginTop: 20,
-        backgroundColor: 'white',
+        // backgroundColor: 'white',
         width,
         height: height * 0.3,
         objectFit: 'contain'

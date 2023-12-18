@@ -57,10 +57,9 @@ function New({nav, info, eventCard}) {
 const styles = StyleSheet.create({
     container: {
         borderRadius: 20,
-        // padding: 10,
+        marginBottom: 15,
         position: 'relative',
         overflow: 'hidden',
-        
     },
     title: {
         alignSelf: 'center',
@@ -70,22 +69,19 @@ const styles = StyleSheet.create({
     },
     content: {
         alignSelf: 'stretch',
-        // color: 'black',
         fontWeight: '600',
         fontSize: 16,
         padding: 10,
-        
     },
     data: {
         color: 'white',
         fontSize: 13,
         fontWeight: "700",
         alignSelf: 'flex-end'
-
     },
     background: {
         flex: 1,
-    },
+    }
 })
 
 
