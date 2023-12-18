@@ -13,7 +13,7 @@ function PrestacaoDeContas({route: { params }}) {
 
   return (
     <>
-      <Background img={'tree'} />
+      <Background img={'tree'} tint={"#B87333"} />
       <ToggleMenu />
         <SafeAreaView style={styles.container}>
           <View style={{ flexGrow: 1 }}>

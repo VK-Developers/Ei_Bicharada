@@ -35,7 +35,7 @@ function AnimaisPerdidos({navigation, route: { params }}) {
 
   return (
     <>
-      <Background img={'tree'} />
+      <Background img={'tree'} tint={"#B87333"} />
       <ToggleMenu level={scrollY}/>
       { !!modal && <NewAnimalModal show={modal} action={setModal} type={'lost'} /> }
       {
@@ -64,7 +64,7 @@ function AnimaisPerdidos({navigation, route: { params }}) {
           </SafeAreaView>
         ) : (
           <>
-            <Background img={'tree'} />
+            <Background img={'tree'} tint={"#B87333"} />
           </>
         )
       }

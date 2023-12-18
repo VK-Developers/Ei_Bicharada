@@ -5,7 +5,7 @@ import { StyleSheet, TouchableOpacity, View, Dimensions, Platform } from 'react-
 import MenuLinks from './button/Menu';
 import SOSKitty from './button/SOSKitty'
 import { menuTopics as topics } from '../localized/structures';
-import Background from './Background';
+// import Background from './Background';
 import LogOut from './LogOut';
 
 const {width, height} = Dimensions.get('screen');
@@ -21,7 +21,7 @@ function ToggleMenu({level}) {
     </TouchableOpacity>
   ) : (
     <>
-      <Background img={'tree'} cover={true} />
+      {/* <Background img={'tree'} cover={true} tint={"#0A8C60"} /> */}
       <LogOut />
       <TouchableOpacity style={styles.container} onPress={handlePress} />
       <View style={styles.shape}/>
@@ -48,7 +48,8 @@ const styles = StyleSheet.create({
     width,
   },
   shape: {
-    backgroundColor: 'rgba(196,195,208, 1)',
+    // backgroundColor: 'rgba(196,195,208, 1)',
+    backgroundColor: '#FBECC4',
     position: 'absolute',
     width: width * 0.8,
     height,
@@ -56,7 +57,6 @@ const styles = StyleSheet.create({
     zIndex: 3,
   },
   content: {
-    // marginTop: 10,
     marginTop: Platform.OS === 'ios' ? 60 : 10,
     height: height * 0.8,
     width: width * 0.8,
@@ -67,8 +67,7 @@ const styles = StyleSheet.create({
   },
   close: {
     position: 'absolute',
-    // top: 15,
-    marginTop: Platform.OS === 'ios' ? -25 : 15,
+    marginTop: Platform.OS === 'ios' ? -25 : 0,
     right: 20,
     width: 45,
     height: 35,
@@ -78,7 +77,6 @@ const styles = StyleSheet.create({
   },
   containerClose: {
     position: 'absolute',
-    // top: 15,
     top: Platform.OS === 'ios' ? 50 : 15,
     left: 20,
     width: 45,

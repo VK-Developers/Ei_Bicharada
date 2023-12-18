@@ -18,7 +18,7 @@ const styles = StyleSheet.create({
     alignItems: 'center',
     justifyContent: 'center',
     text: {
-      color: 'red',
+      color: '#0A8C60',
       fontSize: 26,
       fontWeight: '800'
     }

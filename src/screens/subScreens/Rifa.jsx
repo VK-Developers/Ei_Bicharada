@@ -53,7 +53,7 @@ function Rifa({navigation, route: { params }}) {
 
     return (
         <>
-            <Background img={'tree'} />
+            <Background img={'tree'} tint={"#B87333"} />
             {modal && <Modal show={modal} action={setModal} info={actionInfo} />}
             <ScrollView scrollEventThrottle={null} style={styles.container}>
                 <Return nav={navigation} />

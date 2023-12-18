@@ -6,7 +6,6 @@ import format from '../../hooks/formatRouteName';
 
 import images from '../../localized/images';
 
-
 function MenuButtom({name}) {
   const {setMenu, token} = useContext(Context);
   const { navigate } = useNavigation();
@@ -35,15 +34,16 @@ const styles = StyleSheet.create({
     flexDirection: 'row',
   },
   text: {
-    color: 'red',
-    fontSize: 24,
-    fontWeight: '600'
+    color: 'black',
+    fontSize: 22,
+    fontWeight: '700'
   },
   logo: {
     width: 35,
     height: 35,
     marginRight: 15,
-    marginLeft: 10
+    marginLeft: 10,
+    tintColor: "#B87333",
   }
 })
 

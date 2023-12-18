@@ -16,7 +16,7 @@ function Product({navigation, route: { params }}) {
         const handlePress = () => navigation.navigate('Payment', {...params})
 
         return (
-            <TouchableOpacity 
+            <TouchableOpacity
                 disabled={!inStock} 
                 style={[styles.buy, background]}
                 onPress={handlePress}
@@ -28,7 +28,7 @@ function Product({navigation, route: { params }}) {
 
     return (
         <>
-            <Background img={'tree'} />
+            <Background img={'tree'} tint={"#B87333"} />
             <ScrollView scrollEventThrottle={null} style={styles.container}>
                 <View>
                     <Return nav={navigation} />

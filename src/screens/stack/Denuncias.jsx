@@ -34,7 +34,7 @@ function Denuncias({navigation, route: { params }}) {
 
   return (
     <>
-      <Background img={'tree'} />
+      <Background img={'tree'} tint={"#B87333"} />
       <ToggleMenu level={scrollY} />
       { !!listModal && <Solicitations show={listModal} action={setListModal} params={params} /> }
       <Sent

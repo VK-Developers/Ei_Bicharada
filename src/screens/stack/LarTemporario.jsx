@@ -62,7 +62,7 @@ function LarTemporario({navigation, route: { params }}) {
 
   return (
     <>
-      <Background img={'tree'} />
+      <Background img={'tree'} tint={"#B87333"} />
       <ToggleMenu level={scrollY} />
       <Alert show={alertModal} action={setAlertModal}/>
       <Sent 

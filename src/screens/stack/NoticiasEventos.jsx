@@ -33,7 +33,7 @@ function NoticiasEventos({navigation, route: { params }}) {
 
   return (
     <>
-      <Background img={'four'} />
+      <Background img={'four'} tint={"#B87333"} />
       <ToggleMenu level={scrollY} />
       {!!selectedEvent.show && (
           <TouchableOpacity style={styles.mask} onPress={eventPress}>

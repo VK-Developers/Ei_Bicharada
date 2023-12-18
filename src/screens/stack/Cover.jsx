@@ -21,7 +21,7 @@ function Cover() {
 
   return (
     <>
-      <Background img={'tree'} cover={true} />
+      <Background img={'tree'} cover={true} tint={"#0A8C60"} />
       <View style={styles.shape}/>
       <LogOut />
       <View style={{position: 'absolute', zIndex: 1}}>
@@ -38,7 +38,7 @@ function Cover() {
 
 const styles = StyleSheet.create({
   shape: {
-    backgroundColor: 'rgba(196,195,208, 1)',
+    backgroundColor: '#FBECC4',
     position: 'absolute',
     width: width * 0.8,
     height,

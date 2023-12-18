@@ -17,13 +17,13 @@ function Login() {
 
   return !loader ? (
     <>
-      <Background img={'five'} />
+      <Background img={'five'} tint={'#F3A253'} />
       <KeyboardAvoidingView style={styles.page}>
-        <ScrollView keyboardShouldPersistTaps="always" scrollEventThrottle={null}>
+        <ScrollView keyboardShouldPersistTaps="always" scrollEventThrottle={null} style={{paddingTop: 50}}>
           <View>
             <View style={styles.titleContainer}>
               <Image source={images.logo} style={styles.logo} />
-              <Text style={styles.title}>{strings.appTitle}</Text>
+              {/* <Text style={styles.title}>{strings.appTitle}</Text> */}
             </View>
             <View style={styles.login}>
               <InputText type={'email'} title={strings.login[0]} placeholder={strings.login[1]} />
@@ -38,14 +38,14 @@ function Login() {
               <Buttom type={'newUser'} title={strings.signUp} />
             </View>
           </View>
-          <Footer exeption={true} />
         </ScrollView>
       </KeyboardAvoidingView>
+      <Footer exeption={true} />
     </>
   ) :
   (
     <>
-      <Background img={'five'} />
+      <Background img={'five'} tint={'#F3A253'} />
       <Loader />
     </>
   )
@@ -64,8 +64,9 @@ const styles = StyleSheet.create({
   },
   logo: {
     alignSelf: 'center',
-    width: 120,
-    height: 120,
+    // width: 120,
+    height: 110,
+    objectFit: 'contain',
   },
   title: {
     color: 'black',

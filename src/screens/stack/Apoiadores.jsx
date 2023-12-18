@@ -33,7 +33,7 @@ function Apoiadores({navigation, route: { params }}) {
 
   return (
     <>
-    <Background img={'tree'} />
+    <Background img={'tree'} tint={"#B87333"} />
     { !!selected ? (
         <TouchableOpacity onPress={() => setSelected('')} style={styles.full}>
           <ImageBackground source={{uri: str.https + selected}} style={styles.img} resizeMode="stretch" />

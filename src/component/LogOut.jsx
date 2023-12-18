@@ -25,7 +25,7 @@ function LogOut() {
 
 const styles = StyleSheet.create({
   container: {
-    backgroundColor: 'rgba(196,195,208, 1)',
+    backgroundColor: '#FBECC4',
     position: 'absolute',
     zIndex: 4,
     bottom: 10,
@@ -36,7 +36,8 @@ const styles = StyleSheet.create({
   logo: {
     marginLeft: 8,
     width: 50,
-    height: 50
+    height: 50,
+    tintColor: "#0A8C60"
   }
 })
 

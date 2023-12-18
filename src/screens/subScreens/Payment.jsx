@@ -12,7 +12,7 @@ function Payment({navigation, route: { params }}) {
 
     return (
         <>
-            <Background img={'tree'} />
+            <Background img={'tree'} tint={"#B87333"} />
             {
                 !!modal && (
                     <Modal 

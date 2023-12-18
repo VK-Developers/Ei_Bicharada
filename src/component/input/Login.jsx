@@ -56,7 +56,8 @@ const styles = StyleSheet.create({
       color: 'black'
     },
     input: {
-      backgroundColor: '#FFFFF0',
+      // backgroundColor: '#FBECC4',
+      backgroundColor: "rgba(251, 236, 196, 0.5)",
       borderRadius: 10,
       padding: 10,
       color: 'black',

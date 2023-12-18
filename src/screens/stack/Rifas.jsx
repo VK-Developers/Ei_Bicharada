@@ -35,7 +35,7 @@ function Rifas({navigation, route: { params }}) {
 
   return (
     <>
-      <Background img={'five'} />
+      <Background img={'five'} tint={"#B87333"} />
       <ToggleMenu level={scrollY} />
       {rifas.length > 0 ? (
         <SafeAreaView style={styles.container}>

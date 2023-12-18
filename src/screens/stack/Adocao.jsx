@@ -35,7 +35,7 @@ function Adocao({navigation, route: { params }}) {
 
   return (
     <>
-      <Background img={'tree'} />
+      <Background img={'tree'} tint={"#B87333"} />
       <ToggleMenu level={scrollY} />
       { !!modal && <NewAnimalModal show={modal} action={setModal} type={'adoption'} /> }
       {
@@ -67,7 +67,7 @@ function Adocao({navigation, route: { params }}) {
           </SafeAreaView>
         ) : (
           <>
-            <Background img={'tree'} />
+            <Background img={'tree'} tint={"#B87333"} />
           </>
         )
       }

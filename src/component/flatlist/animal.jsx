@@ -25,7 +25,7 @@ function Animal({info, nav}) {
                   <Image style={{width: 90, height: 90}} source={images.backgrounds.one} />
                   <View style={styles.info}>
                         <View style={[styles.desc, {marginBottom: 5}]}>
-                              <Text style={{color: 'black', fontWeight: '600', marginRight: 15}}>{str.name + ':'}</Text>
+                              <Text style={{color: 'black', fontWeight: '700', marginRight: 15}}>{str.name + ':'}</Text>
                               <Text style={{color: 'black', fontWeight: '800', fontSize: 16}}>Nome do Pet</Text>
                         </View>
                         <View style={styles.desc}>
@@ -64,7 +64,7 @@ const styles = StyleSheet.create({
             flex: 1,
             flexWrap: 'wrap',
             fontSize: 15,
-            fontWeight: '400',
+            fontWeight: '500',
             textAlign: 'justify',  
       }
 })

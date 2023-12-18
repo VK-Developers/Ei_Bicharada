@@ -25,7 +25,7 @@ function Article({
 
     return (
         <>
-            <Background img={'tree'} />
+            <Background img={'tree'} tint={"#B87333"} />
             <ScrollView scrollEventThrottle={null} style={styles.container}>
                 <Return nav={navigation} />
                 <View style={styles.content}>

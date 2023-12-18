@@ -32,7 +32,7 @@ const styles = StyleSheet.create({
     flexDirection: 'row',
   },
   text: {
-    color: '#FF00FF',
+    color: '#FF69B4',
     fontSize: 24,
     fontWeight: '600'
   },
@@ -41,7 +41,7 @@ const styles = StyleSheet.create({
     height: 35,
     marginRight: 15,
     marginLeft: 10,
-    tintColor: '#FF00FF'
+    tintColor: '#FF69B4'
   }
 })
 
