@@ -77,7 +77,8 @@ const styles = StyleSheet.create({
   },
   containerClose: {
     position: 'absolute',
-    top: Platform.OS === 'ios' ? 50 : 15,
+    // top: (Platform.OS === 'ios' && height > 715) ? 65 : 15,
+    top: Platform.OS === 'ios' ? (height > 715 ? 65 : 30) : 15,
     left: 20,
     width: 45,
     height: 30,

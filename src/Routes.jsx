@@ -2,7 +2,7 @@ import React from 'react';
 import { createStackNavigator } from '@react-navigation/stack';
 import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
 import { NavigationContainer, DefaultTheme } from '@react-navigation/native';
-import { StatusBar, Image } from 'react-native';
+import { StatusBar, Image, Platform } from 'react-native';
 // Stack Components
 import LoginScreen from './screens/Login';
 import NewUserScreen from './screens/stack/NewUser';
@@ -121,7 +121,7 @@ export default function App() {
 
   return (
     <NavigationContainer theme={mainTheme}>
-      <StatusBar barStyle="light-content" backgroundColor="black" />
+      <StatusBar barStyle={Platform.OS === "ios" ? "dark-content" : "light-content"} backgroundColor="black" />
       <Stack.Navigator screenOptions={options} initialRouteName='Login'>
         <Stack.Screen name="Login" component={LoginScreen} />
         <Stack.Screen name="NewUser" component={NewUserScreen} />

@@ -93,7 +93,8 @@ const styles = StyleSheet.create({
         width: 50,
         textAlign: 'center',
         fontSize: 20,
-        fontWeight: '600'
+        fontWeight: '600',
+        color: 'white'
     },
     btn: {
         backgroundColor: 'green',
