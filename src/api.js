@@ -10,27 +10,29 @@ const api = express();
 api.use(express.json());
 api.use(cors);
 
+const SERVER_INDEX = "hey-pet";
+
 // View Pictures
 api.use('/uploads', routes.picture)
 
-// Requests
-api.use("/infos", routes.information);
-api.use("/login", routes.login);
-api.use("/users", routes.user);
-api.use("/regions", routes.region);
-api.use("/adoptions", routes.adoption);
-api.use("/missing-animals", routes.missingAnimal);
-api.use("/rescues", routes.rescue);
-api.use("/complains", routes.complain);
-api.use("/homes", routes.home);
-api.use("/products", routes.product);
-api.use("/news-events", routes.newEvent);
-api.use("/contributions", routes.contribution);
-api.use("/sponsors", routes.sponsor);
-api.use("/victims", routes.victim);
-api.use("/raffles", routes.raffle);
+// Requests `/${SERVER_INDEX}/infos`
+api.use(`/${SERVER_INDEX}/infos`, routes.information);
+api.use(`/${SERVER_INDEX}/login`, routes.login);
+api.use(`/${SERVER_INDEX}/users`, routes.user);
+api.use(`/${SERVER_INDEX}/regions`, routes.region);
+api.use(`/${SERVER_INDEX}/adoptions`, routes.adoption);
+api.use(`/${SERVER_INDEX}/missing-animals`, routes.missingAnimal);
+api.use(`/${SERVER_INDEX}/rescues`, routes.rescue);
+api.use(`/${SERVER_INDEX}/complains`, routes.complain);
+api.use(`/${SERVER_INDEX}/homes`, routes.home);
+api.use(`/${SERVER_INDEX}/products`, routes.product);
+api.use(`/${SERVER_INDEX}/news-events`, routes.newEvent);
+api.use(`/${SERVER_INDEX}/contributions`, routes.contribution);
+api.use(`/${SERVER_INDEX}/sponsors`, routes.sponsor);
+api.use(`/${SERVER_INDEX}/victims`, routes.victim);
+api.use(`/${SERVER_INDEX}/raffles`, routes.raffle);
 
-api.use("/raffles-number", routes.raffleNumber);
+api.use(`/${SERVER_INDEX}/raffles-number`, routes.raffleNumber);
 
 api.use(errorHandler);
 
