@@ -1,14 +1,19 @@
 import axios from 'axios';
 
 const server = {
-  androidPhone: 'http://192.168.0.51:3001',
-  android: 'http://10.0.2.2:3001',
-  ios: 'http://localhost:3001',
-  api: 'http://193.203.183.47:3001'
+  url: {
+    // local
+    androidPhone: 'https://192.168.0.51:3001',
+    android: 'https://10.0.2.2:3001',
+    ios: 'https://localhost:3001',
+    // Production
+    api: 'https://api.vincenzofdg.com.br'
+  },
+  prefix: "/hey-pet"
 }
 
 const api = axios.create({
-  baseURL: server.api,
+  baseURL: server.url.api + server.prefix,
 });
 
 export default api;
