@@ -4,6 +4,7 @@ import Context from './Context';
 
 import { allInfos } from '../services/information';
 import { checkCache } from '../hooks/cache';
+import security from '../services/security';
 
 function MyProvider({children}) {
   const [login, setLogin] = useState({email: LOGIN || '', password: PASSWORD || '', status: true});
@@ -11,16 +12,22 @@ function MyProvider({children}) {
   const [menu, setMenu] = useState(true);
   const [loader, setLoader] = useState(false);
   const [infos, setInfos] = useState(false);
+  const [block, setBlock] = useState(1);
   
   const obj = {
     login, setLogin,
     menu, setMenu,
     token, setToken,
     loader, setLoader,
-    infos
+    infos, block
   };
 
   useEffect(() => {
+    async function WillRender() {
+      const pass = await security();
+      setBlock(pass)
+    }
+
     async function GetCache() {
       const cache = await checkCache('logIn')
       if (!cache) return
@@ -49,6 +56,7 @@ function MyProvider({children}) {
       setInfos(newObj)
     }
 
+    WillRender()
     GetCache()
     Infos()
     console.log('App - Hey Pet!')

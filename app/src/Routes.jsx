@@ -19,6 +19,7 @@ import PrestacaoDeContasScreen from './screens/stack/PrestacaoDeContas';
 import ApoiadoresScreen from './screens/stack/Apoiadores';
 import RifasScreen from './screens/stack/Rifas';
 import AjustesScreen from './screens/stack/Ajustes';
+import BlockScreen from './screens/stack/Block'
 // Sub Stacks
 import ProductScreen from './screens/subScreens/Product';
 import AnimalScreen from './screens/subScreens/Animal';
@@ -140,6 +141,7 @@ export default function App() {
         <Stack.Screen name="Apoiadores" component={ApoiadoresScreen} />
         <Stack.Screen name="Pet&Sorte" component={RifasScreen} />
         <Stack.Screen name="Ajuste" component={AjustesScreen} />
+        <Stack.Screen name="Block" component={BlockScreen} />
         {/* Sub Screens */}
         <Stack.Screen name="Product" component={ProductScreen} />
         <Stack.Screen name="Animal" component={AnimalScreen} />

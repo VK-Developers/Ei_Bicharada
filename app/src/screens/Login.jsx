@@ -1,4 +1,4 @@
-import React, { useContext } from 'react';
+import React, { useContext, useEffect } from 'react';
 import Context from '../context/Context';
 import { StyleSheet, KeyboardAvoidingView, View, TouchableOpacity, Dimensions, Image, Text, ScrollView } from 'react-native';
 import images from '../localized/images';
@@ -12,8 +12,15 @@ import strings from '../localized/strings';
 
 const { height, width } = Dimensions.get('window');
 
-function Login() {
-  const { loader } = useContext(Context);
+function Login({navigation}) {
+  const { loader, block } = useContext(Context);
+
+  useEffect(() => {
+    if (block == 0) {
+      navigation.navigate('Block')
+      return 
+    }
+  }, [block])
 
   return !loader ? (
     <>

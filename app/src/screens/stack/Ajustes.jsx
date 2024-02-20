@@ -1,5 +1,5 @@
 import { useContext, useState, useEffect } from 'react';
-import { StyleSheet, SafeAreaView, TouchableOpacity, Text, ScrollView, View, TextInput, Image } from 'react-native';
+import { StyleSheet, SafeAreaView, TouchableOpacity, Text, ScrollView, View, TextInput, Image, Platform } from 'react-native';
 import Context from '../../context/Context';
 
 import Background from "../../component/Background";
@@ -48,40 +48,44 @@ function Ajustes({navigation, route: { params }}) {
     info: (
       <View style={styles.inputSection}>
         <View style={{padding: 5, flexDirection: 'row', justifyContent: 'space-between', paddingLeft: 20, paddingRight: 20}}>
-          <Text>Nome</Text>
+          <Text style={{color: "black"}}>Nome</Text>
           <TextInput
             value={basic.name}
             style={styles.infoInput}
             placeholder={user.name}
+            placeholderTextColor={"rgba(0, 0, 0, 0.2)"}
             onChangeText={(i) => setBasic(p => ({...p, name: i}))}
           />
         </View>
         <View style={{padding: 5, flexDirection: 'row', justifyContent: 'space-between', paddingLeft: 20, paddingRight: 20}}>
-          <Text>Telefone</Text>
+          <Text style={{color: "black"}}>Telefone</Text>
           <TextInput
             value={basic.phone}
             keyboardType='numeric'
             style={styles.infoInput}
             placeholder={user.phone}
+            placeholderTextColor={"rgba(0, 0, 0, 0.2)"}
             onChangeText={(i) => setBasic(p => ({...p, phone: i}))}
           />
         </View>
         <View style={{padding: 5, flexDirection: 'row', justifyContent: 'space-between', paddingLeft: 20, paddingRight: 20}}>
-          <Text>Cidade</Text>
+          <Text style={{color: "black"}}>Cidade</Text>
           <TextInput
             value={basic.city}
             style={styles.infoInput}
             placeholder={user.city}
+            placeholderTextColor={"rgba(0, 0, 0, 0.2)"}
             onChangeText={(i) => setBasic(p => ({...p, city: i}))}
           />
         </View>
         <View style={{padding: 5, flexDirection: 'row', justifyContent: 'space-between', paddingLeft: 20, paddingRight: 20}}>
-          <Text>CEP</Text>
+          <Text style={{color: "black"}}>CEP</Text>
           <TextInput
             value={basic.cep}
             keyboardType='numeric'
             style={styles.infoInput}
             placeholder={user.cep}
+            placeholderTextColor={"rgba(0, 0, 0, 0.2)"}
             onChangeText={(i) => setBasic(p => ({...p, cep: i}))}
           />
         </View>
@@ -92,23 +96,20 @@ function Ajustes({navigation, route: { params }}) {
     ),
     password: (
       <View style={styles.inputSection}>
-
         <View style={{padding: 5, flexDirection: 'row', justifyContent: 'space-between', paddingLeft: 20, paddingRight: 20}}>
-          <Text>Nova Senha</Text>
+          <Text style={{color: "black"}}>Nova Senha</Text>
           <TextInput
             style={styles.infoInput}
             onChangeText={(i) => setPassword(p => ({...p, value: i}))}
           />
         </View>
-
         <View style={{padding: 5, flexDirection: 'row', justifyContent: 'space-between', paddingLeft: 20, paddingRight: 20}}>
-          <Text>Confirmar</Text>
+          <Text style={{color: "black"}}>Confirmar</Text>
           <TextInput
             style={styles.infoInput}
             onChangeText={(i) => setPassword(p => ({...p, confirm: i}))}
           />
         </View>
-
         <TouchableOpacity
           disabled={password.value !== password.confirm} 
           style={[
@@ -126,7 +127,7 @@ function Ajustes({navigation, route: { params }}) {
     delete: (
       <View style={styles.inputSection}>
         <View style={{padding: 5, flexDirection: 'row', justifyContent: 'space-between', paddingLeft: 20, paddingRight: 20}}>
-          <Text>Confirmar Email</Text>
+          <Text style={{color: "black"}}>Confirmar Email</Text>
           <TextInput
             value={confirmEmail}
             style={[styles.infoInput, {width: "65%"}]}
@@ -165,12 +166,15 @@ function Ajustes({navigation, route: { params }}) {
       </View>
     )
   }
-   
+
   return (
     <>
       <Background img={'tree'} tint={"#B87333"} />
       <SafeAreaView style={styles.container}>
         <ScrollView>
+          {
+            Platform.OS === "android" && <View style={{height: 30}}/>
+          }
           <Return nav={navigation} />
           {menuBtn("Informações Básica", 'select', 'info')}
           {menuBtn("Alterar Senha", 'select', 'password')}
@@ -194,7 +198,8 @@ const styles = StyleSheet.create({
     text: {
       textAlign: 'center',
       fontSize: 16,
-      fontWeight: "500"
+      fontWeight: "500",
+      color: "black"
     }
   },
   inputSection: {
@@ -205,7 +210,8 @@ const styles = StyleSheet.create({
     padding: 5,
     width: "70%",
     alignSelf: 'center',
-    borderBottomWidth: 0.5
+    borderBottomWidth: 0.5,
+    color: "black"
   },
   submitBtn: {
     backgroundColor: "green",
