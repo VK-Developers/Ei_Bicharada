@@ -13,9 +13,8 @@ api.use(cors);
 const SERVER_INDEX = "hey-pet";
 
 // View Pictures
-api.use('/uploads', routes.picture)
-
-// Requests `/${SERVER_INDEX}/infos`
+api.use(`/${SERVER_INDEX}/uploads`, routes.picture)
+// Normal Routes
 api.use(`/${SERVER_INDEX}/infos`, routes.information);
 api.use(`/${SERVER_INDEX}/login`, routes.login);
 api.use(`/${SERVER_INDEX}/users`, routes.user);
@@ -31,9 +30,8 @@ api.use(`/${SERVER_INDEX}/contributions`, routes.contribution);
 api.use(`/${SERVER_INDEX}/sponsors`, routes.sponsor);
 api.use(`/${SERVER_INDEX}/victims`, routes.victim);
 api.use(`/${SERVER_INDEX}/raffles`, routes.raffle);
-
 api.use(`/${SERVER_INDEX}/raffles-number`, routes.raffleNumber);
-
+// Error Handler
 api.use(errorHandler);
 
 module.exports = api;
