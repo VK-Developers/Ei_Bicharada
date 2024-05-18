@@ -40,6 +40,6 @@ export default {
   donateAlert: (pix) => `Chave PIX Copiada\n\n CNPJ: ${pix}`,
   rifaWpp: (name, number, entrance) => `*Comprovante pagamento*\n\nRifa: ${name}\nNúmero: ${number}\nValor: ${entrance}`,
   
-  server: "http://193.203.183.47:3001/",
+  server: "http://193.203.183.47:3001/hey-pet/",
   https: "https://atespets.com.br/",
 };

@@ -14,7 +14,7 @@ const server = {
 }
 
 const api = axios.create({
-  baseURL: server.url.phone + server.prefix,
+  baseURL: server.url.api + server.prefix,
 });
 
 export default api;
