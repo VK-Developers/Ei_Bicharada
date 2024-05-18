@@ -8,7 +8,7 @@ export const menuTopics = [
   'Nossos Produtos',
   'Notícias & Eventos',
   'Contribuição',
-  'Prestação de Contas',
+  // 'Prestação de Contas',
   'Apoiadores',
 ]
 

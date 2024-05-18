@@ -29,7 +29,7 @@ function Cover() {
             { 
               topics.map(topic => <MenuLinks key={topic + '-menu'} name={topic} />)
             }
-            <SOSKitty />
+            {/* <SOSKitty /> */}
         </View>
       </View>
     </>

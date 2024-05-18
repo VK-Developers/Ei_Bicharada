@@ -20,7 +20,7 @@ const submitObj = (param) => ({
 export const createRescue = async (obj, token) => {
     const upLoadName = FormatName(obj, 'rescue');
     const data = submitObj(obj)
-
+    
     const formData = new FormData();
 
     formData.append('data', JSON.stringify(data));
@@ -38,10 +38,10 @@ export const createRescue = async (obj, token) => {
             }
         });
 
-    return request;
+      return;
     } catch (error) {
         const errorResponse = handleRequestError(error);
-    return errorResponse;
+        return errorResponse;
     }
 };
 

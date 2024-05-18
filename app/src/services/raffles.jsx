@@ -44,7 +44,7 @@ export const raffleInfo = async(id, token) => {
     );
     return data;
   } catch (error) {
-    console.log('erro')
+    console.log(error)
     return [];
   }
 };

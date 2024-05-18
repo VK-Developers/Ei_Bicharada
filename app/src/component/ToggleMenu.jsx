@@ -21,7 +21,6 @@ function ToggleMenu({level}) {
     </TouchableOpacity>
   ) : (
     <>
-      {/* <Background img={'tree'} cover={true} tint={"#0A8C60"} /> */}
       <LogOut />
       <TouchableOpacity style={styles.container} onPress={handlePress} />
       <View style={styles.shape}/>
@@ -33,7 +32,7 @@ function ToggleMenu({level}) {
         {
           topics.map(topic => <MenuLinks key={topic + '-menu'} name={topic} />)
         }
-        <SOSKitty />
+        {/* <SOSKitty /> */}
       </View>
     </>
 

@@ -13,14 +13,7 @@ import strings from '../localized/strings';
 const { height, width } = Dimensions.get('window');
 
 function Login({navigation}) {
-  const { loader, block } = useContext(Context);
-
-  useEffect(() => {
-    if (block == 0) {
-      navigation.navigate('Block')
-      return 
-    }
-  }, [block])
+  const { loader } = useContext(Context);
 
   return !loader ? (
     <>
